@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="hobbies")
@@ -21,6 +22,9 @@ public class Hobby {
     @OneToOne
     private User ownerId;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    private List<HobbyImage> images;
+
     public Hobby(){}
 
     public Hobby(String title, String description, Boolean isApproved, User ownerId) {
@@ -29,6 +33,15 @@ public class Hobby {
         this.description = description;
         this.isApproved = isApproved;
         this.ownerId = ownerId;
+    }
+
+    public Hobby(String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images) {
+
+        this.title = title;
+        this.description = description;
+        this.isApproved = isApproved;
+        this.ownerId = ownerId;
+        this.images = images;
     }
 
     public Hobby(long id, String title, String description, Boolean isApproved, User ownerId) {
