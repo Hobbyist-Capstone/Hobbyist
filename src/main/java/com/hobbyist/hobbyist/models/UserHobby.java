@@ -17,7 +17,7 @@ public class UserHobby {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+    @Column(nullable = false)
     private HobbyStatus status;
 
     public UserHobby(){}

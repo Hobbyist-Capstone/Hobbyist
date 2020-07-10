@@ -29,7 +29,7 @@ public class Hobby {
     private List<HobbyImage> images;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    private List<Rating> hobbyRating;
+    private List<Rating> rating;
 
 
     public Hobby(){}
@@ -41,7 +41,7 @@ public class Hobby {
         this.isApproved = isApproved;
         this.ownerId = ownerId;
         this.images = images;
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
     }
 
     public Hobby(long id, String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images,List<Rating> hobbyRating ) {
@@ -51,7 +51,7 @@ public class Hobby {
         this.isApproved = isApproved;
         this.ownerId = ownerId;
         this.images = images;
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
     }
 
     public long getId() {
@@ -103,10 +103,18 @@ public class Hobby {
     }
 
     public List<Rating> getHobbyRating() {
-        return hobbyRating;
+        return rating;
     }
 
     public void setHobbyRating(List<Rating> hobbyRating) {
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
