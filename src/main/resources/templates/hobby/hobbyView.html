@@ -5,8 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-<!--    <h1 th:text="${hobby}">-->
-
-<!--    </h1>-->
+    <h1 th:each="h : ${hobby}">
+        <p th:text="${h.id}"></p>
+        <p th:text="${h.title}"></p>
+        <p th:text="${h.description}"></p>
+        <p th:text="${h.images}"></p>
+        <p th:text="${h.category.name}"></p>
+<!--    need to loop over each hobby rating    -->
+        <p th:each="r : ${h.hobbyRating}">
+            <span th:text="${r.difficulty}"></span>
+            <span th:text="${r.price}"></span>
+            <span th:text="${r.overallRating}"></span>
+            <span th:text="${r.patience}"></span>
+        </p>
+        <p th:text="${h.approved}"></p>
+        <p th:text="${h.ownerId.username}"></p>
+    </h1>
 </body>
 </html>
