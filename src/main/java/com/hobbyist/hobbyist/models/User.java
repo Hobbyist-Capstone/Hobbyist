@@ -67,6 +67,19 @@ public class User {
         this.ratings = ratings;
     }
 
+    public User(User copy) {
+        this.id =  copy.id;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.email = copy.email;
+        this.username = copy.username;
+        this.password =copy.password;
+        this.isAdmin =copy. isAdmin;
+        this.hobby = copy.hobby;
+        this.userHobby = copy.userHobby;
+        this.ratings =copy. ratings;
+    }
+
     public long getId() {
         return id;
     }
