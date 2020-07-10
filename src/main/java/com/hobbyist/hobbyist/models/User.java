@@ -1,4 +1,4 @@
-package models;
+package com.hobbyist.hobbyist.models;
 
 
 import javax.persistence.*;

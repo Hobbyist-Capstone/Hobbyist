@@ -1,6 +1,6 @@
-package repos;
+package com.hobbyist.hobbyist.repos;
 
-import models.User;
+import com.hobbyist.hobbyist.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

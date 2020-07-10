@@ -1,6 +1,6 @@
-package repos;
+package com.hobbyist.hobbyist.repos;
 
-import models.HobbyStatus;
+import com.hobbyist.hobbyist.models.HobbyStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HobbyStatusRepository extends JpaRepository<HobbyStatus, Long> {

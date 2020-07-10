@@ -1,6 +1,4 @@
-package models;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+package com.hobbyist.hobbyist.models;
 
 import javax.persistence.*;
 
