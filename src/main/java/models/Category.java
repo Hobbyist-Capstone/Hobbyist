@@ -13,6 +13,9 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    @OneToOne
+    private Hobby category;
+
 
     public Category(){}
 

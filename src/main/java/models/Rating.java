@@ -21,21 +21,34 @@ public class Rating {
     @Column(nullable = true)
     private byte overallRating;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="hobby_id")
+    private Hobby ratingHobby;
+
+
+
     public Rating(){}
 
-    public Rating(long id, byte difficulty, byte price, byte patience, byte overallRating) {
+    public Rating(long id, byte difficulty, byte price, byte patience, byte overallRating, User user) {
         this.id = id;
         this.difficulty = difficulty;
         this.price = price;
         this.patience = patience;
         this.overallRating = overallRating;
+        this.user = user;
     }
 
-    public Rating(byte difficulty, byte price, byte patience, byte overallRating) {
+    public Rating(byte difficulty, byte price, byte patience, byte overallRating, User user) {
         this.difficulty = difficulty;
         this.price = price;
         this.patience = patience;
         this.overallRating = overallRating;
+        this.user = user;
+
     }
 
     public long getId() {
@@ -76,5 +89,13 @@ public class Rating {
 
     public void setOverallRating(byte overallRating) {
         this.overallRating = overallRating;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

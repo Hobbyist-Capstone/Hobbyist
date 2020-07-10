@@ -2,6 +2,7 @@ package models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name ="users")
@@ -29,9 +30,19 @@ public class User {
     @Column(nullable = false)
     private boolean isAdmin;
 
+    @OneToOne
+    private Hobby hobby;
+
+    @OneToOne
+    private UserHobby userHobby;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Rating> ratings;
+
+
     public User(){}
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,15 +50,21 @@ public class User {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.hobby = hobby;
+        this.userHobby = userHobby;
+        this.ratings = ratings;
     }
 
-    public User( String firstName, String lastName, String email, String username, String password, boolean isAdmin) {
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.hobby = hobby;
+        this.userHobby = userHobby;
+        this.ratings = ratings;
     }
 
     public long getId() {
@@ -107,4 +124,11 @@ public class User {
     }
 
 
+    public Hobby getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(Hobby hobby) {
+        this.hobby = hobby;
+    }
 }
