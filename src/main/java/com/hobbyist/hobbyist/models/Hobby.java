@@ -20,7 +20,7 @@ public class Hobby {
     private Boolean isApproved;
 
     @OneToOne
-    private User ownerId;
+    private User createdBy;
 
     @OneToOne
     private Category category;
@@ -34,22 +34,22 @@ public class Hobby {
 
     public Hobby(){}
 
-    public Hobby(String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images,List<Rating> hobbyRating ) {
+    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<HobbyImage> images,List<Rating> hobbyRating ) {
 
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
-        this.ownerId = ownerId;
+        this.createdBy = createdBy;
         this.images = images;
         this.rating = hobbyRating;
     }
 
-    public Hobby(long id, String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images,List<Rating> hobbyRating ) {
+    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<HobbyImage> images,List<Rating> hobbyRating ) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
-        this.ownerId = ownerId;
+        this.createdBy = createdBy;
         this.images = images;
         this.rating = hobbyRating;
     }
@@ -86,12 +86,12 @@ public class Hobby {
         isApproved = approved;
     }
 
-    public User getOwnerId() {
-        return ownerId;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setOwnerId(User ownerId) {
-        this.ownerId = ownerId;
+    public void setCreatedBy(User ownerId) {
+        this.createdBy = ownerId;
     }
 
     public List<HobbyImage> getImages() {

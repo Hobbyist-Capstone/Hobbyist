@@ -34,7 +34,7 @@ public class User {
     private Hobby hobby;
 
     @OneToOne
-    private UserHobby userHobby;
+    private UserHobby hobbyStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
@@ -42,7 +42,7 @@ public class User {
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby hobbyStatus, List<Rating> ratings) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,11 +51,11 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
         this.hobby = hobby;
-        this.userHobby = userHobby;
+        this.hobbyStatus = hobbyStatus;
         this.ratings = ratings;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby hobbyStatus, List<Rating> ratings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -63,7 +63,7 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
         this.hobby = hobby;
-        this.userHobby = userHobby;
+        this.hobbyStatus = hobbyStatus;
         this.ratings = ratings;
     }
 
@@ -130,5 +130,12 @@ public class User {
 
     public void setHobby(Hobby hobby) {
         this.hobby = hobby;
+    }
+    public UserHobby getHobbyStatus() {
+        return hobbyStatus;
+    }
+
+    public void setHobbyStatus(UserHobby hobbyStatus) {
+        this.hobbyStatus = hobbyStatus;
     }
 }

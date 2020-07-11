@@ -14,26 +14,7 @@
         <p>Patience: <span th:text="${rating.patience}"></span></p>
         <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>
     </div>
-    <h3>Created by: <span th:text="${hobby.ownerId.username}"></span></h3>
+    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>
 </div>
-
-
-<!-- Reference on how to access all of our info -->
-<!--    <h1 th:each="h : ${hobby}">-->
-<!--        <p th:text="${h.id}"></p>-->
-<!--        <p th:text="${h.title}"></p>-->
-<!--        <p th:text="${h.description}"></p>-->
-<!--        <p th:text="${h.images}"></p>-->
-<!--        <p th:text="${h.category.name}"></p>-->
-<!--&lt;!&ndash;    need to loop over each hobby rating    &ndash;&gt;-->
-<!--        <p th:each="r : ${h.hobbyRating}">-->
-<!--            <span th:text="${r.difficulty}"></span>-->
-<!--            <span th:text="${r.price}"></span>-->
-<!--            <span th:text="${r.overallRating}"></span>-->
-<!--            <span th:text="${r.patience}"></span>-->
-<!--        </p>-->
-<!--        <p th:text="${h.approved}"></p>-->
-<!--        <p th:text="${h.ownerId.username}"></p>-->
-<!--    </h1>-->
 </body>
 </html>
