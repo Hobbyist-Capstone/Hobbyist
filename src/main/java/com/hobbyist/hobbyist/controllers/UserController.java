@@ -6,6 +6,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -19,16 +21,42 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showSignupForm(Model model){
+    public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
         return "registration/register";
     }
 
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute User user){
+//        String hash = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(hash);
+//        userDao.save(user);
+//        return "redirect:/login";
+//    }
+
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user){
+    public String registerUser(@ModelAttribute User newUser, @Validated User user, Errors validation, Model model) {
+        String username = user.getUsername();
+        String email = user.getEmail();
+        User userExists = userDao.findByUsername(username);
+        User emailExists = userDao.findByEmail(email);
+
+        if (userExists != null) {
+            validation.rejectValue("username", "user.username", username + " already exists. Please try again");
+        }
+
+        if (emailExists !=null){
+            validation.rejectValue("email", "user.email", email + " already exists in our records. Please sign-in with the corresponding username");
+        }
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("user", user);
+            return "registration/register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        userDao.save(user);
+        userDao.save(newUser);
         return "redirect:/login";
     }
 

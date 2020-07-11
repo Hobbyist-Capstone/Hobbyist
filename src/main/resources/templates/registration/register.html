@@ -7,11 +7,17 @@
 <body>
 <h1>Create an account</h1>
 <form th:action="@{/register}" method="POST" th:object="${user}">
+    <div th:if="${#fields.hasErrors('*')}">
+        <p th:each="err : ${#fields.errors('*')}"  th:text="${err}"></p>
+    </div>
+
     <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <input type="text" id="username" class="validate" th:field="*{username}" />
+<!--    <p th:if="${#fields.hasErrors('username')}" th:errors = "*{username}"></p>-->
 
     <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <input type="text" id="email" class="validate" th:field="*{email}" />
+<!--    <p th:if ="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>-->
 
     <label for="password">Password</label>
     <input id="password" type="password" th:field="*{password}" />
@@ -19,7 +25,7 @@
     <label for="firstname">First Name</label>
     <input id="firstname" th:field="*{firstName}" />
 
-    <label for="lastname">First Name</label>
+    <label for="lastname">Last Name</label>
     <input id="lastname" th:field="*{lastName}" />
 
     <input value="Sign me up!" type="submit" />
