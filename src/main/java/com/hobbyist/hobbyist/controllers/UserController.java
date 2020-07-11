@@ -26,14 +26,6 @@ public class UserController {
         return "registration/register";
     }
 
-//    @PostMapping("/register")
-//    public String registerUser(@ModelAttribute User user){
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        userDao.save(user);
-//        return "redirect:/login";
-//    }
-
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User newUser, @Validated User user, Errors validation, Model model) {
         String username = user.getUsername();
