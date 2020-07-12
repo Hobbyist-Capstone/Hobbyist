@@ -61,7 +61,7 @@ public class UserController {
 
         vModel.addAttribute("user", userDao.findByUsername(username));
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        vModel.addAttribute("userName", user.getUsername());
+           vModel.addAttribute("userName", user.getUsername());
 
 
         //user must be logged in to view this page
