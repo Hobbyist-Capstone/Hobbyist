@@ -14,9 +14,15 @@
 <p> email: <span th:text="${user.email}"></span></p>
 <p> first name: <span th:text="${user.firstName}"></span></p>
 <p> last name: <span th:text="${user.lastName}"></span></p>
+<p>admin? : <span th:text="${user.admin}"></span></p>
+<p>current  user : <span th:text="${userName}"></span></p>
 
 
+<!--need help-->
+<!--<div th:unless="${user.getUsername() == userName || userName == user.admin }">-->
+<!--<div th:if="${userName == user.isAdmin()}">-->
 <div th:if="${user.getUsername() == userName}">
+
     <form th:action="@{|/users/${user.id}/edit|}" th:method="get" th:object="${user}">
         <input type="hidden" name="id" th:value="${user.getId()}">
         <button class="btn btn-outline-info"> Edit</button>
