@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Hobbyist</title>
 </head>
 <body>
 
-    <h1>The Future Home of Hobbyist</h1>
+<h1>The Future Home of Hobbyist</h1>
+
+
+<!--<div th:each ="user :${users}" sec:authorize ="!isAnonymous()">-->
+<!--<a th:href="@{/profile/{username}(username=${user.username})}"><button>Profile</button></a>-->
+<!--</div>-->
+
+
+
+<!--    if authenticated-->
+<!--<div sec:authorize ="isAuthenticated()" >-->
+<!--    <a th:href="${'/profile/' + user.id}">-->
+<!--        <button class="btn btn-outline-info">Profile</button>-->
+<!--    </a>-->
+<!--</div>-->
 
 </body>
 </html>

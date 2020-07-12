@@ -39,7 +39,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
-
     public User(){}
 
     public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby hobbyStatus, List<Rating> ratings) {
