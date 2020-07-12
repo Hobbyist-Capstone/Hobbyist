@@ -15,10 +15,13 @@
 <p> first name: <span th:text="${user.firstName}"></span></p>
 <p> last name: <span th:text="${user.lastName}"></span></p>
 
-<form th:action="@{|/users/${user.id}/edit|}" th:method="get" th:object="${user}">
-    <input type="hidden" name="id" th:value="${user.getId()}">
-    <button class="btn btn-outline-info"> Edit</button>
-</form>
+
+<div th:if="${user.getUsername() == userName}">
+    <form th:action="@{|/users/${user.id}/edit|}" th:method="get" th:object="${user}">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <button class="btn btn-outline-info"> Edit</button>
+    </form>
+</div>
 
 
 </body>
