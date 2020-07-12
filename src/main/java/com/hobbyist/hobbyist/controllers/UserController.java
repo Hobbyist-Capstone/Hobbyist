@@ -56,14 +56,19 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/users/profile/{username}")
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel){
+        User user = userDao.findByUsername(username);
+        vModel.addAttribute("user", user);
+        return "users/publicProfiles";
+    }
+
     @GetMapping("/profile/{username}")
     public String showProfile(@PathVariable String username, Model vModel) {
 
         vModel.addAttribute("user", userDao.findByUsername(username));
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
            vModel.addAttribute("userName", user.getUsername());
-
-
         //user must be logged in to view this page
 //        User currentUser = userDao.findByUsername(username);
 //        vModel.addAttribute("user", currentUser);
