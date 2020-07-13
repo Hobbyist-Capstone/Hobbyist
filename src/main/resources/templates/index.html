@@ -16,8 +16,8 @@
         <h1 th:text="${c.category.name}"></h1>
         <p th:text="${c.createdBy.username}"></p>
         <p th:text="${c.createdBy.admin}"></p>
-        <hr>
     </div>
+    <hr>
     <!--  display hobbies by category 2 -->
     <div th:each="category : ${c2}">
         <h1 th:text="${category.title}"></h1>
@@ -27,7 +27,7 @@
         <p th:text="${category.createdBy.username}"></p>
         <p th:text="${category.createdBy.admin}"></p>
     </div>
-
+    <hr>
     <!--  display hobbies by category 3 -->
     <div th:each="category : ${c3}">
         <h1 th:text="${category.title}"></h1>
@@ -37,6 +37,6 @@
         <p th:text="${category.createdBy.username}"></p>
         <p th:text="${category.createdBy.admin}"></p>
     </div>
-
+    <hr>
 </body>
 </html>
