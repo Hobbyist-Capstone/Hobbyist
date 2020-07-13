@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div>
+<div th:each="hobby : ${hobbies}">
     <h1 th:text="${hobby.title}"></h1>
     <h2 th:text="${hobby.description}"></h2>
     <div th:each="rating : ${hobby.hobbyRating}">

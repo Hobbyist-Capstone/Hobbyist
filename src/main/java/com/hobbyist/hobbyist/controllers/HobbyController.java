@@ -5,6 +5,7 @@ import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
+import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,18 +21,18 @@ public class HobbyController {
         this.hobbyDao = hobbyDao;
     }
 
-//    @GetMapping("/hobby")
-//    public String index(Model model) {
-//        model.addAttribute("hobby", hobbyDao.findAll());
-//        return "hobby/hobbyView";
-//    }
 
+//     displays a single hobby by {id}
     @GetMapping("/hobby/{id}")
     public String singleHobby(@PathVariable long id, Model model) {
         model.addAttribute("hobby", hobbyDao.getOne(id));
         return "hobby/hobbyView";
     }
 
-
-
+//     displays all hobbies
+    @GetMapping("/hobbies")
+    public String allHobbies(Model model) {
+        model.addAttribute("hobbies", hobbyDao.findAll());
+        return "hobbies/allHobbiesView";
+    }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="hobbies")
+@Table(name = "hobbies")
 public class Hobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +28,14 @@ public class Hobby {
     private Category category;
 
 
-    @ManyToMany (cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_hobbies",
-            joinColumns = {@JoinColumn(name="hobby_id")},
-            inverseJoinColumns = {@JoinColumn(name="user_id")}
+            joinColumns = {@JoinColumn(name = "hobby_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    private List <User> users;
+    private List<User> users;
+  
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
     @JsonManagedReference
@@ -46,9 +46,10 @@ public class Hobby {
     private List<Rating> rating;
 
 
-    public Hobby(){}
+    public Hobby() {
+    }
 
-    public Hobby(String title, String description, Boolean isApproved, User createdBy,List<User> users,  List<HobbyImage> images,List<Rating> hobbyRating ) {
+    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
 
         this.title = title;
         this.description = description;
@@ -60,7 +61,8 @@ public class Hobby {
     }
 
 
-    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating ) {
+
+    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -151,4 +153,6 @@ public class Hobby {
     public void setRating(List<Rating> rating) {
         this.rating = rating;
     }
+
 }
+

@@ -5,3 +5,5 @@ public enum FriendStatus {
     ACCEPTED,
     REJECTED
 }
+
+
