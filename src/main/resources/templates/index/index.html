@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hobbyist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+
+
+
+</head>
+<body>
+
+
+
+
+<!--<div th:each ="user :${users}" sec:authorize ="!isAnonymous()">-->
+<!--<a th:href="@{/profile/{username}(username=${user.username})}"><button>Profile</button></a>-->
+<!--</div>-->
+
+
+
+<!--    if authenticated-->
+<!--<div sec:authorize ="isAuthenticated()" >-->
+<!--    <a th:href="${'/profile/' + user.id}">-->
+<!--        <button class="btn btn-outline-info">Profile</button>-->
+<!--    </a>-->
+<!--</div>-->
+
+<!--  test search engine  -->
+<!--    Search:-->
+<!--    <form action="/search">-->
+<!--        <input type="text" name="term" placeholder="Search Hobby">-->
+<!--        <button>Search</button>-->
+<!--    </form>-->
+
+
+<!--  display hobbies by category 1 -->
+    <div th:each="c : ${c1}">
+        <h1 th:text="${c.title}"></h1>
+        <p th:text="${c.description}"></p>
+        <h1 th:text="${c.approved}"></h1>
+        <h1 th:text="${c.category.name}"></h1>
+        <p th:text="${c.createdBy.username}"></p>
+        <p th:text="${c.createdBy.admin}"></p>
+    </div>
+
+    <!--  display hobbies by category 2 -->
+    <div th:each="category : ${c2}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+
+    <!--  display hobbies by category 3 -->
+    <div th:each="category : ${c3}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+
+
+<!--Small M and S and XS Site-->
+
+<div id="main-container-small" class="hide-on-medium-and-up hide-on-large-only show-on-small">
+    <div id="above-fold-small">
+
+        <!--        Small Navbar Placeholder-->
+        <div id="navbar-placeholder-small">
+            <ul id="navbar-list-small">
+                <li>nav</li>
+                <li>nav</li>
+                <li>nav</li>
+                <li>nav</li>
+            </ul>
+        </div>
+        <div id="small-title-container">
+            <h1 id="main-title-small" class="center-align">Hobbyist</h1>
+        </div>
+
+
+        <!--Small Buttons Section-->
+        <div id="small-main-buttons" class="center-align">
+            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
+                    type="submit" name="action">Login
+            </button>
+
+            <div class="form-popup" id="small-login-form">
+                <form action="#" class="form-container center-align">
+                    <h1>Login</h1>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
+                    <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
+                            onclick="closeLoginForm()">Close
+                    </button>
+                </form>
+            </div>
+
+
+            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openJoinForm()"
+                    type="submit" name="action">Join
+            </button>
+
+            <div class="form-popup center-align" id="small-join-form">
+                <form action="#" class="form-container">
+                    <h1>Join</h1>
+
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+                    <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
+                            onclick="closeJoinForm()">Close
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--Desktop L and XL Site-->
+<div id="main-container-large" class="how-on-large hide-on-med-and-down">
+    <div id="above-fold-large">
+        <div id="navbar-placeholder-large">
+            <ul id="navbar-list-large">
+                <li>navbar stuff</li>
+                <li>navbar stuff</li>
+                <li>navbar stuff</li>
+                <li>navbar stuff</li>
+            </ul>
+        </div>
+
+        <h1 id="main-title-large">Hobbyist</h1>
+
+        <div id="large-main-buttons" class="center-align">
+            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                    onclick="openLargeLoginForm()" type="submit" name="action">Login
+            </button>
+
+            <div class="form-popup" id="large-login-form">
+                <form action="#" class="form-container center-align">
+                    <h1>Login</h1>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
+                    <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
+                            onclick="closeLargeLoginForm()">Close
+                    </button>
+                </form>
+            </div>
+
+            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                    onclick="openLargeJoinForm()" type="submit" name="action">Join
+            </button>
+
+            <div class="form-popup center-align" id="large-join-form">
+                <form action="#" class="form-container">
+                    <h1>Join</h1>
+                    <label for="first-name"><b>First Name</b></label>
+                    <input type="text" placeholder="Enter first name" required>
+
+                    <label for="last-name"><b>Last Name</b></label>
+                    <input type="text" placeholder="Enter last name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+                    <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
+                            onclick="closeLargeJoinForm()">Close
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script th:src="@{/JS/materialize.js}">
+    M.AutoInit();
+</script>
+<script th:src="@{/JS/index.js}"></script>
+</body>
+</html>

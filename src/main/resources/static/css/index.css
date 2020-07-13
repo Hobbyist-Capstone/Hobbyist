@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+html {
+    width: 100vw;
+}
+
+/*Small M and S and XS Site*/
+
+#main-container-small {
+    width: 100vw;
+}
+/*Index - Above the fold*/
+
+#navbar-placeholder-small {
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    display: block;
+    z-index: 1000;
+    background-color: #212121;
+    font-family: 'Bungee Shade', cursive;
+    color: white;
+    font-size: 1.5em;
+}
+
+#navbar-list-small {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#above-fold-small {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../../img/desk.jpg");
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Bungee Shade', cursive;
+    overflow-y: scroll;
+}
+
+#main-title-small {
+    font-size: 4em;
+    color: rgba(146, 9, 18, 0.9);
+    font-family: 'Bungee Shade', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 60px;
+
+}
+
+
+
+
+/*Desktop L and XL Site*/
+
+#main-container-large {
+    width: 100vw;
+}
+/*Index - Above the fold*/
+
+#navbar-placeholder-large {
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    display: block;
+    z-index: 1000;
+    background-color: #212121;
+    font-family: 'Bungee Shade', cursive;
+    color: white;
+    font-size: 2em;
+}
+
+#navbar-list-large {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#above-fold-large {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../../img/desk.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Bungee Shade', cursive;
+    overflow-y: scroll;
+}
+
+#main-title-large {
+    font-size: 11em;
+    color: rgba(146, 9, 18, 0.9);
+    font-family: 'Bungee Shade', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+}
+
+#large-main-buttons {
+    position: absolute;
+    top: 40%;
+    left: 60%;
+}
+/*#description {*/
+/*    width: 25vw;*/
+/*    font-size: 3em;*/
+/*    color: rgba(0, 0, 0, 0.8);*/
+/*    position: absolute;*/
+/*    top: 24%;*/
+/*    right: 20%;*/
+
+/*}*/
+
+/*Small Login and Join Forms*/
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    border: 3px solid #f1f1f1;
+    z-index: 900;
+    background-color: rgba(255, 255, 255, 100);
+    color: black;
+}
+
+.form-container {
+    max-width: 90vw;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 100);
+}
+
+/*Jacob's CSS*/
+
+.live__scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.live__scroll .row{
+    display:block;
+}
+.live__scroll .live__scroll--box {
+    display: inline-block;
+    float: none;
+    padding: 15px;
+}
+
