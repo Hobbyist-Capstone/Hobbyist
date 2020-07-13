@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name ="users")
 public class User {
 
     @Id
@@ -34,16 +34,18 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Hobby> hobbies;
 
-//    @OneToOne
-//    private UserHobby hobbyStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
-    public User() {
-    }
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings) {
+
+    @OneToMany(mappedBy = "user")
+    private List<FriendList> friends;
+
+    public User(){}
+
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,9 +55,10 @@ public class User {
         this.isAdmin = isAdmin;
         this.hobbies = hobbies;
         this.ratings = ratings;
+        this.friends = friends;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings) {
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby>  hobbies,  List<Rating> ratings, List<FriendList> friends) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -64,18 +67,22 @@ public class User {
         this.isAdmin = isAdmin;
         this.hobbies = hobbies;
         this.ratings = ratings;
+        this.friends = friends;
+
     }
 
     public User(User copy) {
-        this.id = copy.id;
+        this.id =  copy.id;
         this.firstName = copy.firstName;
         this.lastName = copy.lastName;
         this.email = copy.email;
         this.username = copy.username;
-        this.password = copy.password;
-        this.isAdmin = copy.isAdmin;
-        this.hobbies = copy.hobbies;
-        this.ratings = copy.ratings;
+        this.password =copy.password;
+        this.isAdmin =copy. isAdmin;
+        this.hobbies= copy.hobbies;
+        this.ratings =copy. ratings;
+        this.friends = friends;
+
     }
 
     public long getId() {
@@ -148,5 +155,13 @@ public class User {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public List<FriendList> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<FriendList> friends) {
+        this.friends = friends;
     }
 }
