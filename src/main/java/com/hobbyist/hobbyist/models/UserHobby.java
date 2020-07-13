@@ -11,10 +11,10 @@ public class UserHobby {
     private long id;
 
     @OneToOne
-    private Hobby hobby;
+    private User user;
 
     @OneToOne
-    private User user;
+    private Hobby hobby;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
