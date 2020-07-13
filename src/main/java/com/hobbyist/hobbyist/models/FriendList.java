@@ -21,6 +21,8 @@ public class FriendList {
     @Column(nullable = false)
     private FriendStatus status;
 
+    public FriendList() {}
+
     public FriendList(User user, User friend, FriendStatus status) {
         this.user = user;
         this.friend = friend;

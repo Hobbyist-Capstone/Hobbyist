@@ -20,18 +20,13 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        String cat1 = "Fishing";
-        String cat2 = "Hunting";
-        String cat3 = "Witchcraft";
-        String cat4 = "Palm Reading";
-        String cat5 = "Arguing";
-        String cat6 = "Trolling";
-        model.addAttribute("cat1", hobbyDao.filterByCategory(cat1));
-        model.addAttribute("cat2", hobbyDao.filterByCategory(cat2));
-        model.addAttribute("cat3", hobbyDao.filterByCategory(cat3));
-        model.addAttribute("cat4", hobbyDao.filterByCategory(cat4));
-        model.addAttribute("cat5", hobbyDao.filterByCategory(cat5));
-        model.addAttribute("cat6", hobbyDao.filterByCategory(cat6));
+        String c1 = "fishing";
+        String c2 = "hunting";
+        String c3 = "reading";
+
+        model.addAttribute("c1", hobbyDao.filterByCategory(c1));
+        model.addAttribute("c2", hobbyDao.filterByCategory(c2));
+        model.addAttribute("c3", hobbyDao.filterByCategory(c3));
         return "index";
     }
 
