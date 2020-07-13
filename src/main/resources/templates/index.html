@@ -7,6 +7,61 @@
 <body>
 
     <h1>The Future Home of Hobbyist</h1>
+    <input type="text">
 
+<!--  display hobbies by category 1 -->
+    <div th:each="c : ${cat1}">
+        <h1 th:text="${c.title}"></h1>
+        <p th:text="${c.description}"></p>
+        <h1 th:text="${c.approved}"></h1>
+        <h1 th:text="${c.category.name}"></h1>
+        <p th:text="${c.createdBy.username}"></p>
+        <p th:text="${c.createdBy.admin}"></p>
+        <hr>
+    </div>
+    <!--  display hobbies by category 2 -->
+    <div th:each="category : ${cat2}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+
+    <div th:each="category : ${cat3}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+    <div th:each="category : ${cat4}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+
+    <div th:each="category : ${cat5}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
+
+    <div th:each="category : ${cat6}">
+        <h1 th:text="${category.title}"></h1>
+        <p th:text="${category.description}"></p>
+        <h2 th:text="${category.approved}"></h2>
+        <h3 th:text="${category.category.name}"></h3>
+        <p th:text="${category.createdBy.username}"></p>
+        <p th:text="${category.createdBy.admin}"></p>
+    </div>
 </body>
 </html>

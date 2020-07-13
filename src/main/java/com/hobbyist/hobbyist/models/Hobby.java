@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="hobbies")
+@Table(name = "hobbies")
 public class Hobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,15 @@ public class Hobby {
     @OneToOne
     private Category category;
 
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_hobbies",
+            joinColumns = {@JoinColumn(name = "hobby_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> users;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
     private List<HobbyImage> images;
 
@@ -32,24 +41,28 @@ public class Hobby {
     private List<Rating> rating;
 
 
-    public Hobby(){}
+    public Hobby() {
+    }
 
-    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<HobbyImage> images,List<Rating> hobbyRating ) {
+    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
 
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
         this.createdBy = createdBy;
+        this.users = users;
         this.images = images;
         this.rating = hobbyRating;
     }
 
-    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<HobbyImage> images,List<Rating> hobbyRating ) {
+
+    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
         this.createdBy = createdBy;
+        this.users = users;
         this.images = images;
         this.rating = hobbyRating;
     }
@@ -90,8 +103,8 @@ public class Hobby {
         return createdBy;
     }
 
-    public void setCreatedBy(User ownerId) {
-        this.createdBy = ownerId;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
     public List<HobbyImage> getImages() {
@@ -116,5 +129,22 @@ public class Hobby {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Rating> getRating() {
+        return rating;
+    }
+
+    public void setRating(List<Rating> rating) {
+        this.rating = rating;
     }
 }

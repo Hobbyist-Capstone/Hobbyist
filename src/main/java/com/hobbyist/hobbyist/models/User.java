@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name ="users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -18,31 +18,32 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
+
     @Column(nullable = false)
     private boolean isAdmin;
 
-    @OneToOne
-    private Hobby hobby;
+    @ManyToMany(mappedBy = "users")
+    private List<Hobby> hobbies;
 
-    @OneToOne
-    private UserHobby hobbyStatus;
+//    @OneToOne
+//    private UserHobby hobbyStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
+    public User() {
+    }
 
-    public User(){}
-
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby hobbyStatus, List<Rating> ratings) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,21 +51,31 @@ public class User {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.hobby = hobby;
-        this.hobbyStatus = hobbyStatus;
+        this.hobbies = hobbies;
         this.ratings = ratings;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby hobbyStatus, List<Rating> ratings) {
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.hobby = hobby;
-        this.hobbyStatus = hobbyStatus;
+        this.hobbies = hobbies;
         this.ratings = ratings;
+    }
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.email = copy.email;
+        this.username = copy.username;
+        this.password = copy.password;
+        this.isAdmin = copy.isAdmin;
+        this.hobbies = copy.hobbies;
+        this.ratings = copy.ratings;
     }
 
     public long getId() {
@@ -123,19 +134,19 @@ public class User {
         isAdmin = admin;
     }
 
-
-    public Hobby getHobby() {
-        return hobby;
+    public List<Hobby> getHobbies() {
+        return hobbies;
     }
 
-    public void setHobby(Hobby hobby) {
-        this.hobby = hobby;
-    }
-    public UserHobby getHobbyStatus() {
-        return hobbyStatus;
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 
-    public void setHobbyStatus(UserHobby hobbyStatus) {
-        this.hobbyStatus = hobbyStatus;
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

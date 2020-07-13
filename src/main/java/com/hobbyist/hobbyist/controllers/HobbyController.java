@@ -18,7 +18,7 @@ public class HobbyController {
         this.hobbyDao = hobbyDao;
     }
 
-//     displays a single hobby
+//     displays a single hobby by {id}
     @GetMapping("/hobby/{id}")
     public String singleHobby(@PathVariable long id, Model model) {
         model.addAttribute("hobby", hobbyDao.getOne(id));
@@ -27,7 +27,7 @@ public class HobbyController {
 
 //     displays all hobbies
     @GetMapping("/hobbies")
-    public String index(Model model) {
+    public String allHobbies(Model model) {
         model.addAttribute("hobbies", hobbyDao.findAll());
         return "hobbies/allHobbiesView";
     }
