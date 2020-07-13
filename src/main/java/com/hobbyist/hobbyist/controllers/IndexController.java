@@ -17,9 +17,9 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        String c1 = "fishing";
-        String c2 = "hunting";
-        String c3 = "reading";
+        String c1 = "sports";
+        String c2 = "trolling";
+        String c3 = "crafts";
 
         model.addAttribute("c1", hobbyDao.filterByCategory(c1));
         model.addAttribute("c2", hobbyDao.filterByCategory(c2));
