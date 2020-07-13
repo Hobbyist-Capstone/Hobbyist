@@ -1,6 +1,8 @@
 package com.hobbyist.hobbyist.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -34,10 +36,11 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Hobby> hobbies;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
+    @OneToMany(mappedBy = "user")
+    private List<FriendList> friends;
 
 
     @OneToMany(mappedBy = "user")

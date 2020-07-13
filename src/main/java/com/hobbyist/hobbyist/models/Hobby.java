@@ -1,5 +1,7 @@
 package com.hobbyist.hobbyist.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -33,11 +35,14 @@ public class Hobby {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private List<User> users;
+  
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    @JsonManagedReference
     private List<HobbyImage> images;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    @JsonManagedReference
     private List<Rating> rating;
 
 
@@ -54,6 +59,7 @@ public class Hobby {
         this.images = images;
         this.rating = hobbyRating;
     }
+
 
 
     public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
@@ -147,4 +153,6 @@ public class Hobby {
     public void setRating(List<Rating> rating) {
         this.rating = rating;
     }
+
 }
+

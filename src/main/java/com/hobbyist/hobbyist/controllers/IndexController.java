@@ -1,5 +1,13 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.repos.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import org.springframework.stereotype.Controller;
@@ -11,6 +19,7 @@ import java.util.List;
 
 @Controller
 public class IndexController {
+
 
     private HobbyRepository hobbyDao;
 
@@ -37,5 +46,6 @@ public class IndexController {
 //        model.addAttribute("c", hobbies);
 //        return "index";
 //    }
+
 }
 

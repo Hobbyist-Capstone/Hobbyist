@@ -1,7 +1,10 @@
 package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
+import com.hobbyist.hobbyist.repos.UserHobbyRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +17,10 @@ public class HobbyController {
 
     private HobbyRepository hobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao) {
+    public HobbyController(HobbyRepository hobbyDao, UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
     }
+
 
 //     displays a single hobby by {id}
     @GetMapping("/hobby/{id}")
