@@ -37,6 +37,9 @@ public class HobbyController {
     @GetMapping("/profile/{id}/status")
     public String showHobbyStatusPage(@PathVariable long id, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(currentUser.getHobbies());
+        System.out.println(userHobbyDao.findByUserId(id).getStatus());
+
 
 
 

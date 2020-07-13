@@ -72,9 +72,9 @@ public class UserController {
 //        User user = userDao.findByUsername(username);
         User currentUser= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (currentUser.isAdmin()) {
+//        if (user.isAdmin()) {
             vModel.addAttribute("userName", currentUser.getUsername());
-        }
+//        }
 
         return "users/profile";
     }
