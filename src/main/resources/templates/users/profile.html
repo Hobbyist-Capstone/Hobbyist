@@ -19,9 +19,9 @@
 
 
 <!--need help-->
-<!--<div th:unless="${user.getUsername() == userName || userName == user.admin }">-->
+<div th:if="${user.getUsername() == userName }">
 <!--<div th:if="${userName == user.isAdmin()}">-->
-<div th:block th:if ="${!user.admin}">
+<!--<div th:block th:if ="${!user.admin}">-->
 
     <form th:action="@{|/users/${user.id}/edit|}" th:method="get" th:object="${user}">
         <input type="hidden" name="id" th:value="${user.getId()}">

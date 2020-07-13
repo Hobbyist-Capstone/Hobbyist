@@ -1,5 +1,7 @@
 package com.hobbyist.hobbyist.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class Hobby {
 
 
     @ManyToMany (cascade = CascadeType.ALL)
+    @JsonManagedReference
     @JoinTable(
             name = "users_hobbies",
             joinColumns = {@JoinColumn(name="hobby_id")},
@@ -35,9 +38,11 @@ public class Hobby {
     private List <User> users;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    @JsonManagedReference
     private List<HobbyImage> images;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    @JsonManagedReference
     private List<Rating> rating;
 
 

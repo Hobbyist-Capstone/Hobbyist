@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HobbyController {
 
     private HobbyRepository hobbyDao;
-    private UserHobbyRepository userHobbyDao;
 
     public HobbyController(HobbyRepository hobbyDao, UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
-        this.userHobbyDao = userHobbyDao;
     }
 
 //    @GetMapping("/hobby")
@@ -34,18 +32,6 @@ public class HobbyController {
         return "hobby/hobbyView";
     }
 
-    @GetMapping("/profile/{id}/status")
-    public String showHobbyStatusPage(@PathVariable long id, Model model) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(currentUser.getHobbies());
-        System.out.println(userHobbyDao.findByUserId(id).getStatus());
-
-
-
-
-
-        return "users/hobbyStatus";
-    }
 
 
 }
