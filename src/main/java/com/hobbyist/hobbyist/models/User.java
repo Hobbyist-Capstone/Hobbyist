@@ -42,10 +42,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<FriendList> friends;
 
-
-    @OneToMany(mappedBy = "user")
-    private List<FriendList> friends;
-
     public User(){}
 
     public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
