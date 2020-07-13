@@ -43,13 +43,26 @@
 
 
 <!--  display hobbies by category 1 -->
-    <div th:each="c : ${c1}">
-        <h1 th:text="${c.title}"></h1>
-        <p th:text="${c.description}"></p>
-        <h1 th:text="${c.approved}"></h1>
-        <h1 th:text="${c.category.name}"></h1>
-        <p th:text="${c.createdBy.username}"></p>
-        <p th:text="${c.createdBy.admin}"></p>
+    <div class="live__scroll" th:each="c : ${c1}">
+<!--        <h1 th:text="${c.title}"></h1>-->
+<!--        <p th:text="${c.description}"></p>-->
+<!--        <h1 th:text="${c.approved}"></h1>-->
+<!--        <h1 th:text="${c.category.name}"></h1>-->
+<!--        <p th:text="${c.createdBy.username}"></p>-->
+<!--        <p th:text="${c.createdBy.admin}"></p>-->
+
+        <div class="col s11 m5 live__scroll--box">
+            <div class="card">
+                <div class="card-image">
+                    <img src="../../static/img/tools.jpg"/>
+                    <span class="card-title" th:text="${c.title}"></span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
+                </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--  display hobbies by category 2 -->
