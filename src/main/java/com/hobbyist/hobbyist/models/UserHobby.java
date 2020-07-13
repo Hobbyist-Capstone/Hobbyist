@@ -3,7 +3,7 @@ package com.hobbyist.hobbyist.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user_hobby_status")
+@Table(name = "user_hobby_status")
 public class UserHobby {
 
     @Id
@@ -11,16 +11,17 @@ public class UserHobby {
     private long id;
 
     @OneToOne
-    private Hobby hobby;
-
-    @OneToOne
     private User user;
 
+    @OneToOne
+    private Hobby hobby;
+
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+    @Column(nullable = false)
     private HobbyStatus status;
 
-    public UserHobby(){}
+    public UserHobby() {
+    }
 
     public UserHobby(long id, Hobby hobby, User user, HobbyStatus status) {
         this.id = id;
@@ -66,6 +67,5 @@ public class UserHobby {
     public void setStatus(HobbyStatus status) {
         this.status = status;
     }
-
 
 }

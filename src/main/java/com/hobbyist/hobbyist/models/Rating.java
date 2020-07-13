@@ -27,7 +27,7 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name="hobby_id")
-    private Hobby ratingHobby;
+    private Hobby hobby;
 
 
 
@@ -97,5 +97,13 @@ public class Rating {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Hobby getRatingHobby() {
+        return hobby;
+    }
+
+    public void setRatingHobby(Hobby ratingHobby) {
+        this.hobby = ratingHobby;
     }
 }

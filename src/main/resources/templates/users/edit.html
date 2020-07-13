@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <form th:action="${'/users/' + user.id + '/edit'}" th:method="POST" th:object="${user}">
+
+       <input type="text" th:field="*{firstName}" th:value="*{firstName}"/>
+        <label for="first name">first name</label>
+<!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>-->
+
+        <input type="text" th:field="*{lastName}" th:value="*{lastName}"/>
+        <label for="first name">last name </label>
+        <!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>-->
+
+        <input type="text" th:field="*{username}" th:value="*{username}"/>
+        <label for="username">username</label>
+        <!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>-->
+
+        <input type="text" th:field="*{email}">
+        <label for="email"> email</label>
+<!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
+
+
+        <input type="password" class="form-control" th:field="*{password}" />
+        <label for="password">password</label>
+<!--        <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
+
+        <button>Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
