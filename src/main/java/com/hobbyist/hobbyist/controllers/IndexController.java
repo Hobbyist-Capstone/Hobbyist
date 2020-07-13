@@ -30,9 +30,12 @@ public class IndexController {
         return "index";
     }
 
+//    future search feature
 //    @GetMapping("/search")
-//    public String search(Model model, @RequestParam(name = "search") String search) {
-//
+//    public String search(Model model, @RequestParam(name = "term") String term) {
+//        List<Hobby> hobbies = hobbyDao.searchByTitle(term);
+//        model.addAttribute("c", hobbies);
+//        return "index";
 //    }
 }
 
