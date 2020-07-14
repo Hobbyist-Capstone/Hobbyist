@@ -44,6 +44,16 @@ public class User {
 
     public User(){}
 
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
     public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
         this.id = id;
         this.firstName = firstName;
@@ -67,7 +77,6 @@ public class User {
         this.hobbies = hobbies;
         this.ratings = ratings;
         this.friends = friends;
-
     }
 
     public User(User copy) {
@@ -79,9 +88,8 @@ public class User {
         this.password =copy.password;
         this.isAdmin =copy. isAdmin;
         this.hobbies= copy.hobbies;
-        this.ratings =copy. ratings;
-        this.friends = friends;
-
+        this.ratings =copy.ratings;
+        this.friends = copy.friends;
     }
 
     public long getId() {
