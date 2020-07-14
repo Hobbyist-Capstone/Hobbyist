@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Hobbyist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -99,14 +99,14 @@
             </button>
 
             <div class="form-popup" id="small-login-form">
-                <form action="#" class="form-container center-align">
-                    <h1>Login</h1>
+                <form action="#" class="small-form-container center-align">
+                    <h3 id="small-login-header">Login</h3>
 
-                    <label for="email"><b>Email</b></label>
+                    <label for="email"><b class="forms">Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password"><b class="forms">Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
                     <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
@@ -121,15 +121,20 @@
             </button>
 
             <div class="form-popup center-align" id="small-join-form">
-                <form action="#" class="form-container">
-                    <h1>Join</h1>
+                <form action="#" class="small-form-container">
+                    <h3 id="small-join-header">Join</h3>
 
+                    <label for="first-name"><b class="forms">First Name</b></label>
+                    <input type="text" placeholder="Enter first name" required>
 
-                    <label for="email"><b>Email</b></label>
+                    <label for="last-name"><b class="forms">Last Name</b></label>
+                    <input type="text" placeholder="Enter last name" required>
+
+                    <label for="email"><b class="forms">Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password"><b class="forms">Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
                     <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
@@ -165,13 +170,13 @@
 
             <div class="form-popup" id="large-login-form">
                 <form action="#" class="form-container center-align">
-                    <h1>Login</h1>
+                    <h3 id="large-login-header">Login</h3>
 
-                    <label for="email"><b>Email</b></label>
+                    <label for="email"><b class="forms">Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password"><b class="forms">Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
                     <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
@@ -186,18 +191,18 @@
 
             <div class="form-popup center-align" id="large-join-form">
                 <form action="#" class="form-container">
-                    <h1>Join</h1>
-                    <label for="first-name"><b>First Name</b></label>
+                    <h3 id="large-join-header">Join</h3>
+                    <label for="first-name"><b class="forms">First Name</b></label>
                     <input type="text" placeholder="Enter first name" required>
 
-                    <label for="last-name"><b>Last Name</b></label>
+                    <label for="last-name"><b class="forms">Last Name</b></label>
                     <input type="text" placeholder="Enter last name" required>
 
-                    <label for="email"><b>Email</b></label>
+                    <label for="email"><b class="forms">Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password"><b class="forms">Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
                     <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"

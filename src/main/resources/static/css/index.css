@@ -43,7 +43,7 @@ html {
 #above-fold-small {
     height: 100vh;
     width: 100vw;
-    background-image: url("../../img/desk.jpg");
+    background-image: url("/../img/desk.jpg");
     background-size: cover;
     background-position: left;
     background-attachment: fixed;
@@ -93,7 +93,7 @@ html {
 #above-fold-large {
     height: 100vh;
     width: 100vw;
-    background-image: url("../../img/desk.jpg");
+    background-image: url("/../img/desk.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -112,12 +112,20 @@ html {
     position: absolute;
     top: 15%;
     right: 10%;
+    margin: 20px;
 }
 
 #large-main-buttons {
     position: absolute;
-    top: 40%;
-    left: 60%;
+    top: 50%;
+    left: 75%;
+    display: block;
+    margin: 20px;
+}
+
+.forms {
+    font-size: 1.5em;
+    color: black;
 }
 /*#description {*/
 /*    width: 25vw;*/
@@ -135,19 +143,36 @@ html {
     display: none;
     position: fixed;
     bottom: 0;
+    right: 30%;
     border: 3px solid #f1f1f1;
     z-index: 900;
     background-color: rgba(255, 255, 255, 100);
     color: black;
+    font-family: 'Bungee', cursive;
+    font-size: 1.5em;
 }
 
 .form-container {
-    max-width: 90vw;
+    max-width: 30vw;
     padding: 10px;
     background-color: rgba(255, 255, 255, 100);
 }
 
-/*Jacob's CSS*/
+.small-form-container {
+    max-width: 100vw;
+    width: 95vw;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 100);
+    alignment: center;
+
+}
+
+#small-join-header, #small-login-header, #large-login-header, #large-join-header {
+    font-size: 2.5em;
+    font-family: 'Bungee', cursive;
+}
+
+/*Scroll Window*/
 
 .live__scroll {
     overflow-x: auto;
