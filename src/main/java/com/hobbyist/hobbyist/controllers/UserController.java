@@ -1,9 +1,6 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Hobby;
-import com.hobbyist.hobbyist.models.HobbyStatus;
-import com.hobbyist.hobbyist.models.User;
-import com.hobbyist.hobbyist.models.UserHobby;
+import com.hobbyist.hobbyist.models.*;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -17,13 +14,14 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private UserHobbyRepository userHobbyDao;
     private HobbyRepository hobbyDao;
-
 
 
     private UserService userService;
@@ -69,7 +67,7 @@ public class UserController {
 
     //public profile
     @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel){
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
         User user = userDao.findByUsername(username);
         vModel.addAttribute("user", user);
         return "users/publicProfiles";
@@ -81,23 +79,37 @@ public class UserController {
 
         vModel.addAttribute("user", userDao.findByUsername(username));
 //        User user = userDao.findByUsername(username);
-        User currentUser= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 //        if (user.isAdmin()) {
-            vModel.addAttribute("userName", currentUser.getUsername());
+        vModel.addAttribute("userName", currentUser.getUsername());
 //        }
 
         return "users/profile";
     }
 
     @GetMapping("/profile/{id}/status")
-    public String showHobbyStatusPage(@PathVariable long id,  Model model) {
-        User currentUser= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String showHobbyStatusPage(@PathVariable long id, Model model) {
 
-        UserHobby userHobbyStatus = userHobbyDao.findByUserId(id);
-        System.out.println(userHobbyStatus.getHobby());
-        System.out.println(userHobbyStatus.getStatus());
+        //user that is the current session
+        //spring security session
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //how to access the current user
+        User userInDb = userDao.getOne(currentUser.getId());
+
+        //list of hobbies
+        List<Hobby> listOfHobbies = userInDb.getHobbies();
+
+        for(Hobby hobby : listOfHobbies) {
+            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
+//            System.out.println(userHobbyDao.findByHobbyId(hobby.getId()).getStatus());
+        }
+
         return "users/hobbyStatus";
+
+
+
     }
 
 
@@ -112,14 +124,13 @@ public class UserController {
 
 
     @PostMapping("users/{id}/edit")
-    public String editProfile(@PathVariable long id,  @ModelAttribute User userToEdit) {
+    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
 
         userToEdit.setId(id);
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
         return "redirect:/profile/" + userToEdit.getUsername();
     }
-
 
 
 }
