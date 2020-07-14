@@ -1,6 +1,8 @@
 package com.hobbyist.hobbyist.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,31 +20,31 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
+
     @Column(nullable = false)
     private boolean isAdmin;
 
-    @OneToOne
-    private Hobby hobby;
-
-    @OneToOne
-    private UserHobby userHobby;
+    @ManyToMany(mappedBy = "users")
+    private List<Hobby> hobbies;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
+    @OneToMany(mappedBy = "user")
+    private List<FriendList> friends;
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,21 +52,36 @@ public class User {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.hobby = hobby;
-        this.userHobby = userHobby;
+        this.hobbies = hobbies;
         this.ratings = ratings;
+        this.friends = friends;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, Hobby hobby, UserHobby userHobby, List<Rating> ratings) {
+    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby>  hobbies,  List<Rating> ratings, List<FriendList> friends) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.hobby = hobby;
-        this.userHobby = userHobby;
+        this.hobbies = hobbies;
         this.ratings = ratings;
+        this.friends = friends;
+
+    }
+
+    public User(User copy) {
+        this.id =  copy.id;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.email = copy.email;
+        this.username = copy.username;
+        this.password =copy.password;
+        this.isAdmin =copy. isAdmin;
+        this.hobbies= copy.hobbies;
+        this.ratings =copy. ratings;
+        this.friends = friends;
+
     }
 
     public long getId() {
@@ -123,12 +140,27 @@ public class User {
         isAdmin = admin;
     }
 
-
-    public Hobby getHobby() {
-        return hobby;
+    public List<Hobby> getHobbies() {
+        return hobbies;
     }
 
-    public void setHobby(Hobby hobby) {
-        this.hobby = hobby;
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public List<FriendList> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<FriendList> friends) {
+        this.friends = friends;
     }
 }

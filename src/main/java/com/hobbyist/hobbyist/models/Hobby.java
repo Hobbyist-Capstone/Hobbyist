@@ -1,10 +1,12 @@
 package com.hobbyist.hobbyist.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="hobbies")
+@Table(name = "hobbies")
 public class Hobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,38 +22,55 @@ public class Hobby {
     private Boolean isApproved;
 
     @OneToOne
-    private User ownerId;
+    private User createdBy;
 
     @OneToOne
     private Category category;
 
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_hobbies",
+            joinColumns = {@JoinColumn(name = "hobby_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> users;
+  
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
+    @JsonManagedReference
     private List<HobbyImage> images;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    private List<Rating> hobbyRating;
+    @JsonManagedReference
+    private List<Rating> rating;
 
 
-    public Hobby(){}
+    public Hobby() {
+    }
 
-    public Hobby(String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images,List<Rating> hobbyRating ) {
+    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
 
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
-        this.ownerId = ownerId;
+        this.createdBy = createdBy;
+        this.users = users;
         this.images = images;
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
     }
 
-    public Hobby(long id, String title, String description, Boolean isApproved, User ownerId, List<HobbyImage> images,List<Rating> hobbyRating ) {
+
+
+    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.isApproved = isApproved;
-        this.ownerId = ownerId;
+        this.createdBy = createdBy;
+        this.users = users;
         this.images = images;
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
     }
 
     public long getId() {
@@ -86,12 +105,12 @@ public class Hobby {
         isApproved = approved;
     }
 
-    public User getOwnerId() {
-        return ownerId;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setOwnerId(User ownerId) {
-        this.ownerId = ownerId;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
     public List<HobbyImage> getImages() {
@@ -103,10 +122,37 @@ public class Hobby {
     }
 
     public List<Rating> getHobbyRating() {
-        return hobbyRating;
+        return rating;
     }
 
     public void setHobbyRating(List<Rating> hobbyRating) {
-        this.hobbyRating = hobbyRating;
+        this.rating = hobbyRating;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Rating> getRating() {
+        return rating;
+    }
+
+    public void setRating(List<Rating> rating) {
+        this.rating = rating;
+    }
+
 }
+
