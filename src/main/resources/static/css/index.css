@@ -117,6 +117,10 @@ html {
     margin: 20px;
 }
 
+.nav{
+    background: rgba(255,255,255,0.5);
+}
+
 #large-main-buttons {
     position: absolute;
     top: 50%;
