@@ -9,6 +9,7 @@
 <div>
     <form th:action="${'/users/' + user.id + '/edit'}" th:method="POST" th:object="${user}">
 
+
        <input type="text" th:field="*{firstName}" th:value="*{firstName}"/>
         <label for="first name">first name</label>
 <!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>-->
