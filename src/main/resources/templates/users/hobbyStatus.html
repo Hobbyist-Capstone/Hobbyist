@@ -7,7 +7,19 @@
 </head>
 <body>
 
+<p> currentUser : <span th:text="${currentUser.username}"></span></p>
+<p> userInDB : <span th:text="${userInDb.username}"></span></p>
 
+<div th:each="hobby : ${listOfHobbies}">
+    <p>Hobby title: <span th:text="${hobby.getTitle()}"></span></p>
+    <p>Hobby status: <span th:text="${hobbyCategory}"></span></p>
+    <p>Hobby Id: <span th:text="${hobby.getId()}"></span></p>
+</div>
+
+<div>
+    <p th:text="${firstHobby}"></p>
+    <p th:text="${}"></p>
+</div>
 
 
 </body>

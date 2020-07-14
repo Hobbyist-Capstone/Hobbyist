@@ -88,7 +88,7 @@ public class UserController {
         return "users/profile";
     }
 
-    @GetMapping("/profile/{id}/status")
+    @GetMapping("profile/{id}/status")
     public String showHobbyStatusPage(@PathVariable long id, Model model) {
 
         //user that is the current session
@@ -101,14 +101,30 @@ public class UserController {
         //list of hobbies
         List<Hobby> listOfHobbies = userInDb.getHobbies();
 
+        //get first hobby in the users list
+        String firstHobby = listOfHobbies.get(0).getTitle();
+        String firstHobbyStatus = userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(), hobbyDao.findByHobbyId((listOfHobbies.get(0)).getId()));
+
+        System.out.println("first " + firstHobby);
+        System.out.println("first ");
+
+
+
         for(Hobby hobby : listOfHobbies) {
-            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
+//            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
 //            System.out.println(userHobbyDao.findByHobbyId(hobby.getId()).getStatus());
+            model.addAttribute("hobbyCategory", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
         }
+        String hobby = hobbyDao.getOne(0L).getTitle();
+        System.out.println(hobby);
+
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("userInDb", userInDb);
+        model.addAttribute("listOfHobbies", listOfHobbies);
+        model.addAttribute("firstHobby", firstHobby);
+
 
         return "users/hobbyStatus";
-
-
 
     }
 
