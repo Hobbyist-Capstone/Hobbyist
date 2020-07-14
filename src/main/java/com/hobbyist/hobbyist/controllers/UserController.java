@@ -14,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -108,13 +109,18 @@ public class UserController {
         System.out.println("first " + firstHobby);
         System.out.println("first ");
 
-
+        List<UserHobby> userHobbyList = new ArrayList<>();
 
         for(Hobby hobby : listOfHobbies) {
 //            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
 //            System.out.println(userHobbyDao.findByHobbyId(hobby.getId()).getStatus());
-            model.addAttribute("hobbyStatus", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
+//            model.addAttribute("hobbyStatus", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
+            userHobbyList.add( userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(), hobby.getId()));
         }
+
+        System.out.println(userHobbyList.size());
+
+
 //        String hobby = hobbyDao.getOne(0L).getTitle();
 //        System.out.println(hobby);
 
@@ -122,6 +128,7 @@ public class UserController {
         model.addAttribute("userInDb", userInDb);
         model.addAttribute("listOfHobbies", listOfHobbies);
         model.addAttribute("firstHobby", firstHobby);
+        model.addAttribute("userHobbyList", userHobbyList);
 
 
         return "users/hobbyStatus";

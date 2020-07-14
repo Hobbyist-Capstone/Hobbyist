@@ -12,7 +12,8 @@
 
 <div th:each="hobby : ${listOfHobbies}">
     <p>Hobby title: <span th:text="${hobby.getTitle()}"></span></p>
-    <p>Hobby status: <span th:text="${hobbyStatus}"></span></p>
+    <p>Hobby Status : <span th:if="${}"></span></p>
+<!--    <p>Hobby status: <span th:text="${hobbyStatus}"></span></p>-->
     <p>Hobby Id: <span th:text="${hobby.getId()}"></span></p>
 </div>
 
