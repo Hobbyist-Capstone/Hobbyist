@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return "registration/register";
+        return  "index/index";
     }
 
     @PostMapping("/register")
@@ -59,7 +59,7 @@ public class UserController {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
-            return "registration/register";
+            return "index/index";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
