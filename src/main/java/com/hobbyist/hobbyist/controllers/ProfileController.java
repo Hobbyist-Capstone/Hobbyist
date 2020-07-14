@@ -10,7 +10,7 @@ import com.hobbyist.hobbyist.repos.HobbyRepository;
 @Controller
 public class ProfileController {
 
-    @GetMapping("/profile")
+    @GetMapping("/profile-view")
     public String profile(Model model) {
         return "users/profile-view";
     }
