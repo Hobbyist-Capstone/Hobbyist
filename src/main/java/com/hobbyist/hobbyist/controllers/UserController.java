@@ -103,7 +103,7 @@ public class UserController {
 
         //get first hobby in the users list
         String firstHobby = listOfHobbies.get(0).getTitle();
-        String firstHobbyStatus = userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(), hobbyDao.findByHobbyId((listOfHobbies.get(0)).getId()));
+
 
         System.out.println("first " + firstHobby);
         System.out.println("first ");
@@ -113,10 +113,10 @@ public class UserController {
         for(Hobby hobby : listOfHobbies) {
 //            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
 //            System.out.println(userHobbyDao.findByHobbyId(hobby.getId()).getStatus());
-            model.addAttribute("hobbyCategory", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
+            model.addAttribute("hobbyStatus", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
         }
-        String hobby = hobbyDao.getOne(0L).getTitle();
-        System.out.println(hobby);
+//        String hobby = hobbyDao.getOne(0L).getTitle();
+//        System.out.println(hobby);
 
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("userInDb", userInDb);
