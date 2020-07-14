@@ -179,11 +179,13 @@ html {
 
 }
 
+
 #large-badge-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    overflow: scroll;
 }
 
 
