@@ -68,6 +68,7 @@ html {
 
 #main-container-large {
     width: 100%;
+    overflow-y: hidden;
 }
 /*Index - Above the fold*/
 
@@ -81,6 +82,7 @@ html {
     font-family: 'Bungee Shade', cursive;
     color: white;
     font-size: 2em;
+
 }
 
 #above-fold-large {
