@@ -102,31 +102,21 @@ public class UserController {
         //list of hobbies
         List<Hobby> listOfHobbies = userInDb.getHobbies();
 
-        List<UserHobby> listOfUserHobbies = userHobbyDao.findAll();
-        for (UserHobby userHobbies : listOfUserHobbies){
-            if (userHobbyDao.findByHobbyId(currentUser.getId()) == userHobbyDao.getOne(1L));
-            System.out.println(userHobbyDao.findByHobbyId(currentUser.getId()));
-        }
-
         //get first hobby in the users list
         String firstHobby = listOfHobbies.get(0).getTitle();
 
-        List<UserHobby> userHobbyList = userHobbyDao.findAllByUserHobbyStatus()
+        //all hobbies associated with user
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
+        userHobby.get(0).getHobby();
+        userHobby.get(0).getStatus();
 
-        for(Hobby hobby : listOfHobbies) {
-//            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
-//            System.out.println(userHobbyDao.findByHobbyId(hobby.getId()).getStatus());
-//            model.addAttribute("hobbyStatus", userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
-            userHobbyList.add( userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(), hobby.getId()));
-        }
 
-        System.out.println(userHobbyList.size());
-
-        model.addAttribute("currentUser", currentUser);
-        model.addAttribute("userInDb", userInDb);
-        model.addAttribute("listOfHobbies", listOfHobbies);
-        model.addAttribute("firstHobby", firstHobby);
-        model.addAttribute("userHobbyList", userHobbyList);
+        model.addAttribute("userHobbyList", userHobby);
+//        model.addAttribute("currentUser", currentUser);
+//        model.addAttribute("userInDb", userInDb);
+//        model.addAttribute("listOfHobbies", listOfHobbies);
+//        model.addAttribute("firstHobby", firstHobby);
+//        model.addAttribute("userHobbyList", userHobbyList);
         return "users/hobbyStatus";
 
     }

@@ -13,6 +13,8 @@ import java.util.List;
 
 public interface HobbyRepository extends JpaRepository<Hobby, Long> {
 //    Hobby findByHobbyId(long id);
+//    Hobby findByUserId(long id);
+    List <Hobby> findAllByStatus (String status);
 
 
     // This is will be used for the search functionality
