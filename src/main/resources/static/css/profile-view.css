@@ -161,14 +161,6 @@ html {
     height: 100vh;
 }
 
-#large-bio {
-    width: 100%;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
-    font-family: 'Bungee', cursive;
-    margin: 0!important;
-}
 
 /*Hobby Badges*/
 
