@@ -116,30 +116,6 @@
                 </button>
             </form>
         </div>
-
-
-        <div class="form-popup center-align" id="small-join-form">
-            <form action="#" class="small-form-container">
-                <h3 id="small-join-header">Join</h3>
-
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
-
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
-
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
-                <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
-                        onclick="closeJoinForm()">Close
-                </button>
-            </form>
-        </div>
     </div>
 </div>
 
@@ -160,7 +136,7 @@
         </div>
 
         <div class="form-popup form-popup-large" id="large-login-form">
-            <form th:action="@{/login}" method="post" class="form-container center-align">
+            <form th:action="@{/login}" method="post" class="login-form-container center-align">
                 <h3 id="large-login-header">Login</h3>
 
                 <label for="email"><b class="forms">Username</b></label>
@@ -172,28 +148,6 @@
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
                 <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
                         onclick="closeLargeLoginForm()">Close
-                </button>
-            </form>
-        </div>
-
-        <div class="form-popup form-popup-large center-align" id="large-join-form">
-            <form th:action="@{/register}"  class="form-container">
-                <h3 id="large-join-header">Join</h3>
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
-
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
-
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
-                <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
-                        onclick="closeLargeJoinForm()">Close
                 </button>
             </form>
         </div>

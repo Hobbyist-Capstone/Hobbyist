@@ -149,7 +149,6 @@ html {
     display: none;
     position: fixed;
     bottom: 0;
-    border: 3px solid #f1f1f1;
     z-index: 900;
     background-color: rgba(255, 255, 255, 100);
     color: black;
@@ -169,6 +168,13 @@ html {
     background-color: rgba(255, 255, 255, 100);
 }
 
+.login-form-container {
+    padding: 10px;
+    width: 40vw;
+    background-color: rgba(255, 255, 255, 100);
+    border: 3px solid #f1f1f1;
+}
+
 
 .small-form-container {
     max-width: 100vw;
@@ -179,7 +185,11 @@ html {
 
 }
 
-#small-join-header, #small-login-header, #large-login-header, #large-join-header {
+#large-login-form {
+    width: 30vw;
+}
+
+#small-login-header, #large-login-header {
     margin: 5px;
     font-size: 2.5em;
     font-family: 'Bungee', cursive;
