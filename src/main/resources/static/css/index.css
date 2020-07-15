@@ -179,7 +179,7 @@ html {
 
 }
 
-#small-join-header, #small-login-header, #large-login-header, #large-join-header {
+#small-login-header, #large-login-header {
     margin: 5px;
     font-size: 2.5em;
     font-family: 'Bungee', cursive;
