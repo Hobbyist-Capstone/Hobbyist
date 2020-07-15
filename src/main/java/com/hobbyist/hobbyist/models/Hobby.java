@@ -49,10 +49,9 @@ public class Hobby {
     public Hobby() {
     }
 
-    public Hobby(String title, String description, boolean isApproved) {
+    public Hobby(String title, String description) {
         this.title = title;
         this.description = description;
-        this.isApproved = isApproved;
     }
 
     public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
