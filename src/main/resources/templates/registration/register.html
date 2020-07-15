@@ -1,34 +1,58 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Sign up</title>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/head :: head('Join')">
+    <meta charset="UTF-8"/>
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/register}" method="POST" th:object="${user}">
-    <div th:if="${#fields.hasErrors('*')}">
-        <p th:each="err : ${#fields.errors('*')}"  th:text="${err}"></p>
-    </div>
+<h1 class="center-align join-header">Create an account</h1>
+<div class="form-popup form-popup-large center-align" id="large-join-form">
+    <form th:action="@{/register}"  class="form-container">
+        <h3 id="large-join-header">Join</h3>
+        <label for="first-name"><b class="forms">First Name</b></label>
+        <input type="text" placeholder="Enter first name" required>
 
-    <label for="username">Username</label>
-    <input type="text" id="username" class="validate" th:field="*{username}" />
-<!--    <p th:if="${#fields.hasErrors('username')}" th:errors = "*{username}"></p>-->
+        <label for="last-name"><b class="forms">Last Name</b></label>
+        <input type="text" placeholder="Enter last name" required>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" class="validate" th:field="*{email}" />
-<!--    <p th:if ="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>-->
+        <label for="email"><b class="forms">Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+        <label for="password"><b class="forms">Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
-    <label for="firstname">First Name</label>
-    <input id="firstname" th:field="*{firstName}" />
+        <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+    </form>
+</div>
 
-    <label for="lastname">Last Name</label>
-    <input id="lastname" th:field="*{lastName}" />
 
-    <input value="Sign me up!" type="submit" />
-</form>
+
+
+
+
+
+
+<!--<form th:action="@{/register}" method="POST" th:object="${user}">-->
+<!--    <div th:if="${#fields.hasErrors('*')}">-->
+<!--        <p th:each="err : ${#fields.errors('*')}"  th:text="${err}"></p>-->
+<!--    </div>-->
+
+<!--    <label for="username">Username</label>-->
+<!--    <input type="text" id="username" class="validate" th:field="*{username}" />-->
+<!--&lt;!&ndash;    <p th:if="${#fields.hasErrors('username')}" th:errors = "*{username}"></p>&ndash;&gt;-->
+
+<!--    <label for="email">Email</label>-->
+<!--    <input type="text" id="email" class="validate" th:field="*{email}" />-->
+<!--&lt;!&ndash;    <p th:if ="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>&ndash;&gt;-->
+
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" type="password" th:field="*{password}" />-->
+
+<!--    <label for="firstname">First Name</label>-->
+<!--    <input id="firstname" th:field="*{firstName}" />-->
+
+<!--    <label for="lastname">Last Name</label>-->
+<!--    <input id="lastname" th:field="*{lastName}" />-->
+
+<!--    <input value="Sign me up!" type="submit" />-->
+<!--</form>-->
 </body>
 </html>
