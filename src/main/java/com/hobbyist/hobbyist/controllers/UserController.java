@@ -102,14 +102,16 @@ public class UserController {
         //list of hobbies
         List<Hobby> listOfHobbies = userInDb.getHobbies();
 
+        List<UserHobby> listOfUserHobbies = userHobbyDao.findAll();
+        for (UserHobby userHobbies : listOfUserHobbies){
+            if (userHobbyDao.findByHobbyId(currentUser.getId()) == userHobbyDao.getOne(1L));
+            System.out.println(userHobbyDao.findByHobbyId(currentUser.getId()));
+        }
+
         //get first hobby in the users list
         String firstHobby = listOfHobbies.get(0).getTitle();
 
-
-        System.out.println("first " + firstHobby);
-        System.out.println("first ");
-
-        List<UserHobby> userHobbyList = new ArrayList<>();
+        List<UserHobby> userHobbyList = userHobbyDao.findAllByUserHobbyStatus()
 
         for(Hobby hobby : listOfHobbies) {
 //            System.out.println(userHobbyDao.findByUserIdAndHobbyId(currentUser.getId(),hobby.getId()).getStatus());
@@ -120,20 +122,16 @@ public class UserController {
 
         System.out.println(userHobbyList.size());
 
-
-//        String hobby = hobbyDao.getOne(0L).getTitle();
-//        System.out.println(hobby);
-
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("userInDb", userInDb);
         model.addAttribute("listOfHobbies", listOfHobbies);
         model.addAttribute("firstHobby", firstHobby);
         model.addAttribute("userHobbyList", userHobbyList);
-
-
         return "users/hobbyStatus";
 
     }
+
+
 
 
     @GetMapping("users/{id}/edit")
