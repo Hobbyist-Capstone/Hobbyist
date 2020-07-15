@@ -15,13 +15,17 @@ body {
     overflow-y: scroll;
 }
 
+#join-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .form-container {
     max-width: 100vw;
-    width: 100vw;
+    width: 70vw;
     padding: 10px;
     background-color: rgba(255, 255, 255, 100);
-    alignment: center;
-
 }
 
 .join-header {
@@ -31,5 +35,12 @@ body {
     font-family: 'Bungee Shade', cursive;
     color: rgba(146, 9, 18, 0.9);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.forms {
+    font-family: 'Bungee', cursive;
+    color: black;
+    font-size: 3em;
+
 }
 
