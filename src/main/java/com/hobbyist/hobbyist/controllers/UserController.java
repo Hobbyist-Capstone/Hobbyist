@@ -110,13 +110,13 @@ public class UserController {
         userHobby.get(0).getHobby();
         userHobby.get(0).getStatus();
 
-
         model.addAttribute("userHobbyList", userHobby);
 //        model.addAttribute("currentUser", currentUser);
 //        model.addAttribute("userInDb", userInDb);
 //        model.addAttribute("listOfHobbies", listOfHobbies);
 //        model.addAttribute("firstHobby", firstHobby);
 //        model.addAttribute("userHobbyList", userHobbyList);
+
         return "users/hobbyStatus";
 
     }
