@@ -49,11 +49,11 @@ public class UserController {
         User emailExists = userDao.findByEmail(email);
 
         if (userExists != null) {
-            validation.rejectValue("username", "user.username", username + " already exists. Please try again");
+            validation.rejectValue("username", "user.username", username + " already exists in our records.");
         }
 
         if (emailExists != null) {
-            validation.rejectValue("email", "user.email", email + " already exists in our records. Please sign-in with the corresponding username");
+            validation.rejectValue("email", "user.email", email + " already exists in our records.");
         }
 
         if (validation.hasErrors()) {
