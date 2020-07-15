@@ -93,9 +93,9 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openJoinForm()"
+            <a th:href="${'/register'}"><button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     type="submit" name="action">Join
-            </button>
+            </button></a>
         </div>
 
         <!--        Small Form-->
@@ -130,9 +130,9 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
-                    onclick="openLargeJoinForm()" type="submit" name="action">Join
-            </button>
+            <a th:href="${'/register'}">  <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                    type="submit" name="action">Join
+            </button></a>
         </div>
 
         <div class="form-popup form-popup-large" id="large-login-form">
