@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/head :: head('Profile')">
+    <meta charset="UTF-8"/>
+    <link th:href="@{/css/profile-view.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<!--Main Profile Small-->
+<div id="profile-container-small" class="hide-on-med-and-up show-on-small">
+
+    <!--Profile Navbar Placeholder Small-->
+
+    <div id="profile-above-fold-small">
+        <div id="profile-navbar-placeholder-small">
+            <ul id="profile-navbar-list-small">
+                <li>nav</li>
+                <li>nav</li>
+                <li>nav</li>
+                <li>nav</li>
+            </ul>
+        </div>
+
+
+        <!--        Profile Header-->
+        <h1 id="small-profile-header" class="center-align">Account</h1>
+
+        <!--        Profile Image and Upload/Edit-->
+
+        <div id="small-profile-image" class="center-align">
+            <img id="small-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
+                 th:src="@{img/moriah-small.png}"/>
+
+
+            <!--        Edit and Upload Profile Photo Buttons-->
+            <div id="small-profile-photo-controls">
+                <button class="btn grey darken-4 waves-effect waves-light">
+                    Upload Photo
+                </button>
+                <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+
+            </div>
+        </div>
+
+        <!--        Badges-->
+
+        <div id="badges-small">
+            <h1 class="center-align" id="small-badges-header">Badges</h1>
+            <ul id="small-badge-list">
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+                <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{img/hobbyist-transparent.png}"/></li>
+
+            </ul>
+        </div>
+
+        <!--Friends List-->
+        <div id="small-friends-list">
+            <h1 class="center-align" id="small-friends-header">Friends</h1>
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle">folder</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle red">play_arrow</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<!--Main Profile Large-->
+
+
+<div id="profile-container-large" class="show-on-large show-on-extra-large hide-on-med-and-down">
+
+    <!--Profile Navbar Placeholder large-->
+
+
+    <div id="profile-navbar-placeholder-large">
+        <ul id="profile-navbar-list-large">
+            <li>nav</li>
+            <li>nav</li>
+            <li>nav</li>
+            <li>nav</li>
+        </ul>
+    </div>
+
+    <div id="profile-above-fold-large">
+        <!--        Profile Header-->
+        <!--        Profile Image-->
+        <div id="profile-panels">
+            <div id="left-div">
+                <h1 id="large-profile-header" class="center-align">Account</h1>
+                <div id="large-profile-image" class="center-align">
+
+                    <img id="large-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
+                         th:src="@{img/moriah-small.png}"/>
+
+                    <!--        Edit and Upload Profile Photo Buttons-->
+                    <div id="large-profile-photo-controls">
+                        <button class="btn grey darken-4 waves-effect waves-light">
+                            Upload Photo
+                        </button>
+                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--        Badges-->
+            <div id="middle-div">
+                <div id="badges-large">
+                    <h1 class="center-align" id="large-badges-header">Badges</h1>
+                    <ul id="large-badge-list">
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{img/hobbyist-transparent.png}"/></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--Friends List-->
+            <div id="right-div">
+                <div id="large-friends-list">
+                    <h1 class="center-align" id="large-friends-header">Friends</h1>
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle green">insert_chart</i>
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                                Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">folder</i>
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                                Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle green">insert_chart</i>
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                                Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Title</span>
+                            <p>First Line <br>
+                                Second Line
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/../JS/materialize.js" th:src="@{JS/materialize.js}"></script>
+</body>
+</html>
