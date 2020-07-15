@@ -23,3 +23,14 @@ body {
     /*height: 100vh;*/
     border: 1px solid black;
 }
+
+.large-photo {
+    width: 20vw;
+    height: auto;
+
+}
+
+#large-logo {
+    width: 20vw;
+    height: auto;
+}
