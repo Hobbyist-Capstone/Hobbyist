@@ -18,7 +18,7 @@ public class Hobby {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Boolean isApproved;
 
     @OneToOne

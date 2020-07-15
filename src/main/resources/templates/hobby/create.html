@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
+    Title:
+    <input th:field="*{title}">
+    Body:
+    <input th:field="*{description}">
+    <button class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
