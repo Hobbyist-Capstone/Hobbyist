@@ -89,41 +89,6 @@ public class UserController {
         return "users/profile";
     }
 
-    @GetMapping("profile/{id}/status")
-    public String showHobbyStatusPage(@PathVariable long id, Model model) {
-
-        //user that is the current session
-        //spring security session
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        //how to access the current user
-        User userInDb = userDao.getOne(currentUser.getId());
-
-        //list of hobbies
-        List<Hobby> listOfHobbies = userInDb.getHobbies();
-
-        //get first hobby in the users list
-        String firstHobby = listOfHobbies.get(0).getTitle();
-
-        //all hobbies associated with user
-        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
-        userHobby.get(0).getHobby();
-        userHobby.get(0).getStatus();
-
-        model.addAttribute("userHobbyList", userHobby);
-//        model.addAttribute("currentUser", currentUser);
-//        model.addAttribute("userInDb", userInDb);
-//        model.addAttribute("listOfHobbies", listOfHobbies);
-//        model.addAttribute("firstHobby", firstHobby);
-//        model.addAttribute("userHobbyList", userHobbyList);
-
-        return "users/hobbyStatus";
-
-    }
-
-
-
-
     @GetMapping("users/{id}/edit")
     public String showEditProfile(@PathVariable long id, Model vModel) {
         User user = userDao.getOne(id);
