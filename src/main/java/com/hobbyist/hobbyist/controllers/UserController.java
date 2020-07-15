@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return "registration/register";
+        return  "registration/register";
     }
 
     @PostMapping("/register")
@@ -49,22 +49,22 @@ public class UserController {
         User emailExists = userDao.findByEmail(email);
 
         if (userExists != null) {
-            validation.rejectValue("username", "user.username", username + " already exists. Please try again");
+            validation.rejectValue("username", "user.username", username + " already exists in our records.");
         }
 
         if (emailExists != null) {
-            validation.rejectValue("email", "user.email", email + " already exists in our records. Please sign-in with the corresponding username");
+            validation.rejectValue("email", "user.email", email + " already exists in our records.");
         }
 
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
-            return "registration/register";
+            return  "registration/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(newUser);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //public profile

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head('Hobbyist')">
     <meta charset="UTF-8"/>
+
 </head>
 <body>
 
@@ -36,20 +38,41 @@
 <!--    <p th:text="${c.createdBy.admin}"></p>-->
 <!--</div>-->
 
-<!--Small M and S and XS Site-->
 
-<div id="main-container-small" class="hide-on-medium-and-up hide-on-large-only show-on-small">
-    <div id="above-fold-small">
 
-        <!--        Small Navbar Placeholder-->
-        <div id="navbar-placeholder-small">
-            <ul id="navbar-list-small">
-                <li>nav</li>
-                <li>nav</li>
-                <li>nav</li>
-                <li>nav</li>
+<!--    RESPONSIVE NAVEBAR-->
+
+<div class="navbar-fixed">
+    <nav class="nav">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo black-text"><i class="material-icons right black-text">donut_large</i>Hobbyist</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
+                </li>
+                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
+                    Tracker</a></li>
+                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
+                    Us</a></li>
             </ul>
         </div>
+    </nav>
+</div>
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
+    </li>
+    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
+        Tracker</a></li>
+    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
+        Us</a></li>
+</ul>
+
+<!--Small M and S and XS Site-->
+
+<div id="main-container-small" class="show-on-medium-and-down hide-on-large-only">
+    <div id="above-fold-small">
+
+
         <div id="small-title-container">
             <h1 id="main-title-small" class="center-align">Hobbyist</h1>
         </div>
@@ -60,9 +83,9 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openJoinForm()"
+            <a th:href="${'/register'}"><button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     type="submit" name="action">Join
-            </button>
+            </button></a>
         </div>
 
         <!--        Small Form-->
@@ -83,45 +106,13 @@
                 </button>
             </form>
         </div>
-
-
-        <div class="form-popup center-align" id="small-join-form">
-            <form action="#" class="small-form-container">
-                <h3 id="small-join-header">Join</h3>
-
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
-
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
-
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
-                <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
-                        onclick="closeJoinForm()">Close
-                </button>
-            </form>
-        </div>
     </div>
 </div>
 
 
 <!--Desktop L and XL Site-->
-<div id="main-container-large" class="how-on-large hide-on-med-and-down">
+<div id="main-container-large" class="show-on-large hide-on-med-and-down">
     <div id="above-fold-large">
-        <div id="navbar-placeholder-large">
-            <ul id="navbar-list-large">
-                <li>navbar stuff</li>
-                <li>navbar stuff</li>
-                <li>navbar stuff</li>
-                <li>navbar stuff</li>
-            </ul>
-        </div>
 
         <h1 id="main-title-large">Hobbyist</h1>
 
@@ -129,17 +120,17 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
-                    onclick="openLargeJoinForm()" type="submit" name="action">Join
-            </button>
+            <a th:href="${'/register'}">  <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                    type="submit" name="action">Join
+            </button></a>
         </div>
 
         <div class="form-popup form-popup-large" id="large-login-form">
-            <form action="#" class="form-container center-align">
+            <form th:action="@{/login}" method="post" class="login-form-container center-align">
                 <h3 id="large-login-header">Login</h3>
 
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="email"><b class="forms">Username</b></label>
+                <input type="text" placeholder="Enter username" name="username" required>
 
                 <label for="password"><b class="forms">Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
@@ -147,28 +138,6 @@
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
                 <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
                         onclick="closeLargeLoginForm()">Close
-                </button>
-            </form>
-        </div>
-
-        <div class="form-popup form-popup-large center-align" id="large-join-form">
-            <form action="#" class="form-container">
-                <h3 id="large-join-header">Join</h3>
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
-
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
-
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
-                <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
-                        onclick="closeLargeJoinForm()">Close
                 </button>
             </form>
         </div>
@@ -231,7 +200,7 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}">
     M.AutoInit();
 </script>
