@@ -98,20 +98,29 @@
 
 
         <div class="form-popup center-align" id="small-join-form">
-            <form action="#" class="small-form-container">
+            <form th:action="@{/register}" method="POST" th:object="${user}" class="small-form-container">
                 <h3 id="small-join-header">Join</h3>
 
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
+                <!--                <div th:if="${#fields.hasErrors('*')}">-->
+                <!--                    <p th:each="err : ${#fields.errors('*')}"  th:text="${err}"></p>-->
+                <!--                </div>-->
 
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" class="validate" th:field="*{username}"/>
+                <!--    <p th:if="${#fields.hasErrors('username')}" th:errors = "*{username}"></p>-->
 
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="email">Email</label>
+                <input type="text" id="email" class="validate" th:field="*{email}"/>
+                <!--    <p th:if ="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>-->
 
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}"/>
+
+                <label for="firstname">First Name</label>
+                <input id="firstname" th:field="*{firstName}"/>
+
+                <label for="lastname">Last Name</label>
+                <input id="lastname" th:field="*{lastName}"/>
 
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
                 <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
@@ -164,19 +173,27 @@
         </div>
 
         <div class="form-popup form-popup-large center-align" id="large-join-form">
-            <form th:action="@{/register}"  class="form-container">
+            <form th:action="@{/register}" method="POST" th:object="${user}" class="form-container">
+                <!--                <div th:if="${#fields.hasErrors('*')}">-->
+                <!--                    <p th:each="err : ${#fields.errors('*')}"  th:text="${err}"></p>-->
+                <!--                </div>-->
                 <h3 id="large-join-header">Join</h3>
-                <label for="first-name"><b class="forms">First Name</b></label>
-                <input type="text" placeholder="Enter first name" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" class="validate" th:field="*{username}"/>
+                <!--    <p th:if="${#fields.hasErrors('username')}" th:errors = "*{username}"></p>-->
 
-                <label for="last-name"><b class="forms">Last Name</b></label>
-                <input type="text" placeholder="Enter last name" required>
+                <label for="email">Email</label>
+                <input type="text" id="email" class="validate" th:field="*{email}"/>
+                <!--    <p th:if ="${#fields.hasErrors('email')}" th:errors = "*{email}"></p>-->
 
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}"/>
 
-                <label for="password"><b class="forms">Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <label for="firstname">First Name</label>
+                <input id="firstname" th:field="*{firstName}"/>
+
+                <label for="lastname">Last Name</label>
+                <input id="lastname" th:field="*{lastName}"/>
 
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
                 <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"

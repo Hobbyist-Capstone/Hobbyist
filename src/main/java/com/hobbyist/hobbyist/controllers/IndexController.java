@@ -2,11 +2,11 @@ package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.Category;
 import com.hobbyist.hobbyist.models.Hobby;
+import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +29,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("user", new User());
         model.addAttribute("c1", hobbyDao.filterByCategory(1));
         model.addAttribute("c2", hobbyDao.filterByCategory(2));
         model.addAttribute("c3", hobbyDao.filterByCategory(3));
