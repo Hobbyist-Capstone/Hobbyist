@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: floralwhite;
 }
 
 /*Small About Us*/
@@ -9,28 +10,46 @@ body {
 
 /*Large About Us*/
 
+#large-about-us {
+    width: 100%;
+}
+
 #large-team-members {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-left: 10%;
     margin-right: 10%;
-    border: 1px solid black;
 }
 
 #person1, #person2, #person3, #person4 {
     width: 25vw;
     /*height: 100vh;*/
-    border: 1px solid black;
+    border: 3px solid #f2a22c;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    background-color: rgba(146, 9, 18, 0.9);
+
 }
 
 .large-photo {
     width: 20vw;
     height: auto;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+#large--logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
 }
 
 #large-logo {
-    width: 20vw;
+    width: 15vw;
     height: auto;
+    border-radius: 50%;
+
 }
