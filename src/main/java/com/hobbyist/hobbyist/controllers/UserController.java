@@ -87,7 +87,7 @@ public class UserController {
             vModel.addAttribute("userName", currentUser.getUsername());
 //        }
 
-        return "users/profile";
+        return "users/profile-view";
     }
 
     @GetMapping("/profile/{id}/status")
