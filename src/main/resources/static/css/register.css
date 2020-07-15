@@ -5,6 +5,10 @@
 
 }
 
+html {
+    width: 100vw;
+}
+
 body {
     background: url("/../img/desk.jpg");
     background-size: cover;
@@ -19,6 +23,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    width: 100vw;
 }
 
 .form-container {
