@@ -38,8 +38,13 @@
                 <button class="btn grey darken-4 waves-effect waves-light">
                     Upload Photo
                 </button>
-                <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
 
+                <div th:if="${user.getUsername() == userName }">
+                    <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
+                        <input type="hidden" name="id" th:value="${user.getId()}">
+                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -145,7 +150,13 @@
                         <button class="btn grey darken-4 waves-effect waves-light">
                             Upload Photo
                         </button>
+
+                        <div th:if="${user.getUsername() == userName }">
+                            <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
+                                <input type="hidden" name="id" th:value="${user.getId()}">
                         <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                            </form>
+                        </div>
 
                     </div>
                 </div>

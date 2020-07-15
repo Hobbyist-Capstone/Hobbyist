@@ -75,20 +75,6 @@ public class UserController {
         return "users/publicProfiles";
     }
 
-    //user logged in profile
-    @GetMapping("/profile/{username}")
-    public String showProfile(@PathVariable String username, Model vModel) {
-
-        vModel.addAttribute("user", userDao.findByUsername(username));
-//        User user = userDao.findByUsername(username);
-        User currentUser= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-//        if (user.isAdmin()) {
-            vModel.addAttribute("userName", currentUser.getUsername());
-//        }
-
-        return "users/profile";
-    }
 
     @GetMapping("/profile/{id}/status")
     public String showHobbyStatusPage(@PathVariable long id,  Model model) {
@@ -101,24 +87,7 @@ public class UserController {
     }
 
 
-    @GetMapping("users/{id}/edit")
-    public String showEditProfile(@PathVariable long id, Model vModel) {
-        User user = userDao.getOne(id);
-//        vModel.addAttribute("user", userDao.findById(id));
-        vModel.addAttribute("user", user);
-//        vModel.addAttribute("showEditControls", userService.canEditProfile(user));
-        return "users/edit";
-    }
 
-
-    @PostMapping("users/{id}/edit")
-    public String editProfile(@PathVariable long id,  @ModelAttribute User userToEdit) {
-
-        userToEdit.setId(id);
-        userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
-        userDao.save(userToEdit);
-        return "redirect:/profile/" + userToEdit.getUsername();
-    }
 
 
 
