@@ -141,19 +141,22 @@
                 <h1 id="large-profile-header" class="center-align">Account</h1>
                 <div id="large-profile-image" class="center-align">
 
-                    <img id="large-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
+                    <img id="large-photo" class="center-align" src="../../static/img/moriah-small.png"
+                         alt="profile picture"
                          th:src="@{/img/moriah-small.png}"/>
 
                     <!--        Edit and Upload Profile Photo Buttons-->
-                    <div id="large-profile-buttons">
-                        <button class="btn grey darken-4 waves-effect waves-light">
-                            Upload Photo
-                        </button>
+                    <div id="large-profile-buttons" class="center-align">
+                        <div id="upload-button" class="center-align">
+                            <button class="btn grey darken-4 waves-effect waves-light">
+                                Upload Photo
+                            </button>
+                        </div>
 
-                        <div th:if="${user.getUsername() == userName }">
+                        <div th:if="${user.getUsername() == userName }" class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="id" th:value="${user.getId()}">
-                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                                <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
 

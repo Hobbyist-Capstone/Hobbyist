@@ -18,6 +18,7 @@ html {
 #profile-container-small {
     width: 100vw;
 }
+
 /*Small Index - Above the fold*/
 
 #profile-navbar-placeholder-small {
@@ -88,17 +89,15 @@ html {
 
 
 #small-friends-list
-
-
     /*Large and XL Site*/
-
 #profile-container-small {
     width: 100vw;
 }
+
 /*Large Index - Above the fold*/
 
 #profile-container-large {
-    height: 100vh!important;
+    height: 100vh !important;
     width: 100vw;
 }
 
@@ -158,7 +157,14 @@ html {
 
 #large-profile-buttons {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    margin: 10px;
+    width: 200px!important;
+}
+
+#upload-button {
+    margin-right: 10px;
 }
 
 #left-div, #middle-div, #right-div {
