@@ -89,20 +89,19 @@
         </div>
 
         <!--        Small Form-->
-
-        <div class="form-popup" id="small-login-form">
-            <form action="#" class="small-form-container center-align">
+        <div class="form-popup form-popup" id="small-login-form">
+            <form th:action="@{/login}" method="post" class="small-login-form-container center-align">
                 <h3 id="small-login-header">Login</h3>
 
-                <label for="email"><b class="forms">Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="email"><b class="forms">Username</b></label>
+                <input type="text" placeholder="Enter username" name="username" required>
 
                 <label for="password"><b class="forms">Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
                 <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large"
-                        onclick="closeLoginForm()">Close
+                        onclick="closeLargeLoginForm()">Close
                 </button>
             </form>
         </div>

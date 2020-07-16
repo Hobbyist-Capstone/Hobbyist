@@ -62,6 +62,10 @@ html {
 
 }
 
+#small-upload-button {
+    margin-bottom: 15px;
+}
+
 #small-photo {
     width: 70vw;
     height: auto;
