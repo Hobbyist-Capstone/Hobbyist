@@ -7,14 +7,16 @@
 <body>
 <div th:each="hobby : ${hobbies}">
     <h1 th:text="${hobby.title}"></h1>
+    <h2 th:text="${hobby.id}"></h2>
     <h2 th:text="${hobby.description}"></h2>
     <h3 th:text="${hobby.category.getName()}"></h3>
 
 
-    <form th:action="@{|/profile/${user.id}/status|}" th:method="${POST}" th:object="${user}">
-        <input type="hidden" name="id" th:value="${user.getId()}">
-        <button>Add to favorites</button>
-    </form>
+<!--    <form th:action="@{|/profile/${user.id}/status|}" th:method="post" th:object="${user}">-->
+<!--        <input type="hidden" name="id" th:value="*{id}">-->
+        <button class="btn btn-outline-info"> Add to interested</button>
+<!--    </form>-->
+
     <!--    <div th:each="rating : ${hobby.hobbyRating}">-->
     <!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
     <!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->

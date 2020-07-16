@@ -8,12 +8,15 @@ import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import com.hobbyist.hobbyist.services.UserService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,11 +61,19 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/{id}/status")
-    public String addToInterests (@PathVariable long id, @ModelAttribute Model model){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        // to save to hobby status table
-        model.addAttribute("user", currentUser);
-        userHobbyDao.save(new UserHobby(hobbyDao.getOne(id), userDao.getOne(id), HobbyStatus.INTERESTED));
+    public String addToInterests ( Model model, @ModelAttribute User user){
+        //this button will take this.hobbyId and set the status to "interested" for the current user
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userInDb = userDao.getOne(currentUser.getId());
+//
+//        List<Hobby> allHobbies = hobbyDao.findAll();
+//        System.out.println("one Hobby " + allHobbies.get(0).getId());
+//        List<Hobby> hobby = hobbyDao.findAll();
+//        HobbyStatus userHobbyStatus = HobbyStatus.INTERESTED;
+//        user.setHobbies(hobby.get(0));
+//
+//        userHobbyDao.save(HobbyStatus.INTERESTED, userInDb.getId(), hobby.getId());
+
 
         return "hobbies/allHobbiesView";
     }
