@@ -2,6 +2,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: floralwhite;
+
 }
 
 /*Small About Us*/
@@ -26,7 +28,7 @@ body {
 #large-about-us {
     width: 100%;
     height: 100%;
-    background-color: floralwhite;
+
 }
 
 #large-team-members {
@@ -35,7 +37,7 @@ body {
     justify-content: space-around;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: floralwhite;
+
 }
 
 #person1, #person2, #person3, #person4 {
