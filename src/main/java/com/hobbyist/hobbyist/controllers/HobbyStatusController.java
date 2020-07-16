@@ -56,12 +56,18 @@ public class HobbyStatusController {
         model.addAttribute("userHobbyList", userHobby);
         return "users/hobbyStatus";
     }
+
     @PostMapping("profile/{id}/status")
     public String addToInterests (@PathVariable long id, @ModelAttribute Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // to save to hobby status table
+        model.addAttribute("user", currentUser);
+        userHobbyDao.save(new UserHobby(hobbyDao.getOne(id), userDao.getOne(id), HobbyStatus.INTERESTED));
 
         return "users/hobbyStatus";
     }
+
+
 
 
 }
