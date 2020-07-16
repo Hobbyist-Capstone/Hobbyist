@@ -19,30 +19,67 @@
 <div class="row tool grey darken-2">
     <div id="interested" class="col s1 grey darken-4">
         <h5 class="title">INTERESTED</h5>
-        <div class="content"  th:block th:each="userHobby : ${userHobbyList}">
-            <p th:if ="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
-            <p th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'TED')}"></p>
-
+        <div class="content" th:block th:each="userHobby : ${userHobbyList}">
+            <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
+            <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">INTERESTED</p>
         </div>
     </div>
+
     <div id="learning" class="col s10 grey lighten-5">
         <h5 class="title">LEARNING</h5>
-        <div class="content" th:block th:each="userHobby : ${userHobbyList}">
-            <p th:if ="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
-            <p th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'IT')}"></p>
+        <div class="content">
+            <div th:block th:each="userHobby : ${userHobbyList}">
+                <p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>
+            </div>
         </div>
     </div>
 
 
     <div id="hobbyist" class="col s1 grey darken-4">
         <h5 class="title">HOBBYIST</h5>
-        <div class="content" th:block th:each="userHobby : ${userHobbyList}">
-            <p th:if ="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
-            <p th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'IST')}"></p>
+        <div class="content">
+            <div th:block th:each="userHobby : ${userHobbyList}">
+            <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>
+            <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>
         </div>
     </div>
 
 </div>
+
+<table id="interested">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">INTERESTED</td>
+    </tr>
+</table>
+
+<table id="TRIED_IT">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT/td>
+    </tr>
+</table>
+
+<table id="HOBBYIST">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</td>
+    </tr>
+</table>
+
 
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>
