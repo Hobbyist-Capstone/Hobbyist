@@ -15,41 +15,38 @@
 </head>
 <body>
 
-<div>
-    <form th:action="${'/users/' + user.id + '/edit'}" th:method="POST" th:object="${user}">
+<!--<div>-->
+<!--    <form th:action="${'/users/' + user.id + '/edit'}" th:method="POST" th:object="${user}">-->
 
 
-       <input type="text" th:field="*{firstName}" th:value="*{firstName}"/>
-        <label for="first name">first name</label>
-<!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>-->
+<!--       <input type="text" th:field="*{firstName}" th:value="*{firstName}"/>-->
+<!--        <label for="first name">first name</label>-->
+<!--&lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>&ndash;&gt;-->
 
-        <input type="text" th:field="*{lastName}" th:value="*{lastName}"/>
-        <label for="first name">last name </label>
-        <!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>-->
+<!--        <input type="text" th:field="*{lastName}" th:value="*{lastName}"/>-->
+<!--        <label for="first name">last name </label>-->
+<!--        &lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>&ndash;&gt;-->
 
-        <input type="text" th:field="*{username}" th:value="*{username}"/>
-        <label for="username">username</label>
-        <!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>-->
+<!--        <input type="text" th:field="*{username}" th:value="*{username}"/>-->
+<!--        <label for="username">username</label>-->
+<!--        &lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>&ndash;&gt;-->
 
-        <input type="text" th:field="*{email}">
-        <label for="email"> email</label>
-<!--        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
+<!--        <input type="text" th:field="*{email}">-->
+<!--        <label for="email"> email</label>-->
+<!--&lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>&ndash;&gt;-->
 
 
-        <input type="password" class="form-control" th:field="*{password}" />
-        <label for="password">password</label>
-<!--        <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
+<!--        <input type="password" class="form-control" th:field="*{password}" />-->
+<!--        <label for="password">password</label>-->
+<!--&lt;!&ndash;        <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>&ndash;&gt;-->
 
-        <button>Submit</button>
-    </form>
-</div>
-
+<!--        <button>Submit</button>-->
+<!--    </form>-->
+<!--</div>-->
+<h1 id="profile-edit-header" class="center-align">Update Account</h1>
 <div class="center-align" id="update-profile-form">
-<form th:action="@{/register}" method="POST" th:object="${user}" class="edit-form-container" >
+<form th:action="${'/users/' + user.id + '/edit'}" class="edit-form-container" th:method="POST" th:object="${user}">
 
-    <div th:if="${#fields.hasErrors('*')}">
-        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-    </div>
 
     <label for="first-name"><b class="edit-forms">First Name</b></label>
     <input type="text" placeholder="Enter first name" th:field="*{firstName}" required>
@@ -66,7 +63,7 @@
     <label for="password"><b class="edit-forms">Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
 
-    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Update Profile</button>
 </form>
 </div>
 
