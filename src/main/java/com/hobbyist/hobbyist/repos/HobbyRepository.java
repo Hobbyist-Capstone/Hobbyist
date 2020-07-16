@@ -17,11 +17,13 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
 //    List <Hobby> findAllByStatus (String status);
 
 
+
     // This is will be used for the search functionality
     @Query("from Hobby a where a.title like %:term%")
     List<Hobby> searchByTitle(@Param("term") String term);
 
     // This is for the main page where hobbies are displayed by category string
-    @Query("from Hobby a where a.category.name like %:category%")
-    List<Hobby> filterByCategory(@Param("category") String category);
+    @Query("from Hobby a where a.category.id = ?1")
+    List<Hobby> filterByCategory(@Param("category") long category);
+
 }

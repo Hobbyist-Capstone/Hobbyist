@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return "registration/register";
+        return  "registration/register";
     }
 
     @PostMapping("/register")
@@ -48,22 +48,22 @@ public class UserController {
         User emailExists = userDao.findByEmail(email);
 
         if (userExists != null) {
-            validation.rejectValue("username", "user.username", username + " already exists. Please try again");
+            validation.rejectValue("username", "user.username", username + " already exists in our records.");
         }
 
         if (emailExists != null) {
-            validation.rejectValue("email", "user.email", email + " already exists in our records. Please sign-in with the corresponding username");
+            validation.rejectValue("email", "user.email", email + " already exists in our records.");
         }
 
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
-            return "registration/register";
+            return  "registration/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(newUser);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //public profile
@@ -74,39 +74,20 @@ public class UserController {
         return "users/publicProfiles";
     }
 
-    //user logged in profile
-    @GetMapping("/profile/{username}")
-    public String showProfile(@PathVariable String username, Model vModel) {
 
-        vModel.addAttribute("user", userDao.findByUsername(username));
-//        User user = userDao.findByUsername(username);
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//        if (user.isAdmin()) {
-        vModel.addAttribute("userName", currentUser.getUsername());
-//        }
+    @GetMapping("/profile/{id}/status")
+    public String showHobbyStatusPage(@PathVariable long id,  Model model) {
+        User currentUser= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        return "users/profile";
-    }
-
-    @GetMapping("users/{id}/edit")
-    public String showEditProfile(@PathVariable long id, Model vModel) {
-        User user = userDao.getOne(id);
-//        vModel.addAttribute("user", userDao.findById(id));
-        vModel.addAttribute("user", user);
-//        vModel.addAttribute("showEditControls", userService.canEditProfile(user));
-        return "users/edit";
+        UserHobby userHobbyStatus = userHobbyDao.findByUserId(id);
+        System.out.println(userHobbyStatus.getHobby());
+        System.out.println(userHobbyStatus.getStatus());
+        return "users/hobbyStatus";
     }
 
 
-    @PostMapping("users/{id}/edit")
-    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
 
-        userToEdit.setId(id);
-        userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
-        userDao.save(userToEdit);
-        return "redirect:/profile/" + userToEdit.getUsername();
-    }
 
 
 }
