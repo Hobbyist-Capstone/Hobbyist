@@ -1,7 +1,8 @@
 use hobbyist_db;
 
 INSERT INTO hobbies (description, is_approved, title, category_id, created_by_id)
-VALUES ('Random description1', true, 'Some title1', 1, 1),
-       ('Random description2', true, 'Some title2', 2, 2),
-       ('Random description3', true, 'Some title3', 3, 3),
-       ('Random description4', true, 'Some title4', 4, 4)
+VALUES ('Tennis is a great way to exericise!', true, 'Tennis', 1, 1),
+       ('Its easy on the joints!', true, 'Water Aerobics', 1, 1),
+       ('A great way to relive your vacation!', true, 'Scrapbooking', 2, 1),
+       ('Programming is great!', true, 'Web Development', 3, 1),
+       ('1 + 1 = 2', true, 'Math', 4, 1)

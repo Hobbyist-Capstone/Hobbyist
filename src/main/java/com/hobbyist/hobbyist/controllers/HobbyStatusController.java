@@ -34,8 +34,8 @@ public class HobbyStatusController {
         this.hobbyDao = hobbyDao;
     }
 
-    @GetMapping("profile/{id}/status")
-    public String showHobbyStatusPage(@PathVariable long id, Model model) {
+    @GetMapping("profile/status")
+    public String showHobbyStatusPage( Model model) {
 
         //user that is the current session
         //spring security session
@@ -71,7 +71,6 @@ public class HobbyStatusController {
 
         UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
         userHobbyDao.save(userHobbyObj);
-
 
         return "redirect:/hobbies";
     }
