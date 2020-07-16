@@ -1,0 +1,36 @@
+body{
+    margin: 1vh;
+    padding: 0px;
+}
+
+.tool{
+    padding: 5px;
+    height: 95vh;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#interested, #learning, #hobbyist{
+    border: 1px solid black;
+    height: 100%;
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.rotate {
+
+    transform: rotate(-90deg);
+    margin-top: 300px;
+    color: white;
+
+}
+
+.ease {
+    transition: all 1s ease;
+}
+
+.content{
+    height: 100%;
+    overflow: auto;
+}

@@ -57,26 +57,26 @@ public class HobbyStatusController {
         userHobby.get(0).getStatus();
 
         model.addAttribute("userHobbyList", userHobby);
-        return "users/hobbyStatus";
+        return "users/status-tool";
     }
 
-    @PostMapping("profile/{id}/status")
-    public String addToInterests ( Model model, @ModelAttribute User user){
-        //this button will take this.hobbyId and set the status to "interested" for the current user
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userInDb = userDao.getOne(currentUser.getId());
+//    @PostMapping("profile/{id}/status")
+//    public String addToInterests ( Model model, @ModelAttribute User user){
+//        //this button will take this.hobbyId and set the status to "interested" for the current user
+////        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+////        User userInDb = userDao.getOne(currentUser.getId());
+////
+////        List<Hobby> allHobbies = hobbyDao.findAll();
+////        System.out.println("one Hobby " + allHobbies.get(0).getId());
+////        List<Hobby> hobby = hobbyDao.findAll();
+////        HobbyStatus userHobbyStatus = HobbyStatus.INTERESTED;
+////        user.setHobbies(hobby.get(0));
+////
+////        userHobbyDao.save(HobbyStatus.INTERESTED, userInDb.getId(), hobby.getId());
 //
-//        List<Hobby> allHobbies = hobbyDao.findAll();
-//        System.out.println("one Hobby " + allHobbies.get(0).getId());
-//        List<Hobby> hobby = hobbyDao.findAll();
-//        HobbyStatus userHobbyStatus = HobbyStatus.INTERESTED;
-//        user.setHobbies(hobby.get(0));
 //
-//        userHobbyDao.save(HobbyStatus.INTERESTED, userInDb.getId(), hobby.getId());
-
-
-        return "hobbies/allHobbiesView";
-    }
+//        return "hobbies/allHobbiesView";
+//    }
 
 
 
