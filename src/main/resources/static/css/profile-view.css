@@ -18,6 +18,7 @@ html {
 #profile-container-small {
     width: 100vw;
 }
+
 /*Small Index - Above the fold*/
 
 #profile-navbar-placeholder-small {
@@ -43,7 +44,7 @@ html {
 #profile-above-fold-small {
     height: 100vh;
     width: 100vw;
-    background-image: url("../../static/img/desk.jpg");
+    background-image: url("/../img/desk.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -88,17 +89,15 @@ html {
 
 
 #small-friends-list
-
-
     /*Large and XL Site*/
-
 #profile-container-small {
     width: 100vw;
 }
+
 /*Large Index - Above the fold*/
 
 #profile-container-large {
-    height: 100vh!important;
+    height: 100vh !important;
     width: 100vw;
 }
 
@@ -132,7 +131,7 @@ html {
     height: 100vh;
     width: 100vw;
     display: block;
-    background-image: url("../../img/desk.jpg");
+    background-image: url("/../img/desk.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -154,6 +153,18 @@ html {
     width: 20vw;
     height: auto;
     border-radius: 50%;
+}
+
+#large-profile-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    width: 200px!important;
+}
+
+#upload-button {
+    margin-right: 10px;
 }
 
 #left-div, #middle-div, #right-div {
