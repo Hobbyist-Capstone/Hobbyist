@@ -51,8 +51,9 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Category> categories) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Long> categoriesId) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Category> categories = categoryDao.findAllById(categoriesId);
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
         hobbyDao.save(saveHobby);
