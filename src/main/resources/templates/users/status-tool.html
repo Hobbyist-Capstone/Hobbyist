@@ -24,6 +24,12 @@
                 <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
                 <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>
             </div>
+
+            <form action="">
+                <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+                <button class="btn"> Add to interested</button>
+            </form>
+
         </div>
     </div>
 
