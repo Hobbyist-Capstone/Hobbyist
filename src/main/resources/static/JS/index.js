@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+});
+
 function openLoginForm() {
     document.getElementById("small-login-form").style.display = "block";
     closeJoinForm()
