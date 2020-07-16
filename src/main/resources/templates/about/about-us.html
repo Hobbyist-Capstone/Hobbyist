@@ -20,14 +20,63 @@
 <body>
 <!--Small About Us-->
 
-<div id="small-about-us">
+<div id="small-about-us" class="show-on-medium-and-down hide-on-large-only">
+    <h1 id="small-team-header" class="center-align">Our Team</h1>
+    <div id="small-team-members">
 
+        <div id="person1-small"><img class="small-photo" src="../../static/img/moriah-transparent.png" alt="Moriah Humphries"
+                               th:src="@{img/moriah-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Moriah</h5>
+                <h5 class="small-names"> Humphries</h5>
 
+                <a href="https://www.linkedin.com/in/moriah-humphries/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/moriahhumphries" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/823" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person2-small"><img class="small-photo" src="../../static/img/val-transparent.png" alt="Valeria Meza"
+                               th:src="@{img/val-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Valeria</h5>
+                <h5 class="small-names">Meza</h5>
+
+                <a href="https://www.linkedin.com/in/valmeza/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/valmeza" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/832" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person3-small"><img class="small-photo" src="../../static/img/nayoung-frame.png" alt="Nayoung Kim"
+                               th:src="@{img/nayoung-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Nayoung</h5>
+                <h5 class="small-names">Kim</h5>
+
+                <a href="https://www.linkedin.com/in/nayoungkimpak/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/nayokim" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/827" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person4-small"><img class="small-photo" src="../../static/img/jacob-transparent.png" alt="Jacob Hensley"
+                               th:src="@{img/jacob-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="small-names">Jacob</h5>
+                <h5 class="small-names">Hensley</h5>
+                <a href="https://www.linkedin.com/in/jacobrhensley/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/jacobrhensley" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/821" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+    </div>
+    <div id="small-logo-container" class="center-align">
+        <img id="small-logo" class="center-align" src="../../static/img/hobbyist-transparent.png" alt="badge"
+             th:src="@{img/hobbyist-transparent.png}"/>
+    </div>
 </div>
 
 <!--Large About Us-->
 
-<div id="large-about-us">
+<div id="large-about-us" class="show-on-large hide-on-med-and-down">
     <div id="large-team-members">
 
         <div id="person1"><img class="large-photo" src="../../static/img/moriah-transparent.png" alt="Moriah Humphries"
@@ -74,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div id="large--logo-container">
+    <div id="large-logo-container">
         <img id="large-logo" class="center-align" src="../../static/img/hobbyist-transparent.png" alt="badge"
              th:src="@{img/hobbyist-transparent.png}"/>
     </div>

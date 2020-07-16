@@ -8,6 +8,74 @@ body {
 
 /*Small About Us*/
 
+#small-team-header {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 10vw;
+    color: rgba(146, 9, 18, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.icons {
+    margin: 10px;
+    color: floralwhite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+}
+
+.small-names {
+    color: floralwhite;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 8vw;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+}
+#small-about-us {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+#small-team-members {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 75vw;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+#person1-small, #person2-small, #person3-small, #person4-small {
+    width: 70vw;
+    border: 5px solid #f2a22c;
+    border-radius: 5px;
+    margin: 10px 10px 10px 10px;
+    background-color: rgba(146, 9, 18, 0.9);
+
+}
+
+.small-photo {
+    width: 60vw;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+#small-logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#small-logo {
+    width: 30vw;
+    height: auto;
+    border-radius: 50%;
+}
+
 
 /*Large About Us*/
 
@@ -58,12 +126,10 @@ body {
 
 }
 
-#large--logo-container {
+#large-logo-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: floralwhite;
-
 }
 
 #large-logo {
