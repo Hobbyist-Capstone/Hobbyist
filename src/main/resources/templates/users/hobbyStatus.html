@@ -7,6 +7,49 @@
 </head>
 <body>
 
+<div th:each="userHobby : ${userHobbyList}">
+    <p>Hobby Status: <span th:text="${userHobby.status}"></span></p>
+    <p>Hobby Title: <span th:text="${userHobby.hobby.getTitle()}"></span></p>
+</div>
+
+<table id="interested">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td  th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td  th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.status}">INTERESTED</td>
+    </tr>
+</table>
+
+<table id="TRIED_IT">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td th:if ="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT/td>
+    </tr>
+</table>
+
+<table id="HOBBYIST">
+    <tr>
+        <th>Hobby Name</th>
+        <th>Hobby Status</th>
+    </tr>
+    <tr th:block th:each="userHobby : ${userHobbyList}">
+        <td th:if ="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</td>
+    </tr>
+</table>
+
+
+
+
+
+
 
 
 

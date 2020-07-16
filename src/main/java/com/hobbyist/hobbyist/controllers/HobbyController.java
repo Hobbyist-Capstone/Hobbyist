@@ -1,5 +1,7 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.Hobby;
+import com.hobbyist.hobbyist.models.HobbyStatus;
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
@@ -10,14 +12,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class HobbyController {
 
+    private UserHobbyRepository userHobbyDao;
+    private UserRepository userDao;
     private HobbyRepository hobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao, UserHobbyRepository userHobbyDao) {
+
+    public HobbyController(UserHobbyRepository userHobbyDao, UserRepository userDao, HobbyRepository hobbyDao) {
+        this.userHobbyDao = userHobbyDao;
+        this.userDao = userDao;
         this.hobbyDao = hobbyDao;
     }
 
@@ -35,4 +45,5 @@ public class HobbyController {
         model.addAttribute("hobbies", hobbyDao.findAll());
         return "hobbies/allHobbiesView";
     }
+
 }

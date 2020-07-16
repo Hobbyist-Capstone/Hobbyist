@@ -1,9 +1,6 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Hobby;
-import com.hobbyist.hobbyist.models.HobbyStatus;
-import com.hobbyist.hobbyist.models.User;
-import com.hobbyist.hobbyist.models.UserHobby;
+import com.hobbyist.hobbyist.models.*;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -17,13 +14,15 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private UserHobbyRepository userHobbyDao;
     private HobbyRepository hobbyDao;
-
 
 
     private UserService userService;
@@ -69,11 +68,12 @@ public class UserController {
 
     //public profile
     @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel){
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
         User user = userDao.findByUsername(username);
         vModel.addAttribute("user", user);
         return "users/publicProfiles";
     }
+
 
 
     @GetMapping("/profile/{id}/status")
@@ -85,7 +85,6 @@ public class UserController {
         System.out.println(userHobbyStatus.getStatus());
         return "users/hobbyStatus";
     }
-
 
 
 

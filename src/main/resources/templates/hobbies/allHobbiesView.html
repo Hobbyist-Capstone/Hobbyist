@@ -7,14 +7,23 @@
 <body>
 <div th:each="hobby : ${hobbies}">
     <h1 th:text="${hobby.title}"></h1>
+    <h2 th:text="${hobby.id}"></h2>
     <h2 th:text="${hobby.description}"></h2>
-    <div th:each="rating : ${hobby.hobbyRating}">
-        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>
-        <p>Cost to Start: <span th:text="${rating.price}"></span></p>
-        <p>Patience: <span th:text="${rating.patience}"></span></p>
-        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>
-    </div>
-    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>
+    <h3 th:text="${hobby.category.getName()}"></h3>
+
+
+    <form th:action="@{|/profile/status|}" th:method="post">
+        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+        <button class="btn btn-outline-info"> Add to interested</button>
+    </form>
+
+    <!--    <div th:each="rating : ${hobby.hobbyRating}">-->
+    <!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
+    <!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->
+    <!--        <p>Patience: <span th:text="${rating.patience}"></span></p>-->
+    <!--        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>-->
+    <!--    </div>-->
+    <!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
 </div>
 </body>
 </html>
