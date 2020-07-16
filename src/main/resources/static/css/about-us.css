@@ -10,6 +10,16 @@ body {
 
 /*Large About Us*/
 
+.icons {
+    margin: 10px;
+    color: floralwhite;
+}
+
+.names {
+    color: floralwhite;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 3em;
+}
 #large-about-us {
     width: 100%;
 }
