@@ -29,19 +29,10 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("c1", hobbyDao.filterByCategory(1));
-        model.addAttribute("c2", hobbyDao.filterByCategory(2));
-        model.addAttribute("c3", hobbyDao.filterByCategory(3));
+//        model.addAttribute("c1", hobbyDao.filterByCategory(1));
+//        model.addAttribute("c2", hobbyDao.filterByCategory(2));
+//        model.addAttribute("c3", hobbyDao.filterByCategory(3));
         return "index/index";
     }
-
-//    future search feature
-//    @GetMapping("/search")
-//    public String search(Model model, @RequestParam(name = "term") String term) {
-//        List<Hobby> hobbies = hobbyDao.searchByTitle(term);
-//        model.addAttribute("c", hobbies);
-//        return "index";
-//    }
-
 }
 

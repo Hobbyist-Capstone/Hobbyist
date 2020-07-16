@@ -1,9 +1,11 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.Category;
 import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
-import com.hobbyist.hobbyist.repos.UserHobbyRepository;
+import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,15 @@ import java.util.List;
 public class HobbyController {
 
     private HobbyRepository hobbyDao;
+    private UserRepository userDao;
+    private CategoryRepository categoryDao;
 
-    public HobbyController(HobbyRepository hobbyDao, UserHobbyRepository userHobbyDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao) {
         this.hobbyDao = hobbyDao;
+        this.categoryDao = categoryDao;
+        this.userDao = userDao;
     }
+
 
     //     displays all hobbies
     @GetMapping("/hobbies")
@@ -37,17 +44,22 @@ public class HobbyController {
     //    create a hobby
     @GetMapping("/hobby/create")
     public String createHobbyForm(Model model) {
+        model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("hobby", new Hobby());
         return "hobby/create";
     }
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Category> category_ids) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        System.out.println(category_ids);
+//        categoryDao.getOne(category_ids);
         saveHobby.setCreatedBy(currentUser);
-        Hobby hobbyInDb = hobbyDao.save(saveHobby);
-        return "redirect:/hobby/" + hobbyInDb.getId();
+        saveHobby.setCategories(category_ids);
+        hobbyDao.save(saveHobby);
+        return "redirect:/hobby/" + saveHobby.getId();
     }
 
     //    show edited hobby

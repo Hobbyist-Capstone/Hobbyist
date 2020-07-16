@@ -18,7 +18,7 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
     List<Hobby> searchByTitle(@Param("term") String term);
 
     // This is for the main page where hobbies are displayed by category string
-    @Query("from Hobby a where a.category.id = ?1")
+    @Query("from Hobby a where a.categories = ?1")
     List<Hobby> filterByCategory(@Param("category") long category);
 
 }

@@ -15,17 +15,20 @@ public class Hobby {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = true)
-    private Boolean isApproved;
+    @Column(columnDefinition = "TEXT")
+    private String image;
+
+//    @Column(nullable = true)
+//    private Boolean isApproved;
 
     @OneToOne
     private User createdBy;
 
-    @OneToOne
-    private Category category;
+//    @OneToOne
+//    private Category category;
 
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -35,47 +38,61 @@ public class Hobby {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private List<User> users;
-  
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "hobby_categories",
+            joinColumns = {@JoinColumn(name = "hobby_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    @JsonManagedReference
-    private List<HobbyImage> images;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    @JsonManagedReference
     private List<Rating> rating;
-
 
     public Hobby() {
     }
 
-    public Hobby(String title, String description) {
+    public Hobby(String title, String description, String image) {
         this.title = title;
         this.description = description;
+        this.image = image;
     }
 
-    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
-
-        this.title = title;
-        this.description = description;
-        this.isApproved = isApproved;
-        this.createdBy = createdBy;
-        this.users = users;
-        this.images = images;
-        this.rating = hobbyRating;
-    }
-
-
-
-    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
+    public Hobby(long id, String title, String description, String image) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.isApproved = isApproved;
+        this.image = image;
+    }
+
+    public Hobby(String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+        this.title = title;
+        this.description = description;
         this.createdBy = createdBy;
         this.users = users;
-        this.images = images;
+        this.image = image;
         this.rating = hobbyRating;
+    }
+
+
+    public Hobby(long id, String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createdBy = createdBy;
+        this.users = users;
+        this.image = image;
+        this.rating = hobbyRating;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public long getId() {
@@ -102,28 +119,12 @@ public class Hobby {
         this.description = description;
     }
 
-    public Boolean getApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(Boolean approved) {
-        isApproved = approved;
-    }
-
     public User getCreatedBy() {
         return createdBy;
     }
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public List<HobbyImage> getImages() {
-        return images;
-    }
-
-    public void setImages(List<HobbyImage> images) {
-        this.images = images;
     }
 
     public List<Rating> getHobbyRating() {
@@ -134,14 +135,13 @@ public class Hobby {
         this.rating = hobbyRating;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
-
 
     public List<User> getUsers() {
         return users;

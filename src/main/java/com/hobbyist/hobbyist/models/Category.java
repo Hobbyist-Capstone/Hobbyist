@@ -1,6 +1,7 @@
 package com.hobbyist.hobbyist.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="categories")
@@ -13,11 +14,22 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    @ManyToMany(mappedBy = "categories")
+    private List<Hobby> hobbies;
+
     public Category(){}
 
     public Category(long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 
     public Category(String name) {

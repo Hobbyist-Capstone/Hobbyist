@@ -10,6 +10,15 @@
     <input th:field="*{title}">
     Body:
     <input th:field="*{description}">
+
+    <label>Category: </label>
+    <div id="categories" th:each="c : ${categories}">
+        <label>
+            <input name="categories" type="checkbox" th:value="${c.id}" th:text="${c.name}"/>
+        </label>
+    </div>
+    Upload Image
+    <input th:field="*{image}">
     <button class="btn btn-primary">Submit</button>
 </form>
 </body>
