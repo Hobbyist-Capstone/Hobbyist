@@ -51,13 +51,10 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Category> category_ids) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Category> categories) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        System.out.println(category_ids);
-
         saveHobby.setCreatedBy(currentUser);
-        saveHobby.setCategories(category_ids);
+        saveHobby.setCategories(categories);
         hobbyDao.save(saveHobby);
         return "redirect:/hobby/" + saveHobby.getId();
     }
