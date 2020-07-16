@@ -28,6 +28,8 @@ public class Hobby {
     private Category category;
 
 
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_hobbies",

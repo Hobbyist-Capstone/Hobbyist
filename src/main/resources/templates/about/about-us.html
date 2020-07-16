@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<head th:replace="partials/head :: head('About Us')">-->
+<!--    <meta charset="UTF-8"/>-->
+<!--    <link th:href="@{/css/about-us.css}" rel="stylesheet" type="text/css">-->
+<head>
+<title>About Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+<!--    Materialize Framework-->
+<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+<!--    Icons-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    Font Awesome Icons-->
+<script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+<!--    Responsive Tag-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--    Custom CSS Files-->
+<link th:href="@{/css/about-us.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--Small About Us-->
+
+<div id="small-about-us" class="show-on-medium-and-down hide-on-large-only center-align">
+    <h1 id="small-team-header" class="center-align">Our Team</h1>
+    <div id="small-team-members" class="center-align">
+
+        <div id="person1-small"><img class="small-photo" src="../../static/img/moriah-transparent.png" alt="Moriah Humphries"
+                               th:src="@{img/moriah-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Moriah</h5>
+                <h5 class="small-names"> Humphries</h5>
+                <a href="mailto:moriah.humphries@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/moriah-humphries/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/moriahhumphries" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/823" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person2-small"><img class="small-photo" src="../../static/img/val-transparent.png" alt="Valeria Meza"
+                               th:src="@{img/val-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Valeria</h5>
+                <h5 class="small-names">Meza</h5>
+
+                <a href="mailto:valeriameza173@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/valmeza/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/valmeza" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/832" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person3-small"><img class="small-photo" src="../../static/img/nayoung-frame.png" alt="Nayoung Kim"
+                               th:src="@{img/nayoung-transparent.png}"/>
+            <div class="small-about-text center-align">
+                <h5 class="small-names">Nayoung</h5>
+                <h5 class="small-names">Kim</h5>
+
+                <a href="mailto:nayoung.kimpak@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/nayoungkimpak/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/nayokim" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/827" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person4-small"><img class="small-photo" src="../../static/img/jacob-transparent.png" alt="Jacob Hensley"
+                               th:src="@{img/jacob-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="small-names">Jacob</h5>
+                <h5 class="small-names">Hensley</h5>
+
+                <a href="mailto:jacobrhensley3@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/jacobrhensley/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/jacobrhensley" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/821" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+    </div>
+    <div id="small-logo-container" class="center-align">
+        <img id="small-logo" class="center-align" src="../../static/img/hobbyist-transparent.png" alt="badge"
+             th:src="@{img/hobbyist-transparent.png}"/>
+    </div>
+</div>
+
+<!--Large About Us-->
+
+<div id="large-about-us" class="show-on-large hide-on-med-and-down">
+    <div id="large-team-members">
+
+        <div id="person1"><img class="large-photo" src="../../static/img/moriah-transparent.png" alt="Moriah Humphries"
+                               th:src="@{img/moriah-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="names">Moriah</h5>
+                <h5 class="names"> Humphries</h5>
+
+                <a href="mailto:moriah.humphries@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/moriah-humphries/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/moriahhumphries" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/823" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person2"><img class="large-photo" src="../../static/img/val-transparent.png" alt="Valeria Meza"
+                               th:src="@{img/val-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="names">Valeria</h5>
+                <h5 class="names">Meza</h5>
+
+                <a href="mailto:valeriameza173@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/valmeza/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/valmeza" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/832" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person3"><img class="large-photo" src="../../static/img/nayoung-frame.png" alt="Nayoung Kim"
+                               th:src="@{img/nayoung-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="names">Nayoung</h5>
+                <h5 class="names">Kim</h5>
+
+                <a href="mailto:nayoung.kimpak@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/nayoungkimpak/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/nayokim" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/827" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+        <div id="person4"><img class="large-photo" src="../../static/img/jacob-transparent.png" alt="Jacob Hensley"
+                               th:src="@{img/jacob-transparent.png}"/>
+            <div class="large-about-text center-align">
+                <h5 class="names">Jacob</h5>
+                <h5 class="names">Hensley</h5>
+
+                <a href="mailto:jacobrhensley3@gmail.com?Subject=Let's%20connect!"><i class="fas fa-envelope fa-3x icons"></i></a>
+                <a href="https://www.linkedin.com/in/jacobrhensley/" target="_blank"><i class="fab fa-linkedin icons fa-3x"></i></a>
+                <a href="https://github.com/jacobrhensley" target="_blank"><i class="fab fa-github-square icons fa-3x"></i></a>
+                <a href="https://alumni.codeup.com/students/821" target="_blank"><i class="fas fa-user-graduate icons fa-3x"></i></a>
+            </div>
+        </div>
+    </div>
+    <div id="large-logo-container">
+        <img id="large-logo" class="center-align" src="../../static/img/hobbyist-transparent.png" alt="badge"
+             th:src="@{img/hobbyist-transparent.png}"/>
+    </div>
+
+</div>
+
+</body>
+</html>
