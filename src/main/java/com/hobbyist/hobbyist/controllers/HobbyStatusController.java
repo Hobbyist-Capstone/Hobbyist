@@ -48,7 +48,7 @@ public class HobbyStatusController {
         List<Hobby> listOfHobbies = userInDb.getHobbies();
 
         //get first hobby in the users list
-        String firstHobby = listOfHobbies.get(0).getTitle();
+//        String firstHobby = listOfHobbies.get(0).getTitle();
 
         //all hobbies associated with user
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
