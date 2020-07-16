@@ -32,7 +32,6 @@ body {
 #large-team-members {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
     margin-left: 10%;
     margin-right: 10%;
