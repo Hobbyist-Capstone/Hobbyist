@@ -41,32 +41,33 @@
 
 
 <!--    RESPONSIVE NAVEBAR-->
-
-<div class="navbar-fixed">
-    <nav class="nav">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo black-text"><img
-                    class="right" src="../../static/img/hobbyist-transparent.png"/></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
-                </li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
-                    Tracker</a></li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
-                    Us</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<ul class="sidenav" id="mobile-demo">
-    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
-    </li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
-        Tracker</a></li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
-        Us</a></li>
-</ul>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
+<!--<div class="navbar-fixed">-->
+<!--    <nav class="nav">-->
+<!--        <div class="nav-wrapper">-->
+<!--            <a href="#" class="brand-logo black-text"><img-->
+<!--                    class="right" src="../../static/img/hobbyist-transparent.png"/></a>-->
+<!--            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>-->
+<!--            <ul class="right hide-on-med-and-down">-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
+<!--                </li>-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
+<!--                    Tracker</a></li>-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
+<!--                    Us</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</div>-->
+<!--<ul class="sidenav" id="mobile-demo">-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
+<!--    </li>-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
+<!--        Tracker</a></li>-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
+<!--        Us</a></li>-->
+<!--</ul>-->
 
 <!--Small M and S and XS Site-->
 
@@ -180,9 +181,72 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
+<<<<<<< HEAD
 
 
 <!--&lt;!&ndash;Javascript&ndash;&gt;-->
+=======
+<h3 class="mt-5 ml-3" th:text="${categoryName1}"></h3>
+<div class="live__scroll">
+    <div class="row text-center ml-1">
+        <div class="col s11 m5 live__scroll--box" th:each="c : ${c1}">
+            <!--            PUT CARD CODE HERE-->
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${c.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i
+                            class="material-icons">favorite_border</i></a>
+                </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h3 class="mt-5 ml-3" th:text="${categoryName2}"></h3>
+<div class="live__scroll">
+    <div class="row text-center ml-1">
+        <div class="col s11 m5 live__scroll--box" th:each="c : ${c2}">
+            <!--            PUT CARD CODE HERE-->
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${c.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i
+                            class="material-icons">favorite_border</i></a>
+                </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="mt-5 ml-3" th:text="${categoryName3}"></h3>
+<div class="live__scroll">
+    <div class="row text-center ml-1">
+        <div class="col s11 m5 live__scroll--box" th:each="c : ${c3}">
+            <!--            PUT CARD CODE HERE-->
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${c.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i
+                            class="material-icons">favorite_border</i></a>
+                </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> ad7373f4a32e38cf432f571c47348dda05237414
 
 <!--<div class="live__scroll">-->
 <!--    <div class="row text-center ml-1">-->

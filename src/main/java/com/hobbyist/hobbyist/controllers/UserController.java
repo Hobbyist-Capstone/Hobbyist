@@ -1,9 +1,6 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Hobby;
-import com.hobbyist.hobbyist.models.HobbyStatus;
-import com.hobbyist.hobbyist.models.User;
-import com.hobbyist.hobbyist.models.UserHobby;
+import com.hobbyist.hobbyist.models.*;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -17,13 +14,15 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private UserHobbyRepository userHobbyDao;
     private HobbyRepository hobbyDao;
-
 
 
     private UserService userService;
@@ -69,7 +68,7 @@ public class UserController {
 
     //public profile
     @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel){
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
         User user = userDao.findByUsername(username);
         vModel.addAttribute("user", user);
         return "users/publicProfiles";
@@ -89,6 +88,39 @@ public class UserController {
 
 
 
+    //user logged in profile
+    @GetMapping("/profile/{username}")
+    public String showProfile(@PathVariable String username, Model vModel) {
+
+        vModel.addAttribute("user", userDao.findByUsername(username));
+//        User user = userDao.findByUsername(username);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+//        if (user.isAdmin()) {
+        vModel.addAttribute("userName", currentUser.getUsername());
+//        }
+
+        return "users/profile";
+    }
+
+    @GetMapping("users/{id}/edit")
+    public String showEditProfile(@PathVariable long id, Model vModel) {
+        User user = userDao.getOne(id);
+//        vModel.addAttribute("user", userDao.findById(id));
+        vModel.addAttribute("user", user);
+//        vModel.addAttribute("showEditControls", userService.canEditProfile(user));
+        return "users/edit";
+    }
+
+
+    @PostMapping("users/{id}/edit")
+    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
+
+        userToEdit.setId(id);
+        userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
+        userDao.save(userToEdit);
+        return "redirect:/profile/" + userToEdit.getUsername();
+    }
 
 
 }

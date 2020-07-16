@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head(title)">
+<head>
     <meta charset="UTF-8"/>
 </head>
 <body>
-<div class="navbar-fixed">
+<div class="navbar-fixed" th:fragment="navbar">
     <nav class="nav">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo black-text"><i class="material-icons right black-text">donut_large</i>Hobbyist</a>
+            <a href="#" class="brand-logo black-text"><img
+                    class="right" src="../../static/img/hobbyist-transparent.png"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
@@ -20,7 +21,7 @@
         </div>
     </nav>
 </div>
-<ul class="sidenav" id="mobile-demo">
+<ul class="sidenav" id="mobile-demo" th:fragment="navbar-small">
     <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
     </li>
     <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
