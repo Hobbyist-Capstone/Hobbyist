@@ -18,8 +18,8 @@
         <th>Hobby Status</th>
     </tr>
     <tr th:block th:each="userHobby : ${userHobbyList}">
-        <td th:if ="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></td>
-        <td th:text="${userHobby.status}" th:if ="${#strings.endsWith(userHobby.status, 'TED')}">INTERESTED</td>
+        <td  th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></td>
+        <td  th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.status}">INTERESTED</td>
     </tr>
 </table>
 

@@ -17,8 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class HobbyStatusController {
@@ -53,30 +52,31 @@ public class HobbyStatusController {
 
         //all hobbies associated with user
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
-        userHobby.get(0).getHobby();
-        userHobby.get(0).getStatus();
+
+        System.out.println(userHobby);
+//        userHobby.get(0).getHobby();
+//        userHobby.get(0).getStatus();
 
         model.addAttribute("userHobbyList", userHobby);
         return "users/status-tool";
     }
 
-//    @PostMapping("profile/{id}/status")
-//    public String addToInterests ( Model model, @ModelAttribute User user){
-//        //this button will take this.hobbyId and set the status to "interested" for the current user
-////        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-////        User userInDb = userDao.getOne(currentUser.getId());
-////
-////        List<Hobby> allHobbies = hobbyDao.findAll();
-////        System.out.println("one Hobby " + allHobbies.get(0).getId());
-////        List<Hobby> hobby = hobbyDao.findAll();
-////        HobbyStatus userHobbyStatus = HobbyStatus.INTERESTED;
-////        user.setHobbies(hobby.get(0));
-////
-////        userHobbyDao.save(HobbyStatus.INTERESTED, userInDb.getId(), hobby.getId());
-//
-//
-//        return "hobbies/allHobbiesView";
-//    }
+    @PostMapping("profile/status")
+    public String addToInterests ( Model model, @RequestParam long hobbyId){
+        //this button will take this.hobbyId and set the status to "interested" for the current user
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+
+        UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
+        userHobbyDao.save(userHobbyObj);
+
+
+        return "redirect:/hobbies";
+    }
+
+
 
 
 

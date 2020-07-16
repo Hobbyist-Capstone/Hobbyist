@@ -12,10 +12,10 @@
     <h3 th:text="${hobby.category.getName()}"></h3>
 
 
-<!--    <form th:action="@{|/profile/${user.id}/status|}" th:method="post" th:object="${user}">-->
-<!--        <input type="hidden" name="id" th:value="*{id}">-->
+    <form th:action="@{|/profile/status|}" th:method="post">
+        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
         <button class="btn btn-outline-info"> Add to interested</button>
-<!--    </form>-->
+    </form>
 
     <!--    <div th:each="rating : ${hobby.hobbyRating}">-->
     <!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
