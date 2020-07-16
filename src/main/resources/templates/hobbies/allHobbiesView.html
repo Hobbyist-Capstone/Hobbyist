@@ -11,7 +11,7 @@
     <h3 th:text="${hobby.category.getName()}"></h3>
 
 
-    <form th:action="@{|/profile/${user.id}/status|}" th:method="${POST}" th:object="{user}">
+    <form th:action="@{|/profile/${user.id}/status|}" th:method="${POST}" th:object="${user}">
         <input type="hidden" name="id" th:value="${user.getId()}">
         <button>Add to favorites</button>
     </form>

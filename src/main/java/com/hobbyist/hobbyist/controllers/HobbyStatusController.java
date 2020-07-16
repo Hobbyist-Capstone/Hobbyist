@@ -64,7 +64,7 @@ public class HobbyStatusController {
         model.addAttribute("user", currentUser);
         userHobbyDao.save(new UserHobby(hobbyDao.getOne(id), userDao.getOne(id), HobbyStatus.INTERESTED));
 
-        return "users/hobbyStatus";
+        return "hobbies/allHobbiesView";
     }
 
 
