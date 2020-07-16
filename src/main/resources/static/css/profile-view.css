@@ -132,7 +132,7 @@ html {
     height: 100vh;
     width: 100vw;
     display: block;
-    background-image: url("../../img/desk.jpg");
+    background-image: url("../../static/img/desk.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
