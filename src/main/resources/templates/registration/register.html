@@ -12,32 +12,34 @@
 <link th:href="@{/css/register.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1 class="center-align join-header">Create an account</h1>
-<div id="form-container" class="center-align">
-    <div class="center-align" id="join-form">
-        <form th:action="@{/register}" method="POST" th:object="${user}" class="form-container" >
+<div id="register-form">
+    <h1 class="center-align join-header">Create an account</h1>
+    <div id="form-container" class="center-align">
+        <div class="center-align" id="join-form">
+            <form th:action="@{/register}" method="POST" th:object="${user}" class="form-container">
 
-            <div th:if="${#fields.hasErrors('*')}">
-                <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-            </div>
+                <div th:if="${#fields.hasErrors('*')}">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                </div>
 
-            <label for="first-name"><b class="forms">First Name</b></label>
-            <input type="text" placeholder="Enter first name" th:field="*{firstName}" required>
+                <label for="first-name"><b class="forms">First Name</b></label>
+                <input type="text" placeholder="Enter first name" th:field="*{firstName}" required>
 
-            <label for="last-name"><b class="forms">Last Name</b></label>
-            <input type="text" placeholder="Enter last name"  th:field="*{lastName}"required>
+                <label for="last-name"><b class="forms">Last Name</b></label>
+                <input type="text" placeholder="Enter last name" th:field="*{lastName}" required>
 
-            <label for="username"><b class="forms">Username</b></label>
-            <input type="text" placeholder="Enter username" th:field="*{username}"required>
+                <label for="username"><b class="forms">Username</b></label>
+                <input type="text" placeholder="Enter username" th:field="*{username}" required>
 
-            <label for="email"><b class="forms">Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" th:field="*{email}" required>
+                <label for="email"><b class="forms">Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" th:field="*{email}" required>
 
-            <label for="password"><b class="forms">Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
+                <label for="password"><b class="forms">Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
 
-            <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
-        </form>
+                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+            </form>
+        </div>
     </div>
 </div>
 
