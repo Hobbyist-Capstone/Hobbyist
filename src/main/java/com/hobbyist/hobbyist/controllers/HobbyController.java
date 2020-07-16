@@ -55,7 +55,7 @@ public class HobbyController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         System.out.println(category_ids);
-//        categoryDao.getOne(category_ids);
+
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(category_ids);
         hobbyDao.save(saveHobby);
