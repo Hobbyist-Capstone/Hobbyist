@@ -48,7 +48,7 @@
 
 
         <!--Small Buttons Section-->
-        <div id="small-main-buttons" class="center-align">
+        <div sec:authorize="!isAuthenticated()" id="small-main-buttons" class="center-align">
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
@@ -86,7 +86,7 @@
 
         <h1 id="main-title-large">Hobbyist</h1>
 
-        <div id="large-main-buttons" class="center-align">
+        <div sec:authorize="!isAuthenticated()" id="large-main-buttons" class="center-align">
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
