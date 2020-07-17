@@ -7,18 +7,6 @@
 <body>
 
 
-<!--<div th:each ="user :${users}" sec:authorize ="!isAnonymous()">-->
-<!--<a th:href="@{/profile/{username}(username=${user.username})}"><button>Profile</button></a>-->
-<!--</div>-->
-
-
-<!--    if authenticated-->
-<!--<div sec:authorize ="isAuthenticated()" >-->
-<!--    <a th:href="${'/profile/' + user.id}">-->
-<!--        <button class="btn btn-outline-info">Profile</button>-->
-<!--    </a>-->
-<!--</div>-->
-
 <!--  template to grab info from db -->
 <!--<div th:each="c : ${c1}">-->
 <!--    <h1 th:text="${c.title}"></h1>-->
@@ -28,7 +16,6 @@
 <!--    <p th:text="${c.createdBy.username}"></p>-->
 <!--    <p th:text="${c.createdBy.admin}"></p>-->
 <!--</div>-->
-
 
 
 <!--    RESPONSIVE NAVEBAR-->
@@ -75,9 +62,11 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
-            <a th:href="${'/register'}"><button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
-                    type="submit" name="action">Join
-            </button></a>
+            <a th:href="${'/register'}">
+                <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                        type="submit" name="action">Join
+                </button>
+            </a>
         </div>
 
         <!--        Small Form-->
@@ -111,9 +100,11 @@
             <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
-            <a th:href="${'/register'}">  <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
-                    type="submit" name="action">Join
-            </button></a>
+            <a th:href="${'/register'}">
+                <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                        type="submit" name="action">Join
+                </button>
+            </a>
         </div>
 
         <div class="form-popup form-popup-large" id="large-login-form">
@@ -140,17 +131,18 @@
         <div class="col s11 m5 live__scroll--box" th:each="h : ${hobbies}">
             <!--            PUT CARD CODE HERE-->
             <a th:href="${'/hobby/'+ h.id}">
-            <div class="card">
-                <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
-                    <span class="card-title" th:text="${h.title}">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
+                <div class="card">
+                    <div class="card-image">
+                        <img th:src="@{/img/tools.jpg}">
+                        <span class="card-title" th:text="${h.title}">Card Title</span>
+                        <a class="btn-floating halfway-fab waves-effect red"><i
+                                class="material-icons">favorite_border</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p th:text="${h.description}"></p>
+                        <p th:each="c : ${h.categories}">Category: <span th:text="${c.name}"></span></p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p th:text="${h.description}"></p>
-                    <p th:each="c : ${h.categories}">Category: <span th:text="${c.name}"></span></p>
-                </div>
-            </div>
             </a>
         </div>
     </div>
@@ -175,7 +167,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
 
 
 <!--Javascript-->
@@ -221,7 +212,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
 
 
 
