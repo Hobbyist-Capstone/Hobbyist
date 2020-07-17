@@ -15,7 +15,7 @@
     <h1 th:text="${hobby.title}"></h1>
     <h2 th:text="${hobby.id}"></h2>
     <h2 th:text="${hobby.description}"></h2>
-    <h3 th:text="${hobby.category.getName()}"></h3>
+    <h3 th:each="c: ${hobby.categories}" th:text="${c.name}"></h3>
 
 
     <form th:action="@{|/profile/status|}" th:method="post" >
