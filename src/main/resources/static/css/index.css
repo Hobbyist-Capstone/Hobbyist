@@ -61,7 +61,8 @@ html {
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: 'Bungee Shade', cursive;
-    overflow-y: scroll;
+    overflow-y: hidden;
+
 }
 
 
@@ -171,17 +172,17 @@ html {
 
 /*Scroll Window*/
 
-.live__scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-.live__scroll .row{
-    display:block;
-}
-.live__scroll .live__scroll--box {
-    display: inline-block;
-    float: none;
-    padding: 15px;
-}
+/*.live__scroll {*/
+/*    overflow-x: auto;*/
+/*    overflow-y: hidden;*/
+/*    white-space: nowrap;*/
+/*}*/
+/*.live__scroll .row{*/
+/*    display:block;*/
+/*}*/
+/*.live__scroll .live__scroll--box {*/
+/*    display: inline-block;*/
+/*    float: none;*/
+/*    padding: 15px;*/
+/*}*/
 
