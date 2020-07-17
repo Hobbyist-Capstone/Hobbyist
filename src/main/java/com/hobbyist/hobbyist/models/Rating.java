@@ -9,15 +9,6 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Column(nullable = true)
-//    private byte difficulty;
-//
-//    @Column(nullable = true)
-//    private byte price;
-//
-//    @Column(nullable = true)
-//    private byte patience;
-
     @Column(nullable = true)
     private byte overallRating;
 
@@ -33,37 +24,18 @@ public class Rating {
     public Rating() {
     }
 
-//    public Rating(long id, byte difficulty, byte price, byte patience, byte overallRating) {
-//        this.id = id;
-//        this.difficulty = difficulty;
-//        this.price = price;
-//        this.patience = patience;
-//        this.overallRating = overallRating;
-//    }
-//
-//    public Rating(byte difficulty, byte price, byte patience, byte overallRating) {
-//        this.difficulty = difficulty;
-//        this.price = price;
-//        this.patience = patience;
-//        this.overallRating = overallRating;
-//    }
-//
-//    public Rating(long id, byte difficulty, byte price, byte patience, byte overallRating, User user) {
-//        this.id = id;
-//        this.difficulty = difficulty;
-//        this.price = price;
-//        this.patience = patience;
-//        this.overallRating = overallRating;
-//        this.user = user;
-//    }
-//
-//    public Rating(byte difficulty, byte price, byte patience, byte overallRating, User user) {
-//        this.difficulty = difficulty;
-//        this.price = price;
-//        this.patience = patience;
-//        this.overallRating = overallRating;
-//        this.user = user;
-//    }
+    public Rating(byte overallRating, User user, Hobby hobby) {
+        this.overallRating = overallRating;
+        this.user = user;
+        this.hobby = hobby;
+    }
+
+    public Rating(long id, byte overallRating, User user, Hobby hobby) {
+        this.id = id;
+        this.overallRating = overallRating;
+        this.user = user;
+        this.hobby = hobby;
+    }
 
     public Hobby getHobby() {
         return hobby;
@@ -80,30 +52,6 @@ public class Rating {
     public void setId(long id) {
         this.id = id;
     }
-
-//    public byte getDifficulty() {
-//        return difficulty;
-//    }
-//
-//    public void setDifficulty(byte difficulty) {
-//        this.difficulty = difficulty;
-//    }
-//
-//    public byte getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(byte price) {
-//        this.price = price;
-//    }
-//
-//    public byte getPatience() {
-//        return patience;
-//    }
-//
-//    public void setPatience(byte patience) {
-//        this.patience = patience;
-//    }
 
     public byte getOverallRating() {
         return overallRating;

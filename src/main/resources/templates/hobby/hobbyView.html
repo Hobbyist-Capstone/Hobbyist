@@ -10,6 +10,9 @@
     <h2 th:text="${hobby.description}"></h2>
     <h2 th:text="${hobby.image}"></h2>
     <h3 th:each="c : ${hobby.categories}">Category <span th:text="${c.name}"></span></h3>
+    <p>Patience: <span th:text="${hobby.patience}"></span></p>
+    <p>Difficulty: <span th:text="${hobby.difficulty}"></span></p>
+    <p>Cost: <span th:text="${hobby.cost}"></span></p>
     <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>
     <button th:href="'/hobby/'+ ${hobby.id +'/edit'}">Edit</button>
     <button th:href="'/hobby/'+ ${hobby.id +'/delete'}">Delete</button>
