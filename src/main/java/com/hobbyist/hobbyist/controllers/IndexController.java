@@ -1,28 +1,18 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Category;
-import com.hobbyist.hobbyist.models.Hobby;
-import com.hobbyist.hobbyist.models.UserHobby;
+
 import com.hobbyist.hobbyist.repos.CategoryRepository;
-import com.hobbyist.hobbyist.repos.UserHobbyRepository;
-import com.hobbyist.hobbyist.repos.UserRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
-
 @Controller
 public class IndexController {
 
-
-    private HobbyRepository hobbyDao;
     private CategoryRepository categoryDao;
-    private UserHobbyRepository userHobbyDao;
-    private UserRepository userDao;
+    private HobbyRepository hobbyDao;
 
 
     public IndexController(HobbyRepository hobbyDao, CategoryRepository categoryDao) {
@@ -32,20 +22,9 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-
-        model.addAttribute("c1", hobbyDao.filterByCategory(1));
-        model.addAttribute("c2", hobbyDao.filterByCategory(2));
-        model.addAttribute("c3", hobbyDao.filterByCategory(3));
+//        model.addAttribute("category", categoryDao.findAll());
+        model.addAttribute("hobbies", hobbyDao.findAll());
         return "index/index";
     }
-
-//    future search feature
-//    @GetMapping("/search")
-//    public String search(Model model, @RequestParam(name = "term") String term) {
-//        List<Hobby> hobbies = hobbyDao.searchByTitle(term);
-//        model.addAttribute("c", hobbies);
-//        return "index";
-//    }
-
 }
 
