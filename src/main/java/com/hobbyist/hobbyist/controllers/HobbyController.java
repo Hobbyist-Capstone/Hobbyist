@@ -108,4 +108,18 @@ public class HobbyController {
         return "hobbies/allHobbiesView";
     }
 
+//    Hobby Comment Page TESTS
+
+        @GetMapping("/comment-page")
+    public String comments(Model model) {
+        return "hobby/comment-page";
+    }
+
+    @GetMapping("/comment-page-2")
+    public String comments2(Model model) {
+        return "hobby/comment-page-2";
+    }
+
+
+
 }
