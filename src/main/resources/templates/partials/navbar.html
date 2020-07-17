@@ -2,21 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{/css/navbar.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../static/css/navbar.css">
+
 </head>
 <body>
-<div class="navbar-fixed" th:fragment="navbar">
-    <nav class="nav">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo black-text"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                                           th:src="@{/img/hobbyist-transparent.png}"/></a>
+<div class="navbar-fixed grey lighten-2" th:fragment="navbar">
+    <nav class="nav grey lighten-2">
+        <div class="nav-wrapper grey lighten-3">
+            <a href="https://hobbyist-app.xyz/" class="brand-logo black-text"><img class="navbar-icon"
+                                                                                   width="120px" height="auto"
+                                                                                   src="../../static/img/hobbyist-transparent.png"
+                                                                                   alt="Hobbyist Logo"
+                                                                                   th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
+                <li style="font-family:Bungee;"><a href="" class="black-text"><i
+                        class="material-icons left black-text">account_circle</i>Profile</a>
                 </li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
+                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/profile/status" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
                     Tracker</a></li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
+                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i class="material-icons left black-text">group</i>About
                     Us</a></li>
+
+                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/login" class="black-text"><i class="material-icons left black-text">favorite</i>Login</a></li>
+                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register" class="black-text"><i class="material-icons left black-text">add</i>Join</a></li>
+
 
 <!--             test   -->
                 <th:block sec:authorize="isAuthenticated()">
@@ -24,17 +45,20 @@
                 </a></li>
                 </th:block>
 
+
             </ul>
         </div>
     </nav>
 </div>
 <ul class="sidenav" id="mobile-demo" th:fragment="navbar-small">
-    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
+    <li style="font-family:Bungee"><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
     </li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
+    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/profile/status" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
         Tracker</a></li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
+    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
         Us</a></li>
+    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/login" class="black-text"><i class="material-icons left black-text">favorite</i>Login</a></li>
+    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register" class="black-text"><i class="material-icons left black-text">add</i>Join</a></li>
 </ul>
 </body>
 </html>
