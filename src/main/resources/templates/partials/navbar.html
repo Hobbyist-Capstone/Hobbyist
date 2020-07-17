@@ -34,8 +34,18 @@
                     Tracker</a></li>
                 <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i class="material-icons left black-text">group</i>About
                     Us</a></li>
+
                 <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/login" class="black-text"><i class="material-icons left black-text">favorite</i>Login</a></li>
                 <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register" class="black-text"><i class="material-icons left black-text">add</i>Join</a></li>
+
+
+<!--             test   -->
+                <th:block sec:authorize="isAuthenticated()">
+                <li><a th:href="@{/profile}" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>Profile
+                </a></li>
+                </th:block>
+
+
             </ul>
         </div>
     </nav>
