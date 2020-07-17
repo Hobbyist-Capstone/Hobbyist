@@ -98,7 +98,6 @@ public class HobbyStatusController {
         return "redirect:/profile/status";
     }
 
-
     @PostMapping("profile/status/delete")
     public String delete(@RequestParam long deleteId){
         userHobbyDao.deleteById(deleteId);

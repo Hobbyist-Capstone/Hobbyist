@@ -39,12 +39,13 @@ public class ProfileController {
     }
 
     //user logged in profile
-    @GetMapping("/profile/{username}")
-    public String showProfile(@PathVariable String username, Model vModel) {
+    @GetMapping("/profile")
+    public String showProfile(Model vModel) {
 
-        vModel.addAttribute("user", userDao.findByUsername(username));
-//        User user = userDao.findByUsername(username);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
+//        User user = userDao.findByUsername(username);
+
 
 //        if (user.isAdmin()) {
         vModel.addAttribute("userName", currentUser.getUsername());
