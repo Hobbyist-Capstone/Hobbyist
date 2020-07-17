@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+<form th:action="@{/search}">
+    <label for="search">Search:</label>
+    <input name="search" id="search" type="text">
+    <button type="button">Submit</button>
+</form>
+
 <div th:each="hobby : ${hobbies}">
     <h1 th:text="${hobby.title}"></h1>
     <h2 th:text="${hobby.id}"></h2>

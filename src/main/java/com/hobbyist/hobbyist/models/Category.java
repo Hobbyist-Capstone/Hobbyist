@@ -1,5 +1,7 @@
 package com.hobbyist.hobbyist.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,11 +16,22 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    private List<Hobby> hobbies;
+
     public Category(){}
 
     public Category(long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 
     public Category(String name) {

@@ -15,18 +15,23 @@ public class Hobby {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
-    private Boolean isApproved;
+    private byte patience;
+
+    @Column(nullable = false)
+    private byte difficulty;
+
+    @Column(nullable = false)
+    private byte cost;
+
+    @Column(columnDefinition = "TEXT")
+    private String image;
 
     @OneToOne
     private User createdBy;
-
-    @OneToOne
-    private Category category;
-
 
 
 
@@ -37,48 +42,90 @@ public class Hobby {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private List<User> users;
-  
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "hobby_categories",
+            joinColumns = {@JoinColumn(name = "hobby_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    @JsonManagedReference
-    private List<HobbyImage> images;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hobby")
-    @JsonManagedReference
     private List<Rating> rating;
-
 
     public Hobby() {
     }
 
-    public Hobby(String title, String description, boolean isApproved) {
+    public Hobby(String title, String description, String image, byte patience, byte difficulty, byte cost) {
         this.title = title;
         this.description = description;
-        this.isApproved = isApproved;
+        this.patience = patience;
+        this.difficulty = difficulty;
+        this.cost = cost;
+        this.image = image;
     }
 
-    public Hobby(String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
-
-        this.title = title;
-        this.description = description;
-        this.isApproved = isApproved;
-        this.createdBy = createdBy;
-        this.users = users;
-        this.images = images;
-        this.rating = hobbyRating;
-    }
-
-
-
-    public Hobby(long id, String title, String description, Boolean isApproved, User createdBy, List<User> users, List<HobbyImage> images, List<Rating> hobbyRating) {
+    public Hobby(long id, String title, String description, String image, byte patience, byte difficulty, byte cost) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.isApproved = isApproved;
+        this.patience = patience;
+        this.difficulty = difficulty;
+        this.cost = cost;
+        this.image = image;
+    }
+
+    public Hobby(String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+        this.title = title;
+        this.description = description;
         this.createdBy = createdBy;
         this.users = users;
-        this.images = images;
+        this.image = image;
         this.rating = hobbyRating;
+    }
+
+
+    public Hobby(long id, String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createdBy = createdBy;
+        this.users = users;
+        this.image = image;
+        this.rating = hobbyRating;
+    }
+
+    public byte getPatience() {
+        return patience;
+    }
+
+    public void setPatience(byte patience) {
+        this.patience = patience;
+    }
+
+    public byte getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(byte difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public byte getCost() {
+        return cost;
+    }
+
+    public void setCost(byte cost) {
+        this.cost = cost;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public long getId() {
@@ -105,28 +152,12 @@ public class Hobby {
         this.description = description;
     }
 
-    public Boolean getApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(Boolean approved) {
-        isApproved = approved;
-    }
-
     public User getCreatedBy() {
         return createdBy;
     }
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public List<HobbyImage> getImages() {
-        return images;
-    }
-
-    public void setImages(List<HobbyImage> images) {
-        this.images = images;
     }
 
     public List<Rating> getHobbyRating() {
@@ -137,14 +168,13 @@ public class Hobby {
         this.rating = hobbyRating;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
-
 
     public List<User> getUsers() {
         return users;

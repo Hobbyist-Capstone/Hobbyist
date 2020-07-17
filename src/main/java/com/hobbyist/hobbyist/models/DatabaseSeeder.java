@@ -33,13 +33,13 @@
 //    private void seedHobbies() {
 //
 //        List<Hobby> hobbies = Arrays.asList(
-//                new Hobby("General", "Hello", true),
-//                new Hobby("Tech", "tech", true),
-//                new Hobby("Music", "music", true),
-//                new Hobby("Art", "art", true),
-//                new Hobby("Programming", "programming", true),
-//                new Hobby("Food", "food", true),
-//                new Hobby("Films", "film", true)
+//                new Hobby("General", "Hello"),
+//                new Hobby("Tech", "tech"),
+//                new Hobby("Music", "music"),
+//                new Hobby("Art", "art"),
+//                new Hobby("Programming", "programming"),
+//                new Hobby("Food", "food"),
+//                new Hobby("Films", "film")
 //        );
 //
 //        hobbyRepository.saveAll(hobbies);
