@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hobbyist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS Files-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form th:action="@{/search}">
@@ -11,25 +21,51 @@
     <button type="button">Submit</button>
 </form>
 
-<div th:each="hobby : ${hobbies}">
-    <h1 th:text="${hobby.title}"></h1>
-    <h2 th:text="${hobby.id}"></h2>
-    <h2 th:text="${hobby.description}"></h2>
-    <h3 th:each="c: ${hobby.categories}" th:text="${c.name}"></h3>
+<!--<div th:each="hobby : ${hobbies}">-->
+<!--    <h1 th:text="${hobby.title}"></h1>-->
+<!--    <h2 th:text="${hobby.id}"></h2>-->
+<!--    <h2 th:text="${hobby.description}"></h2>-->
+<!--    <h3 th:each="c: ${hobby.categories}" th:text="${c.name}"></h3>-->
 
 
-    <form th:action="@{|/profile/status|}" th:method="post" >
-        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-        <button class="btn"> Add to interested</button>
-    </form>
+<!--    <form th:action="@{|/profile/status|}" th:method="post">-->
+<!--        <input type="hidden" name="hobbyId" th:value="${hobby.id}">-->
+<!--        <button class="btn"> Add to interested</button>-->
+<!--    </form>-->
 
-    <!--    <div th:each="rating : ${hobby.hobbyRating}">-->
-    <!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
-    <!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->
-    <!--        <p>Patience: <span th:text="${rating.patience}"></span></p>-->
-    <!--        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>-->
-    <!--    </div>-->
-    <!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
+<!--    <div th:each="rating : ${hobby.hobbyRating}">-->
+<!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
+<!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->
+<!--        <p>Patience: <span th:text="${rating.patience}"></span></p>-->
+<!--        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>-->
+<!--    </div>-->
+<!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
+
+
+<div class="row text-center ml-1">
+    <div class="col s12 m4" th:each="hobby : ${hobbies}">
+        <!--            PUT CARD CODE HERE-->
+        <a th:href="${'/hobby/'+ hobby.id}">
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${hobby.title}">Card Title</span>
+                    <form th:action="@{|/profile/status|}" th:method="post">
+                        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">favorite_border</i>
+                        </button>
+                    </form>
+                </div>
+                <div class="card-content">
+                    <p th:text="${hobby.description}"></p>
+                </div>
+                <div class="card-content">
+                    <p th:each="cat : ${hobby.categories}" th:text="${cat.name}"></p>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
 </body>
 </html>
