@@ -15,6 +15,8 @@
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
 <form th:action="@{/search}">
     <label for="search">Search:</label>
     <input name="search" id="search" type="text">

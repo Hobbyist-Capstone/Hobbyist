@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hobbyist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS Files-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
 <form th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
     Title:
     <input th:field="*{title}">
