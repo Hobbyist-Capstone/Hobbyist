@@ -66,12 +66,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    //public profile
-    @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
-        User user = userDao.findByUsername(username);
-        vModel.addAttribute("user", user);
-        return "users/publicProfiles";
-    }
+
 
 }

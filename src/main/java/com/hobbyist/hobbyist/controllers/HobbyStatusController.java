@@ -53,7 +53,7 @@ public class HobbyStatusController {
         //all hobbies associated with user
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
 
-        System.out.println(userHobby);
+//        System.out.println(userHobby);
 //        userHobby.get(0).getHobby();
 //        userHobby.get(0).getStatus();
 

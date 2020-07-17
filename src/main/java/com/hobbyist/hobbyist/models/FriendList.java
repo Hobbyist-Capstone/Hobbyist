@@ -14,21 +14,25 @@ public class FriendList {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "friend_id")
+    @JoinColumn(name = "friend_user_id")
     private User friend;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private FriendStatus status;
 
 
     public FriendList() {}
 
-    public FriendList(User user, User friend, FriendStatus status) {
+    public FriendList(long id, User user, User friend) {
+        this.id = id;
         this.user = user;
         this.friend = friend;
-        this.status = status;
     }
+
+    public FriendList(User user, User friend) {
+        this.user = user;
+        this.friend = friend;
+    }
+
+
 
     public long getId() {
         return id;
@@ -54,11 +58,4 @@ public class FriendList {
         this.friend = friend;
     }
 
-    public FriendStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(FriendStatus status) {
-        this.status = status;
-    }
 }

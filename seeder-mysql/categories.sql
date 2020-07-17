@@ -1,7 +1,7 @@
 use hobbyist_db;
 
 insert into categories (name)
-VALUES ('Sports'),
+VALUES ('Recreation'),
        ('Crafts'),
        ('Technology'),
-       ('Education')
+       ('Special')
