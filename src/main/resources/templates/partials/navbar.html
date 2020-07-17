@@ -21,7 +21,7 @@
     <nav class="nav grey lighten-2">
         <div class="nav-wrapper grey lighten-3">
             <a href="https://hobbyist-app.xyz/" class="brand-logo black-text"><img class="navbar-icon"
-                                                                                   width="120px" height="auto"
+                                                                                   width="60px" height="auto"
                                                                                    src="../../static/img/hobbyist-transparent.png"
                                                                                    alt="Hobbyist Logo"
                                                                                    th:src="@{/img/hobbyist-transparent.png}"/></a>
@@ -39,12 +39,6 @@
 
                 <li sec:authorize="!isAuthenticated()"style="font-family:Bungee"><a href="https://hobbyist-app.xyz" class="black-text"><i class="material-icons left black-text">favorite</i>Login</a></li>
                 <li sec:authorize="!isAuthenticated()"style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register" class="black-text"><i class="material-icons left black-text">add</i>Join</a></li>
-
-
-
-
-
-
             </ul>
         </div>
     </nav>
