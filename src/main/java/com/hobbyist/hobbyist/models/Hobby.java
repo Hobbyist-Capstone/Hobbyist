@@ -18,18 +18,20 @@ public class Hobby {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    @Column(nullable = false)
+    private byte patience;
+
+    @Column(nullable = false)
+    private byte difficulty;
+
+    @Column(nullable = false)
+    private byte cost;
+
     @Column(columnDefinition = "TEXT")
     private String image;
 
-//    @Column(nullable = true)
-//    private Boolean isApproved;
-
     @OneToOne
     private User createdBy;
-
-//    @OneToOne
-//    private Category category;
-
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -38,7 +40,6 @@ public class Hobby {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private List<User> users;
-
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -54,16 +55,22 @@ public class Hobby {
     public Hobby() {
     }
 
-    public Hobby(String title, String description, String image) {
+    public Hobby(String title, String description, String image, byte patience, byte difficulty, byte cost) {
         this.title = title;
         this.description = description;
+        this.patience = patience;
+        this.difficulty = difficulty;
+        this.cost = cost;
         this.image = image;
     }
 
-    public Hobby(long id, String title, String description, String image) {
+    public Hobby(long id, String title, String description, String image, byte patience, byte difficulty, byte cost) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.patience = patience;
+        this.difficulty = difficulty;
+        this.cost = cost;
         this.image = image;
     }
 
@@ -85,6 +92,30 @@ public class Hobby {
         this.users = users;
         this.image = image;
         this.rating = hobbyRating;
+    }
+
+    public byte getPatience() {
+        return patience;
+    }
+
+    public void setPatience(byte patience) {
+        this.patience = patience;
+    }
+
+    public byte getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(byte difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public byte getCost() {
+        return cost;
+    }
+
+    public void setCost(byte cost) {
+        this.cost = cost;
     }
 
     public String getImage() {

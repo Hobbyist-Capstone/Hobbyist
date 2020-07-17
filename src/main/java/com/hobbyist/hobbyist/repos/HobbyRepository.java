@@ -1,5 +1,6 @@
 package com.hobbyist.hobbyist.repos;
 
+import com.hobbyist.hobbyist.models.Category;
 import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,8 +18,5 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
     @Query("from Hobby a where a.title like %:term%")
     List<Hobby> searchByTitle(@Param("term") String term);
 
-    // This is for the main page where hobbies are displayed by category string
-    @Query("from Hobby a where a.categories = ?1")
-    List<Hobby> filterByCategory(@Param("category") long category);
-
+//    List<Hobby> findAllByCategories(List<Long> categories_id);
 }

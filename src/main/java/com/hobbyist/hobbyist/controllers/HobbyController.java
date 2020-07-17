@@ -5,6 +5,7 @@ import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
+import com.hobbyist.hobbyist.repos.RatingRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,13 @@ public class HobbyController {
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
+    private RatingRepository ratingDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao, RatingRepository ratingDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
+        this.ratingDao = ratingDao;
     }
 
 
@@ -44,6 +47,8 @@ public class HobbyController {
     //    create a hobby
     @GetMapping("/hobby/create")
     public String createHobbyForm(Model model) {
+
+        model.addAttribute("ratings");
         model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("hobby", new Hobby());
         return "hobby/create";
@@ -51,9 +56,12 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name="categories") List<Long> categoriesId) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findAllById(categoriesId);
+        saveHobby.setPatience(pat);
+        saveHobby.setDifficulty(diff);
+        saveHobby.setCost(cost);
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
         hobbyDao.save(saveHobby);
