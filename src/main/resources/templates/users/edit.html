@@ -14,35 +14,9 @@
     <link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<!--<div>-->
-<!--    <form th:action="${'/users/' + user.id + '/edit'}" th:method="POST" th:object="${user}">-->
-
-
-<!--       <input type="text" th:field="*{firstName}" th:value="*{firstName}"/>-->
-<!--        <label for="first name">first name</label>-->
-<!--&lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>&ndash;&gt;-->
-
-<!--        <input type="text" th:field="*{lastName}" th:value="*{lastName}"/>-->
-<!--        <label for="first name">last name </label>-->
-<!--        &lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>&ndash;&gt;-->
-
-<!--        <input type="text" th:field="*{username}" th:value="*{username}"/>-->
-<!--        <label for="username">username</label>-->
-<!--        &lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>&ndash;&gt;-->
-
-<!--        <input type="text" th:field="*{email}">-->
-<!--        <label for="email"> email</label>-->
-<!--&lt;!&ndash;        <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>&ndash;&gt;-->
-
-
-<!--        <input type="password" class="form-control" th:field="*{password}" />-->
-<!--        <label for="password">password</label>-->
-<!--&lt;!&ndash;        <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>&ndash;&gt;-->
-
-<!--        <button>Submit</button>-->
-<!--    </form>-->
-<!--</div>-->
 <h1 id="profile-edit-header" class="center-align">Update Account</h1>
 <div class="center-align" id="update-profile-form">
 <form th:action="${'/users/' + user.id + '/edit'}" class="edit-form-container" th:method="POST" th:object="${user}">

@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/head :: head('Hobbyist')">
-    <meta charset="UTF-8"/>
-
+<head>
+<title>Hobbyist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+<!--    Materialize Framework-->
+<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+<!--    Icons-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    Font Awesome Icons-->
+<script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+<!--    Responsive Tag-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--    Custom CSS Files-->
+<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -39,33 +49,10 @@
 
 
 
-<!--    RESPONSIVE NAVEBAR-->
+<!--    RESPONSIVE NAVBAR-->
+
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<!--<div class="navbar-fixed">-->
-<!--    <nav class="nav">-->
-<!--        <div class="nav-wrapper">-->
-<!--            <a href="#" class="brand-logo black-text"><i class="material-icons right black-text">donut_large</i>Hobbyist</a>-->
-<!--            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>-->
-<!--            <ul class="right hide-on-med-and-down">-->
-<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
-<!--                </li>-->
-<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
-<!--                    Tracker</a></li>-->
-<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
-<!--                    Us</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</div>-->
-<!--<ul class="sidenav" id="mobile-demo">-->
-<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
-<!--    </li>-->
-<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
-<!--        Tracker</a></li>-->
-<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
-<!--        Us</a></li>-->
-<!--</ul>-->
 
 <!--Small M and S and XS Site-->
 
