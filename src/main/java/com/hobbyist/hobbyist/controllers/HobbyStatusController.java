@@ -80,12 +80,17 @@ public class HobbyStatusController {
         User userInDb = userDao.getOne(currentUser.getId());
         Hobby hobby = hobbyDao.getOne(hobbyId);
 
+        UserHobby userhobby = userHobbyDao.getOne(hobby.getId());
+        userhobby.setStatus(HobbyStatus.TRIED_IT);
+        userHobbyDao.save(userhobby);
+        return "redirect:/profile/status";
+    }
 
+    @PostMapping("profile/status/delete")
+    public String userHobbyStatus(@RequestParam long deleteId){
+        userHobbyDao.deleteById(deleteId);
+        return "redirect:/profile/status";
 
-
-
-
-        return "users/status-tool";
     }
 
 

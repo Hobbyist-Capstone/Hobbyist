@@ -29,6 +29,11 @@
                         <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
                         <button class="btn">TRIED IT</button>
                     </form>
+                    <form th:action="@{|/profile/status/delete|}" th:method="post">
+                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                        <button class="btn">DELETE IT</button>
+                    </form>
+
                 </div>
 
             </div>
