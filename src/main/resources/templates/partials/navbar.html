@@ -20,7 +20,7 @@
 <div class="navbar-fixed grey lighten-2" th:fragment="navbar">
     <nav class="nav grey lighten-2">
         <div class="nav-wrapper grey lighten-2">
-            <a href="https://hobbyist-app.xyz/" class="brand-logo black-text"><img class="navbar-icon"
+            <a href="https://hobbyist-app.xyz/hobbies" class="brand-logo black-text"><img class="navbar-icon"
                                                                                    width="60px" height="auto"
                                                                                    src="../../static/img/hobbyist-transparent.png"
                                                                                    alt="Hobbyist Logo"
@@ -32,6 +32,8 @@
                             class="material-icons left black-text">account_circle</i>Profile
                     </a></li>
                 </th:block>
+                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobbies" class="black-text"><i
+                        class="material-icons left black-text">art_track</i>All Hobbies</a></li>
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
                         href="https://hobbyist-app.xyz/hobby/create" class="black-text"><i
                         class="material-icons left black-text">rowing</i>Create Hobby</a></li>
@@ -69,6 +71,8 @@
                 class="material-icons left black-text">account_circle</i>Profile
         </a></li>
     </th:block>
+    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobbies" class="black-text"><i
+            class="material-icons left black-text">art_track</i>All Hobbies</a></li>
     <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobby/create"
                                                                         class="black-text"><i
             class="material-icons left black-text">rowing</i>Create Hobby</a></li>
