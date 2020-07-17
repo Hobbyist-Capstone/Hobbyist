@@ -62,11 +62,10 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/status")
-    public String addToInterests ( Model model, @RequestParam long hobbyId){
+    public String addToInterests (@RequestParam long hobbyId){
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
-
         Hobby hobby = hobbyDao.getOne(hobbyId);
 
         UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
@@ -75,6 +74,37 @@ public class HobbyStatusController {
         return "redirect:/hobbies";
     }
 
+    @PostMapping("profile/status/edit")
+    public String updateHobbyStatusTriedIt( @RequestParam long hobbyId){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+
+        UserHobby userhobby = userHobbyDao.getOne(hobby.getId());
+        userhobby.setStatus(HobbyStatus.TRIED_IT);
+        userHobbyDao.save(userhobby);
+        return "redirect:/profile/status";
+    }
+
+    @PostMapping("profile/status/edithobbyist")
+    public String updateHobbyStatusHobbyist( @RequestParam long hobbyId){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+
+        UserHobby userhobby = userHobbyDao.getOne(hobby.getId());
+        userhobby.setStatus(HobbyStatus.HOBBYIST);
+        userHobbyDao.save(userhobby);
+        return "redirect:/profile/status";
+    }
+
+
+    @PostMapping("profile/status/delete")
+    public String delete(@RequestParam long deleteId){
+        userHobbyDao.deleteById(deleteId);
+        return "redirect:/profile/status";
+
+    }
 
 
 

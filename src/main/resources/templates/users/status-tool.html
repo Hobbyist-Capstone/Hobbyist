@@ -23,6 +23,19 @@
             <div th:block th:each="userHobby : ${userHobbyList}">
                 <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
                 <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>
+
+                <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">
+                    <form th:action="@{|/profile/status/edit|}" th:method="post">
+                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
+                        <button class="btn">TRIED IT</button>
+                    </form>
+                    <form th:action="@{|/profile/status/delete|}" th:method="post">
+                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                        <button class="btn">DELETE IT</button>
+                    </form>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -33,6 +46,18 @@
             <div th:block th:each="userHobby : ${userHobbyList}">
                 <p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p>
                 <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>
+
+                <div th:if="${#strings.endsWith(userHobby.status, 'IT')}">
+                    <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
+                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
+                        <button class="btn">HOBBYIST</button>
+                    </form>
+                    <form th:action="@{|/profile/status/delete|}" th:method="post">
+                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                        <button class="btn">DELETE IT</button>
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
@@ -44,11 +69,19 @@
             <div th:block th:each="userHobby : ${userHobbyList}">
                 <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>
                 <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>
+
+                <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                    <form th:action="@{|/profile/status/delete|}" th:method="post">
+                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                        <button class="btn">DELETE IT</button>
+                    </form>
+                </div>
             </div>
         </div>
 
     </div>
 </div>
+
 
 
     <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
@@ -57,6 +90,7 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script th:src="@{/JS/materialize.js}"></script>
     <script th:src="@{/JS/status-tool.js}"></script>
+
 
 </body>
 </html>

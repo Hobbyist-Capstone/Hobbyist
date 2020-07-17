@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProfileController {
 
-    @GetMapping("/profile-view")
-    public String profile(Model model) {
-        return "users/profile-view";
-    }
+//    @GetMapping("/profile-view")
+//    public String profile(Model model) {
+//        return "users/profile-view";
+//    }
 
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
@@ -65,7 +65,6 @@ public class ProfileController {
 
     @PostMapping("users/{id}/edit")
     public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
-
         userToEdit.setId(id);
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
