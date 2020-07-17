@@ -23,13 +23,15 @@
             <div th:block th:each="userHobby : ${userHobbyList}">
                 <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
                 <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>
+
+                <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">
+                    <form th:action="@{|/profile/status/edit|}" th:method="post">
+                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
+                        <button class="btn">TRIED IT</button>
+                    </form>
+                </div>
+
             </div>
-
-            <form action="">
-                <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                <button class="btn"> Add to interested</button>
-            </form>
-
         </div>
     </div>
 
@@ -57,10 +59,10 @@
 </div>
 
 
-    <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
-    </script>
-    <script th:src="@{/JS/materialize.js}"></script>
-    <script th:src="@{/JS/status-tool.js}"></script>
+<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+</script>
+<script th:src="@{/JS/materialize.js}"></script>
+<script th:src="@{/JS/status-tool.js}"></script>
 
 </body>
 </html>

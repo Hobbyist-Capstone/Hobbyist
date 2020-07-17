@@ -12,7 +12,7 @@
     <h3 th:text="${hobby.category.getName()}"></h3>
 
 
-    <form th:action="@{|/profile/status|}" th:method="post">
+    <form th:action="@{|/profile/status|}" th:method="post" >
         <input type="hidden" name="hobbyId" th:value="${hobby.id}">
         <button class="btn"> Add to interested</button>
     </form>

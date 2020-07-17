@@ -62,11 +62,10 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/status")
-    public String addToInterests ( Model model, @RequestParam long hobbyId){
+    public String addToInterests (@RequestParam long hobbyId){
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
-
         Hobby hobby = hobbyDao.getOne(hobbyId);
 
         UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
@@ -75,6 +74,19 @@ public class HobbyStatusController {
         return "redirect:/hobbies";
     }
 
+    @PostMapping("profile/status/edit")
+    public String updateHobbyStatus( @RequestParam long hobbyId){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+
+
+
+
+
+
+        return "users/status-tool";
+    }
 
 
 
