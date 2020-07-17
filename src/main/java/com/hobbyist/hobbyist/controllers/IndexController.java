@@ -32,16 +32,11 @@ public class IndexController {
     }
 
     @GetMapping("/")
-
-    public String index(Model model, String username) {
-
-        model.addAttribute("hobbies", hobbyDao.findAll());
     public String index(Model model) {
         model.addAttribute("c1", hobbyDao.filterByCategory(1L));
         model.addAttribute("c2", hobbyDao.filterByCategory(2L));
         model.addAttribute("c3", hobbyDao.filterByCategory(3L));
         model.addAttribute("c4", hobbyDao.filterByCategory(4L));
-
         return "index/index";
     }
 }
