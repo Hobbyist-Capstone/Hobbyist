@@ -3,52 +3,46 @@ package com.hobbyist.hobbyist.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ratings")
+@Table(name = "ratings")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = true)
-    private byte difficulty;
-
-    @Column(nullable = true)
-    private byte price;
-
-    @Column(nullable = true)
-    private byte patience;
-
-    @Column(nullable = true)
     private byte overallRating;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="hobby_id")
+    @JoinColumn(name = "hobby_id")
     private Hobby hobby;
 
 
-
-    public Rating(){}
-
-    public Rating(long id, byte difficulty, byte price, byte patience, byte overallRating, User user) {
-        this.id = id;
-        this.difficulty = difficulty;
-        this.price = price;
-        this.patience = patience;
-        this.overallRating = overallRating;
-        this.user = user;
+    public Rating() {
     }
 
-    public Rating(byte difficulty, byte price, byte patience, byte overallRating, User user) {
-        this.difficulty = difficulty;
-        this.price = price;
-        this.patience = patience;
+    public Rating(byte overallRating, User user, Hobby hobby) {
         this.overallRating = overallRating;
         this.user = user;
+        this.hobby = hobby;
+    }
 
+    public Rating(long id, byte overallRating, User user, Hobby hobby) {
+        this.id = id;
+        this.overallRating = overallRating;
+        this.user = user;
+        this.hobby = hobby;
+    }
+
+    public Hobby getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(Hobby hobby) {
+        this.hobby = hobby;
     }
 
     public long getId() {
@@ -57,30 +51,6 @@ public class Rating {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public byte getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(byte difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public byte getPrice() {
-        return price;
-    }
-
-    public void setPrice(byte price) {
-        this.price = price;
-    }
-
-    public byte getPatience() {
-        return patience;
-    }
-
-    public void setPatience(byte patience) {
-        this.patience = patience;
     }
 
     public byte getOverallRating() {

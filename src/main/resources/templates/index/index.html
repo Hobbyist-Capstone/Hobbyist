@@ -19,14 +19,6 @@
 <!--    </a>-->
 <!--</div>-->
 
-<!--  test search engine  -->
-<!--    Search:-->
-<!--    <form action="/search">-->
-<!--        <input type="text" name="term" placeholder="Search Hobby">-->
-<!--        <button>Search</button>-->
-<!--    </form>-->
-
-
 <!--  template to grab info from db -->
 <!--<div th:each="c : ${c1}">-->
 <!--    <h1 th:text="${c.title}"></h1>-->
@@ -40,31 +32,32 @@
 
 
 <!--    RESPONSIVE NAVEBAR-->
-
-<div class="navbar-fixed">
-    <nav class="nav">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo black-text"><i class="material-icons right black-text">donut_large</i>Hobbyist</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
-                </li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
-                    Tracker</a></li>
-                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
-                    Us</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<ul class="sidenav" id="mobile-demo">
-    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>
-    </li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby
-        Tracker</a></li>
-    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
-        Us</a></li>
-</ul>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
+<!--<div class="navbar-fixed">-->
+<!--    <nav class="nav">-->
+<!--        <div class="nav-wrapper">-->
+<!--            <a href="#" class="brand-logo black-text"><i class="material-icons right black-text">donut_large</i>Hobbyist</a>-->
+<!--            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>-->
+<!--            <ul class="right hide-on-med-and-down">-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
+<!--                </li>-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
+<!--                    Tracker</a></li>-->
+<!--                <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
+<!--                    Us</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</div>-->
+<!--<ul class="sidenav" id="mobile-demo">-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">account_circle</i>Profile</a>-->
+<!--    </li>-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">view_column</i>Hobby-->
+<!--        Tracker</a></li>-->
+<!--    <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About-->
+<!--        Us</a></li>-->
+<!--</ul>-->
 
 <!--Small M and S and XS Site-->
 
@@ -142,28 +135,32 @@
     </div>
 </div>
 
-<!--<div class="live__scroll">-->
-<!--    <div class="row text-center ml-1">-->
-<!--        <div class="col s11 m5 live__scroll&#45;&#45;box" th:each="c : ${c1}">-->
-<!--            &lt;!&ndash;            PUT CARD CODE HERE&ndash;&gt;-->
-<!--            <div class="card">-->
-<!--                <div class="card-image">-->
-<!--                    <img th:src="@{/img/tools.jpg}">-->
-<!--                    <span class="card-title" th:text="${c.title}">Card Title</span>-->
-<!--                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>-->
-<!--                </div>-->
-<!--                <div class="card-content">-->
-<!--                    <p th:text="${c.description}"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="live__scroll">
+    <div class="row text-center ml-1">
+        <div class="col s11 m5 live__scroll--box" th:each="h : ${hobbies}">
+            <!--            PUT CARD CODE HERE-->
+            <a th:href="${'/hobby/'+ h.id}">
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${h.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
+                </div>
+                <div class="card-content">
+                    <p th:text="${h.description}"></p>
+                    <p th:each="c : ${h.categories}">Category: <span th:text="${c.name}"></span></p>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
 
 <!--<div class="live__scroll">-->
 <!--    <div class="row text-center ml-1">-->
 <!--        <div class="col s11 m5 live__scroll&#45;&#45;box" th:each="c : ${c2}">-->
 <!--            &lt;!&ndash;            PUT CARD CODE HERE&ndash;&gt;-->
+<!--            <a th:href="${'/hobby/'+ c.id}">-->
 <!--            <div class="card">-->
 <!--                <div class="card-image">-->
 <!--                    <img th:src="@{/img/tools.jpg}">-->
@@ -174,12 +171,40 @@
 <!--                    <p th:text="${c.description}"></p>-->
 <!--                </div>-->
 <!--            </div>-->
+<!--            </a>-->
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
 
 
 
+<!--Javascript-->
+
+<!--<div class="live__scroll">-->
+<!--    <div class="row text-center ml-1">-->
+<!--        <div class="col s11 m5 live__scroll&#45;&#45;box" th:each="c : ${c3}">-->
+<!--            &lt;!&ndash;            PUT CARD CODE HERE&ndash;&gt;-->
+<!--            <a th:href="${'/hobby/'+ c.id}">-->
+<!--            <div class="card">-->
+<!--                <div class="card-image">-->
+<!--                    <img th:src="@{/img/tools.jpg}">-->
+<!--                    <span class="card-title" th:text="${c.title}">Card Title</span>-->
+<!--                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>-->
+<!--                </div>-->
+<!--                <div class="card-content">-->
+<!--                    <p th:text="${c.description}"></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9191239332d1ff110022975b74ca2899df27ff55
 <!--&lt;!&ndash;Javascript&ndash;&gt;-->
 
 
@@ -200,6 +225,10 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
+<<<<<<< HEAD
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+=======
+>>>>>>> 9191239332d1ff110022975b74ca2899df27ff55
 
 <script th:src="@{/JS/materialize.js}">
     M.AutoInit();

@@ -8,13 +8,18 @@
 <div>
     <h1 th:text="${hobby.title}"></h1>
     <h2 th:text="${hobby.description}"></h2>
-    <div th:each="rating : ${hobby.hobbyRating}">
-        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>
-        <p>Cost to Start: <span th:text="${rating.price}"></span></p>
-        <p>Patience: <span th:text="${rating.patience}"></span></p>
-        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>
-    </div>
-<!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
+    <h2 th:text="${hobby.image}"></h2>
+    <h3 th:each="c : ${hobby.categories}">Category <span th:text="${c.name}"></span></h3>
+    <p>Patience: <span th:text="${hobby.patience}"></span></p>
+    <p>Difficulty: <span th:text="${hobby.difficulty}"></span></p>
+    <p>Cost: <span th:text="${hobby.cost}"></span></p>
+    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>
+    <form th:action="${'/hobby/'+ hobby.id +'/edit'}">
+        <button>Edit</button>
+    </form>
+    <form th:action="${'/hobby/'+ hobby.id +'/delete'}">
+        <button>Delete</button>
+    </form>
 </div>
 </body>
 </html>

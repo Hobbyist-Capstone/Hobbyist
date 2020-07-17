@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
+    Title:
+    <input th:field="*{title}">
+    Body:
+    <input th:field="*{description}">
+
+    Category:
+    <div id="categories" th:each="c : ${categories}">
+        <label>
+            <input name="categories" type="checkbox" th:value="${c.id}" th:text="${c.name}"/>
+        </label>
+    </div>
+    Patience:
+    <th:block th:field="*{patience}">
+        <select name="patience" th:type="radio">
+            <option th:value="1">1</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3</option>
+            <option th:value="4">4</option>
+        </select>
+    </th:block>
+
+    Difficulty:
+    <th:block th:field="*{difficulty}">
+        <select name="difficulty" th:type="radio">
+            <option th:value="1">1</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3</option>
+            <option th:value="4">4</option>
+        </select>
+    </th:block>
+    Cost:
+    <th:block th:field="*{cost}">
+        <select name="cost" th:type="radio">
+            <option th:value="1">1</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3</option>
+            <option th:value="4">4</option>
+        </select>
+    </th:block>
+    Upload Image
+    <input th:field="*{image}">
+    <button class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

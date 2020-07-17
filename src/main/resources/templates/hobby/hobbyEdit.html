@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hobby</title>
+</head>
+<body>
+<form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
+    Title:
+    <input th:field="*{title}" type="text">
+    Body:
+    <input th:field="*{description}" type="text">
+    <button>Save Changes</button>
+</form>
+<form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+</body>
+</html>
