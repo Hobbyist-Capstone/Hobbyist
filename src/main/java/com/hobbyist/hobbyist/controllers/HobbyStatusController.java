@@ -75,7 +75,7 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/status/edit")
-    public String updateHobbyStatus( @RequestParam long hobbyId){
+    public String updateHobbyStatusTriedIt( @RequestParam long hobbyId){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
         Hobby hobby = hobbyDao.getOne(hobbyId);
@@ -86,8 +86,21 @@ public class HobbyStatusController {
         return "redirect:/profile/status";
     }
 
+    @PostMapping("profile/status/edithobbyist")
+    public String updateHobbyStatusHobbyist( @RequestParam long hobbyId){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+
+        UserHobby userhobby = userHobbyDao.getOne(hobby.getId());
+        userhobby.setStatus(HobbyStatus.HOBBYIST);
+        userHobbyDao.save(userhobby);
+        return "redirect:/profile/status";
+    }
+
+
     @PostMapping("profile/status/delete")
-    public String userHobbyStatus(@RequestParam long deleteId){
+    public String delete(@RequestParam long deleteId){
         userHobbyDao.deleteById(deleteId);
         return "redirect:/profile/status";
 
