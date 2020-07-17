@@ -101,7 +101,6 @@
         </div>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br>
 
 
 <div class="live__scroll">
@@ -130,26 +129,25 @@
             </a>
         </div>
     </div>
-</div>
 
 <div class="live__scroll">
     <div class="row text-center ml-1">
         <div class="col s11 m5 live__scroll--box" th:each="c : ${c2}">
             <!--            PUT CARD CODE HERE-->
             <a th:href="${'/hobby/'+ c.id}">
-                <div class="card">
-                    <div class="card-image">
-                        <img th:src="@{/img/tools.jpg}">
-                        <span class="card-title" th:text="${c.title}">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p th:text="${c.description}"></p>
-                    </div>
-                    <div class="card-content">
-                        <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                    </div>
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${c.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
                 </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+                <div class="card-content">
+                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
+                </div>
+            </div>
             </a>
         </div>
     </div>
@@ -160,54 +158,30 @@
         <div class="col s11 m5 live__scroll--box" th:each="c : ${c3}">
             <!--            PUT CARD CODE HERE-->
             <a th:href="${'/hobby/'+ c.id}">
-                <div class="card">
-                    <div class="card-image">
-                        <img th:src="@{/img/tools.jpg}">
-                        <span class="card-title" th:text="${c.title}">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p th:text="${c.description}"></p>
-                    </div>
-                    <div class="card-content">
-                        <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                    </div>
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${c.title}">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
                 </div>
+                <div class="card-content">
+                    <p th:text="${c.description}"></p>
+                </div>
+                <div class="card-content">
+                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
+                </div>
+            </div>
             </a>
         </div>
     </div>
 </div>
 
-<div class="live__scroll">
-    <div class="row text-center ml-1">
-        <div class="col s11 m5 live__scroll--box" th:each="c : ${c4}">
-            <!--            PUT CARD CODE HERE-->
-            <a th:href="${'/hobby/'+ c.id}">
-                <div class="card">
-                    <div class="card-image">
-                        <img th:src="@{/img/tools.jpg}">
-                        <span class="card-title" th:text="${c.title}">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p th:text="${c.description}"></p>
-                    </div>
-                    <div class="card-content">
-                        <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
-</script>
+<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/status-tool.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
-<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </body>
 </html>
