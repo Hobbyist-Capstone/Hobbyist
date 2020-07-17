@@ -1,25 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="partials/head :: head('Hobbyist')">
+    <meta charset="UTF-8"/>
+
 </head>
 <body>
-<div>
-    <h1 th:text="${hobby.title}"></h1>
-    <h2 th:text="${hobby.description}"></h2>
-    <h2 th:text="${hobby.image}"></h2>
-    <h3 th:each="c : ${hobby.categories}">Category <span th:text="${c.name}"></span></h3>
-    <p>Patience: <span th:text="${hobby.patience}"></span></p>
-    <p>Difficulty: <span th:text="${hobby.difficulty}"></span></p>
-    <p>Cost: <span th:text="${hobby.cost}"></span></p>
-    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>
-    <form th:action="${'/hobby/'+ hobby.id +'/edit'}">
-        <button>Edit</button>
-    </form>
-    <form th:action="${'/hobby/'+ hobby.id +'/delete'}">
-        <button>Delete</button>
-    </form>
+<!--    <form th:action="${'/hobby/'+ hobby.id +'/edit'}">-->
+<!--        <button>Edit</button>-->
+<!--    </form>-->
+<!--    <form th:action="${'/hobby/'+ hobby.id +'/delete'}">-->
+<!--        <button>Delete</button>-->
+<!--    </form>-->
+<div class="container">
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10 center-align">
+            <div class="card">
+                <div class="card-image">
+                    <img class="photo" th:src="@{/img/tools.jpg}">
+                    <span class="card-title" th:text="${hobby.title}"></span>
+                    <form th:action="@{|/profile/status|}" th:method="post">
+                        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">favorite_border</i>
+                        </button>
+                    </form>
+                </div>
+                <div class="card-content">
+                    <p th:text="${hobby.description}"></p>
+                    <table class="striped">
+                        <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>Rating</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Start Up Cost</td>
+                            <td><span th:text="${hobby.cost}"></span>/4</td>
+                        </tr>
+                        <tr>
+                            <td>Patience</td>
+                            <td><span th:text="${hobby.patience}"></span>/4</td>
+                        </tr>
+                        <tr>
+                            <td>Difficulty</td>
+                            <td><span th:text="${hobby.difficulty}"></span>/4</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+
+
 </div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="materialize.js"></script>
 </body>
 </html>
