@@ -7,18 +7,6 @@
 <body>
 
 
-<!--<div th:each ="user :${users}" sec:authorize ="!isAnonymous()">-->
-<!--<a th:href="@{/profile/{username}(username=${user.username})}"><button>Profile</button></a>-->
-<!--</div>-->
-
-
-<!--    if authenticated-->
-<!--<div sec:authorize ="isAuthenticated()" >-->
-<!--    <a th:href="${'/profile/' + user.id}">-->
-<!--        <button class="btn btn-outline-info">Profile</button>-->
-<!--    </a>-->
-<!--</div>-->
-
 <!--  template to grab info from db -->
 <!--<div th:each="c : ${c1}">-->
 <!--    <h1 th:text="${c.title}"></h1>-->
@@ -147,18 +135,21 @@
                     <div class="card-image">
                         <img th:src="@{/img/tools.jpg}">
                         <span class="card-title" th:text="${c.title}">Card Title</span>
+
                         <a class="btn-floating halfway-fab waves-effect red"><i
                                 class="material-icons">favorite_border</i></a>
                     </div>
                     <div class="card-content">
                         <p th:text="${c.description}"></p>
                         <p th:each="cat : ${c.categories}">Category: <span th:text="${cat.name}"></span></p>
+
                     </div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+
 
 <div class="live__scroll">
     <div class="row text-center ml-1">
@@ -209,6 +200,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="live__scroll">
     <div class="row text-center ml-1">

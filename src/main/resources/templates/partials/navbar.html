@@ -17,6 +17,13 @@
                     Tracker</a></li>
                 <li><a href="" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>About
                     Us</a></li>
+
+<!--             test   -->
+                <th:block sec:authorize="isAuthenticated()">
+                <li><a th:href="@{/profile}" class="black-text"><i class="material-icons left black-text">wifi_tethering</i>Profile
+                </a></li>
+                </th:block>
+
             </ul>
         </div>
     </nav>
