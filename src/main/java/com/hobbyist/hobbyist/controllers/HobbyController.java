@@ -2,6 +2,7 @@ package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.Category;
 import com.hobbyist.hobbyist.models.Hobby;
+
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
@@ -10,9 +11,15 @@ import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @Controller
 public class HobbyController {
@@ -100,4 +107,5 @@ public class HobbyController {
         model.addAttribute("hobbies", hobbies);
         return "hobbies/allHobbiesView";
     }
+
 }

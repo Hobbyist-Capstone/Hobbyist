@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Status Tool</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../static/css/status-tool.css" th:href="@{/css/status-tool.css}" type="text/css">
+
+    <script src="https://kit.fontawesome.com/c9267f9abb.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="row tool grey darken-2">
+    <div id="interested" class="col s1 grey darken-4">
+        <h5 class="title">INTERESTED</h5>
+        <div class="content">
+            <div th:block th:each="userHobby : ${userHobbyList}">
+                <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="learning" class="col s10 grey lighten-5">
+        <h5 class="title">LEARNING</h5>
+        <div class="content">
+            <div th:block th:each="userHobby : ${userHobbyList}">
+                <p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="hobbyist" class="col s1 grey darken-4">
+        <h5 class="title">HOBBYIST</h5>
+        <div class="content">
+            <div th:block th:each="userHobby : ${userHobbyList}">
+                <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+    </script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script th:src="@{/JS/materialize.js}"></script>
+    <script th:src="@{/JS/status-tool.js}"></script>
+
+</body>
+</html>

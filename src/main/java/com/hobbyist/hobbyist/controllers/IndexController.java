@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class IndexController {
@@ -13,8 +14,10 @@ public class IndexController {
     private CategoryRepository categoryDao;
     private HobbyRepository hobbyDao;
 
-    public IndexController(HobbyRepository hobbyDao) {
+
+    public IndexController(HobbyRepository hobbyDao, CategoryRepository categoryDao) {
         this.hobbyDao = hobbyDao;
+        this.categoryDao = categoryDao;
     }
 
     @GetMapping("/")

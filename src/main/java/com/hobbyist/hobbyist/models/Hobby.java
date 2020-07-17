@@ -33,6 +33,8 @@ public class Hobby {
     @OneToOne
     private User createdBy;
 
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_hobbies",

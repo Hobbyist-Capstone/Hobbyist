@@ -11,14 +11,6 @@ function closeLoginForm() {
     document.getElementById("small-login-form").style.display = "none";
 }
 
-function openJoinForm() {
-    document.getElementById("small-join-form").style.display = "block";
-    closeLoginForm()
-}
-
-function closeJoinForm() {
-    document.getElementById("small-join-form").style.display = "none";
-}
 
 // Large
 
@@ -31,14 +23,10 @@ function closeLargeLoginForm() {
     document.getElementById("large-login-form").style.display = "none";
 }
 
-function openLargeJoinForm() {
-    document.getElementById("large-join-form").style.display = "block";
-    closeLargeLoginForm()
-}
 
-function closeLargeJoinForm() {
-    document.getElementById("large-join-form").style.display = "none";
-}
+
+
+
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     console.log(M);
