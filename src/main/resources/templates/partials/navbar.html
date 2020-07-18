@@ -17,9 +17,9 @@
 
 </head>
 <body>
-<div class="navbar-fixed grey lighten-2" th:fragment="navbar">
-    <nav class="nav grey lighten-2" style="display:block;">
-        <div class="nav-wrapper grey lighten-2" >
+<div class="navbar-fixed" th:fragment="navbar">
+    <nav class="nav" style="display:block;">
+        <div class="nav-wrapper blue-grey lighten-5" >
             <a href="https://hobbyist-app.xyz/hobbies" class="brand-logo black-text"><img class="navbar-icon"
                                                                                           width="60px" height="auto"
                                                                                           src="../../static/img/hobbyist-transparent.png"
@@ -71,7 +71,7 @@
 </div>
 
 <!--Small Navbar-->
-<ul class="sidenav" id="mobile-demo" th:fragment="navbar-small">
+<ul class="sidenav blue-grey lighten-5" id="mobile-demo" th:fragment="navbar-small">
     <th:block sec:authorize="isAuthenticated()">
         <li style="font-family:Bungee;"><a th:href="@{/profile}" class="black-text"><i
                 class="material-icons left black-text">account_circle</i>Profile
