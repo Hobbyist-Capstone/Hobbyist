@@ -1,6 +1,5 @@
 package com.hobbyist.hobbyist.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -32,7 +31,6 @@ public class Hobby {
 
     @OneToOne
     private User createdBy;
-
 
 
     @ManyToMany(cascade = CascadeType.ALL)

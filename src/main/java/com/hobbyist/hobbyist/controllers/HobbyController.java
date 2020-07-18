@@ -8,6 +8,7 @@ import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.RatingRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HobbyController {
+
+//    @Value("${filestack.api.key}")
+//    private String apiKey;
 
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
@@ -58,6 +62,7 @@ public class HobbyController {
     public String createHobbyForm(Model model) {
         model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("hobby", new Hobby());
+//        model.addAttribute("apiKey", apiKey);
         return "hobby/create";
     }
 

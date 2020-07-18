@@ -70,7 +70,7 @@
             </div>
             <label for="upload"></label>
             <button class="btn btn-primary" id="upload" type="button" name="upload">Upload Image</button>
-            <input id="stashFileStackURL" name="stashFileStackURL" th:value="replace" th:field="*{image}" type="hidden">
+            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}" type="hidden">
             <button class="btn btn-primary">Submit</button>
         </form>
     </div>
@@ -94,7 +94,7 @@
             }
     }
 
-    const client = filestack.init("apiCode");
+    const client = filestack.init("apiKey");
 
     $("#upload").click(function () {
         client.picker(options).open()
