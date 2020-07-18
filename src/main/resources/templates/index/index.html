@@ -19,13 +19,14 @@
 <!--    RESPONSIVE NAVBAR-->
 
 
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
+
 
 <!--Small M and S and XS Site-->
 
 <div id="main-container-small" class="show-on-medium-and-down hide-on-large-only">
     <div id="above-fold-small">
+        <div th:replace="partials/navbar :: navbar"></div>
+        <ul th:replace="partials/navbar :: navbar-small"></ul>
 
 
         <div id="small-title-container">
@@ -76,7 +77,8 @@
 <!--Desktop L and XL Site-->
 <div id="main-container-large" class="show-on-large hide-on-med-and-down">
     <div id="above-fold-large">
-
+        <div th:replace="partials/navbar :: navbar"></div>
+        <ul th:replace="partials/navbar :: navbar-small"></ul>
         <h1 id="main-title-large">Hobbyist</h1>
 
         <div id="large-main-buttons" class="center-align">

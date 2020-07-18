@@ -41,14 +41,13 @@ html {
 
 }
 
-
-
-
 /*Desktop L and XL Site*/
 
 #main-container-large {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow-y: hidden;
+
 }
 /*Index - Above the fold*/
 
