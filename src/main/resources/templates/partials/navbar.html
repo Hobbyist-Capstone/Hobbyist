@@ -17,14 +17,14 @@
 
 </head>
 <body>
-<div class="navbar-fixed grey lighten-2" th:fragment="navbar">
-    <nav class="nav grey lighten-2">
-        <div class="nav-wrapper grey lighten-2">
-            <a href="https://hobbyist-app.xyz/" class="brand-logo black-text"><img class="navbar-icon"
-                                                                                   width="60px" height="auto"
-                                                                                   src="../../static/img/hobbyist-transparent.png"
-                                                                                   alt="Hobbyist Logo"
-                                                                                   th:src="@{/img/hobbyist-transparent.png}"/></a>
+<div class="navbar-fixed" th:fragment="navbar">
+    <nav class="nav" style="display:block;">
+        <div class="nav-wrapper blue-grey lighten-5" >
+            <a href="https://hobbyist-app.xyz/hobbies" class="brand-logo black-text"><img class="navbar-icon"
+                                                                                          width="60px" height="auto"
+                                                                                          src="../../static/img/hobbyist-transparent.png"
+                                                                                          alt="Hobbyist Logo"
+                                                                                          th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <th:block sec:authorize="isAuthenticated()">
@@ -32,25 +32,33 @@
                             class="material-icons left black-text">account_circle</i>Profile
                     </a></li>
                 </th:block>
+
+                <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="black-text"><i
+                        class="material-icons left black-text">art_track</i>All Hobbies</a></li>
+
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/hobby/create" class="black-text"><i
+                        th:href="@{/hobby/create}" class="black-text"><i
                         class="material-icons left black-text">rowing</i>Create Hobby</a></li>
+
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/profile/status" class="black-text"><i
+                        th:href="@{/profile/status}" class="black-text"><i
                         class="material-icons left black-text">view_column</i>Hobby
                     Tracker</a></li>
-                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i
+
+                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
                         class="material-icons left black-text">group</i>About
                     Us</a></li>
-                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz"
-                                                                                     class="black-text"><i
-                        class="material-icons left black-text">favorite</i>Login</a></li>
+
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/register" class="black-text"><i
+                        th:href="@{/}" class="black-text"><i
+                        class="material-icons left black-text">favorite</i>Login</a></li>
+
+                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
+                        th:href="@{/register}" class="black-text"><i
                         class="material-icons left black-text">add</i>Join</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
-<!--                    <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
+                    <!--                    <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
                     <form th:action="@{/logout}" th:method="post">
                         <button style="font-family:Bungee; margin:10px" id="logout-button">Logout</button>
                     </form>
@@ -63,31 +71,39 @@
 </div>
 
 <!--Small Navbar-->
-<ul class="sidenav" id="mobile-demo" th:fragment="navbar-small">
+<ul class="sidenav blue-grey lighten-5" id="mobile-demo" th:fragment="navbar-small">
     <th:block sec:authorize="isAuthenticated()">
         <li style="font-family:Bungee;"><a th:href="@{/profile}" class="black-text"><i
                 class="material-icons left black-text">account_circle</i>Profile
         </a></li>
     </th:block>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobby/create"
+
+    <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="black-text"><i
+            class="material-icons left black-text">art_track</i>All Hobbies</a></li>
+
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/hobby/create}"
                                                                         class="black-text"><i
             class="material-icons left black-text">rowing</i>Create Hobby</a></li>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/profile/status"
+
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/profile/status}"
                                                                         class="black-text"><i
             class="material-icons left black-text">view_column</i>Hobby
         Tracker</a></li>
-    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i
+
+    <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
             class="material-icons left black-text">wifi_tethering</i>About
         Us</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz"
+
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}"
                                                                          class="black-text"><i
             class="material-icons left black-text">favorite</i>Login</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register"
+
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/register}"
                                                                          class="black-text"><i
             class="material-icons left black-text">add</i>Join</a></li>
 
     <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
-<!--        <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
+        <!--        <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
         <form th:action="@{/logout}" th:method="post">
             <button style="font-family:Bungee; margin-left:50px;" id="small-logout-button">Logout</button>
         </form>

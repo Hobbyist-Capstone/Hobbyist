@@ -19,13 +19,14 @@
 <!--    RESPONSIVE NAVBAR-->
 
 
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
+
 
 <!--Small M and S and XS Site-->
 
 <div id="main-container-small" class="show-on-medium-and-down hide-on-large-only">
     <div id="above-fold-small">
+        <div th:replace="partials/navbar :: navbar"></div>
+        <ul th:replace="partials/navbar :: navbar-small"></ul>
 
 
         <div id="small-title-container">
@@ -34,15 +35,22 @@
 
 
         <!--Small Buttons Section-->
-        <div sec:authorize="!isAuthenticated()" id="small-main-buttons" class="center-align">
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
+        <div id="small-main-buttons" class="center-align">
+            <button sec:authorize="!isAuthenticated()" class="btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
-                <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                <button sec:authorize="!isAuthenticated()" class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                         type="submit" name="action">Join
                 </button>
             </a>
+            <div id="small-hobbies-button">
+                <a th:href="${'/hobbies'}">
+                    <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                            type="submit" name="action">View All Hobbies
+                    </button>
+                </a>
+            </div>
         </div>
 
         <!--        Small Form-->
@@ -69,18 +77,26 @@
 <!--Desktop L and XL Site-->
 <div id="main-container-large" class="show-on-large hide-on-med-and-down">
     <div id="above-fold-large">
-
+        <div th:replace="partials/navbar :: navbar"></div>
+        <ul th:replace="partials/navbar :: navbar-small"></ul>
         <h1 id="main-title-large">Hobbyist</h1>
 
-        <div sec:authorize="!isAuthenticated()" id="large-main-buttons" class="center-align">
-            <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+        <div id="large-main-buttons" class="center-align">
+            <button sec:authorize="!isAuthenticated()" class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
-                <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                <button sec:authorize="!isAuthenticated()" class="btn grey darken-4 waves-effect waves-light btn-large open-button"
                         type="submit" name="action">Join
                 </button>
             </a>
+            <div id="large-hobbies-button">
+            <a th:href="${'/hobbies'}">
+                <button class="btn grey darken-4 waves-effect waves-light btn-large open-button"
+                        type="submit" name="action">View All Hobbies
+                </button>
+            </a>
+            </div>
         </div>
 
         <div class="form-popup form-popup-large" id="large-login-form">
@@ -103,79 +119,34 @@
 </div>
 
 
-<div class="live__scroll">
-    <div class="row text-center ml-1">
-        <div class="col s11 m5 live__scroll--box" th:each="c : ${c1}">
-            <!--            PUT CARD CODE HERE-->
-            <a th:href="${'/hobby/'+ c.id}">
-            <div class="card">
-                <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
-                    <span class="card-title" th:text="${c.title}">Card Title</span>
-                    <form th:action="@{|/profile/status|}" th:method="post">
-                        <input type="hidden" name="hobbyId" th:value="${c.id}">
-                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">
-                            <i class="material-icons">favorite_border</i>
-                        </button>
-                    </form>
-                </div>
-                <div class="card-content">
-                    <p th:text="${c.description}"></p>
-                </div>
-                <div class="card-content">
-                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                </div>
-            </div>
-            </a>
-        </div>
-    </div>
-</div>
+<!--<div class="live__scroll">-->
+<!--    <div class="row text-center ml-1">-->
+<!--        <div class="col s11 m5 live__scroll&#45;&#45;box" th:each="c : ${c1}">-->
+<!--            &lt;!&ndash;            PUT CARD CODE HERE&ndash;&gt;-->
+<!--            <a th:href="${'/hobby/'+ c.id}">-->
+<!--            <div class="card">-->
+<!--                <div class="card-image">-->
+<!--                    <img th:src="@{/img/tools.jpg}">-->
+<!--                    <span class="card-title" th:text="${c.title}">Card Title</span>-->
+<!--                    <form th:action="@{|/profile/status|}" th:method="post">-->
+<!--                        <input type="hidden" name="hobbyId" th:value="${c.id}">-->
+<!--                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">-->
+<!--                            <i class="material-icons">favorite_border</i>-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="card-content">-->
+<!--                    <p th:text="${c.description}"></p>-->
+<!--                </div>-->
+<!--                <div class="card-content">-->
+<!--                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<div class="live__scroll">
-    <div class="row text-center ml-1">
-        <div class="col s11 m5 live__scroll--box" th:each="c : ${c2}">
-            <!--            PUT CARD CODE HERE-->
-            <a th:href="${'/hobby/'+ c.id}">
-            <div class="card">
-                <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
-                    <span class="card-title" th:text="${c.title}">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
-                </div>
-                <div class="card-content">
-                    <p th:text="${c.description}"></p>
-                </div>
-                <div class="card-content">
-                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                </div>
-            </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="live__scroll">
-    <div class="row text-center ml-1">
-        <div class="col s11 m5 live__scroll--box" th:each="c : ${c3}">
-            <!--            PUT CARD CODE HERE-->
-            <a th:href="${'/hobby/'+ c.id}">
-            <div class="card">
-                <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
-                    <span class="card-title" th:text="${c.title}">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect red"><i class="material-icons">favorite_border</i></a>
-                </div>
-                <div class="card-content">
-                    <p th:text="${c.description}"></p>
-                </div>
-                <div class="card-content">
-                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>
-                </div>
-            </div>
-            </a>
-        </div>
-    </div>
-</div>
 
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>

@@ -41,14 +41,13 @@ html {
 
 }
 
-
-
-
 /*Desktop L and XL Site*/
 
 #main-container-large {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow-y: hidden;
+
 }
 /*Index - Above the fold*/
 
@@ -61,7 +60,8 @@ html {
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: 'Bungee Shade', cursive;
-    overflow-y: scroll;
+    overflow-y: hidden;
+
 }
 
 
@@ -89,6 +89,10 @@ html {
     left: 75%;
     display: block;
     margin: 20px;
+}
+
+#large-hobbies-button, #small-hobbies-button {
+    margin-top: 5px;
 }
 
 .forms {
@@ -167,17 +171,17 @@ html {
 
 /*Scroll Window*/
 
-.live__scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-.live__scroll .row{
-    display:block;
-}
-.live__scroll .live__scroll--box {
-    display: inline-block;
-    float: none;
-    padding: 15px;
-}
+/*.live__scroll {*/
+/*    overflow-x: auto;*/
+/*    overflow-y: hidden;*/
+/*    white-space: nowrap;*/
+/*}*/
+/*.live__scroll .row{*/
+/*    display:block;*/
+/*}*/
+/*.live__scroll .live__scroll--box {*/
+/*    display: inline-block;*/
+/*    float: none;*/
+/*    padding: 15px;*/
+/*}*/
 
