@@ -26,7 +26,7 @@ public class FriendController {
         this.friendListDao = friendListDao;
     }
 
-    @GetMapping("/profile/friends-request")
+    @PostMapping("/profile/friends-request")
     public String sendFriendRequest(@RequestParam long userId) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());

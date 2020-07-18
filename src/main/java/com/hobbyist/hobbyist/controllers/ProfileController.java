@@ -56,15 +56,18 @@ public class ProfileController {
     public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
         User user = userDao.findByUsername(username);
         vModel.addAttribute("user", user);
+
         return "users/publicProfiles";
     }
 
     @GetMapping("/profile/{username}")
     public String showUsersProfile(Model vModel, @PathVariable String username) {
-
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        vModel.addAttribute("user", userInDb);
+        vModel.addAttribute("friendsList", userInDb.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        vModel.addAttribute("userName", user.getUsername());
+        vModel.addAttribute("userName", userInDb.getUsername());
         return "users/profile-view";
     }
 
