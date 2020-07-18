@@ -21,41 +21,12 @@
 <form th:action="@{/search}" method="post">
     <label for="search">Search:</label>
     <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
-    <button name="search" type="button">Submit</button>
 </form>
 <form th:action="@{/hobbies}" method="get">
-    <button type="button">Clear</button>
+    <label for="clear">
+        <button id="clear" name="clear" type="submit" class="btn btn-primary">Clear</button>
+    </label>
 </form>
-<form th:action="@{/category}" method="post">
-    <div id="category" th:each="c : ${category}">
-        <label>
-            <input name="category" type="checkbox" th:value="${c.id}" th:text="${c.name}"/>
-        </label>
-    </div>
-    <button type="button">Filter</button>
-</form>
-<form th:action="@{/hobbies}" method="get">
-    <button type="button">Clear</button>
-</form>
-<!--<div th:each="hobby : ${hobbies}">-->
-<!--    <h1 th:text="${hobby.title}"></h1>-->
-<!--    <h2 th:text="${hobby.id}"></h2>-->
-<!--    <h2 th:text="${hobby.description}"></h2>-->
-<!--    <h3 th:each="c: ${hobby.categories}" th:text="${c.name}"></h3>-->
-
-
-<!--    <form th:action="@{|/profile/status|}" th:method="post">-->
-<!--        <input type="hidden" name="hobbyId" th:value="${hobby.id}">-->
-<!--        <button class="btn"> Add to interested</button>-->
-<!--    </form>-->
-
-<!--    <div th:each="rating : ${hobby.hobbyRating}">-->
-<!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
-<!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->
-<!--        <p>Patience: <span th:text="${rating.patience}"></span></p>-->
-<!--        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>-->
-<!--    </div>-->
-<!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
 
 <h1>All Hobbies</h1>
 <div class="row text-center ml-1">
@@ -89,5 +60,10 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
 </body>
 </html>
