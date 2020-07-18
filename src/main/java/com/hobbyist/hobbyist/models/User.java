@@ -4,6 +4,8 @@ package com.hobbyist.hobbyist.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -14,18 +16,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String firstName;
 
+    @NotBlank
     @Column(nullable = false)
     private String lastName;
 
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="Username length must be at least 3 characters")
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Pattern(regexp="^[a-zA-Z0-9]{5}",message="Password length must be at least 5 characters")
     @Column(nullable = false)
     private String password;
 

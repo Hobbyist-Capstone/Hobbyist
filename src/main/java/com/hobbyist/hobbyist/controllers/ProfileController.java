@@ -1,6 +1,7 @@
 package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -14,6 +15,8 @@ import com.hobbyist.hobbyist.repos.HobbyRepository;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ProfileController {
@@ -44,7 +47,8 @@ public class ProfileController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
-
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
+        vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
         vModel.addAttribute("userName", currentUser.getUsername());
         vModel.addAttribute("friendsList", userInDb.getFriends());
@@ -85,5 +89,13 @@ public class ProfileController {
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
         return "redirect:/profile/" + userToEdit.getUsername();
+    }
+
+    @GetMapping("/profile/badges")
+    public String showBadges(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
+        model.addAttribute("userHobbyList", userHobby);
+        return "users/profile";
     }
 }
