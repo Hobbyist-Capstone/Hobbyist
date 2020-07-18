@@ -147,7 +147,7 @@ html {
     color: rgba(146, 9, 18, 0.9);
     font-family: 'Bungee Shade', cursive;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    margin-top: 8vh;
+    margin-top: 2vh;
 
 }
 
@@ -241,6 +241,10 @@ html {
 }
 
 .small-friend-logo {
-    width: 80px;
+    width: 60px;
     height: auto;
+}
+
+.friend-info {
+    display: inline-block;
 }
