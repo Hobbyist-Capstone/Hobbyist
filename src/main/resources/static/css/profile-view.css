@@ -55,7 +55,7 @@ html {
     height: auto;
 }
 
-#small-badge-list {
+#small-badge-list, #small-site-badge-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -63,10 +63,9 @@ html {
 }
 
 
-/*Friends List*/
+/*Small Friends List*/
 
 
-/*#small-friends-list*/
     /*Large and XL Site*/
 #profile-container-small {
     width: 100vw;
@@ -168,13 +167,13 @@ html {
 }
 
 
-#large-created-hobbies-header {
+#large-created-hobbies-header, #small-created-hobbies-header {
     font-size: 2em;
     font-family: 'Bungee Shade', cursive;
     color: black;
 
 }
-#large-created-hobbies {
+#large-created-hobbies, #small-created-hobbies {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -184,7 +183,7 @@ html {
 
 }
 
-#large-hobbies-list {
+#large-hobbies-list, #small-hobbies-list {
     list-style: none;
     font-family: 'Bungee', cursive;
     display: flex;
@@ -193,7 +192,7 @@ html {
     flex-wrap: wrap;
 }
 
-#large-hobbies-list > a {
+#large-hobbies-list > a, #small-hobbies-list > a {
     color: black!important;
 }
 
@@ -201,7 +200,7 @@ html {
     color: black!important;
 }
 
-#large-badges-header {
+#large-badges-header, #small-badges-header {
     font-size: 2em;
 }
 
