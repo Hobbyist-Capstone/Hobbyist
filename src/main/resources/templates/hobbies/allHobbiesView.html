@@ -17,12 +17,25 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<form th:action="@{/search}">
+<form th:action="@{/search}" method="post">
     <label for="search">Search:</label>
-    <input name="search" id="search" type="text">
-    <button type="button">Submit</button>
+    <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+    <button name="search" type="button">Submit</button>
 </form>
-
+<form th:action="@{/hobbies}" method="get">
+    <button type="button">Clear</button>
+</form>
+<form th:action="@{/category}" method="post">
+    <div id="category" th:each="c : ${category}">
+        <label>
+            <input name="category" type="checkbox" th:value="${c.id}" th:text="${c.name}"/>
+        </label>
+    </div>
+    <button type="button">Filter</button>
+</form>
+<form th:action="@{/hobbies}" method="get">
+    <button type="button">Clear</button>
+</form>
 <!--<div th:each="hobby : ${hobbies}">-->
 <!--    <h1 th:text="${hobby.title}"></h1>-->
 <!--    <h2 th:text="${hobby.id}"></h2>-->
@@ -43,7 +56,7 @@
 <!--    </div>-->
 <!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
 
-
+<h1>All Hobbies</h1>
 <div class="row text-center ml-1">
     <div class="col s12 m4" th:each="hobby : ${hobbies}">
         <!--            PUT CARD CODE HERE-->

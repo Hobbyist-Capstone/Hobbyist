@@ -40,6 +40,8 @@ public class HobbyController {
     //     displays all hobbies
     @GetMapping("/hobbies")
     public String allHobbies(Model model) {
+        model.addAttribute("clear", hobbyDao.findAll());
+        model.addAttribute("category", categoryDao.findAll());
         model.addAttribute("hobbies", hobbyDao.findAll());
         return "hobbies/allHobbiesView";
     }
@@ -101,9 +103,16 @@ public class HobbyController {
         return "redirect:/hobbies";
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public String searchResults(Model model, @RequestParam(name = "search") String search) {
         List<Hobby> hobbies = hobbyDao.searchByTitle(search);
+        model.addAttribute("hobbies", hobbies);
+        return "hobbies/allHobbiesView";
+    }
+
+    @PostMapping("/category")
+    public String filterByCategory(Model model, @RequestParam(name = "category") byte id) {
+        List<Hobby> hobbies = hobbyDao.filterByCategory(id);
         model.addAttribute("hobbies", hobbies);
         return "hobbies/allHobbiesView";
     }
