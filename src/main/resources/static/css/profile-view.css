@@ -187,15 +187,53 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     overflow: scroll;
 }
 
+
+#large-created-hobbies-header {
+    font-size: 2em;
+    font-family: 'Bungee Shade', cursive;
+    color: black;
+
+}
+#large-created-hobbies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: scroll;
+    font-size: 1.5em;
+
+}
+
+#large-hobbies-list {
+    list-style: none;
+    font-family: 'Bungee', cursive;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#large-hobbies-list > a {
+    color: black!important;
+}
+
+.created-hobby-link {
+    color: black!important;
+}
+
+#large-badges-header {
+    font-size: 2em;
+}
 
 /*Friends List*/
 
 #large-friends-list, #small-friends-list {
     font-family: 'Bungee', cursive;
+    font-size: 1.5em;
 }
 
 .collection-item, .avatar {
@@ -205,6 +243,4 @@ html {
 .small-friend-logo {
     width: 80px;
     height: auto;
-
-
 }
