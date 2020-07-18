@@ -21,7 +21,7 @@
     <nav class="nav" style="display:block;">
         <div class="nav-wrapper blue-grey lighten-5" >
             <a href="https://hobbyist-app.xyz/hobbies" class="brand-logo black-text"><img class="navbar-icon"
-                                                                                          width="60px" height="auto"
+                                                                                          width="62px" height="auto"
                                                                                           src="../../static/img/hobbyist-transparent.png"
                                                                                           alt="Hobbyist Logo"
                                                                                           th:src="@{/img/hobbyist-transparent.png}"/></a>
@@ -50,7 +50,7 @@
                     Us</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/}" class="black-text"><i
+                        th:href="@{/login}" class="black-text"><i
                         class="material-icons left black-text">favorite</i>Login</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
@@ -58,9 +58,8 @@
                         class="material-icons left black-text">add</i>Join</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
-                    <!--                    <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
                     <form th:action="@{/logout}" th:method="post">
-                        <button style="font-family:Bungee; margin:10px" id="logout-button">Logout</button>
+                        <button style="border:none;font-family:Bungee;padding:0 10px 0 10px;" id="logout-button">Logout</button>
                     </form>
                 </li>
 
@@ -69,6 +68,8 @@
         </div>
     </nav>
 </div>
+
+
 
 <!--Small Navbar-->
 <ul class="sidenav blue-grey lighten-5" id="mobile-demo" th:fragment="navbar-small">
@@ -91,10 +92,10 @@
         Tracker</a></li>
 
     <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
-            class="material-icons left black-text">wifi_tethering</i>About
+            class="material-icons left black-text">group</i>About
         Us</a></li>
 
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}"
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/login}"
                                                                          class="black-text"><i
             class="material-icons left black-text">favorite</i>Login</a></li>
 
@@ -103,9 +104,9 @@
             class="material-icons left black-text">add</i>Join</a></li>
 
     <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
-        <!--        <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
+                <i class="material-icons left black-text" style="padding:10px 0 0 25px;">subdirectory_arrow_left</i>
         <form th:action="@{/logout}" th:method="post">
-            <button style="font-family:Bungee; margin-left:50px;" id="small-logout-button">Logout</button>
+            <button style="border: none;font-family:Bungee;padding-left:24px;" id="small-logout-button">Logout</button>
         </form>
     </li>
 </ul>
