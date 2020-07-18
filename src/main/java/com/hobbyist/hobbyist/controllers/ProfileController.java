@@ -50,19 +50,11 @@ public class ProfileController {
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
-        vModel.addAttribute("userName", currentUser.getUsername());
         vModel.addAttribute("friendsList", userInDb.getFriends());
         return "users/profile-view";
     }
 
-    //public profile
-    @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
-        User user = userDao.findByUsername(username);
-        vModel.addAttribute("user", user);
 
-        return "users/publicProfiles";
-    }
 
     @GetMapping("/profile/{username}")
     public String showUsersProfile(Model vModel, @PathVariable String username) {
@@ -91,11 +83,18 @@ public class ProfileController {
         return "redirect:/profile/" + userToEdit.getUsername();
     }
 
-    @GetMapping("/profile/badges")
-    public String showBadges(Model model){
+    //public profile - this is the most accurate friendslist for the user that is not "you"
+    @GetMapping("/users/profile/{username}")
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
+        User user = userDao.findByUsername(username);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
-        model.addAttribute("userHobbyList", userHobby);
-        return "users/profile";
+        User userInDb = userDao.getOne(currentUser.getId());
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
+        vModel.addAttribute("userHobbyList", userHobby);
+        vModel.addAttribute("friendsList", user.getFriends());
+        vModel.addAttribute("user", userDao.findByUsername(username));
+        vModel.addAttribute("user", user);
+        vModel.addAttribute("userName", currentUser.getUsername());
+        return "users/profile-view";
     }
 }

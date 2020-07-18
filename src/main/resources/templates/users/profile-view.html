@@ -37,63 +37,61 @@
             <button class="btn grey darken-4 waves-effect waves-light" id="small-upload-button">
                 Upload Photo
             </button>
-
             <div th:if="${user.getUsername() == userName }">
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
                     <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                 </form>
             </div>
-
-            <div th:each="friend : ${friends}">
-                <form th:action="@{|/profile/friends}" th:method="POST">
-                    <!--                    <input type="hidden" name="userId" th:value="${friends.getId()}">-->
-                    <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
-                </form>
-            </div>
-
         </div>
     </div>
 
     <!--        Badges-->
 
+
     <div id="badges-small">
         <h1 class="center-align" id="small-badges-header">Badges</h1>
-        <ul id="small-badge-list">
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
-            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/></li>
+        <ul id="small-badge-list"  th:each="userHobby : ${userHobbyList}">
+            <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                     th:src="@{/img/hobbyist-transparent.png}"/>
+                <p th:text="${userHobby.hobby.getTitle()}"></p></li>
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
+<!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
+<!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
 
         </ul>
     </div>
 
     <!--Friends List-->
-    <!--    <div id="small-friends-list">-->
-    <!--        <h1 class="center-align" id="small-friends-header">Friends</h1>-->
-    <!--        <ul class="collection" th:each="friendObj : ${friendsList}">-->
-    <!--            <li class="collection-item avatar">-->
-    <!--                <i class="material-icons circle green">insert_chart</i>-->
-    <!--                <span class="title" th:text="${friendObj.friend.username}">Title</span>-->
-    <!--                <p>First Line <br>-->
-    <!--                    Second Line-->
-    <!--                </p>-->
-    <!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-    <!--            </li>-->
+        <div id="small-friends-list">
+            <h1 class="center-align" id="small-friends-header">Friends</h1>
+            <ul class="collection" >
+                <li class="collection-item avatar" th:each="friend : ${friendsList}">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <span class="title" th:text="${friend.friend.username}">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
+                        <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
+                        <button class="btn grey darken-4 waves-effect waves-light">Delete</button>
+                    </form>
+                </li>
+
 
     <!--            <li class="collection-item avatar">-->
     <!--                <i class="material-icons circle">folder</i>-->
@@ -150,17 +148,16 @@
                             </button>
                         </div>
 
-                        <div th:if="${user.getUsername() == userName }" class="center-align">
+                        <div class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="userId" th:value="${user.getId()}">
                                 <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
 
-                        <div id="add-friend-button" class="center-align">
-                            <form th:action="@{|/profile/friends-request|}" th:method="GET"
-                                  th:if="${user.getUsername() != userName }">
-                                <button class="btn grey darken-4 waves-effect waves-light">
+                        <div id="add-friend-button" class="center-align"  >
+                            <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
+                                <button class="btn grey darken-4 waves-effect waves-light" >
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
                                 </button>
