@@ -70,20 +70,13 @@ public class UserController {
         return "redirect:/";
     }
 
-    //public profile
-    @GetMapping("/users/profile/{username}")
-    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
-        User user = userDao.findByUsername(username);
-        vModel.addAttribute("user", user);
-        return "users/publicProfiles";
-    }
 
-    @GetMapping("/profile/friends")
-    public String showFriends(Model model){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("friendsList", currentUser.getFriends());
-        return "users/friends";
-    }
+//    @GetMapping("/profile/friends")
+//    public String showFriends(Model model){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("friendsList", currentUser.getFriends());
+//        return "users/friends";
+//    }
 
     @GetMapping("/users/{id}/friend-request")
     public void sendFriendRequest(@PathVariable long id ) {

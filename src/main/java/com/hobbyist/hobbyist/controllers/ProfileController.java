@@ -44,13 +44,25 @@ public class ProfileController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
-//        User user = userDao.findByUsername(username);
-
-
-//        if (user.isAdmin()) {
         vModel.addAttribute("userName", currentUser.getUsername());
-//        }
+        vModel.addAttribute("friendsList", currentUser.getFriends());
+        return "users/profile-view";
+    }
 
+    //public profile
+    @GetMapping("/users/profile/{username}")
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
+        User user = userDao.findByUsername(username);
+        vModel.addAttribute("user", user);
+        return "users/publicProfiles";
+    }
+
+    @GetMapping("/profile/{username}")
+    public String showUsersProfile(Model vModel, @PathVariable String username) {
+
+        vModel.addAttribute("user", userDao.findByUsername(username));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vModel.addAttribute("userName", user.getUsername());
         return "users/profile-view";
     }
 
