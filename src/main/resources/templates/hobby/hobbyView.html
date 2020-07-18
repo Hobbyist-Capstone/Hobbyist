@@ -29,7 +29,7 @@
         <div class="col s10 center-align">
             <div class="card">
                 <div class="card-image">
-                    <img class="photo" th:src="@{/img/tools.jpg}">
+                    <img class="photo" th:src="${hobby.image}">
                     <span class="card-title" th:text="${hobby.title}"></span>
                     <form th:action="@{|/profile/status|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${hobby.id}">

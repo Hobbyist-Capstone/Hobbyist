@@ -56,8 +56,6 @@ public class HobbyController {
     //    create a hobby
     @GetMapping("/hobby/create")
     public String createHobbyForm(Model model) {
-
-        model.addAttribute("ratings");
         model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("hobby", new Hobby());
         return "hobby/create";
@@ -68,11 +66,11 @@ public class HobbyController {
     public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findAllById(categoriesId);
+        saveHobby.setCreatedBy(currentUser);
+        saveHobby.setCategories(categories);
         saveHobby.setPatience(pat);
         saveHobby.setDifficulty(diff);
         saveHobby.setCost(cost);
-        saveHobby.setCreatedBy(currentUser);
-        saveHobby.setCategories(categories);
         hobbyDao.save(saveHobby);
         return "redirect:/hobby/" + saveHobby.getId();
     }
