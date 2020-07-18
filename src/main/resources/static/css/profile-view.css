@@ -53,7 +53,7 @@ html {
     overflow-y: scroll;
 }
 
-#small-profile-header, #small-friends-header, #small-badges-header {
+#small-profile-header, #small-friends-header, #small-hobbies-header {
     font-size: 4em;
     color: rgba(146, 9, 18, 0.9);
     font-family: 'Bungee Shade', cursive;
@@ -72,9 +72,9 @@ html {
     border-radius: 50px;
 }
 
-/*Hobby Badges*/
+/*Hobbies*/
 
-.small-badge {
+.small-badge{
     width: 120px;
     height: auto;
     border-radius: 50%;
@@ -144,7 +144,7 @@ html {
     overflow-y: hidden;
 }
 
-#large-profile-header, #large-friends-header, #large-badges-header {
+#large-profile-header, #large-friends-header, #large-hobbies-header {
     font-size: 4em;
     color: rgba(146, 9, 18, 0.9);
     font-family: 'Bungee Shade', cursive;
@@ -178,7 +178,7 @@ html {
 }
 
 
-/*Hobby Badges*/
+/*Hobbies*/
 
 .large-badge {
     width: 120px;
@@ -186,7 +186,6 @@ html {
     border-radius: 50%;
 
 }
-
 
 #large-badge-list {
     display: flex;
@@ -198,3 +197,7 @@ html {
 
 
 /*Friends List*/
+
+#large-friends-list, #small-friends-list {
+    font-family: 'Bungee', cursive;
+}
