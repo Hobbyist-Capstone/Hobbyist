@@ -12,7 +12,8 @@
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+<!--    REPLACE-->
+<!--    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">-->
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
@@ -69,5 +70,11 @@
         </a>
     </div>
 </div>
+<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script th:src="@{/JS/materialize.js}"></script>
+<script th:src="@{/JS/index.js}"></script>
 </body>
 </html>

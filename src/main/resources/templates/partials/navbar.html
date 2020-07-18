@@ -77,22 +77,28 @@
                 class="material-icons left black-text">account_circle</i>Profile
         </a></li>
     </th:block>
-    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobbies" class="black-text"><i
+
+    <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="black-text"><i
             class="material-icons left black-text">art_track</i>All Hobbies</a></li>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobby/create"
+
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/hobby/create}"
                                                                         class="black-text"><i
             class="material-icons left black-text">rowing</i>Create Hobby</a></li>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/profile/status"
+
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/profile/status}"
                                                                         class="black-text"><i
             class="material-icons left black-text">view_column</i>Hobby
         Tracker</a></li>
-    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i
+
+    <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
             class="material-icons left black-text">wifi_tethering</i>About
         Us</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz"
+
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}"
                                                                          class="black-text"><i
             class="material-icons left black-text">favorite</i>Login</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register"
+
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/register}"
                                                                          class="black-text"><i
             class="material-icons left black-text">add</i>Join</a></li>
 
