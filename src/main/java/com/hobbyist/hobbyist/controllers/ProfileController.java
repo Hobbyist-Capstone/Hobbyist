@@ -69,9 +69,7 @@ public class ProfileController {
     @GetMapping("users/{id}/edit")
     public String showEditProfile(@PathVariable long id, Model vModel) {
         User user = userDao.getOne(id);
-//        vModel.addAttribute("user", userDao.findById(id));
         vModel.addAttribute("user", user);
-//        vModel.addAttribute("showEditControls", userService.canEditProfile(user));
         return "users/edit";
     }
 

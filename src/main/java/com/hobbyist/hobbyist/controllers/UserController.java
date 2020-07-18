@@ -70,10 +70,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/users/{id}/friend-request")
-    public void sendFriendRequest(@PathVariable long id ) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        friendListDao.save(new FriendList(currentUser, userDao.getOne(id), FriendStatus.PENDING));
-    }
+
 
 }
