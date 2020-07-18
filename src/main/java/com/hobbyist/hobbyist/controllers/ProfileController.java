@@ -43,9 +43,11 @@ public class ProfileController {
     public String showProfile(Model vModel) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
         vModel.addAttribute("userName", currentUser.getUsername());
-        vModel.addAttribute("friendsList", currentUser.getFriends());
+        vModel.addAttribute("friendsList", userInDb.getFriends());
         return "users/profile-view";
     }
 

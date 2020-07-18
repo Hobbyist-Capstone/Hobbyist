@@ -30,6 +30,11 @@ public class FriendList {
         this.status = status;
     }
 
+    public FriendList(User user, User friend) {
+        this.user = user;
+        this.friend = friend;
+    }
+
     public long getId() {
         return id;
     }

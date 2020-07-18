@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 
-@Service
-@Transactional
 @Controller
 public class FriendController {
 
@@ -29,14 +26,19 @@ public class FriendController {
         this.friendListDao = friendListDao;
     }
 
-    @GetMapping("/profile/friend-request")
+    @GetMapping("/profile/friends-request")
     public String sendFriendRequest(@RequestParam long userId) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
         User user = userDao.getOne(userId);
-        FriendList friend = new FriendList(userInDb, user, FriendStatus.ACCEPTED);
+        FriendList friend = new FriendList(currentUser, user, FriendStatus.ACCEPTED);
         friendListDao.save(friend);
         return "redirect:/profile";
     }
 
+    @PostMapping("/profile/friends-request/delete")
+    public String delete(@RequestParam long deleteFriendId){
+        friendListDao.deleteById(deleteFriendId);
+        return "redirect:/profile";
+    }
 }
