@@ -15,11 +15,11 @@
 <link th:href="@{/css/profile-view.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
 
 <!--Main Profile Small-->
 <div id="profile-container-small" class="show-on-medium-and-down hide-on-large-only">
+    <div th:replace="partials/navbar :: navbar"></div>
+    <ul th:replace="partials/navbar :: navbar-small"></ul>
 
 
         <!--        Profile Header-->
@@ -122,7 +122,8 @@
 <div id="profile-container-large" class="show-on-large hide-on-med-and-down">
 
     <div id="profile-above-fold-large">
-        <!--        Profile Header-->
+        <div th:replace="partials/navbar :: navbar"></div>
+        <ul th:replace="partials/navbar :: navbar-small"></ul>
         <!--        Profile Image-->
         <div id="profile-panels">
             <div id="left-div">

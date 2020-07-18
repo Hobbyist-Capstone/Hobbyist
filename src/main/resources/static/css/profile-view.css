@@ -92,7 +92,7 @@ html {
 /*Friends List*/
 
 
-#small-friends-list
+/*#small-friends-list*/
     /*Large and XL Site*/
 #profile-container-small {
     width: 100vw;
@@ -141,7 +141,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Bungee Shade', cursive;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 #large-profile-header, #large-friends-header, #large-badges-header {

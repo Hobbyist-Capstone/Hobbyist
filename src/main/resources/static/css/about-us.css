@@ -43,7 +43,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     width: 75vw;
-    margin-left: 13%;
+    margin-left: 12%;
     margin-right: 10%;
 
 }
@@ -73,8 +73,8 @@ body {
 }
 
 #small-logo {
-    width: 30vw;
-    height: auto;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
 }
 
