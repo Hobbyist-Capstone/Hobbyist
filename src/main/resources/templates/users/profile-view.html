@@ -83,45 +83,45 @@
     </div>
 
     <!--Friends List-->
-    <div id="small-friends-list">
-        <h1 class="center-align" id="small-friends-header">Friends</h1>
-        <ul class="collection" th:each="friendObj : ${friendsList}">
-            <li class="collection-item avatar">
-                <i class="material-icons circle green">insert_chart</i>
-                <span class="title" th:text="${friendObj.friend.username}">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
+<!--    <div id="small-friends-list">-->
+<!--        <h1 class="center-align" id="small-friends-header">Friends</h1>-->
+<!--        <ul class="collection" th:each="friendObj : ${friendsList}">-->
+<!--            <li class="collection-item avatar">-->
+<!--                <i class="material-icons circle green">insert_chart</i>-->
+<!--                <span class="title" th:text="${friendObj.friend.username}">Title</span>-->
+<!--                <p>First Line <br>-->
+<!--                    Second Line-->
+<!--                </p>-->
+<!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+<!--            </li>-->
 
-            <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-            <li class="collection-item avatar">
-                <i class="material-icons circle green">insert_chart</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-            <li class="collection-item avatar">
-                <i class="material-icons circle red">play_arrow</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-        </ul>
+<!--            <li class="collection-item avatar">-->
+<!--                <i class="material-icons circle">folder</i>-->
+<!--                <span class="title">Title</span>-->
+<!--                <p>First Line <br>-->
+<!--                    Second Line-->
+<!--                </p>-->
+<!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+<!--            </li>-->
+<!--            <li class="collection-item avatar">-->
+<!--                <i class="material-icons circle green">insert_chart</i>-->
+<!--                <span class="title">Title</span>-->
+<!--                <p>First Line <br>-->
+<!--                    Second Line-->
+<!--                </p>-->
+<!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+<!--            </li>-->
+<!--            <li class="collection-item avatar">-->
+<!--                <i class="material-icons circle red">play_arrow</i>-->
+<!--                <span class="title">Title</span>-->
+<!--                <p>First Line <br>-->
+<!--                    Second Line-->
+<!--                </p>-->
+<!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+<!--            </li>-->
+<!--        </ul>-->
 
-    </div>
+<!--    </div>-->
 </div>
 </div>
 
@@ -152,15 +152,15 @@
 
                         <div th:if="${user.getUsername() == userName }" class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
-                                <input type="hidden" name="id" th:value="${user.getId()}">
+                                <input type="hidden" name="userId" th:value="${user.getId()}">
                                 <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
 
-                        <div id="add-friend-button" class="center-align" th:block>
-                            <form action="" th:if="${user.getUsername() == userName }">
+                        <div id="add-friend-button" class="center-align">
+                            <form th:action="@{|/profile/friend-request|}" th:method="GET" th:if="${user.getUsername() != userName }">
                                 <button class="btn grey darken-4 waves-effect waves-light">
-                                    <input type="hidden" name="friendId" th:value="${user.getId()}">
+                                    <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
                                 </button>
                             </form>
@@ -199,24 +199,19 @@
 
 <!--            Friends List-->
             <div id="right-div">
-                <div id="large-friends-list">>
+                <div id="large-friends-list">
                     <h1 class="center-align" id="large-friends-header">Friends</h1>
-                    <ul class="collection" th:each="friendObj : ${friendsList}">
-                        <li class="collection-item avatar">
+                    <ul class="collection">
+                        <li class="collection-item avatar" th:each="friendObj : ${friendsList}">
                             <i class="material-icons circle green">insert_chart</i>
                             <span  th:text="${friendObj.friend.username}"class="title">Title</span>
                             <p></p>
                             <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                         </li>
 
-
-<!--                        <div th:each="friendObj : ${friendsList}">-->
-<!--                            <p th:text="${friendObj.friend.username}"></p>-->
-<!--                        </div>-->
-
 <!--                        <li class="collection-item avatar">-->
 <!--                            <i class="material-icons circle">folder</i>-->
-<!--                            <span class="title">Title</span>-->
+<!--                            <span th:text="${friendObj.friend.username}" class="title">Title</span>-->
 <!--                            <p>First Line <br>-->
 <!--                                Second Line-->
 <!--                            </p>-->

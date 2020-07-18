@@ -20,7 +20,7 @@
 <div class="navbar-fixed grey lighten-2" th:fragment="navbar">
     <nav class="nav grey lighten-2">
         <div class="nav-wrapper grey lighten-2">
-            <a href="https://hobbyist-app.xyz/" class="brand-logo black-text"><img class="navbar-icon"
+            <a th:href="@{/}" class="brand-logo black-text"><img class="navbar-icon"
                                                                                    width="60px" height="auto"
                                                                                    src="../../static/img/hobbyist-transparent.png"
                                                                                    alt="Hobbyist Logo"
@@ -33,20 +33,19 @@
                     </a></li>
                 </th:block>
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/hobby/create" class="black-text"><i
+                        th:href="@{/hobby/create}" class="black-text"><i
                         class="material-icons left black-text">rowing</i>Create Hobby</a></li>
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/profile/status" class="black-text"><i
+                        th:href="@{/profile/status}" class="black-text"><i
                         class="material-icons left black-text">view_column</i>Hobby
                     Tracker</a></li>
-                <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i
+                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
                         class="material-icons left black-text">group</i>About
                     Us</a></li>
-                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz"
-                                                                                     class="black-text"><i
+                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}" class="black-text"><i
                         class="material-icons left black-text">favorite</i>Login</a></li>
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        href="https://hobbyist-app.xyz/register" class="black-text"><i
+                        th:href="@{/register}" class="black-text"><i
                         class="material-icons left black-text">add</i>Join</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
@@ -69,20 +68,20 @@
                 class="material-icons left black-text">account_circle</i>Profile
         </a></li>
     </th:block>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/hobby/create"
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/hobby/create}"
                                                                         class="black-text"><i
             class="material-icons left black-text">rowing</i>Create Hobby</a></li>
-    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/profile/status"
+    <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a th:href="@{/profile/status}"
                                                                         class="black-text"><i
             class="material-icons left black-text">view_column</i>Hobby
         Tracker</a></li>
-    <li style="font-family:Bungee"><a href="https://hobbyist-app.xyz/about-us" class="black-text"><i
+    <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
             class="material-icons left black-text">wifi_tethering</i>About
         Us</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz"
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}"
                                                                          class="black-text"><i
             class="material-icons left black-text">favorite</i>Login</a></li>
-    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a href="https://hobbyist-app.xyz/register"
+    <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/register}"
                                                                          class="black-text"><i
             class="material-icons left black-text">add</i>Join</a></li>
 
