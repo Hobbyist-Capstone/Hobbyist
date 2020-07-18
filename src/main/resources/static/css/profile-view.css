@@ -201,3 +201,14 @@ html {
 #large-friends-list, #small-friends-list {
     font-family: 'Bungee', cursive;
 }
+
+.collection-item, .avatar {
+    padding: 10px!important;
+}
+
+.small-friend-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+
+}
