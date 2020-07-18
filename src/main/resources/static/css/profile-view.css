@@ -77,8 +77,6 @@ html {
 .small-badge{
     width: 120px;
     height: auto;
-    border-radius: 50%;
-
 }
 
 #small-badge-list {
@@ -183,8 +181,6 @@ html {
 .large-badge {
     width: 120px;
     height: auto;
-    border-radius: 50%;
-
 }
 
 #large-badge-list {
@@ -209,6 +205,6 @@ html {
 .small-friend-logo {
     width: 80px;
     height: auto;
-    border-radius: 50%;
+
 
 }
