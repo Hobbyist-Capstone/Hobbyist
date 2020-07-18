@@ -38,7 +38,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
-    @OneToMany(mappedBy = "user")
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<FriendList> friends;
 
     public User(){}

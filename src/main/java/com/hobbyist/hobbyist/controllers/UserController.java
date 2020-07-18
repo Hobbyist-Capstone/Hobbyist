@@ -1,6 +1,7 @@
 package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.*;
+import com.hobbyist.hobbyist.repos.FriendListRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -23,15 +24,18 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private UserHobbyRepository userHobbyDao;
     private HobbyRepository hobbyDao;
+    private FriendListRepository  friendListDao;
 
 
     private UserService userService;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, UserHobbyRepository userHobbyDao, HobbyRepository hobbyDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, UserHobbyRepository userHobbyDao, HobbyRepository hobbyDao,FriendListRepository  friendListDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.userHobbyDao = userHobbyDao;
         this.hobbyDao = hobbyDao;
+        this.friendListDao = friendListDao;
+
     }
 
     @GetMapping("/register")
@@ -72,6 +76,20 @@ public class UserController {
         User user = userDao.findByUsername(username);
         vModel.addAttribute("user", user);
         return "users/publicProfiles";
+    }
+
+    @GetMapping("/profile/friends")
+    public String showFriends(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("friendsList", currentUser.getFriends());
+        return "users/friends";
+    }
+
+    @GetMapping("/users/{id}/friend-request")
+    public void sendFriendRequest(@PathVariable long id ) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        friendListDao.save(new FriendList(currentUser, userDao.getOne(id), FriendStatus.PENDING));
+
     }
 
 }
