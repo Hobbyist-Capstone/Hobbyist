@@ -157,8 +157,8 @@
                             </form>
                         </div>
 
-                        <div id="add-friend-button" class="center-align">
-                            <form action="">
+                        <div id="add-friend-button" class="center-align" th:block>
+                            <form action="" th:if="${user.getUsername() == userName }">
                                 <button class="btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="friendId" th:value="${user.getId()}">
                                     Add Friend

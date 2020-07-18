@@ -70,19 +70,10 @@ public class UserController {
         return "redirect:/";
     }
 
-
-//    @GetMapping("/profile/friends")
-//    public String showFriends(Model model){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("friendsList", currentUser.getFriends());
-//        return "users/friends";
-//    }
-
     @GetMapping("/users/{id}/friend-request")
     public void sendFriendRequest(@PathVariable long id ) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         friendListDao.save(new FriendList(currentUser, userDao.getOne(id), FriendStatus.PENDING));
-
     }
 
 }
