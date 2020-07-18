@@ -29,4 +29,10 @@ h3 {
     margin: 10px 10px 10px 0;
 }
 
+blockquote:nth-child(1) {
+    width: 90vw;
+    height: auto;
+
+}
+
 
