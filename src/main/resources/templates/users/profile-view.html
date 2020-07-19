@@ -34,14 +34,14 @@
 
             <!--        Edit and Upload Profile Photo Buttons-->
             <div id="small-profile-photo-controls">
-                <button class="btn grey darken-4 waves-effect waves-light" id="small-upload-button">
+                <button class="button-style btn grey darken-4 waves-effect waves-light" id="small-upload-button">
                     Upload Photo
                 </button>
 
                 <div th:if="${user.getUsername() == userName }">
                     <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                         <input type="hidden" name="id" th:value="${user.getId()}">
-                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                        <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
                     </form>
                 </div>
             </div>
@@ -139,15 +139,15 @@
                     <!--        Edit and Upload Profile Photo Buttons-->
                     <div id="large-profile-buttons" class="center-align">
                         <div id="upload-button" class="center-align">
-                            <button class="btn grey darken-4 waves-effect waves-light">
-                                Upload Photo
+                            <button class="button-style btn grey darken-4 waves-effect waves-light center-align">
+                                Upload&nbsp;Photo
                             </button>
                         </div>
 
                         <div th:if="${user.getUsername() == userName }" class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="id" th:value="${user.getId()}">
-                                <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                                <button class="button-style btn grey darken-4 waves-effect waves-light">Edit&nbsp;Account</button>
                             </form>
                         </div>
 

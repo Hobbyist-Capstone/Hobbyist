@@ -78,24 +78,9 @@ html {
     width: 100vw;
 }
 
-#profile-navbar-placeholder-large {
-    width: 100vw;
-    height: 8vh;
-    position: fixed;
-    display: block;
-    z-index: 1000;
-    background-color: #212121;
-    font-family: 'Bungee Shade', cursive;
+.button-style {
+    font-family: 'Bungee', cursive;
     color: white;
-    font-size: 2em;
-}
-
-
-#profile-navbar-list-large {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
 }
 
 #profile-panels {
@@ -135,14 +120,13 @@ html {
 #large-profile-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin: 10px;
-    width: 200px!important;
+    /*width: 200px!important;*/
 }
 
 #upload-button {
     margin-right: 10px;
-    margin-left: 100px;
+    /*margin-left: 100px;*/
 }
 
 #left-div, #middle-div, #right-div {
