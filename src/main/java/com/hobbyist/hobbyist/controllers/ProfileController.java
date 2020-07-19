@@ -66,15 +66,16 @@ public class ProfileController {
     //public profile - this is the most accurate friendslist for the user that is not "you"
     @GetMapping("/users/profile/{username}")
     public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
-        User user = userDao.findByUsername(username);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
+        User user = userDao.findByUsername(username);
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("friendsList", user.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));
         vModel.addAttribute("user", user);
-        vModel.addAttribute("userName", currentUser.getUsername());
+        vModel.addAttribute("publicUsername", user.getUsername());
+
         List <Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
         return "users/profile-view";

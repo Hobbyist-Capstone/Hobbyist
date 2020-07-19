@@ -61,12 +61,6 @@
 
     <div id="hobbies-small">
         <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
-        <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
-        <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
-            <ul id="small-hobbies-list">
-                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-            </ul>
-        </div>
         <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>
         <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
             <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge"
@@ -75,6 +69,15 @@
                                                                            th:src="@{/img/hobbyist-transparent.png}"/>
                 <p th:text="${userHobby.hobby.getTitle()}"></p></li>
         </ul>
+        <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
+        <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
+            <ul id="small-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+            </ul>
+            <ul id="small-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+            </ul>
+        </div>
     </div>
 
     <!--Friends List-->
@@ -84,12 +87,13 @@
             <li class="collection-item avatar" th:each="friend : ${friendsList}">
                 <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                      th:src="@{/img/follower-logo.png}"/>
-                <p class="friend-info" th:text="${friend.friend.username}">User first name</p>
-                <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"></a>
-                <form th:action="@{|/profile/friends-request/delete|}" th:method="POST" th:if="${user.getUsername() == currentUsername}">
+                <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
+                    <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
+                </a>
+                <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                    <button class="btn transparent waves-effect waves-light delete-btn"><i
-                            class="material-icons red-text">remove_circle</i></button>
+                    <button class="btn grey darken-4 waves-effect waves-light"><i
+                            class="tiny material-icons">delete</i></button>
                 </form>
             </li>
         </ul>
@@ -127,7 +131,6 @@
                                 <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
-
                         <!--        Add Friend Button-->
                         <div id="add-friend-button" class="center-align"
                              th:if="${user.getUsername() != currentUsername}">
@@ -154,9 +157,13 @@
                                  th:src="@{/img/hobbyist-transparent.png}"/>
                         </li>
                     </ul>
+
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                        <ul id="large-hobbies-list">
+                        <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                            <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+                        </ul>
+                        <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                             <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
                         </ul>
                     </div>
@@ -171,9 +178,10 @@
                         <li class="collection-item avatar" th:each="friend : ${friendsList}">
                             <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                                  th:src="@{/img/follower-logo.png}"/>
-                            <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
-                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><i
-                                    class="material-icons red-text">remove_circle</i></a>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
+                                <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
+                            </a>
+<!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
                             <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                                 <button class="btn grey darken-4 waves-effect waves-light"><i
