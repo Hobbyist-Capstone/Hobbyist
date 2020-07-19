@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -113,10 +114,9 @@ public class HobbyController {
         return "hobbies/allHobbiesView";
     }
 
-    @PostMapping("/category")
-    public String filterByCategory(Model model, @RequestParam(name = "category") byte id) {
-        List<Hobby> hobbies = hobbyDao.filterByCategory(id);
-        model.addAttribute("hobbies", hobbies);
+    @GetMapping("/category/{id}")
+    public String filterByCategory(Model model, @PathVariable(name = "id", required = false) long categoryId) {
+        model.addAttribute("hobbies", hobbyDao.filterByOneCategory(categoryId));
         return "hobbies/allHobbiesView";
     }
 

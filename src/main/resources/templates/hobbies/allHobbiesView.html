@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-<title>All Hobbies</title>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
-<!--    Materialize Framework-->
-<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
-<!--    Icons-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--    Font Awesome Icons-->
-<script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
-<!--    Responsive Tag-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!--    Custom CSS Files-->
-<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <title>All Hobbies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS Files-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 <form th:action="@{/search}" method="post">
-    <label for="search">Search:</label>
-    <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+    <div class="container">
+        <div class="row">
+            <label for="search">Search:</label>
+            <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+        </div>
+    </div>
 </form>
-<form th:action="@{/hobbies}" method="get">
-    <label for="clear">
-        <button id="clear" name="clear" type="submit" class="btn btn-primary">Clear</button>
-    </label>
-</form>
-
+<div class="container">
+    <div class="row">
+        <th:block th:each="c : ${category}">
+            <form th:action="${'/category/'+ c.id}">
+                <button class="btn btn-primary" th:text="${c.name}"></button>
+            </form>
+        </th:block>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/hobbies}" method="get">
+            <label for="clear">
+                <button id="clear" name="clear" type="submit" class="btn btn-primary">Clear</button>
+            </label>
+        </form>
+    </div>
+</div>
 <h1>All Hobbies</h1>
 <div class="row text-center ml-1">
     <div class="col s12 m4" th:each="hobby : ${hobbies}">

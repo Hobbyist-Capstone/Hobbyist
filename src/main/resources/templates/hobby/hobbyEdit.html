@@ -22,6 +22,12 @@
     <input th:field="*{title}" type="text">
     Body:
     <input th:field="*{description}" type="text">
+    Patience:
+    <input th:field="*{patience}" type="text">
+    Difficulty:
+    <input th:field="*{difficulty}" type="text">
+    Cost:
+    <input th:field="*{cost}" type="text">
     <button>Save Changes</button>
 </form>
 <form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
