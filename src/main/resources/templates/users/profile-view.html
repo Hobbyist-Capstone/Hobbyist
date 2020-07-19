@@ -18,21 +18,21 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<!--Main Profile Small-->
+<!--====================================SMALL Main Profile Small -====================================-->
 <div id="profile-container-small" class="show-on-medium-and-down hide-on-large-only">
 
 
-    <!--        Profile Header-->
+    <!--     SMALL   Profile Header-->
     <h1 id="small-profile-header" class="center-align">Account</h1>
 
-    <!--        Profile Image and Upload/Edit-->
+    <!--     SMALL   Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
         <img id="small-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
              th:src="@{/img/moriah-small.png}"/>
 
 
-        <!--        Edit and Upload Profile Photo Buttons-->
+        <!--      SMALL  Edit and Upload Profile Photo Buttons-->
         <div id="small-profile-photo-controls">
             <button class="btn grey darken-4 waves-effect waves-light" id="small-upload-button">
                 Upload Photo
@@ -46,7 +46,7 @@
         </div>
 
 
-        <!--        Small : add friend button-->
+        <!--        SMALL add friend button-->
 
         <div id="add-friend-button-sm" class="center-align">
             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <!--        Badges-->
+    <!--      SMALL  Badges-->
 
 
     <div id="badges-small">
@@ -66,33 +66,16 @@
         <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
             <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge" th:src="@{/img/hobbyist-transparent.png}"/>
                 <p th:text="${userHobby.hobby.getTitle()}"></p></li>
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-            <!--            <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-            <!--                     th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-
         </ul>
     </div>
 
-    <!--Friends List-->
+    <!--SMALL Friends List-->
     <div id="small-friends-list">
         <h1 class="center-align" id="small-friends-header">Friends</h1>
         <ul class="collection">
             <li class="collection-item avatar" th:each="friend : ${friendsList}">
                 <i class="material-icons circle green">insert_chart</i>
-                <span class="title" th:text="${friend.friend.username}">Title</span>
+                <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title" th:text="${friend.friend.username}">Title</span></a>
                 <p>First Line <br>
                     Second Line
                 </p>
@@ -103,40 +86,10 @@
                 </form>
             </li>
 
-
-            <!--            <li class="collection-item avatar">-->
-            <!--                <i class="material-icons circle">folder</i>-->
-            <!--                <span class="title">Title</span>-->
-            <!--                <p>First Line <br>-->
-            <!--                    Second Line-->
-            <!--                </p>-->
-            <!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-            <!--            </li>-->
-            <!--            <li class="collection-item avatar">-->
-            <!--                <i class="material-icons circle green">insert_chart</i>-->
-            <!--                <span class="title">Title</span>-->
-            <!--                <p>First Line <br>-->
-            <!--                    Second Line-->
-            <!--                </p>-->
-            <!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-            <!--            </li>-->
-            <!--            <li class="collection-item avatar">-->
-            <!--                <i class="material-icons circle red">play_arrow</i>-->
-            <!--                <span class="title">Title</span>-->
-            <!--                <p>First Line <br>-->
-            <!--                    Second Line-->
-            <!--                </p>-->
-            <!--                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-            <!--            </li>-->
-            <!--        </ul>-->
-
-            <!--    </div>-->
+        </ul>
     </div>
 </div>
-
-<!--Main Profile Large-->
-
-
+<!--======================================Main Profile Large======================================-->
 <div id="profile-container-large" class="show-on-large hide-on-med-and-down">
 
     <div id="profile-above-fold-large">
@@ -191,22 +144,6 @@
                                  th:src="@{/img/hobbyist-transparent.png}"/>
                             <p th:text="${userHobby.hobby.getTitle()}"></p>
                         </li>
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
-                        <!--                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"-->
-                        <!--                                 th:src="@{/img/hobbyist-transparent.png}"/></li>-->
                     </ul>
                 </div>
             </div>
@@ -217,38 +154,13 @@
                     <h1 class="center-align" id="large-friends-header">Friends</h1>
                     <ul class="collection">
                         <li class="collection-item avatar" th:each="friend : ${friendsList}">
-                            <img width="60px" height="auto" src="../../static/img/follower-logo.png" alt="Hobbyist Logo" th:src="@{/img/follower-logo.png}"/></a>
-                            <span th:text="${friend.friend.username}" class="title">Title</span>
+                            <i class="material-icons circle green">insert_chart</i>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title" th:text="${friend.friend.username}">Title</span></a>
                             <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                                 <button class="btn grey darken-4 waves-effect waves-light"> <i class="tiny material-icons">delete</i></button>
                             </form>
                         </li>
-
-                        <!--                        <li class="collection-item avatar">-->
-                        <!--                            <i class="material-icons circle">folder</i>-->
-                        <!--                            <span th:text="${friendObj.friend.username}" class="title">Title</span>-->
-                        <!--                            <p>First Line <br>-->
-                        <!--                                Second Line-->
-                        <!--                            </p>-->
-                        <!--                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li class="collection-item avatar">-->
-                        <!--                            <i class="material-icons circle green">insert_chart</i>-->
-                        <!--                            <span class="title">Title</span>-->
-                        <!--                            <p>First Line <br>-->
-                        <!--                                Second Line-->
-                        <!--                            </p>-->
-                        <!--                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li class="collection-item avatar">-->
-                        <!--                            <i class="material-icons circle red">play_arrow</i>-->
-                        <!--                            <span class="title">Title</span>-->
-                        <!--                            <p>First Line <br>-->
-                        <!--                                Second Line-->
-                        <!--                            </p>-->
-                        <!--                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-                        <!--                        </li>-->
                     </ul>
                 </div>
 
