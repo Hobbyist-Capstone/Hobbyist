@@ -1,6 +1,8 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -14,6 +16,8 @@ import com.hobbyist.hobbyist.repos.HobbyRepository;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ProfileController {
@@ -43,16 +47,40 @@ public class ProfileController {
     public String showProfile(Model vModel) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
-//        User user = userDao.findByUsername(username);
 
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
+        vModel.addAttribute("userHobbyList", userHobby);
+        vModel.addAttribute("friendsList", userInDb.getFriends());
 
-//        if (user.isAdmin()) {
-        vModel.addAttribute("userName", currentUser.getUsername());
-//        }
+//        vModel.addAttribute("userNameHobby", currentUser.getUsername());
+//        vModel.addAttribute("user", currentUser.getUsername());
+
+        List<Hobby> hobby = hobbyDao.findAll();
+        vModel.addAttribute("hobbies", hobby);
 
         return "users/profile-view";
     }
+
+    //public profile - this is the most accurate friendslist for the user that is not "you"
+    @GetMapping("/users/profile/{username}")
+    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
+        User user = userDao.findByUsername(username);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
+        vModel.addAttribute("userHobbyList", userHobby);
+        vModel.addAttribute("friendsList", user.getFriends());
+        vModel.addAttribute("user", userDao.findByUsername(username));
+        vModel.addAttribute("user", user);
+        vModel.addAttribute("userName", currentUser.getUsername());
+
+        List <Hobby> hobby = hobbyDao.findAll();
+        vModel.addAttribute("hobbies", hobby);
+        return "users/profile-view";
+    }
+
 
     @GetMapping("users/{id}/edit")
     public String showEditProfile(@PathVariable long id, Model vModel) {
