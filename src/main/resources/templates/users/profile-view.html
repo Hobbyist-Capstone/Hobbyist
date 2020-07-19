@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Profile</title>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
-<!--    Materialize Framework-->
-<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
-<!--    Icons-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--    Font Awesome Icons-->
-<script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
-<!--    Responsive Tag-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!--    Custom CSS Files-->
-<link th:href="@{/css/profile-view.css}" rel="stylesheet" type="text/css">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS Files-->
+    <link th:href="@{/css/profile-view.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -22,76 +22,79 @@
     <ul th:replace="partials/navbar :: navbar-small"></ul>
 
 
-        <!--        Profile Header-->
-        <h1 id="small-profile-header" class="center-align">Account</h1>
+    <!--        Profile Header-->
+    <h1 id="small-profile-header" class="center-align">Account</h1>
 
-        <!--        Profile Image and Upload/Edit-->
+    <!--        Profile Image and Upload/Edit-->
 
-        <div id="small-profile-image" class="center-align">
-            <img id="small-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
-                 th:src="@{/img/moriah-small.png}"/>
+    <div id="small-profile-image" class="center-align">
+        <img id="small-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
+             th:src="@{/img/moriah-small.png}"/>
 
 
-            <!--        Edit and Upload Profile Photo Buttons-->
-            <div id="small-profile-photo-controls">
-                <button class="btn grey darken-4 waves-effect waves-light" id="small-upload-button">
-                    Upload Photo
-                </button>
+        <!--        Edit and Upload Profile Photo Buttons-->
+        <div id="small-profile-photo-controls">
+            <button class="btn grey darken-4 waves-effect waves-light" id="small-upload-button">
+                Upload Photo
+            </button>
 
-                <div th:if="${user.getUsername() == currentUsername}">
-                    <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
-                        <input type="hidden" name="id" th:value="${user.getId()}">
-                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
-                    </form>
-                </div>
-            </div>
-
-            <!--      Add Friend Buttons-->
-            <div id="add-friend-button-sm" class="center-align" th:if="${user.getUsername() != currentUsername}">
-                <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
-                    <button class="btn grey darken-4 waves-effect waves-light">
-                        <input type="hidden" name="userId" th:value="${user.getId()}">
-                        Add Friend
-                    </button>
+            <div th:if="${user.getUsername() == currentUsername}">
+                <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
+                    <input type="hidden" name="id" th:value="${user.getId()}">
+                    <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                 </form>
             </div>
         </div>
 
-        <!--        Badges-->
-
-        <div id="hobbies-small">
-            <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
-            <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
-            <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
-                <ul id="small-hobbies-list">
-                    <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                </ul>
-            </div>
-            <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>
-            <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
-                <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                         th:src="@{/img/hobbyist-transparent.png}"/>
-                    <p th:text="${userHobby.hobby.getTitle()}"></p></li>
-            </ul>
-        </div>
-
-        <!--Friends List-->
-        <div id="small-friends-list">
-            <h1 class="center-align" id="small-friends-header">Friends</h1>
-            <ul class="collection">
-                <li class="collection-item avatar" th:each="friend : ${friendsList}">
-                    <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                         th:src="@{/img/follower-logo.png}"/>
-                    <p class="friend-info" th:text="${friend.friend.username}">User first name</p>
-                    <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"></a>
-                    <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
-                        <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                            <button class="btn transparent waves-effect waves-light delete-btn"><i class="material-icons red-text">remove_circle</i></button>
-                    </form>
-                </li>
-            </ul>
+        <!--      Add Friend Buttons-->
+        <div id="add-friend-button-sm" class="center-align" th:if="${user.getUsername() != currentUsername}">
+            <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
+                <button class="btn grey darken-4 waves-effect waves-light">
+                    <input type="hidden" name="userId" th:value="${user.getId()}">
+                    Add Friend
+                </button>
+            </form>
         </div>
     </div>
+
+    <!--        Badges-->
+
+    <div id="hobbies-small">
+        <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
+        <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
+        <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
+            <ul id="small-hobbies-list">
+                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+            </ul>
+        </div>
+        <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>
+        <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
+            <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge"
+                                                                           src="../../static/img/hobbyist-transparent.png"
+                                                                           alt="badge"
+                                                                           th:src="@{/img/hobbyist-transparent.png}"/>
+                <p th:text="${userHobby.hobby.getTitle()}"></p></li>
+        </ul>
+    </div>
+
+    <!--Friends List-->
+    <div id="small-friends-list">
+        <h1 class="center-align" id="small-friends-header">Friends</h1>
+        <ul class="collection">
+            <li class="collection-item avatar" th:each="friend : ${friendsList}">
+                <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
+                     th:src="@{/img/follower-logo.png}"/>
+                <p class="friend-info" th:text="${friend.friend.username}">User first name</p>
+                <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"></a>
+                <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
+                    <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
+                    <button class="btn transparent waves-effect waves-light delete-btn"><i
+                            class="material-icons red-text">remove_circle</i></button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 <!--Main Profile Large-->
@@ -128,7 +131,8 @@
                         </div>
 
                         <!--        Add Friend Button-->
-                        <div id="add-friend-button" class="center-align" th:if="${user.getUsername() != currentUsername}">
+                        <div id="add-friend-button" class="center-align"
+                             th:if="${user.getUsername() != currentUsername}">
                             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
                                 <button class="btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
@@ -170,11 +174,12 @@
                             <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                                  th:src="@{/img/follower-logo.png}"/>
                             <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
-                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
-                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
-                            <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                            <button class="btn grey darken-4 waves-effect waves-light"><i
-                                    class="tiny material-icons">delete</i></button>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><i
+                                    class="material-icons red-text">remove_circle</i></a>
+                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
+                                <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
+                                <button class="btn grey darken-4 waves-effect waves-light"><i
+                                        class="tiny material-icons">delete</i></button>
                             </form>
                         </li>
                     </ul>
