@@ -50,33 +50,19 @@ public class ProfileController {
         User userInDb = userDao.getOne(currentUser.getId());
         vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
 
-
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("friendsList", userInDb.getFriends());
+
+//        vModel.addAttribute("userNameHobby", currentUser.getUsername());
+//        vModel.addAttribute("user", currentUser.getUsername());
+
+        List <Hobby> hobby = hobbyDao.findAll();
+        vModel.addAttribute("hobbies", hobby);
+
         return "users/profile-view";
     }
 
-//    @GetMapping("/profile/users-hobbies")
-//    public String showFriendsHobbies( Model vModel, @RequestParam long friendId){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userInDb = userDao.getOne(currentUser.getId());
-//        List<UserHobby> userHobby = userHobbyDao.findAllByUserId(currentUser.getId());
-//
-//        User userFriendId = userDao.getOne(friendId);
-//        List<UserHobby> friendHobby = userHobbyDao.findAllByUserId(userFriendId.getId());
-//
-//
-//
-//        vModel.addAttribute("user", userDao.findByUsername(currentUser.getUsername()));
-//        vModel.addAttribute("friendsList", userInDb.getFriends());
-//        vModel.addAttribute("userHobbyList", userHobby);
-//        vModel.addAttribute("friendHobbyList", friendHobby);
-//
-//
-//        return "users/hobby";
-//
-//    }
     //public profile - this is the most accurate friendslist for the user that is not "you"
     @GetMapping("/users/profile/{username}")
     public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
@@ -120,6 +106,22 @@ public class ProfileController {
         return "redirect:/profile/" + userToEdit.getUsername();
     }
 
+//    @GetMapping("users/hobby")
+//    public String showCreatedHobbies(Model model){
+//
+//
+//
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userInDb = userDao.getOne(currentUser.getId());
+//        model.addAttribute("userNameHobby", currentUser.getUsername());
+//        model.addAttribute("user", currentUser.getUsername());
+//
+//
+//        List <Hobby> hobby = hobbyDao.findAll();
+//        model.addAttribute("hobbies", hobby);
+//
+//        return "users/profile";
+//    }
 
 
 }

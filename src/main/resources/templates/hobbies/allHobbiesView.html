@@ -65,6 +65,9 @@
                 <div class="card-content">
                     <p th:each="cat : ${hobby.categories}" th:text="${cat.name}"></p>
                 </div>
+                <div>
+                    <p th:text="${hobby.getCreatedBy().getUsername()}"></p>
+                </div>
             </div>
         </a>
     </div>

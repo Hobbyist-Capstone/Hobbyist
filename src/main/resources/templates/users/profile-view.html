@@ -38,6 +38,7 @@
                 Upload Photo
             </button>
             <div th:if="${user.getUsername() == userName }">
+            <div>
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
                     <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
@@ -62,7 +63,16 @@
 
 
     <div id="badges-small">
-        <h1 class="center-align" id="small-badges-header">Badges</h1>
+        <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
+        <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
+        <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
+            <ul id="small-hobbies-list">
+                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+            </ul>
+        </div>
+
+
+        <h3 class="center-align" id="small-badges-header">Badges</h3>
         <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
             <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge" th:src="@{/img/hobbyist-transparent.png}"/>
                 <p th:text="${userHobby.hobby.getTitle()}"></p></li>

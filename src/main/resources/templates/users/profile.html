@@ -8,10 +8,10 @@
 
 
 <h1>Profile</h1>
-<div th:each="userHobby : ${userHobbyList}">
-    <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>
-    <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>
-</div>
+<!--<div th:each="userHobby : ${userHobbyList}">-->
+<!--    <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>-->
+<!--    <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>-->
+<!--</div>-->
 
 <!--<p> username: <span th:text="${user.username}"></span></p>-->
 <!--<p> email: <span th:text="${user.email}"></span></p>-->
@@ -31,6 +31,12 @@
 <!--        <button class="btn btn-outline-info"> Edit</button>-->
 <!--    </form>-->
 <!--</div>-->
+<div th:each="hobby: ${hobbies}">
+    <ul th:if="${hobby.createdBy.username == userNameHobby}">
+        <li th:text="${hobby.title}"></li>
+        <li th:text="${hobby.createdBy.username}"></li>
+    </ul>
+</div>
 
 
 </body>
