@@ -78,6 +78,11 @@ html {
     width: 100vw;
 }
 
+.button-style {
+    font-family: 'Bungee', cursive;
+    color: white;
+}
+
 #profile-navbar-placeholder-large {
     width: 100vw;
     height: 8vh;
@@ -137,12 +142,12 @@ html {
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
-    width: 200px!important;
+
 }
 
 #upload-button {
     margin-right: 10px;
-    margin-left: 100px;
+
 }
 
 #left-div, #middle-div, #right-div {
