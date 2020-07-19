@@ -84,6 +84,7 @@ public class HobbyController {
     //    show edited hobby
     @GetMapping("hobby/{id}/edit")
     public String showEdit(@PathVariable long id, Model model) {
+        model.addAttribute("categories", categoryDao.findAll());
         Hobby hobby = hobbyDao.getOne(id);
         model.addAttribute("hobby", hobby);
         return "hobby/hobbyEdit";
@@ -91,10 +92,14 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby) {
+    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
         // save changes
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        editHobby.setCreatedBy(currentUser);
+        List<Category> categories = categoryDao.findByIdIn(categoriesId);
+//        List<Category> categories = categoryDao.findAllById(categoriesId);
+        editHobby.setCategories(categories);
+        editHobby.setPatience(pat);
+        editHobby.setDifficulty(diff);
+        editHobby.setCost(cost);
         hobbyDao.save(editHobby);
         return "redirect:/hobby/" + editHobby.getId();
     }
