@@ -38,65 +38,70 @@
                 Upload Photo
             </button>
             <div th:if="${user.getUsername() == userName }">
-            <div>
-                <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
-                    <input type="hidden" name="id" th:value="${user.getId()}">
-                    <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                <div>
+                    <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
+                        <input type="hidden" name="id" th:value="${user.getId()}">
+                        <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                    </form>
+                </div>
+            </div>
+
+
+            <!--        SMALL add friend button-->
+
+            <div id="add-friend-button-sm" class="center-align">
+                <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
+                    <button class="btn grey darken-4 waves-effect waves-light">
+                        <input type="hidden" name="userId" th:value="${user.getId()}">
+                        Add Friend
+                    </button>
                 </form>
             </div>
         </div>
 
-
-        <!--        SMALL add friend button-->
-
-        <div id="add-friend-button-sm" class="center-align">
-            <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
-                <button class="btn grey darken-4 waves-effect waves-light">
-                    <input type="hidden" name="userId" th:value="${user.getId()}">
-                    Add Friend
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!--      SMALL  Badges-->
+        <!--      SMALL  Badges-->
 
 
-    <div id="badges-small">
-        <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
-        <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
-        <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
-            <ul id="small-hobbies-list">
-                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+        <div id="badges-small">
+            <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
+            <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
+            <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
+                <ul id="small-hobbies-list">
+                    <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+                </ul>
+            </div>
+
+
+            <h3 class="center-align" id="small-badges-header">Badges</h3>
+            <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
+                <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge"
+                                                                               src="../../static/img/hobbyist-transparent.png"
+                                                                               alt="badge"
+                                                                               th:src="@{/img/hobbyist-transparent.png}"/>
+                    <p th:text="${userHobby.hobby.getTitle()}"></p></li>
             </ul>
         </div>
 
+        <!--SMALL Friends List-->
+        <div id="small-friends-list">
+            <h1 class="center-align" id="small-friends-header">Friends</h1>
+            <ul class="collection">
+                <li class="collection-item avatar" th:each="friend : ${friendsList}">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title"
+                                                                                     th:text="${friend.friend.username}">Title</span></a>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
+                        <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
+                        <button class="btn grey darken-4 waves-effect waves-light">Delete</button>
+                    </form>
+                </li>
 
-        <h3 class="center-align" id="small-badges-header">Badges</h3>
-        <ul id="small-badge-list" th:each="userHobby : ${userHobbyList}">
-            <li th:if="${#strings.endsWith(userHobby.status, 'IST')}"><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge" th:src="@{/img/hobbyist-transparent.png}"/>
-                <p th:text="${userHobby.hobby.getTitle()}"></p></li>
-        </ul>
-    </div>
-
-    <!--SMALL Friends List-->
-    <div id="small-friends-list">
-        <h1 class="center-align" id="small-friends-header">Friends</h1>
-        <ul class="collection">
-            <li class="collection-item avatar" th:each="friend : ${friendsList}">
-                <i class="material-icons circle green">insert_chart</i>
-                <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title" th:text="${friend.friend.username}">Title</span></a>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
-                    <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                    <button class="btn grey darken-4 waves-effect waves-light">Delete</button>
-                </form>
-            </li>
-
-        </ul>
+            </ul>
+        </div>
     </div>
 </div>
 <!--======================================Main Profile Large======================================-->
@@ -137,7 +142,6 @@
                                 </button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -145,16 +149,29 @@
             <!--        Badges-->
             <div id="middle-div">
                 <div id="badges-large">
-                    <h1 class="center-align" id="large-badges-header">Badges</h1>
-                    <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
-                        <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <img class="small-badge"
-                                 src="../../static/img/hobbyist-transparent.png"
-                                 alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/>
-                            <p th:text="${userHobby.hobby.getTitle()}"></p>
-                        </li>
-                    </ul>
+                    <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
+                    <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
+                    <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                        <ul id="large-hobbies-list">
+                            <li th:if="${user != hobby.getCreatedBy().getUsername()}"><a class="created-hobby-link" href="#" th:text="${hobby.title}">Swashbuckling</a>
+                            </li>
+                            <li><a class="created-hobby-link" href="#" th:text="${hobby.getCreatedBy().getUsername()}">Swashbuckling</a>
+                            </li>
+                            <hr>
+                        </ul>
+                    </div>
+
+                        <h3 class="center-align" id="large-badges-header">Badges</h3>
+                        <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
+                            <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                                <img class="small-badge"
+                                     src="../../static/img/hobbyist-transparent.png"
+                                     alt="badge"
+                                     th:src="@{/img/hobbyist-transparent.png}"/>
+                                <p th:text="${userHobby.hobby.getTitle()}"></p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -165,29 +182,26 @@
                     <ul class="collection">
                         <li class="collection-item avatar" th:each="friend : ${friendsList}">
                             <i class="material-icons circle green">insert_chart</i>
-                            <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title" th:text="${friend.friend.username}">Title</span></a>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}"><span class="title"
+                                                                                             th:text="${friend.friend.username}">Title</span></a>
                             <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                                <button class="btn grey darken-4 waves-effect waves-light"> <i class="tiny material-icons">delete</i></button>
+                                <button class="btn grey darken-4 waves-effect waves-light"><i
+                                        class="tiny material-icons">delete</i></button>
                             </form>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
 
-
-
-
-
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
 </body>

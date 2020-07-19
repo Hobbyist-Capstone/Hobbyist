@@ -75,6 +75,9 @@ public class ProfileController {
         vModel.addAttribute("user", userDao.findByUsername(username));
         vModel.addAttribute("user", user);
         vModel.addAttribute("userName", currentUser.getUsername());
+
+        List <Hobby> hobby = hobbyDao.findAll();
+        vModel.addAttribute("hobbies", hobby);
         return "users/profile-view";
     }
 
