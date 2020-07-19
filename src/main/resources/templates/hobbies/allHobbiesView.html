@@ -51,7 +51,8 @@
         <a th:href="${'/hobby/'+ hobby.id}">
             <div class="card">
                 <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
+                    <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
+                    <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
                     <span class="card-title" th:text="${hobby.title}">Card Title</span>
                     <form th:action="@{|/profile/status|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${hobby.id}">

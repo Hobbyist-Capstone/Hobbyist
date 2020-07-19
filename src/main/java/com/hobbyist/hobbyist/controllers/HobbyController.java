@@ -70,7 +70,8 @@ public class HobbyController {
     @PostMapping("/hobby/create")
     public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Category> categories = categoryDao.findAllById(categoriesId);
+        List<Category> categories = categoryDao.findByIdIn(categoriesId);
+//        List<Category> categories = categoryDao.findAllById(categoriesId);
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
         saveHobby.setPatience(pat);
