@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 function openLoginForm() {
     document.getElementById("small-login-form").style.display = "block";
-    closeJoinForm()
 }
 
 function closeLoginForm() {
