@@ -188,7 +188,7 @@ html {
 
 }
 
-#large-hobbies-list, #small-hobbies-list {
+.large-hobbies-list, .small-hobbies-list {
     list-style: none;
     font-family: 'Bungee', cursive;
     display: flex;
@@ -197,7 +197,7 @@ html {
     flex-wrap: wrap;
 }
 
-#large-hobbies-list > a, #small-hobbies-list > a {
+.large-hobbies-list > a, .small-hobbies-list > a {
     color: black!important;
 }
 
@@ -213,7 +213,6 @@ html {
 
 #large-friends-list, #small-friends-list {
     font-family: 'Bungee', cursive;
-    font-size: 1.5em;
 }
 
 #small-friends-list {
