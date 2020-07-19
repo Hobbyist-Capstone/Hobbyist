@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 class="center-align" id="large-badges-header-test">Badges</h1>
+<ul>
+    <li class="collection-item avatar" th:each="friend : ${friendsList}">
+        <p>Friend username <span th:text="${friend.friend.username}" class="title">Title</span></p>
+        <p>FriendList Auto-increment ID<span th:text="${friend.getId()}"></span></p>
+        <!--        current user ID-->
+        <p>Current user ID<span th:text="${friend.getUser().getId()}"></span></p>
+        <p>Friend-ID<span th:text="${friend.friend.getId()}"></span></p>
+<!--        <form th:action="@{|/profile/friends-request/delete|}" th:method="post">-->
+<!--            <input type="hidden" name="deleteFriendId" th:value="${friend.friend.getId()}">-->
+<!--            <button class="btn grey darken-4 waves-effect waves-light">Delete</button>-->
+<!--        </form>-->
+        <label>
+            <input type="hidden" name="friendId" th:value="${friend.friend.getId()}">
+            <div th:each="fHobby :${friendHobbyList}">
+                <p th:text="${fHobby.getStatus()}"></p>
+                <p></p>
+            </div>
+        </label>
+    </li>
+
+
+</ul>
+
+<div id="id" th:each ="friend : ${friends}">
+    <p th:text="${friend.getFriend()}"></p>
+</div>
+
+
+
+</form>
+</li>
+</ul>
+
+
+</body>
+</html>

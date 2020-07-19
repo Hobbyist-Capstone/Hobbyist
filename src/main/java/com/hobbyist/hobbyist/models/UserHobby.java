@@ -16,6 +16,10 @@ public class UserHobby {
     @OneToOne
     private Hobby hobby;
 
+    @ManyToOne
+    @JoinColumn(name="friend_id")
+    private User friend;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private HobbyStatus status;

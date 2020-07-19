@@ -42,20 +42,17 @@
                 <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
                         class="material-icons left black-text">group</i>About
                     Us</a></li>
-                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/}" class="black-text"><i
+                <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a th:href="@{/login}" class="black-text"><i
                         class="material-icons left black-text">favorite</i>Login</a></li>
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
                         th:href="@{/register}" class="black-text"><i
                         class="material-icons left black-text">add</i>Join</a></li>
-
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
 <!--                    <i class="material-icons left black-text">subdirectory_arrow_left</i>-->
                     <form th:action="@{/logout}" th:method="post">
                         <button style="font-family:Bungee; margin:10px" id="logout-button">Logout</button>
                     </form>
                 </li>
-
-
             </ul>
         </div>
     </nav>
