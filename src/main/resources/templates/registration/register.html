@@ -15,7 +15,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 <div id="register-form">
-    <h1 class="center-align join-header">Create an account</h1>
+    <h1 class="center-align join-header show-on-large hide-on-med-and-down">Create an account</h1>
     <div id="form-container" class="center-align">
         <div class="center-align" id="join-form">
             <form th:action="@{/register}" method="POST" th:object="${user}" class="form-container">
@@ -39,7 +39,7 @@
                 <label for="password"><b class="forms">Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
 
-                <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+                <button type="submit" class="button-style btn grey darken-4 waves-effect waves-light btn-large">Join</button>
             </form>
         </div>
     </div>
