@@ -86,7 +86,7 @@
                      th:src="@{/img/follower-logo.png}"/>
                 <p class="friend-info" th:text="${friend.friend.username}">User first name</p>
                 <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"></a>
-                <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
+                <form th:action="@{|/profile/friends-request/delete|}" th:method="POST" th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                     <button class="btn transparent waves-effect waves-light delete-btn"><i
                             class="material-icons red-text">remove_circle</i></button>
@@ -99,9 +99,7 @@
 
 <!--Main Profile Large-->
 
-
 <div id="profile-container-large" class="show-on-large hide-on-med-and-down">
-
     <div id="profile-above-fold-large">
         <div th:replace="partials/navbar :: navbar"></div>
         <ul th:replace="partials/navbar :: navbar-small"></ul>
