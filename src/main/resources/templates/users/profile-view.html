@@ -64,7 +64,7 @@
             <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
             <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
                 <ul id="small-hobbies-list">
-                    <li th:text="${hobby.title}"<a class="created-hobby-link" href="#">Swashbuckling</a></li>
+                    <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
                 </ul>
             </div>
             <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>
@@ -120,13 +120,22 @@
                             </button>
                         </div>
 
-                        <div th:if="${user.getUsername() == userName }" class="center-align">
+                        <div class="center-align" th:if="${user.getUsername() == currentUsername}">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="id" th:value="${user.getId()}">
                                 <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
 
+                        <!--        Add Friend Button-->
+                        <div id="add-friend-button" class="center-align" >
+                            <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
+                                <button class="btn grey darken-4 waves-effect waves-light">
+                                    <input type="hidden" name="userId" th:value="${user.getId()}">
+                                    Add Friend
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,31 +144,20 @@
             <div id="middle-div">
                 <div id="hobbies-large">
                     <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
+                    <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>
+                    <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
+                        <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                            <p th:text="${userHobby.hobby.getTitle()}"></p>
+                            <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{/img/hobbyist-transparent.png}"/>
+                        </li>
+                    </ul>
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
-                    <div id="large-created-hobbies">
-
+                    <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
                         <ul id="large-hobbies-list">
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-                            <li><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-
+                            <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
                         </ul>
                     </div>
-                    <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>
-                    <ul id="large-badge-list">
-                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/></li>
-                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/></li>
-                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/></li>
-                        <li><img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/></li>
-
-                    </ul>
                 </div>
             </div>
 
@@ -168,40 +166,18 @@
                 <h1 class="center-align" id="large-friends-header">Friends</h1>
                 <div id="large-friends-list">
                     <ul class="collection">
-                        <li class="collection-item avatar">
+                        <li class="collection-item avatar" th:each="friend : ${friendsList}">
                             <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                                  th:src="@{/img/follower-logo.png}"/>
-                            <p class="friend-info">First Line <br>
-                                Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
-                        </li>
-                        <li class="collection-item avatar">
-                        <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                             th:src="@{/img/follower-logo.png}"/>
-                            <p class="friend-info">First Line <br>
-                                Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                                 th:src="@{/img/follower-logo.png}"/>
-                            <p class="friend-info">First Line <br>
-                                Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                                 th:src="@{/img/follower-logo.png}"/>
-                            <p class="friend-info">First Line <br>
-                                Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
+                            <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><i class="material-icons red-text">remove_circle</i></a>
+                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post">
+                            <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
+                            <button class="btn grey darken-4 waves-effect waves-light"><i
+                                    class="tiny material-icons">delete</i></button>
+                            </form>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>

@@ -114,7 +114,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Bungee Shade', cursive;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 #large-profile-header, #large-friends-header, #large-hobbies-header {
