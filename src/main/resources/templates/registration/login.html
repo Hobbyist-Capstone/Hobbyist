@@ -1,17 +1,49 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<meta charset="UTF-8"/>
+<title>Join</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+<!--    Materialize Framework-->
+<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+<!--    Icons-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    Responsive Tag-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--    Custom CSS Files-->
+<link th:href="@{/css/register.css}" rel="stylesheet" type="text/css">
 </head>
-<h1>Login</h1>
+<body>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+<div id="register-form">
+    <div th:replace="partials/navbar :: navbar"></div>
+    <ul th:replace="partials/navbar :: navbar-small"></ul>
+    <h1 class="center-align join-header">Login</h1>
+    <div id="form-container" class="center-align">
+        <div class="center-align" id="join-form">
+            <div class="form-popup form-popup-large" id="login-form">
+                <form th:action="@{/login}" method="post" class="form-container center-align">
 
+                    <label for="email"><b class="forms">Username</b></label>
+                    <input type="text" placeholder="Enter username" name="username" required>
+
+                    <label for="password"><b class="forms">Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
+
+                    <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Login</button>
+                    <button type="button" class="btn cancel grey darken-4 waves-effect waves-light btn-large">Close
+                    </button>
+                </form>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script th:src="@{/JS/materialize.js}"></script>
+    <script th:src="@{/JS/index.js}"></script>
+</body>
 </html>
+
+
