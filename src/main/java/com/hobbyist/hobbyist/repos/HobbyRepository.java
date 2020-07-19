@@ -25,5 +25,8 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
 //    from hobbies
 //    join hobby_categories hc on hobbies.id = hc.hobby_id
     @Query("from Hobby h inner join h.categories c where c.id = ?1")
-    List<Hobby> filterByCategory(long id);
+    List<Hobby> filterByCategory(List<Long> id);
+
+    @Query("from Hobby h inner join h.categories c where c.id = ?1")
+    List<Hobby> filterByOneCategory(long id);
 }

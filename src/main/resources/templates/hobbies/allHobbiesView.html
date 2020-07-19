@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-<title>All Hobbies</title>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
-<!--    Materialize Framework-->
-<link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
-<!--    Icons-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--    Font Awesome Icons-->
-<script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
-<!--    Responsive Tag-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!--    Custom CSS Files-->
-<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <title>All Hobbies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+    <!--    Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <!--    Responsive Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--    Custom CSS Files-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<form th:action="@{/search}">
-    <label for="search">Search:</label>
-    <input name="search" id="search" type="text">
-    <button type="button">Submit</button>
+<form th:action="@{/search}" method="post">
+    <div class="container">
+        <div class="row">
+            <label for="search">Search:</label>
+            <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+        </div>
+    </div>
 </form>
-
-<!--<div th:each="hobby : ${hobbies}">-->
-<!--    <h1 th:text="${hobby.title}"></h1>-->
-<!--    <h2 th:text="${hobby.id}"></h2>-->
-<!--    <h2 th:text="${hobby.description}"></h2>-->
-<!--    <h3 th:each="c: ${hobby.categories}" th:text="${c.name}"></h3>-->
-
-
-<!--    <form th:action="@{|/profile/status|}" th:method="post">-->
-<!--        <input type="hidden" name="hobbyId" th:value="${hobby.id}">-->
-<!--        <button class="btn"> Add to interested</button>-->
-<!--    </form>-->
-
-<!--    <div th:each="rating : ${hobby.hobbyRating}">-->
-<!--        <p>Difficulty: <span th:text="${rating.difficulty}"></span></p>-->
-<!--        <p>Cost to Start: <span th:text="${rating.price}"></span></p>-->
-<!--        <p>Patience: <span th:text="${rating.patience}"></span></p>-->
-<!--        <p>Hobby Rating: <span th:text="${rating.overallRating}"></span></p>-->
-<!--    </div>-->
-<!--    <h3>Created by: <span th:text="${hobby.createdBy.username}"></span></h3>-->
-
-
+<div class="container">
+    <div class="row">
+        <th:block th:each="c : ${category}">
+            <form th:action="${'/category/'+ c.id}">
+                <button class="btn btn-primary" th:text="${c.name}"></button>
+            </form>
+        </th:block>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/hobbies}" method="get">
+            <label for="clear">
+                <button id="clear" name="clear" type="submit" class="btn btn-primary">Clear</button>
+            </label>
+        </form>
+    </div>
+</div>
+<h1>All Hobbies</h1>
 <div class="row text-center ml-1">
     <div class="col s12 m4" th:each="hobby : ${hobbies}">
         <!--            PUT CARD CODE HERE-->
         <a th:href="${'/hobby/'+ hobby.id}">
             <div class="card">
                 <div class="card-image">
-                    <img th:src="@{/img/tools.jpg}">
+                    <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
+                    <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
                     <span class="card-title" th:text="${hobby.title}">Card Title</span>
                     <form th:action="@{|/profile/status|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${hobby.id}">
@@ -76,5 +77,10 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
 </body>
 </html>

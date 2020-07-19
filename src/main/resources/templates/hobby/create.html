@@ -17,49 +17,88 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<form th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
-    Title:
-    <input th:field="*{title}">
-    Body:
-    <input th:field="*{description}">
 
-    Category:
-    <div id="categories" th:each="c : ${categories}">
-        <label>
-            <input name="categories" type="checkbox" th:value="${c.id}" th:text="${c.name}"/>
-        </label>
+<div class="container">
+    <div class="row">
+        <form class="col s12" th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" type="text" class="validate" th:field="*{title}">
+                    <label for="title">Hobby Title</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" th:field="*{description}"></textarea>
+                    <label for="textarea1">Hobby Description</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <select multiple th:field="*{categories}">
+                    <th:block th:each="c : ${categories}">
+                        <label>
+                            <option name="categories" th:value="${c.id}" th:text="${c.name}"></option>
+                        </label>
+                    </th:block>
+                </select>
+                <label>Category</label>
+            </div>
+            <div class="input-field col s12">
+                <select th:field="*{patience}">
+                    <option th:value="1">1</option>
+                    <option th:value="2">2</option>
+                    <option th:value="3">3</option>
+                    <option th:value="4">4</option>
+                </select>
+                <label>Select a Patience Level Required:</label>
+            </div>
+            <div class="input-field col s12">
+                <select th:field="*{difficulty}">
+                    <option th:value="1">1</option>
+                    <option th:value="2">2</option>
+                    <option th:value="3">3</option>
+                    <option th:value="4">4</option>
+                </select>
+                <label>Select a Difficulty Level:</label>
+            </div>
+            <div class="input-field col s12">
+                <select th:field="*{cost}">
+                    <option th:value="1">1</option>
+                    <option th:value="2">2</option>
+                    <option th:value="3">3</option>
+                    <option th:value="4">4</option>
+                </select>
+                <label>Select a Starting Cost Level:</label>
+            </div>
+            <label for="upload"></label>
+            <button class="btn btn-primary" id="upload" type="button" name="upload">Upload Image</button>
+            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}" type="hidden">
+            <button class="btn btn-primary">Submit</button>
+        </form>
     </div>
-    Patience:
-    <th:block th:field="*{patience}">
-        <select name="patience" th:type="radio">
-            <option th:value="1">1</option>
-            <option th:value="2">2</option>
-            <option th:value="3">3</option>
-            <option th:value="4">4</option>
-        </select>
-    </th:block>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script th:src="@{/JS/materialize.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
 
-    Difficulty:
-    <th:block th:field="*{difficulty}">
-        <select name="difficulty" th:type="radio">
-            <option th:value="1">1</option>
-            <option th:value="2">2</option>
-            <option th:value="3">3</option>
-            <option th:value="4">4</option>
-        </select>
-    </th:block>
-    Cost:
-    <th:block th:field="*{cost}">
-        <select name="cost" th:type="radio">
-            <option th:value="1">1</option>
-            <option th:value="2">2</option>
-            <option th:value="3">3</option>
-            <option th:value="4">4</option>
-        </select>
-    </th:block>
-    Upload Image
-    <input th:field="*{image}">
-    <button class="btn btn-primary">Submit</button>
-</form>
+    const client = filestack.init("apiKey");
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
 </body>
 </html>
