@@ -91,6 +91,11 @@ html {
     margin: 20px;
 }
 
+.button-style {
+    font-family: 'Bungee', cursive;
+    color: white;
+}
+
 #large-hobbies-button, #small-hobbies-button {
     margin-top: 5px;
 }
