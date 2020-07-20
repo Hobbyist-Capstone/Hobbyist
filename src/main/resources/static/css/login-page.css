@@ -60,3 +60,8 @@ body {
     color: white;
 }
 
+#logout-text {
+    font-family: 'Bungee', cursive!important;
+    color: black!important;
+    font-size: 2em!important;
+}
