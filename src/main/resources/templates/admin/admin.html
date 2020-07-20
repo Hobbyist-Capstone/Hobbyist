@@ -28,21 +28,31 @@
                 <h1 class="center-align" id="large-friends-header">USERS</h1>
                 <div id="large-friends-list">
                     <ul class="collection">
-                        <li class="collection-item avatar" th:each="users : ${user}">
-                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                                 th:src="@{/img/follower-logo.png}"/>
-                            <div>
-                                <p>User ID: <span class="friend-info" th:text="${users.id}">ID</span></p>
-                                <a th:href="@{|/users/profile/${users.username}|}" class="secondary-content">
-                                    <p> Username :<span class="friend-info" th:text="${users.username}">USERNAME</span>
-                                    </p></a>
-                                <p>Is Admin: <span th:text="${users.isAdmin()}"></span></p>
-                            </div>
+                        <li class="collection-item avatar" th:each="user : ${users}">
                             <form th:action="@{|/admin/delete|}" th:method="post">
-                                <input type="hidden" name="userId" th:value="${users.id}">
-                                <button class="btn grey darken-4 waves-effect waves-light"><i
-                                        class="tiny material-icons">delete</i></button>
+                                <input type="hidden" name="userId" th:value="${user.id}">
+                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete User</button>
                             </form>
+<!--                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"-->
+<!--                                 th:src="@{/img/follower-logo.png}"/>-->
+                            <div>
+                                <div>
+                                    <a th:href="@{|/users/profile/${user.username}|}" class="secondary-content">
+                                        <p> Username :<span class="friend-info"
+                                                            th:text="${user.username}">USERNAME</span>
+                                        </p>
+                                    </a>
+                                </div>
+                                <p>User ID: <span class="friend-info" th:text="${user.id}">ID</span></p>
+                                <p>Is Admin: <span th:text="${user.isAdmin()}"></span></p>
+                            </div>
+
+                            <h6>User created hobbies: </h6>
+                            <div th:each="hobby: ${hobbies}">
+                                <div th:if="${user.username == hobby.createdBy.username}">
+                                    <a th:href="${'/hobby/' + hobby.id}"><p th:text="${hobby.getTitle()}"></p></a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
