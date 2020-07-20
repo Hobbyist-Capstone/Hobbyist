@@ -42,7 +42,7 @@ html {
     margin-bottom: 15px;
 }
 
-#small-photo {
+.small-photo {
     width: 70vw;
     height: auto;
     border-radius: 50px;
@@ -131,13 +131,13 @@ html {
 
 }
 
-#large-photo {
+.large-photo {
     width: 20vw;
     height: auto;
     border-radius: 50%;
 }
 
-#large-profile-buttons {
+.large-profile-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
