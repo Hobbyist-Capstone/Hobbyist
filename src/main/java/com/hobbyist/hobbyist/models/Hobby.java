@@ -29,6 +29,9 @@ public class Hobby {
     @Column(columnDefinition = "TEXT")
     private String image;
 
+    @Column(columnDefinition = "TEXT")
+    private String youtubeLink;
+
     @OneToOne
     private User createdBy;
 
@@ -55,16 +58,17 @@ public class Hobby {
     public Hobby() {
     }
 
-    public Hobby(String title, String description, String image, byte patience, byte difficulty, byte cost) {
+    public Hobby(String title, String description, String image, byte patience, byte difficulty, byte cost, String youtubeLink) {
         this.title = title;
         this.description = description;
         this.patience = patience;
         this.difficulty = difficulty;
         this.cost = cost;
         this.image = image;
+        this.youtubeLink = youtubeLink;
     }
 
-    public Hobby(long id, String title, String description, String image, byte patience, byte difficulty, byte cost) {
+    public Hobby(long id, String title, String description, String image, byte patience, byte difficulty, byte cost, String youtubeLink) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -72,19 +76,21 @@ public class Hobby {
         this.difficulty = difficulty;
         this.cost = cost;
         this.image = image;
+        this.youtubeLink = youtubeLink;
     }
 
-    public Hobby(String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+    public Hobby(String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating, String youtubeLink) {
         this.title = title;
         this.description = description;
         this.createdBy = createdBy;
         this.users = users;
         this.image = image;
         this.rating = hobbyRating;
+        this.youtubeLink = youtubeLink;
     }
 
 
-    public Hobby(long id, String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating) {
+    public Hobby(long id, String title, String description, User createdBy, List<User> users, String image, List<Rating> hobbyRating, String youtubeLink) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -92,6 +98,15 @@ public class Hobby {
         this.users = users;
         this.image = image;
         this.rating = hobbyRating;
+        this.youtubeLink = youtubeLink;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(String youtubeLink) {
+        this.youtubeLink = youtubeLink;
     }
 
     public byte getPatience() {
