@@ -92,7 +92,7 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
+    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
