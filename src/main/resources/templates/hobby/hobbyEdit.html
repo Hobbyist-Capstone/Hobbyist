@@ -17,19 +17,7 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<!--<form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">-->
-<!--    Title:-->
-<!--    <input th:field="*{title}" type="text">-->
-<!--    Body:-->
-<!--    <input th:field="*{description}" type="text">-->
-<!--    Patience:-->
-<!--    <input th:field="*{patience}" type="text">-->
-<!--    Difficulty:-->
-<!--    <input th:field="*{difficulty}" type="text">-->
-<!--    Cost:-->
-<!--    <input th:field="*{cost}" type="text">-->
-<!--    <button>Save Changes</button>-->
-<!--</form>-->
+
 <div class="container">
     <div class="row">
         <form class="col s12" th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="POST" th:object="${hobby}">
@@ -81,7 +69,7 @@
                 <label>Select a Starting Cost Level:</label>
             </div>
             <label for="upload"></label>
-            <button class="btn btn-primary" id="upload" type="button" name="upload">Upload Image</button>
+            <button class="btn btn-primary" id="upload" type="button" name="upload">Edit Image</button>
             <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}" type="hidden">
             <button class="btn btn-primary">Edit</button>
         </form>
@@ -101,19 +89,6 @@
         $('select').formSelect();
     });
 </script>
-<script th:inline="javascript">
-    const options = {
-        onUploadDone:
-            function (res) {
-                $("#stashFilestackURL").val(res.filesUploaded[0].url);
-            }
-    }
-
-    const client = filestack.init("apikey");
-
-    $("#upload").click(function () {
-        client.picker(options).open()
-    });
-</script>
+<script th:src="@{/JS/keys.js}"></script>
 </body>
 </html>

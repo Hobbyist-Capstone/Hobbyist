@@ -86,19 +86,6 @@
         $('select').formSelect();
     });
 </script>
-<script th:inline="javascript">
-    const options = {
-        onUploadDone:
-            function (res) {
-                $("#stashFilestackURL").val(res.filesUploaded[0].url);
-            }
-    }
-
-    const client = filestack.init("apiKey");
-
-    $("#upload").click(function () {
-        client.picker(options).open()
-    });
-</script>
+<script th:src="@{/JS/keys.js}"></script>
 </body>
 </html>

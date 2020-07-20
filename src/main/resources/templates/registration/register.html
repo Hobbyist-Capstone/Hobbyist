@@ -39,6 +39,11 @@
                 <label for="password"><b class="forms">Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
 
+                <label for="upload"></label>
+                <button class="btn btn-primary" id="upload" type="button" name="upload">Upload Image</button>
+                <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{userImage}"
+                       type="hidden">
+
                 <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Join</button>
             </form>
         </div>
@@ -46,9 +51,28 @@
 </div>
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+
+    const client = filestack.init("Ar87YfrFqRoWmIJkFZzQ0z");
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
 </body>
 </html>
