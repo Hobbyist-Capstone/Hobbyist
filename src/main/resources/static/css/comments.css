@@ -7,7 +7,10 @@
 }
 
 
+#HCB_comment_form_box {
+    font-family: 'Bungee', cursive;
 
+}
 #HCB_comment_box {
     width: 100%;
     /*border: 2px solid black;*/
@@ -16,8 +19,8 @@
 }
 
 #hcb_form_name {
-    width: 100%;
-    margin: 20px;
+    width: 99%;
+    padding-right: 20px;
 }
 
 #hcb_form_content {
@@ -25,6 +28,11 @@
     margin: 20px;
     color: black;
 }
+
+.hcb_shadow_m {
+    margin: 0!important;
+}
+
 
 h3 {
     /*font-family: 'Bungee Shade', cursive;*/
@@ -46,6 +54,52 @@ blockquote:nth-child(1) {
     color: white;
     font-family: 'Bungee', cursive;
 
+
 }
 
+#no_comments {
+    font-family: 'Bungee', cursive;
+}
+
+a, .home-desc{
+    color: black;
+    font-family: 'Bungee', cursive;
+    /*display: none;*/
+}
+#HCB_comment_box .btn:first-child {
+    background-color: black!important;
+    color: white!important;
+    border-color: black;
+    padding-bottom: 0!important;
+}
+input {
+    background-color: black;
+    color: white;
+}
+
+#hcb_msg {
+    font-family: 'Bungee', cursive;
+    color: black;
+}
+
+#HCB_comment_box input, #HCB_comment_box input.btn, #HCB_comment_box select, #HCB_comment_box textarea {
+    font-family: 'Bungee', cursive;
+}
+
+#HCB_comment_box .help-inline, #HCB_comment_box .btn {
+    color: white;
+    background-color: black;
+    font-family: 'Bungee', cursive;
+}
+
+
+#HCB_comment_box .uneditable-textarea, #HCB_comment_box input[type=button], #HCB_comment_box input[type=reset], #HCB_comment_box input[type=submit] {
+    height: 36px!important;
+    width: 122px!important;
+    padding: 4px 10px 0 10px!important;
+    font-family: 'Bungee', cursive!important;
+    color: white!important;
+    background-color: black!important;
+
+}
 
