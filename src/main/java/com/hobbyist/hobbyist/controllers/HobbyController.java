@@ -68,12 +68,13 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost,  @RequestParam(name = "video") String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
+        saveHobby.setYoutubeLink(video);
         saveHobby.setPatience(pat);
         saveHobby.setDifficulty(diff);
         saveHobby.setCost(cost);
@@ -92,11 +93,12 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost) {
+    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
         editHobby.setCategories(categories);
+        editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
         editHobby.setDifficulty(diff);
         editHobby.setCost(cost);
