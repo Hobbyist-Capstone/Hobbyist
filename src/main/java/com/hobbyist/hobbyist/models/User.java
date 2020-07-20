@@ -29,7 +29,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean isAdmin;
 
     @Column(columnDefinition = "TEXT")
