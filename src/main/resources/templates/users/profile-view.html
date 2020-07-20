@@ -136,7 +136,12 @@
                         <!--        Add Friend Button-->
                         <div id="add-friend-button" class="center-align"
                              th:if="${user.getUsername() != currentUsername}">
-                            <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
+                            <form th:action="@{|/users/profile/friends-request|}" th:method="GET" th:object="${friend}">
+
+                                <div th:if="${#fields.hasErrors('*')}">
+                                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                                </div>
+
                                 <button class="btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
@@ -163,10 +168,10 @@
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
                         <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
-                            <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}"><li th:text="${hobby.title}">Swashbuckling</li></a>
                         </ul>
                         <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                            <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
+                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}"><li th:text="${hobby.title}">Swashbuckling</li></a>
                         </ul>
                     </div>
                 </div>
