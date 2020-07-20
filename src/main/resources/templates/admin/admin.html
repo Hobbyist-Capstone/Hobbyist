@@ -31,20 +31,20 @@
                         <li class="collection-item avatar" th:each="user : ${users}">
                             <form th:action="@{|/admin/delete|}" th:method="post">
                                 <input type="hidden" name="userId" th:value="${user.id}">
-                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete User</button>
+                                <button class="button-style btn-small grey darken-4 waves-effect waves-light">Delete User</button>
                             </form>
 <!--                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"-->
 <!--                                 th:src="@{/img/follower-logo.png}"/>-->
                             <div>
                                 <div>
                                     <a th:href="@{|/users/profile/${user.username}|}" class="secondary-content">
-                                        <p> Username :<span class="friend-info"
+                                        <p> Username:&nbsp;&nbsp;<span class="friend-info"
                                                             th:text="${user.username}">USERNAME</span>
                                         </p>
                                     </a>
                                 </div>
-                                <p>User ID: <span class="friend-info" th:text="${user.id}">ID</span></p>
-                                <p>Is Admin: <span th:text="${user.isAdmin()}"></span></p>
+                                <p>User ID:&nbsp;&nbsp;<span class="friend-info" th:text="${user.id}">ID</span></p>
+                                <p>Is Admin:&nbsp;&nbsp; <span th:text="${user.isAdmin()}"></span></p>
                             </div>
 
                             <h6>User created hobbies: </h6>
@@ -63,12 +63,12 @@
                 <div id="large-friends-list">
                     <ul class="collection">
                         <li class="collection-item avatar" th:each="hobby : ${hobbies}">
-                            <p>Title: <a th:href="${'/hobby/' + hobby.id}"><span th:text="${hobby.title}"></span></a></p>
-                            <p>Hobby created by: <span th:text="${hobby.createdBy.username}"></span></p>
-                            <p>Hobby ID: <span th:text="${hobby.id}"></span></p>
+                            <p>Title:&nbsp;&nbsp;<a th:href="${'/hobby/' + hobby.id}"><span th:text="${hobby.title}">&nbsp;</span></a></p>
+                            <p>Hobby created by:&nbsp;&nbsp; <span th:text="${hobby.createdBy.username}"></span></p>
+                            <p>Hobby ID:&nbsp;&nbsp; <span th:text="${hobby.id}"></span></p>
                             <form th:action="@{|/admin/delete/hobby|}" th:method="post">
                                 <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>
+                                <button class="button-style btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>
                             </form>
                         </li>
                     </ul>
