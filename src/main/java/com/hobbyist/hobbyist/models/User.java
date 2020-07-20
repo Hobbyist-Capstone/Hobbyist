@@ -32,6 +32,9 @@ public class User {
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean isAdmin;
 
+    @Column(columnDefinition = "TEXT")
+    private String userImage;
+
     @ManyToMany(mappedBy = "users")
     private List<Hobby> hobbies;
 
@@ -43,17 +46,18 @@ public class User {
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, String userImage, boolean isAdmin) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.userImage = userImage;
         this.isAdmin = isAdmin;
     }
 
-    public User(long id, String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, String userImage,boolean isAdmin, List<Hobby> hobbies, List<Rating> ratings, List<FriendList> friends) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,11 +66,12 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
         this.hobbies = hobbies;
+        this.userImage = userImage;
         this.ratings = ratings;
         this.friends = friends;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, boolean isAdmin, List<Hobby>  hobbies,  List<Rating> ratings, List<FriendList> friends) {
+    public User(String firstName, String lastName, String email, String username, String password, String userImage, boolean isAdmin, List<Hobby>  hobbies,  List<Rating> ratings, List<FriendList> friends){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -74,6 +79,7 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
         this.hobbies = hobbies;
+        this.userImage = userImage;
         this.ratings = ratings;
         this.friends = friends;
     }
@@ -89,6 +95,15 @@ public class User {
         this.hobbies= copy.hobbies;
         this.ratings =copy.ratings;
         this.friends = copy.friends;
+        this.userImage = copy.userImage;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     public long getId() {

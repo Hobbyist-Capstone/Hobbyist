@@ -169,6 +169,11 @@ html {
     font-family: 'Bungee', cursive;
 }
 
+.button-style {
+    font-family: 'Bungee', cursive;
+    color: white;
+}
+
 /*Scroll Window*/
 
 /*.live__scroll {*/

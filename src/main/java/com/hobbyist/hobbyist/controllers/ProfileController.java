@@ -129,6 +129,20 @@ public class ProfileController {
         return "redirect:/profile";
     }
 
+//    @GetMapping("users/{id}/upload")
+//    public String showUploadImage(@PathVariable long id, Model vModel) {
+//        User user = userDao.getOne(id);
+//        vModel.addAttribute("user", user);
+//        return "users/uploadImage";
+//    }
+//
+//
+//    @PostMapping("users/upload")
+//    public String editUploadImage(@ModelAttribute User userToEdit) {
+//        userDao.save(userToEdit);
+//        return "redirect:/profile";
+//    }
+
 //    @GetMapping("users/hobby")
 //    public String showCreatedHobbies(Model model){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

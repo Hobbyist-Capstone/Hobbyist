@@ -78,6 +78,11 @@ html {
     width: 100vw;
 }
 
+.button-style {
+    font-family: 'Bungee', cursive;
+    color: white;
+}
+
 #profile-navbar-placeholder-large {
     width: 100vw;
     height: 8vh;
@@ -135,14 +140,14 @@ html {
 #large-profile-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin: 10px;
-    width: 200px!important;
+
 }
 
 #upload-button {
     margin-right: 10px;
-    margin-left: 100px;
+
 }
 
 #left-div, #middle-div, #right-div {
@@ -164,6 +169,14 @@ html {
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: scroll;
+    margin: 0!important;
+    font-family: 'Bungee', cursive;
+    font-size: 1.5em;
+
+}
+
+ul {
+    margin: 0!important;
 }
 
 
@@ -183,7 +196,7 @@ html {
 
 }
 
-#large-hobbies-list, #small-hobbies-list {
+.large-hobbies-list, .small-hobbies-list {
     list-style: none;
     font-family: 'Bungee', cursive;
     display: flex;
@@ -192,7 +205,7 @@ html {
     flex-wrap: wrap;
 }
 
-#large-hobbies-list > a, #small-hobbies-list > a {
+.large-hobbies-list > a, .small-hobbies-list > a {
     color: black!important;
 }
 
@@ -208,7 +221,6 @@ html {
 
 #large-friends-list, #small-friends-list {
     font-family: 'Bungee', cursive;
-    font-size: 1.5em;
 }
 
 #small-friends-list {
