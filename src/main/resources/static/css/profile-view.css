@@ -140,7 +140,7 @@ html {
 #large-profile-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin: 10px;
 
 }
@@ -169,6 +169,14 @@ html {
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: scroll;
+    margin: 0!important;
+    font-family: 'Bungee', cursive;
+    font-size: 1.5em;
+
+}
+
+ul {
+    margin: 0!important;
 }
 
 
