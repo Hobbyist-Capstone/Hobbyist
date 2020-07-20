@@ -17,7 +17,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<h1 id="profile-edit-header" class="center-align">Update Account</h1>
+<h1 id="profile-edit-header" class="center-align show-on-large hide-on-med-and-down">Update Account</h1>
 <div class="center-align" id="update-profile-form">
     <form th:action="${'/users/' + user.id + '/edit'}" class="edit-form-container" th:method="POST" th:object="${user}">
 

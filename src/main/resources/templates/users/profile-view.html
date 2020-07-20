@@ -44,7 +44,7 @@
             <div id="large-profile-buttons" class="center-align">
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
-                    <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                    <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
                 </form>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <!--      Add Friend Buttons-->
         <div id="add-friend-button-sm" class="center-align" th:if="${user.getUsername() != currentUsername}">
             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
-                <button class="btn grey darken-4 waves-effect waves-light">
+                <button class="button-style btn grey darken-4 waves-effect waves-light">
                     <input type="hidden" name="userId" th:value="${user.getId()}">
                     Add Friend
                 </button>
@@ -74,10 +74,10 @@
         </ul>
         <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
         <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
-            <ul id="small-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+            <ul class="small-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                 <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
             </ul>
-            <ul id="small-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+            <ul class="small-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                 <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
                 <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
                       th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                    <button class="btn grey darken-4 waves-effect waves-light"><i
+                    <button class="button-style btn grey darken-4 waves-effect waves-light"><i
                             class="tiny material-icons">delete</i></button>
                 </form>
             </li>
@@ -135,14 +135,14 @@
                         <div id="large-profile-buttons" class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="id" th:value="${user.getId()}">
-                                <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
+                                <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
                         <!--        Add Friend Button-->
                         <div id="add-friend-button" class="center-align"
                              th:if="${user.getUsername() != currentUsername}">
                             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
-                                <button class="btn grey darken-4 waves-effect waves-light">
+                                <button class="button-style btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
                                 </button>
@@ -167,10 +167,10 @@
 
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                        <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                        <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                             <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
                         </ul>
-                        <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                        <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                             <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
                         </ul>
                     </div>
@@ -192,7 +192,7 @@
                             <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
                                   th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                                <button class="btn grey darken-4 waves-effect waves-light"><i
+                                <button class="button-style btn grey darken-4 waves-effect waves-light"><i
                                         class="tiny material-icons">delete</i></button>
                             </form>
                         </li>
