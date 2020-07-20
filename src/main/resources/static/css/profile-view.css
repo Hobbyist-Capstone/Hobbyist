@@ -179,6 +179,9 @@ ul {
     margin: 0!important;
 }
 
+p {
+    color: black!important;
+}
 
 #large-created-hobbies-header, #small-created-hobbies-header {
     font-size: 2em;
@@ -193,6 +196,7 @@ ul {
     justify-content: space-between;
     overflow: scroll;
     font-size: 1.5em;
+    font-family: 'Bungee', cursive;
 
 }
 
@@ -238,4 +242,8 @@ ul {
 
 .friend-info {
     display: inline-block;
+}
+
+span {
+    color: black!important;
 }

@@ -31,6 +31,23 @@
                     <label for="textarea1">Hobby Description</label>
                 </div>
             </div>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add A Helpful Youtube
+                Video</a>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content responsive-img">
+                    <video class="responsive-video" controls>
+                        <source th:src="@{/img/youtube-submit-instruction.mov}" type="video/mp4">
+                    </video>
+                    <div class="input-field col s12">
+                        <input id="video" name="video" type="text" class="validate">
+                        <label for="video">Insert Link Here</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Add Video</a>
+                </div>
+            </div>
             <div class="input-field col s12">
                 <select multiple th:field="*{categories}">
                     <th:block th:each="c : ${categories}">
@@ -87,6 +104,7 @@
 <script>
     $(document).ready(function () {
         $('select').formSelect();
+        $('.modal').modal();
     });
 </script>
 <script th:src="@{/JS/keys.js}"></script>
