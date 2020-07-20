@@ -90,7 +90,8 @@
                 <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                     <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                 </a>
-                <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
+                <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                      th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                     <button class="btn grey darken-4 waves-effect waves-light"><i
                             class="tiny material-icons">delete</i></button>
@@ -119,7 +120,7 @@
 
                     <!--        Edit and Upload Profile Photo Buttons-->
                     <div id="large-profile-buttons" class="center-align">
-                        <div id="upload-button" class="center-align">
+                        <div id="upload-button" class="center-align" th:if="${user.getUsername() == currentUsername}">
                             <button class="btn grey darken-4 waves-effect waves-light">
                                 Upload Photo
                             </button>
@@ -131,6 +132,7 @@
                                 <button class="btn grey darken-4 waves-effect waves-light">Edit Account</button>
                             </form>
                         </div>
+
                         <!--        Add Friend Button-->
                         <div id="add-friend-button" class="center-align"
                              th:if="${user.getUsername() != currentUsername}">
@@ -181,8 +183,9 @@
                             <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                                 <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                             </a>
-<!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
-                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
+                            <!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
+                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                                  th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                                 <button class="btn grey darken-4 waves-effect waves-light"><i
                                         class="tiny material-icons">delete</i></button>

@@ -32,7 +32,7 @@ public class FriendListController {
         User user = userDao.getOne(userId);
         FriendList friend = new FriendList(currentUser, user, FriendStatus.ACCEPTED);
         friendListDao.save(friend);
-        return "redirect:/profile";
+        return "redirect:/users/profile/" + user.getUsername();
     }
 
     @PostMapping("/profile/friends-request/delete")

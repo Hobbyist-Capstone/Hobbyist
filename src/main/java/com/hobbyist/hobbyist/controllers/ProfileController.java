@@ -72,12 +72,11 @@ public class ProfileController {
         User userInDb = userDao.getOne(currentUser.getId());
         User user = userDao.findByUsername(username);
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
+//        vModel.addAttribute("user", user);
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("friendsList", user.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));
-        vModel.addAttribute("user", user);
         vModel.addAttribute("publicUsername", user.getUsername());
-
         List <Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
         return "users/profile-view";
@@ -132,15 +131,10 @@ public class ProfileController {
 
 //    @GetMapping("users/hobby")
 //    public String showCreatedHobbies(Model model){
-//
-//
-//
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        User userInDb = userDao.getOne(currentUser.getId());
 //        model.addAttribute("userNameHobby", currentUser.getUsername());
 //        model.addAttribute("user", currentUser.getUsername());
-//
-//
 //        List <Hobby> hobby = hobbyDao.findAll();
 //        model.addAttribute("hobbies", hobby);
 //
