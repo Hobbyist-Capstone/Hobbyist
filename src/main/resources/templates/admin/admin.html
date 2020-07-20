@@ -57,7 +57,25 @@
                     </ul>
                 </div>
             </div>
-        </div>
+
+            <div id="right-div">
+                <h1 class="center-align" id="large-friends-header">ALL HOBBIES</h1>
+                <div id="large-friends-list">
+                    <ul class="collection">
+                        <li class="collection-item avatar" th:each="hobby : ${hobbies}">
+                            <p>Title: <a th:href="${'/hobby/' + hobby.id}"><span th:text="${hobby.title}"></span></a></p>
+                            <p>Hobby created by: <span th:text="${hobby.createdBy.username}"></span></p>
+                            <p>Hobby ID: <span th:text="${hobby.id}"></span></p>
+                            <form th:action="@{|/admin/delete/hobby|}" th:method="post">
+                                <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            </div>
     </div>
 </div>
 </body>

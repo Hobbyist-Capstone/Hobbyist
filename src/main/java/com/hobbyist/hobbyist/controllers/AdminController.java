@@ -1,5 +1,6 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -34,10 +35,19 @@ public class AdminController {
         }
     }
 
+    //delete user
     @PostMapping("/admin/delete")
     public String deleteProfile(@RequestParam long userId){
         User deleteProfile = usersDao.getOne(userId);
         usersDao.delete(deleteProfile);
+        return "redirect:/admin";
+    }
+
+    //delete Hobby
+    @PostMapping("/admin/delete/hobby")
+    public String deleteHobby(@RequestParam long hobbyId){
+        Hobby deleteHobby = hobbyDao.getOne(hobbyId);
+        hobbyDao.delete(deleteHobby);
         return "redirect:/admin";
     }
 }
