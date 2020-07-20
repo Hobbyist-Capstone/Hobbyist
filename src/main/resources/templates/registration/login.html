@@ -23,6 +23,9 @@
         <div id="logout-text" class="center-align flicker-fast" th:if="${param.logout}">
             You have logged out.
         </div>
+        <div id="login-warning-text" class="text-center flicker-fast" th:if="${param.error}">
+            Invalid Username or Password.
+        </div>
         <div class="center-align" id="join-form">
             <div class="form-popup form-popup-large" id="login-form">
                 <form th:action="@{/login}" method="post" class="form-container center-align">

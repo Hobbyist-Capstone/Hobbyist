@@ -60,8 +60,9 @@ body {
     color: white;
 }
 
-#logout-text {
+#logout-text, #login-warning-text {
     font-family: 'Bungee', cursive!important;
-    color: black!important;
+    color: red!important;
     font-size: 2em!important;
+    margin: 30px 10px 0 10px;
 }
