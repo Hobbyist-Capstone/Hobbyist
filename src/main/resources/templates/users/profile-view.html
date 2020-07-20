@@ -28,17 +28,20 @@
     <!--        Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
-        <img id="small-photo" class="center-align" src="../../static/img/moriah-small.png" alt="profile picture"
-             th:src="@{/img/moriah-small.png}"/>
+        <img th:if="${user.userImage} == ''" id="small-photo" class="center-align" th:src="@{/img/userPlaceholder.png}"
+             alt="placeholder">
+        <img th:unless="${user.userImage} == ''" id="small-photo" class="center-align" th:src="${user.userImage}"
+             alt="profile picture">
+<!--        not working -->
+<!--        <div id="large-profile-buttons" class="center-align">-->
+<!--            <form th:action="@{|/users/${user.id}/upload|}" th:method="GET" th:object="${user}">-->
+<!--                <input type="hidden" name="id" th:value="${user.getId()}">-->
+<!--                <button class="btn grey darken-4 waves-effect waves-light">Upload</button>-->
+<!--            </form>-->
+<!--        </div>-->
 
-
-        <!--        Edit and Upload Profile Photo Buttons-->
-        <div id="small-profile-photo-controls">
-            <button class="button-style btn grey darken-4 waves-effect waves-light" id="small-upload-button">
-                Upload Photo
-            </button>
-
-            <div th:if="${user.getUsername() == currentUsername}">
+        <div th:if="${user.getUsername() == currentUsername}">
+            <div id="large-profile-buttons" class="center-align">
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
                     <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
@@ -90,7 +93,8 @@
                 <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                     <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                 </a>
-                <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
+                <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                      th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                     <button class="button-style btn grey darken-4 waves-effect waves-light"><i
                             class="tiny material-icons">delete</i></button>
@@ -113,19 +117,22 @@
                 <h1 id="large-profile-header" class="center-align">Account</h1>
                 <div id="large-profile-image" class="center-align">
 
-                    <img id="large-photo" class="center-align" src="../../static/img/moriah-small.png"
-                         alt="profile picture"
-                         th:src="@{/img/moriah-small.png}"/>
+                    <img th:if="${user.userImage} == ''" id="large-photo" class="center-align"
+                         th:src="@{/img/userPlaceholder.png}"
+                         alt="placeholder">
+                    <img th:unless="${user.userImage} == ''" id="large-photo" class="center-align"
+                         th:src="${user.userImage}"
+                         alt="profile picture">
 
-                    <!--        Edit and Upload Profile Photo Buttons-->
-                    <div id="large-profile-buttons" class="center-align">
-                        <div id="upload-button" class="center-align">
-                            <button class="button-style btn grey darken-4 waves-effect waves-light">
-                                Upload Photo
-                            </button>
-                        </div>
-
-                        <div class="center-align" th:if="${user.getUsername() == currentUsername}">
+                    <!--        not working -->
+<!--                    <div id="large-profile-buttons" class="center-align">-->
+<!--                        <form th:action="@{|/users/${user.id}/upload|}" th:method="GET" th:object="${user}">-->
+<!--                            <input type="hidden" name="id" th:value="${user.getId()}">-->
+<!--                            <button class="btn grey darken-4 waves-effect waves-light">Upload</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+                    <div class="center-align" th:if="${user.getUsername() == currentUsername}">
+                        <div id="large-profile-buttons" class="center-align">
                             <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                                 <input type="hidden" name="id" th:value="${user.getId()}">
                                 <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
@@ -181,8 +188,9 @@
                             <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                                 <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                             </a>
-<!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
-                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post" th:if="${user.getUsername() == currentUsername}">
+                            <!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
+                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                                  th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                                 <button class="button-style btn grey darken-4 waves-effect waves-light"><i
                                         class="tiny material-icons">delete</i></button>
@@ -196,9 +204,15 @@
 </div>
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
+<script th:src="@{/JS/keys.js}"></script>
 </body>
 </html>
