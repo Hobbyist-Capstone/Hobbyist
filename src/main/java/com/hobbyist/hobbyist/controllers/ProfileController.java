@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -102,11 +104,30 @@ public class ProfileController {
 
 
     @PostMapping("users/{id}/edit")
-    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
+    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit, @Validated User user, Errors validation, Model model) {
+        String username = user.getUsername();
+        String email = user.getEmail();
+        User userExists = userDao.findByUsername(username);
+        User emailExists = userDao.findByEmail(email);
+
+        if (userExists != null) {
+            validation.rejectValue("username", "user.username", username + " already exists in our records.");
+        }
+
+        if (emailExists != null) {
+            validation.rejectValue("email", "user.email", email + " already exists in our records.");
+        }
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("user", user);
+            return  "registration/register";
+        }
+
         userToEdit.setId(id);
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
-        return "redirect:/profile/" + userToEdit.getUsername();
+        return "redirect:/profile";
     }
 
 //    @GetMapping("users/hobby")
