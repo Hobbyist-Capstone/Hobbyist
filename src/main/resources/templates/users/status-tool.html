@@ -28,7 +28,7 @@
         <h5 class="title">INTERESTED</h5>
         <div class="content">
             <div th:block th:each="userHobby : ${userHobbyList}">
-                <p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
 
 <!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>-->
 
@@ -52,7 +52,7 @@
         <h5 class="title">TRIED</h5>
         <div class="content">
             <div th:block th:each="userHobby : ${userHobbyList}">
-                <p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
 <!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>-->
 
                 <div th:if="${#strings.endsWith(userHobby.status, 'IT')}">
@@ -75,7 +75,7 @@
         <h5 class="title">HOBBYIST</h5>
         <div class="content">
             <div th:block th:each="userHobby : ${userHobbyList}">
-                <p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p>
+                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
 <!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>-->
 
                 <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">

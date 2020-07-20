@@ -21,9 +21,9 @@
 <div class="center-align" id="update-profile-form">
     <form th:action="${'/users/' + user.id + '/edit'}" class="edit-form-container" th:method="POST" th:object="${user}">
 
-    <div th:if="${#fields.hasErrors('*')}">
-        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-    </div>
+<!--    <div th:if="${#fields.hasErrors('*')}">-->
+<!--        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>-->
+<!--    </div>-->
 
         <label for="first-name"><b class="edit-forms">First Name</b></label>
         <input type="text" placeholder="Enter first name" th:field="*{firstName}" required>
