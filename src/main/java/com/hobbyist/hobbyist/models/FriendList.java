@@ -13,6 +13,7 @@ public class FriendList {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     @ManyToOne
     @JoinColumn(name = "friend_id")
     private User friend;

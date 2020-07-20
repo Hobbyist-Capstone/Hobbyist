@@ -29,10 +29,10 @@
                 <div id="large-friends-list">
                     <ul class="collection">
                         <li class="collection-item avatar" th:each="user : ${users}">
-                            <form th:action="@{|/admin/delete|}" th:method="post">
-                                <input type="hidden" name="userId" th:value="${user.id}">
-                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete User</button>
-                            </form>
+<!--                            <form th:action="@{|/admin/delete|}" th:method="post">-->
+<!--                                <input type="hidden" name="userId" th:value="${user.id}">-->
+<!--                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete User</button>-->
+<!--                            </form>-->
 <!--                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"-->
 <!--                                 th:src="@{/img/follower-logo.png}"/>-->
                             <div>
@@ -59,17 +59,17 @@
             </div>
 
             <div id="right-div">
-                <h1 class="center-align" id="large-friends-header">ALL HOBBIES</h1>
+                <h1 class="center-align" id="large-friends-header">HOBBIES</h1>
                 <div id="large-friends-list">
                     <ul class="collection">
                         <li class="collection-item avatar" th:each="hobby : ${hobbies}">
                             <p>Title: <a th:href="${'/hobby/' + hobby.id}"><span th:text="${hobby.title}"></span></a></p>
                             <p>Hobby created by: <span th:text="${hobby.createdBy.username}"></span></p>
                             <p>Hobby ID: <span th:text="${hobby.id}"></span></p>
-                            <form th:action="@{|/admin/delete/hobby|}" th:method="post">
-                                <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>
-                            </form>
+<!--                            <form th:action="@{|/admin/delete/hobby|}" th:method="post">-->
+<!--                                <input type="hidden" name="hobbyId" th:value="${hobby.id}">-->
+<!--                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>-->
+<!--                            </form>-->
                         </li>
                     </ul>
                 </div>

@@ -2,6 +2,9 @@ package com.hobbyist.hobbyist.models;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,10 +41,10 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Hobby> hobbies;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user" )
     private List<Rating> ratings;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<FriendList> friends;
 
     public User(){}
