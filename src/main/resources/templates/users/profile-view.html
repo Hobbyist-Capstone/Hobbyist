@@ -138,10 +138,6 @@
                              th:if="${user.getUsername() != currentUsername}">
                             <form th:action="@{|/users/profile/friends-request|}" th:method="GET" th:object="${friend}">
 
-                                <div th:if="${#fields.hasErrors('*')}">
-                                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-                                </div>
-
                                 <button class="btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
@@ -192,7 +188,7 @@
                             <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                                 <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                             </a>
-                            <!--                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
+<!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
                             <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
                                   th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">

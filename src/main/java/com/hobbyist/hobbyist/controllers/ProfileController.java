@@ -72,7 +72,7 @@ public class ProfileController {
         User userInDb = userDao.getOne(currentUser.getId());
         User user = userDao.findByUsername(username);
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
-//        vModel.addAttribute("user", user);
+        vModel.addAttribute("user", user);
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("friendsList", user.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));

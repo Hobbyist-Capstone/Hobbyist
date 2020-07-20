@@ -35,12 +35,12 @@ public class FriendListController {
         User userInDb = userDao.getOne(currentUser.getId());
         User user = userDao.getOne(userId);
 
-        //friend userId
-        FriendList friends = friendListDao.getOne(userId);
-        System.out.println(friends.getId());
-
-        FriendList friendExists = friendListDao.findByUserId(friends.getId());
-        //if user == friends, do not make a new occurrance in db.
+//        //friend userId
+//        FriendList friends = friendListDao.getOne(userId);
+//        System.out.println(friends.getId());
+//
+//        FriendList friendExists = friendListDao.findByUserId(friends.getId());
+//        //if user == friends, do not make a new occurrance in db.
 
         FriendList friend = new FriendList(currentUser, user, FriendStatus.ACCEPTED);
         friendListDao.save(friend);
