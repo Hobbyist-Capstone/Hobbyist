@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hobbyist</title>
+    <title>Create a Hobby</title>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--    Font Awesome Icons-->
-    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/register.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<div class="container">
-    <div class="row">
-        <form class="col s12" th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="title" type="text" class="validate" th:field="*{title}">
-                    <label for="title">Hobby Title</label>
+<div id="register-form">
+    <h1 class="center-align join-header show-on-large hide-on-med-and-down">Create a Hobby</h1>
+    <div id="form-container" class="center-align">
+        <div class="center-align" id="join-form">
+            <form class="form-container" th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
+
+                <input id="title" type="text" placeholder="Hobby Title" class="validate" th:field="*{title}">
+
+
+                <textarea placeholder="Hobby Description" id="textarea1" class="materialize-textarea"
+                          th:field="*{description}"></textarea>
+
+                <p class="forms" id="optional">*(OPTIONAL) Watch Video In Link Below For Instructions</p>
+                <a class="btn grey darken-4 waves-effect waves-light btn-large modal-trigger font" href="#modal1">Add A
+                    Helpful Youtube
+                    Video</a>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal font">
+                    <div class="modal-content responsive-img">
+                        <video class="responsive-video" controls>
+                            <source th:src="@{/img/youtube-submit-instruction.mov}" type="video/mp4">
+                        </video>
+                        <div class="input-field col s12">
+                            <input id="video" name="video" type="text" class="validate">
+                            <label for="video">Insert Link Here</label>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Add Video</a>
+                    </div>
                 </div>
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea" th:field="*{description}"></textarea>
-                    <label for="textarea1">Hobby Description</label>
+                <div class="input-field font">
+                    <select multiple th:field="*{categories}">
+                        <th:block th:each="c : ${categories}">
+                            <label>
+                                <option name="categories" th:value="${c.id}" th:text="${c.name}"></option>
+                            </label>
+                        </th:block>
+                    </select>
+                    <label class="font">Category</label>
                 </div>
-            </div>
-            <div class="input-field col s12">
-                <select multiple th:field="*{categories}">
-                    <th:block th:each="c : ${categories}">
-                        <label>
-                            <option name="categories" th:value="${c.id}" th:text="${c.name}"></option>
-                        </label>
-                    </th:block>
-                </select>
-                <label>Category</label>
-            </div>
-            <div class="input-field col s12">
-                <select th:field="*{patience}">
-                    <option th:value="1">1</option>
-                    <option th:value="2">2</option>
-                    <option th:value="3">3</option>
-                    <option th:value="4">4</option>
-                </select>
-                <label>Select a Patience Level Required:</label>
-            </div>
-            <div class="input-field col s12">
-                <select th:field="*{difficulty}">
-                    <option th:value="1">1</option>
-                    <option th:value="2">2</option>
-                    <option th:value="3">3</option>
-                    <option th:value="4">4</option>
-                </select>
-                <label>Select a Difficulty Level:</label>
-            </div>
-            <div class="input-field col s12">
-                <select th:field="*{cost}">
-                    <option th:value="1">1</option>
-                    <option th:value="2">2</option>
-                    <option th:value="3">3</option>
-                    <option th:value="4">4</option>
-                </select>
-                <label>Select a Starting Cost Level:</label>
-            </div>
-            <label for="upload"></label>
-            <button class="btn btn-primary" id="upload" type="button" name="upload">Upload Image</button>
-            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}" type="hidden">
-            <button class="btn btn-primary">Submit</button>
-        </form>
+                <div class="input-field font">
+                    <select th:field="*{patience}">
+                        <option th:value="1">1</option>
+                        <option th:value="2">2</option>
+                        <option th:value="3">3</option>
+                        <option th:value="4">4</option>
+                    </select>
+                    <label class="font">Select a Patience Level Required:</label>
+                </div>
+                <div class="input-field font">
+                    <select th:field="*{difficulty}">
+                        <option th:value="1">1</option>
+                        <option th:value="2">2</option>
+                        <option th:value="3">3</option>
+                        <option th:value="4">4</option>
+                    </select>
+                    <label class="font">Select a Difficulty Level:</label>
+                </div>
+                <div class="input-field font">
+                    <select th:field="*{cost}">
+                        <option th:value="1">1</option>
+                        <option th:value="2">2</option>
+                        <option th:value="3">3</option>
+                        <option th:value="4">4</option>
+                    </select>
+                    <label class="font">Select a Starting Cost Level:</label>
+                </div>
+                <label for="upload"></label>
+                <button class="btn grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
+                        name="upload">Upload Image
+                </button>
+                <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}"
+                       type="hidden">
+                <button class="btn grey darken-4 waves-effect waves-light btn-large">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 <script
@@ -84,6 +105,7 @@
 <script>
     $(document).ready(function () {
         $('select').formSelect();
+        $('.modal').modal();
     });
 </script>
 <script th:src="@{/JS/keys.js}"></script>
