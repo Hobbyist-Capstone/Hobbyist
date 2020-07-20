@@ -159,19 +159,25 @@
                     <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>
                     <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
                         <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <p th:text="${userHobby.hobby.getTitle()}"></p>
-                            <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/>
+                            <div th:each="hobby: ${hobbies}">
+                                <a th:href="${'/hobby/'+ hobby.id}"><p th:text="${userHobby.hobby.getTitle()}"></p></a>
+                                <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                     th:src="@{/img/hobbyist-transparent.png}"/>
+                            </div>
                         </li>
                     </ul>
 
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
                         <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
-                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}"><li th:text="${hobby.title}">Swashbuckling</li></a>
+                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                <li th:text="${hobby.title}">Swashbuckling</li>
+                            </a>
                         </ul>
                         <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}"><li th:text="${hobby.title}">Swashbuckling</li></a>
+                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                <li th:text="${hobby.title}">Swashbuckling</li>
+                            </a>
                         </ul>
                     </div>
                 </div>
