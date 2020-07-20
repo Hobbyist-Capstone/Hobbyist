@@ -159,11 +159,9 @@
                     <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>
                     <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
                         <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <div th:each="hobby: ${hobbies}">
-                                <a th:href="${'/hobby/'+ hobby.id}"><p th:text="${userHobby.hobby.getTitle()}"></p></a>
-                                <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                                     th:src="@{/img/hobbyist-transparent.png}"/>
-                            </div>
+                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><p th:text="${userHobby.hobby.getTitle()}"></p></a>
+                            <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+                                 th:src="@{/img/hobbyist-transparent.png}"/>
                         </li>
                     </ul>
 
