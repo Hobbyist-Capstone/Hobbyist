@@ -36,7 +36,7 @@
 
         <!--Small Buttons Section-->
         <div id="small-main-buttons" class="center-align">
-            <button sec:authorize="!isAuthenticated()" class="button-style btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
+            <button sec:authorize="!isAuthenticated()" class="login-button button-style btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
@@ -82,7 +82,7 @@
         <h1 id="main-title-large">Hobbyist</h1>
 
         <div id="large-main-buttons" class="center-align">
-            <button sec:authorize="!isAuthenticated()" id="login-button" class="button-style btn grey darken-4 waves-effect waves-light btn-large open-button"
+            <button sec:authorize="!isAuthenticated()" class="login-button button-style btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
