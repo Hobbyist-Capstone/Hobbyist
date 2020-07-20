@@ -1,6 +1,19 @@
 body{
-    margin: 1vh;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Bungee', cursive;
+    background-color: black;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+html {
+
+}
+
+#tracker-container {
+    height: 100vh;
 }
 
 .tool{
@@ -15,13 +28,13 @@ body{
     height: 100%;
     border-radius: 5px;
     background-color: white;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .rotate {
 
     transform: rotate(-90deg);
-    margin-top: 300px;
+    margin-top: 350px;
     color: white;
 
 }
@@ -33,4 +46,29 @@ body{
 .content{
     height: 100%;
     overflow: auto;
+}
+
+.title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    font-size: 1.5em;
+    margin: 0!important;
+}
+
+.button-style {
+    font-family: 'Bungee', cursive;
+    color: white!important;
+    background-color: black!important;
+    padding: 0 10px!important;
+    margin-bottom: 10px;
+}
+
+.row {
+    margin-bottom: 0!important;
+    /*height: 100vh;*/
+    padding: 0!important;
 }
