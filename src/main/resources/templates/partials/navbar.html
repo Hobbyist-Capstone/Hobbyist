@@ -26,6 +26,13 @@
                                                                                           th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="right hide-on-med-and-down">
+
+                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().isAdmin()}" >
+                    <li style="font-family:Bungee;"><a th:href="@{/admin}" class="black-text"><i
+                            class="material-icons left black-text">account_circle</i>Admin
+                    </a></li>
+                </th:block>
+
                 <th:block sec:authorize="isAuthenticated()">
                     <li style="font-family:Bungee;"><a th:href="@{/profile}" class="black-text"><i
                             class="material-icons left black-text">account_circle</i>Profile
@@ -61,8 +68,6 @@
                         <button style="border:none;font-family:Bungee;padding:0 10px 0 10px;" id="logout-button">Logout</button>
                     </form>
                 </li>
-
-
             </ul>
         </div>
     </nav>
