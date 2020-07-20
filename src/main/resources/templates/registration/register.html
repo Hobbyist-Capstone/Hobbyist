@@ -60,19 +60,6 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
 <script th:src="@{/JS/index.js}"></script>
-<script th:inline="javascript">
-    const options = {
-        onUploadDone:
-            function (res) {
-                $("#stashFilestackURL").val(res.filesUploaded[0].url);
-            }
-    }
-
-    const client = filestack.init("Ar87YfrFqRoWmIJkFZzQ0z");
-
-    $("#upload").click(function () {
-        client.picker(options).open()
-    });
-</script>
+<script th:src="@{/JS/keys.js}"></script>
 </body>
 </html>
