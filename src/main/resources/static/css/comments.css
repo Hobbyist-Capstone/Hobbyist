@@ -50,8 +50,8 @@ blockquote:nth-child(1) {
 }
 
 .btn, .submit-btn, #hcb_submit {
-    background-color: black;
-    color: white;
+    /*background-color: black;*/
+    /*color: white;*/
     font-family: 'Bungee', cursive;
 
 
@@ -67,19 +67,19 @@ a, .home-desc{
     /*display: none;*/
 }
 #HCB_comment_box .btn:first-child {
-    background-color: black!important;
-    color: white!important;
+    /*background-color: black!important;*/
+    /*color: white!important;*/
     border-color: black;
     padding-bottom: 0!important;
 }
 input {
-    background-color: black;
-    color: white;
+    /*background-color: black;*/
+    /*color: white;*/
 }
 
 #hcb_msg {
     font-family: 'Bungee', cursive;
-    color: black;
+    /*color: black;*/
 }
 
 #HCB_comment_box input, #HCB_comment_box input.btn, #HCB_comment_box select, #HCB_comment_box textarea {
@@ -87,8 +87,8 @@ input {
 }
 
 #HCB_comment_box .help-inline, #HCB_comment_box .btn {
-    color: white;
-    background-color: black;
+    /*color: white;*/
+    /*background-color: black;*/
     font-family: 'Bungee', cursive;
 }
 
@@ -98,8 +98,8 @@ input {
     width: 122px!important;
     padding: 4px 10px 0 10px!important;
     font-family: 'Bungee', cursive!important;
-    color: white!important;
-    background-color: black!important;
+    /*color: white!important;*/
+    /*background-color: black!important;*/
 
 }
 
