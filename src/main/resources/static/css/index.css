@@ -91,6 +91,10 @@ html {
     margin: 20px;
 }
 
+#login-button {
+    margin-right:3px;
+}
+
 #large-hobbies-button, #small-hobbies-button {
     margin-top: 5px;
 }

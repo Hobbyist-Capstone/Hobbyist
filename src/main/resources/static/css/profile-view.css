@@ -247,3 +247,11 @@ p {
 span {
     color: black!important;
 }
+
+#right-div > li {
+    background-color: #eceff1;
+}
+
+.friend-info {
+    font-size: 2.5em;
+}
