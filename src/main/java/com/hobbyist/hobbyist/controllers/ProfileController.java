@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,12 +72,11 @@ public class ProfileController {
         User userInDb = userDao.getOne(currentUser.getId());
         User user = userDao.findByUsername(username);
         List<UserHobby> userHobby = userHobbyDao.findAllByUserId(user.getId());
+        vModel.addAttribute("user", user);
         vModel.addAttribute("userHobbyList", userHobby);
         vModel.addAttribute("friendsList", user.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));
-        vModel.addAttribute("user", user);
         vModel.addAttribute("publicUsername", user.getUsername());
-
         List <Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
         return "users/profile-view";
@@ -102,7 +103,26 @@ public class ProfileController {
 
 
     @PostMapping("users/{id}/edit")
-    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit) {
+    public String editProfile(@PathVariable long id, @ModelAttribute User userToEdit, @Validated User user, Errors validation, Model model) {
+        String username = user.getUsername();
+        String email = user.getEmail();
+        User userExists = userDao.findByUsername(username);
+        User emailExists = userDao.findByEmail(email);
+
+        if (userExists != null) {
+            validation.rejectValue("username", "user.username", username + " already exists in our records.");
+        }
+
+        if (emailExists != null) {
+            validation.rejectValue("email", "user.email", email + " already exists in our records.");
+        }
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("user", user);
+            return  "registration/register";
+        }
+
         userToEdit.setId(id);
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
@@ -125,15 +145,10 @@ public class ProfileController {
 
 //    @GetMapping("users/hobby")
 //    public String showCreatedHobbies(Model model){
-//
-//
-//
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        User userInDb = userDao.getOne(currentUser.getId());
 //        model.addAttribute("userNameHobby", currentUser.getUsername());
 //        model.addAttribute("user", currentUser.getUsername());
-//
-//
 //        List <Hobby> hobby = hobbyDao.findAll();
 //        model.addAttribute("hobbies", hobby);
 //

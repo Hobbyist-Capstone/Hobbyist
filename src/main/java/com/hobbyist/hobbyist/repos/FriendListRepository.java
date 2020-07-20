@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 public interface FriendListRepository extends JpaRepository <FriendList, Long> {
     List <FriendList> findAllByUserId(long id);
-
+    FriendList findByUserId(long id);
 
 }
