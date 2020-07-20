@@ -32,11 +32,11 @@
                 <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">
                     <form th:action="@{|/profile/status/edit|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                        <button class="btn">TRIED IT</button>
+                        <button class="btn">Move to Tried</button>
                     </form>
                     <form th:action="@{|/profile/status/delete|}" th:method="post">
                         <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="btn">DELETE IT</button>
+                        <button class="btn">Delete</button>
                     </form>
 
                 </div>
@@ -46,7 +46,7 @@
     </div>
 
     <div id="learning" class="col s10 grey lighten-5">
-        <h5 class="title">LEARNING</h5>
+        <h5 class="title">TRIED</h5>
         <div class="content">
             <div th:block th:each="userHobby : ${userHobbyList}">
                 <p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p>
@@ -55,11 +55,11 @@
                 <div th:if="${#strings.endsWith(userHobby.status, 'IT')}">
                     <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                        <button class="btn">HOBBYIST</button>
+                        <button class="btn">Move to Hobbyist</button>
                     </form>
                     <form th:action="@{|/profile/status/delete|}" th:method="post">
                         <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="btn">DELETE IT</button>
+                        <button class="btn">Delete</button>
                     </form>
 
                 </div>
@@ -78,7 +78,7 @@
                 <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                     <form th:action="@{|/profile/status/delete|}" th:method="post">
                         <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="btn">DELETE IT</button>
+                        <button class="btn">Delete</button>
                     </form>
                 </div>
             </div>
