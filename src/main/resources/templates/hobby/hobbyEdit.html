@@ -26,7 +26,7 @@
                   th:object="${hobby}">
 
                 <input id="title" type="text" placeholder="Hobby Title" class="validate" th:field="*{title}">
-
+                <input type="hidden" name="hobbyId" th:value="${hobby.id}">
 
                 <textarea placeholder="Hobby Description" id="textarea1" class="materialize-textarea"
                           th:field="*{description}"></textarea>
