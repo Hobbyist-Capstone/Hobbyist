@@ -170,12 +170,12 @@
 
                 <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                 <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                    <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                    <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                         <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                             <li th:text="${hobby.title}">Swashbuckling</li>
                         </a>
                     </ul>
-                    <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                    <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                         <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                             <li th:text="${hobby.title}">Swashbuckling</li>
                         </a>
@@ -197,11 +197,11 @@
                         </a>
                         <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
 
-                        <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                        <form class="delete-friend" th:action="@{|/profile/friends-request/delete|}" th:method="post"
                               th:if="${user.getUsername() == currentUsername}">
                             <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                            <button class="button-style btn grey darken-4 waves-effect waves-light"><i
-                                    class="tiny material-icons">delete</i></button>
+                            <button class="btn transparent waves-effect waves-light"><i
+                                    class="small material-icons red-text">block</i></button>
                         </form>
                     </li>
                 </ul>

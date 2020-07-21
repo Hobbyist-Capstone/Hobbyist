@@ -255,3 +255,11 @@ span {
 .friend-info {
     font-size: 2.5em;
 }
+
+.delete-friend {
+  display: inline-block;
+}
+
+.btn {
+    padding: 0 8px;
+}
