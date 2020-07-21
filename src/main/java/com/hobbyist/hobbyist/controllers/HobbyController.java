@@ -72,11 +72,13 @@ public class HobbyController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
-        String youTubeVideo = new String(video);
-        String youtubeString = youTubeVideo.substring(38, 79);
+        if(!video.equals("")) {
+            String youTubeVideo = new String(video);
+            String youtubeString = youTubeVideo.substring(38, 79);
+            saveHobby.setYoutubeLink(youtubeString);
+        }
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
-        saveHobby.setYoutubeLink(youtubeString);
         saveHobby.setPatience(pat);
         saveHobby.setDifficulty(diff);
         saveHobby.setCost(cost);
