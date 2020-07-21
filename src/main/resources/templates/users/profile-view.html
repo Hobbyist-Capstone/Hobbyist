@@ -50,7 +50,7 @@
         </div>
 
         <!--      Add Friend Buttons-->
-        <div id="add-friend-button-sm" class="center-align" th:if="${user.getUsername() != currentUsername}">
+        <div id="add-friend-button-sm" class="center-align" th:if="${publicUserId != currentUserId}">
             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
                 <button class="button-style btn grey darken-4 waves-effect waves-light">
                     <input type="hidden" name="userId" th:value="${user.getId()}">
