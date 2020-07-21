@@ -20,7 +20,7 @@ html {
 #profile-container-small {
     height: 100vh;
     width: 100vw;
-    background-image: url("/../img/desk.jpg");
+    background-image: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@ html {
     margin-bottom: 15px;
 }
 
-#small-photo {
+.small-photo {
     width: 70vw;
     height: auto;
     border-radius: 50px;
@@ -113,7 +113,7 @@ html {
     height: 100vh;
     width: 100vw;
     display: block;
-    background-image: url("/../img/desk.jpg");
+    background-image: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -131,13 +131,13 @@ html {
 
 }
 
-#large-photo {
+.large-photo {
     width: 20vw;
     height: auto;
     border-radius: 50%;
 }
 
-#large-profile-buttons {
+.large-profile-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -247,3 +247,25 @@ p {
 span {
     color: black!important;
 }
+
+#right-div > li {
+    background-color: #eceff1;
+}
+
+.friend-info {
+    font-size: 2.5em;
+}
+
+.delete-friend {
+  display: inline-block;
+}
+
+.delete-button {
+    padding: 0 8px;
+    border-radius: 50%;
+}
+
+/*.collection-item {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/

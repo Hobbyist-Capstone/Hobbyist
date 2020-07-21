@@ -6,7 +6,7 @@
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preload stylesheet" as="font" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--    Font Awesome Icons-->
     <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
     <!--    Responsive Tag-->
@@ -36,7 +36,7 @@
 
         <!--Small Buttons Section-->
         <div id="small-main-buttons" class="center-align">
-            <button sec:authorize="!isAuthenticated()" class="button-style btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
+            <button sec:authorize="!isAuthenticated()" class="login-button button-style btn grey darken-4 waves-effect waves-light btn-large open-button" onclick="openLoginForm()"
                     type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
@@ -82,7 +82,7 @@
         <h1 id="main-title-large">Hobbyist</h1>
 
         <div id="large-main-buttons" class="center-align">
-            <button sec:authorize="!isAuthenticated()" class="button-style btn grey darken-4 waves-effect waves-light btn-large open-button"
+            <button sec:authorize="!isAuthenticated()" class="login-button button-style btn grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login
             </button>
             <a th:href="${'/register'}">
@@ -103,7 +103,7 @@
             <form th:action="@{/login}" method="post" class="login-form-container center-align">
                 <h3 id="large-login-header">Login</h3>
 
-                <label for="email"><b class="forms">Username</b></label>
+                <label for="email"><b class="forms" id=>Username</b></label>
                 <input type="text" placeholder="Enter username" name="username" required>
 
                 <label for="password"><b class="forms">Password</b></label>
@@ -117,36 +117,6 @@
         </div>
     </div>
 </div>
-
-
-<!--<div class="live__scroll">-->
-<!--    <div class="row text-center ml-1">-->
-<!--        <div class="col s11 m5 live__scroll&#45;&#45;box" th:each="c : ${c1}">-->
-<!--            &lt;!&ndash;            PUT CARD CODE HERE&ndash;&gt;-->
-<!--            <a th:href="${'/hobby/'+ c.id}">-->
-<!--            <div class="card">-->
-<!--                <div class="card-image">-->
-<!--                    <img th:src="@{/img/tools.jpg}">-->
-<!--                    <span class="card-title" th:text="${c.title}">Card Title</span>-->
-<!--                    <form th:action="@{|/profile/status|}" th:method="post">-->
-<!--                        <input type="hidden" name="hobbyId" th:value="${c.id}">-->
-<!--                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">-->
-<!--                            <i class="material-icons">favorite_border</i>-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--                <div class="card-content">-->
-<!--                    <p th:text="${c.description}"></p>-->
-<!--                </div>-->
-<!--                <div class="card-content">-->
-<!--                    <p th:each="cat : ${c.categories}" th:text="${cat.name}"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
 </script>

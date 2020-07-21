@@ -13,7 +13,7 @@ body {
 }
 
 #login-form {
-    background: url("/../img/desk.jpg");
+    background: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,3 +60,8 @@ body {
     color: white;
 }
 
+#logout-text, #login-warning-text {
+    font-family: 'Bungee', cursive!important;
+    color: red!important;
+    margin: 30px 10px 0 10px;
+}

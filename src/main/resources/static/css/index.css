@@ -23,7 +23,7 @@ html {
 #above-fold-small {
     height: 100vh;
     width: 100vw;
-    background-image: url("/../img/desk.jpg");
+    background-image: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: left;
     background-attachment: fixed;
@@ -54,7 +54,7 @@ html {
 #above-fold-large {
     height: 100vh;
     width: 100vw;
-    background-image: url("/../img/desk.jpg");
+    background-image: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -89,6 +89,10 @@ html {
     left: 75%;
     display: block;
     margin: 20px;
+}
+
+.login-button {
+    margin-right:3px;
 }
 
 #large-hobbies-button, #small-hobbies-button {
