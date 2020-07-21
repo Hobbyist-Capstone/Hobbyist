@@ -59,6 +59,8 @@ body {
 .button-style {
     font-family: 'Bungee', cursive;
     color: white;
+    background-color: black;
+    margin-bottom: 10px;
 }
 
 #optional{
