@@ -28,8 +28,8 @@
     <!--        Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
-        <img th:if="${user.userImage} == ''" id="small-photo" class="center-align" th:src="@{/img/hobbyist-logo.png}"
-             alt="placeholder">
+        <img th:if="${user.userImage} == ''" id="small-photo" class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
+             th:src="@{/img/hobbyist-transparent.png}"/>
         <img th:unless="${user.userImage} == ''" id="small-photo" class="center-align" th:src="${user.userImage}"
              alt="profile picture">
         <!--        not working -->
@@ -116,9 +116,10 @@
             <div id="left-div">
                 <h1 id="large-profile-header" class="center-align">Account</h1>
                 <div id="large-profile-image" class="center-align">
-                    <img th:if="${user.userImage} == ''" id="large-photo" class="center-align"
-                         th:src="@{/img/hobbyist-logo.png}"
-                         alt="placeholder">
+
+                    <img th:if="${user.userImage} == ''" id="large-photo" class="small-badge"
+                         src="../../static/img/hobbyist-transparent.png" alt="badge"
+                         th:src="@{/img/hobbyist-transparent.png}"/>
                     <img th:unless="${user.userImage} == ''" id="large-photo" class="center-align"
                          th:src="${user.userImage}"
                          alt="profile picture">
