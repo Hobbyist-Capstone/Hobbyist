@@ -98,13 +98,15 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video, @RequestParam(name = "userId", required = false) Long userId) {
+
+    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-        String youTubeVideo = new String(video);
-        String youtubeString = youTubeVideo.substring(38, 79);
-        editHobby.setYoutubeLink(youtubeString);
-        editHobby.setCreatedBy(userDao.getOne(2L));
+//        List<Category> categories = categoryDao.findAllById(categoriesId);
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+        User user = userDao.getOne(hobby.getCreatedBy().getId());
+
+        editHobby.setCreatedBy(user);
         editHobby.setCategories(categories);
         editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
