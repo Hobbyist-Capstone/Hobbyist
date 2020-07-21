@@ -108,6 +108,19 @@
         $('.modal').modal();
     });
 </script>
-<script th:src="@{/JS/keys.js}"></script>
+<script th:inline="javascript" th:fragment="filestack">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    let apiKey = [[${apiKey}]]
+    const client = filestack.init(apiKey);
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
 </body>
 </html>

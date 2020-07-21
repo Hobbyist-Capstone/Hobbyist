@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HobbyController {
 
-//    @Value("${filestack.api.key}")
-//    private String apiKey;
+    @Value("${filestack.api.key}")
+    private String apiKey;
 
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
@@ -62,13 +62,13 @@ public class HobbyController {
     public String createHobbyForm(Model model) {
         model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("hobby", new Hobby());
-//        model.addAttribute("apiKey", apiKey);
+        model.addAttribute("apiKey", apiKey);
         return "hobby/create";
     }
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost,  @RequestParam(name = "video") String video) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
@@ -90,6 +90,7 @@ public class HobbyController {
         model.addAttribute("categories", categoryDao.findAll());
         Hobby hobby = hobbyDao.getOne(id);
         model.addAttribute("hobby", hobby);
+        model.addAttribute("apiKey", apiKey);
         return "hobby/hobbyEdit";
     }
 
@@ -132,7 +133,7 @@ public class HobbyController {
 
 //    Hobby Comment Page TESTS
 
-        @GetMapping("/comment-page")
+    @GetMapping("/comment-page")
     public String comments(Model model) {
         return "hobby/comment-page";
     }
@@ -141,7 +142,6 @@ public class HobbyController {
     public String comments2(Model model) {
         return "hobby/comment-page-2";
     }
-
 
 
 }

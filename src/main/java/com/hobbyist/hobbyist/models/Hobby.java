@@ -1,12 +1,15 @@
 package com.hobbyist.hobbyist.models;
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "hobbies")
 public class Hobby {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
