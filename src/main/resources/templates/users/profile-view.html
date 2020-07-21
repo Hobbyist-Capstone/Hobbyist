@@ -162,29 +162,31 @@
                 <div id="hobbies-large">
                     <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                     <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
-                    <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
-                        <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
-                                    th:text="${userHobby.hobby.getTitle()}"></p>
+                    <div id="large-badge-list">
+                        <div th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><span
+                                    th:text="${userHobby.hobby.getTitle()}"></span>
                             </a>
                             <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
                                  th:src="@{/img/hobbyist-transparent.png}"/>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
 
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                        <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                        <div class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                <span th:text="${hobby.title}">Swashbuckling</span>
+                            </a>
+                        </div>
+                        <div class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                             <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                 <li th:text="${hobby.title}">Swashbuckling</li>
                             </a>
-                        </ul>
-                        <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
-                                <li th:text="${hobby.title}">Swashbuckling</li>
-                            </a>
-                        </ul>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
 
@@ -220,29 +222,29 @@
 </div>
 
 
-    <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
-    </script>
-    <script
-            src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous"></script>
-    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script th:src="@{/JS/materialize.js}"></script>
-    <script th:src="@{/JS/index.js}"></script>
-    <script th:inline="javascript">
-        const options = {
-            onUploadDone:
-                function (res) {
-                    $("#stashFilestackURL").val(res.filesUploaded[0].url);
-                }
-        }
-        let apiKey = [[${apiKey}]]
-        const client = filestack.init(apiKey);
-        $("#upload").click(function () {
-            client.picker(options).open()
-        });
-    </script>
+<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+</script>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script th:src="@{/JS/materialize.js}"></script>
+<script th:src="@{/JS/index.js}"></script>
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    let apiKey = [[${apiKey}]]
+    const client = filestack.init(apiKey);
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
 </body>
 </html>
