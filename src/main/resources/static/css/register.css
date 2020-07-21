@@ -13,7 +13,7 @@ body {
     height: 100vh;
 }
 
-#register-form, #edit-hobby-form {
+#register-form, #edit-hobby-form, #create-hobby-form {
     background: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: center;
@@ -22,7 +22,7 @@ body {
     font-family: 'Bungee Shade', cursive;
     overflow-y: scroll;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 #join-form {
