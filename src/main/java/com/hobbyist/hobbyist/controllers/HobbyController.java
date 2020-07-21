@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,7 +72,6 @@ public class HobbyController {
     public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-//        List<Category> categories = categoryDao.findAllById(categoriesId);
         if(!video.equals("")) {
             String youTubeVideo = new String(video);
             String youtubeString = youTubeVideo.substring(38, 79);
@@ -98,10 +98,13 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video, @RequestParam(name = "userId", required = false) Long userId) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-//        List<Category> categories = categoryDao.findAllById(categoriesId);
+        String youTubeVideo = new String(video);
+        String youtubeString = youTubeVideo.substring(38, 79);
+        editHobby.setYoutubeLink(youtubeString);
+        editHobby.setCreatedBy(userDao.getOne(2L));
         editHobby.setCategories(categories);
         editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
