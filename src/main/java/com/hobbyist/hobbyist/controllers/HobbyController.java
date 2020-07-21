@@ -15,9 +15,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,15 +31,12 @@ public class HobbyController {
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
-    private RatingRepository ratingDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao, RatingRepository ratingDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
-        this.ratingDao = ratingDao;
     }
-
 
     //     displays all hobbies
     @GetMapping("/hobbies")
@@ -72,9 +67,12 @@ public class HobbyController {
     public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-        if(!video.equals("")) {
-            String youTubeVideo = new String(video);
-            String youtubeString = youTubeVideo.substring(38, 79);
+        if (video == null) {
+            saveHobby.setYoutubeLink(null);
+        } else if (video.equals("")) {
+            saveHobby.setYoutubeLink(null);
+        } else {
+            String youtubeString = video.substring(38, 79);
             saveHobby.setYoutubeLink(youtubeString);
         }
         saveHobby.setCreatedBy(currentUser);
@@ -102,13 +100,18 @@ public class HobbyController {
     public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-//        List<Category> categories = categoryDao.findAllById(categoriesId);
         Hobby hobby = hobbyDao.getOne(hobbyId);
         User user = userDao.getOne(hobby.getCreatedBy().getId());
-
+        if (video == null) {
+            editHobby.setYoutubeLink(null);
+        } else if (video.equals("")) {
+            editHobby.setYoutubeLink(null);
+        } else {
+            String youtubeString = video.substring(38, 79);
+            editHobby.setYoutubeLink(youtubeString);
+        }
         editHobby.setCreatedBy(user);
         editHobby.setCategories(categories);
-        editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
         editHobby.setDifficulty(diff);
         editHobby.setCost(cost);
