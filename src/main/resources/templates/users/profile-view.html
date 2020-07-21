@@ -192,17 +192,18 @@
                     <li class="collection-item avatar" th:each="friend : ${friendsList}">
                         <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                              th:src="@{/img/follower-logo.png}"/>
-                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
-                            <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
-                        </a>
+
                         <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
 
                         <form class="delete-friend" th:action="@{|/profile/friends-request/delete|}" th:method="post"
                               th:if="${user.getUsername() == currentUsername}">
                             <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                            <button class="btn transparent waves-effect waves-light"><i
+                            <button class="delete-button btn transparent waves-effect waves-light"><i
                                     class="small material-icons red-text">block</i></button>
                         </form>
+                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
+                            <p class="friend-info" th:text="${friend.friend.username}">username</p>
+                        </a>
                     </li>
                 </ul>
             </div>

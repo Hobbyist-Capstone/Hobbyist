@@ -260,6 +260,12 @@ span {
   display: inline-block;
 }
 
-.btn {
+.delete-button {
     padding: 0 8px;
+    border-radius: 50%;
 }
+
+/*.collection-item {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
