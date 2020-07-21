@@ -31,6 +31,7 @@
         <img th:if="${user.userImage} == ''" id="small-photo" class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
              th:src="@{/img/hobbyist-transparent.png}"/>
         <img th:unless="${user.userImage} == ''" id="small-photo" class="center-align" th:src="${user.userImage}"
+
              alt="profile picture">
         <!--        not working -->
         <!--        <div id="large-profile-buttons" class="center-align">-->
@@ -41,7 +42,7 @@
         <!--        </div>-->
 
         <div th:if="${user.getUsername() == currentUsername}">
-            <div id="large-profile-buttons" class="center-align">
+            <div class="large-profile-buttons center-align">
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
                     <button class="button-style btn grey darken-4 waves-effect waves-light">Edit Account</button>
@@ -50,7 +51,7 @@
         </div>
 
         <!--      Add Friend Buttons-->
-        <div id="add-friend-button-sm" class="center-align" th:if="${user.getUsername() != currentUsername}">
+        <div id="add-friend-button-sm" class="center-align" th:if="${publicUserId != currentUserId}">
             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
                 <button class="button-style btn grey darken-4 waves-effect waves-light">
                     <input type="hidden" name="userId" th:value="${user.getId()}">
@@ -64,7 +65,7 @@
 
     <div id="hobbies-small">
         <h1 class="center-align" id="small-hobbies-header">Hobbies</h1>
-        <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>
+        <!--        <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>-->
         <div id="small-badge-list" class="center-align" th:each="userHobby : ${userHobbyList}">
             <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                 <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
@@ -116,14 +117,13 @@
             <div id="left-div">
                 <h1 id="large-profile-header" class="center-align">Account</h1>
                 <div id="large-profile-image" class="center-align">
-
                     <img th:if="${user.userImage} == ''" id="large-photo" class="small-badge"
                          src="../../static/img/hobbyist-transparent.png" alt="badge"
                          th:src="@{/img/hobbyist-transparent.png}"/>
                     <img th:unless="${user.userImage} == ''" id="large-photo" class="center-align"
+
                          th:src="${user.userImage}"
                          alt="profile picture">
-
 
                     <!--        not working -->
                     <!--                    <div id="large-profile-buttons" class="center-align">-->
@@ -146,23 +146,23 @@
                         <!--        Add Friend Button-->
                         <div id="add-friend-button" class="center-align">
                             <form th:action="@{|/users/profile/friends-request|}" th:method="GET"
-                                  th:if="${user.getUsername() != currentUsername}">
+                                  th:if="${publicUserId != currentUserId}">
                                 <button class="button-style btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
                                     Add Friend
                                 </button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
+
 
             <!--        Badges-->
             <div id="middle-div">
                 <div id="hobbies-large">
                     <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
-                    <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>
+                    <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
                     <ul id="large-badge-list" th:each="userHobby : ${userHobbyList}">
                         <li th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
@@ -175,12 +175,12 @@
 
                     <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
                     <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                        <ul id="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                        <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                             <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                 <li th:text="${hobby.title}">Swashbuckling</li>
                             </a>
                         </ul>
-                        <ul id="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                        <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                             <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                 <li th:text="${hobby.title}">Swashbuckling</li>
                             </a>
@@ -188,6 +188,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!--Friends List-->
             <div id="right-div">
@@ -197,17 +198,20 @@
                         <li class="collection-item avatar" th:each="friend : ${friendsList}">
                             <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                                  th:src="@{/img/follower-logo.png}"/>
-                            <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
-                                <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
-                            </a>
+
                             <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
 
-                            <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
+                            <form class="delete-friend right-align" th:action="@{|/profile/friends-request/delete|}"
+                                  th:method="post"
                                   th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light"><i
-                                        class="tiny material-icons">delete</i></button>
+                                <button class="delete-button btn transparent waves-effect waves-light right-align"><i
+                                        class="small material-icons red-text right-align">block</i></button>
                             </form>
+                            <a th:href="@{|/users/profile/${friend.friend.username}|}"
+                               class="secondary-content">
+                                <p class="friend-info" th:text="${friend.friend.username}">username</p>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -215,30 +219,31 @@
         </div>
     </div>
 </div>
-<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
-</script>
-<script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script th:src="@{/JS/materialize.js}"></script>
-<script th:src="@{/JS/index.js}"></script>
-<script th:inline="javascript">
-    const options = {
-        onUploadDone:
-            function (res) {
-                $("#stashFilestackURL").val(res.filesUploaded[0].url);
-            }
-    }
-    let apiKey = [[${apiKey}]]
-    const client = filestack.init(apiKey);
 
-    $("#upload").click(function () {
-        client.picker(options).open()
-    });
-</script>
+
+    <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+    </script>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script th:src="@{/JS/materialize.js}"></script>
+    <script th:src="@{/JS/index.js}"></script>
+    <script th:inline="javascript">
+        const options = {
+            onUploadDone:
+                function (res) {
+                    $("#stashFilestackURL").val(res.filesUploaded[0].url);
+                }
+        }
+        let apiKey = [[${apiKey}]]
+        const client = filestack.init(apiKey);
+        $("#upload").click(function () {
+            client.picker(options).open()
+        });
+    </script>
 </body>
 </html>

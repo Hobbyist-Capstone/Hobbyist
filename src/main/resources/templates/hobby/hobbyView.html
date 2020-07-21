@@ -53,15 +53,75 @@
                         <tbody>
                         <tr>
                             <td>Start Up Cost</td>
-                            <td><span th:text="${hobby.cost}"></span>/4</td>
+                            <td>
+                                <div th:switch="${hobby.cost}">
+                                    <p th:case="1"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i></p>
+                                </div>
+                                <!--                                <span th:text="${hobby.cost}"></span>/4-->
+                            </td>
                         </tr>
                         <tr>
                             <td>Patience</td>
-                            <td><span th:text="${hobby.patience}"></span>/4</td>
+                            <td>
+                                <div th:switch="${hobby.patience}">
+                                    <p th:case="1"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i></p>
+                                </div>
+                                <!--                                <span th:text="${hobby.patience}"></span>/4-->
+                            </td>
                         </tr>
                         <tr>
                             <td>Difficulty</td>
-                            <td><span th:text="${hobby.difficulty}"></span>/4</td>
+                            <td>
+                                <div th:switch="${hobby.difficulty}">
+                                    <p th:case="1"><i class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i></p>
+                                </div>
+                                <!--                                <span th:text="${hobby.difficulty}"></span>/4-->
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -79,6 +139,7 @@
         <div class="col s1"></div>
     </div>
     <div class="video-container" th:if="${hobby.youtubeLink != null && hobby.youtubeLink != ''}">
+
         <iframe width="560" height="315" th:src="${hobby.youtubeLink}" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
@@ -161,6 +222,7 @@ if (!window.hcb_user) {
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="materialize.js"></script>
+<script th:src="@{/JS/materialize.js}"></script>
+<script th:src="@{/JS/index.js}"></script>
 </body>
 </html>

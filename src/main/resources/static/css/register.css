@@ -14,7 +14,7 @@ body {
 }
 
 #register-form {
-    background: url("/../img/desk.jpg");
+    background: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -67,5 +67,15 @@ body {
 
 .font{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+p {
+    font-family: 'Bungee', cursive;
+    color: red;
+
+}
+
+#upload, #submit {
+    margin-bottom: 10px;
 }
 

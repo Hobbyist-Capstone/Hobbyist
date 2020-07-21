@@ -9,7 +9,9 @@
 <!--    Responsive Tag-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--    Custom CSS Files-->
+<link th:href="@{/css/login-page.css}" rel="stylesheet" type="text/css">
 <link th:href="@{/css/register.css}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 
@@ -18,6 +20,12 @@
     <ul th:replace="partials/navbar :: navbar-small"></ul>
     <h1 class="center-align join-header show-on-large hide-on-med-and-down">Login</h1>
     <div id="form-container" class="center-align">
+        <div id="logout-text" class="center-align flicker-fast" th:if="${param.logout}">
+            You have logged out.
+        </div>
+        <div id="login-warning-text" class="text-center flicker-fast" th:if="${param.error}">
+            Invalid Username or Password.
+        </div>
         <div class="center-align" id="join-form">
             <div class="form-popup form-popup-large" id="login-form">
                 <form th:action="@{/login}" method="post" class="form-container center-align">
