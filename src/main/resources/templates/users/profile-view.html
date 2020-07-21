@@ -201,12 +201,12 @@
 
                             <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
 
-                            <form class="delete-friend" th:action="@{|/profile/friends-request/delete|}"
+                            <form class="delete-friend right-align" th:action="@{|/profile/friends-request/delete|}"
                                   th:method="post"
                                   th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                                <button class="delete-button btn transparent waves-effect waves-light"><i
-                                        class="small material-icons red-text">block</i></button>
+                                <button class="delete-button btn transparent waves-effect waves-light right-align"><i
+                                        class="small material-icons red-text right-align">block</i></button>
                             </form>
                             <a th:href="@{|/users/profile/${friend.friend.username}|}"
                                class="secondary-content">
