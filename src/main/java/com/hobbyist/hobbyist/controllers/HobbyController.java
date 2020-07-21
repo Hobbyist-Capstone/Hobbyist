@@ -72,11 +72,11 @@ public class HobbyController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
-        String youTubeVideo = new String(video);
-        String youtubeString = youTubeVideo.substring(38, 79);
+//        String youTubeVideo = new String(video);
+//        String youtubeString = youTubeVideo.substring(38, 79);
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
-        saveHobby.setYoutubeLink(youtubeString);
+//        saveHobby.setYoutubeLink(youtubeString);
         saveHobby.setPatience(pat);
         saveHobby.setDifficulty(diff);
         saveHobby.setCost(cost);
@@ -96,10 +96,14 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
 //        List<Category> categories = categoryDao.findAllById(categoriesId);
+        Hobby hobby = hobbyDao.getOne(hobbyId);
+        User user = userDao.getOne(hobby.getCreatedBy().getId());
+
+        editHobby.setCreatedBy(user);
         editHobby.setCategories(categories);
         editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
