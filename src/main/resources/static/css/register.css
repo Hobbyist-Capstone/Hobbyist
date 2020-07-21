@@ -13,7 +13,7 @@ body {
     height: 100vh;
 }
 
-#register-form {
+#register-form, #edit-hobby-form {
     background: url("/../img/desk-min.jpg");
     background-size: cover;
     background-position: center;
