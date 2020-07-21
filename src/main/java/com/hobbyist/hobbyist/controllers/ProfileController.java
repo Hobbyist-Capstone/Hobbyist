@@ -6,6 +6,7 @@ import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.*;
 import com.hobbyist.hobbyist.services.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ import java.util.List;
 @Controller
 public class ProfileController {
 
+    @Value("${filestack.api.key}")
+    private String apiKey;
+
 //    @GetMapping("/profile-view")
 //    public String profile(Model model) {
 //        return "users/profile-view";
@@ -29,7 +33,6 @@ public class ProfileController {
     private UserHobbyRepository userHobbyDao;
     private HobbyRepository hobbyDao;
     private FriendListRepository friendListDao;
-
 
 
     private UserService userService;
@@ -43,10 +46,9 @@ public class ProfileController {
     }
 
 
-
     //user logged in profile
     @GetMapping("/profile")
-    public String showProfile( Model vModel) {
+    public String showProfile(Model vModel) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
@@ -59,7 +61,7 @@ public class ProfileController {
 //        vModel.addAttribute("userNameHobby", currentUser.getUsername());
         vModel.addAttribute("currentUsername", currentUser.getUsername());
 
-        List <Hobby> hobby = hobbyDao.findAll();
+        List<Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
 
         return "users/profile-view";
@@ -77,7 +79,7 @@ public class ProfileController {
         vModel.addAttribute("friendsList", user.getFriends());
         vModel.addAttribute("user", userDao.findByUsername(username));
         vModel.addAttribute("publicUsername", user.getUsername());
-        List <Hobby> hobby = hobbyDao.findAll();
+        List<Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
         return "users/profile-view";
     }
@@ -98,6 +100,7 @@ public class ProfileController {
     public String showEditProfile(@PathVariable long id, Model vModel) {
         User user = userDao.getOne(id);
         vModel.addAttribute("user", user);
+        vModel.addAttribute("apiKey", apiKey);
         return "users/edit";
     }
 
@@ -123,7 +126,7 @@ public class ProfileController {
 //            model.addAttribute("user", user);
 //            return  "registration/register";
 //        }
-
+        model.addAttribute("apiKey", apiKey);
         userToEdit.setId(id);
         userToEdit.setPassword(passwordEncoder.encode(userToEdit.getPassword()));
         userDao.save(userToEdit);
@@ -133,6 +136,7 @@ public class ProfileController {
 //    @GetMapping("users/{id}/upload")
 //    public String showUploadImage(@PathVariable long id, Model vModel) {
 //        User user = userDao.getOne(id);
+//            model.addAttribute("apiKey", apiKey);
 //        vModel.addAttribute("user", user);
 //        return "users/uploadImage";
 //    }

@@ -6,6 +6,7 @@ import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import com.hobbyist.hobbyist.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,10 @@ import java.util.List;
 
 @Controller
 public class UserController {
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
+
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private UserHobbyRepository userHobbyDao;
@@ -37,7 +42,8 @@ public class UserController {
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return  "registration/register";
+        model.addAttribute("apiKey", apiKey);
+        return "registration/register";
     }
 
     @PostMapping("/register")
@@ -58,7 +64,7 @@ public class UserController {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
-            return  "registration/register";
+            return "registration/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
