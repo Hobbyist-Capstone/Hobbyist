@@ -81,20 +81,25 @@ public class ProfileController {
         vModel.addAttribute("publicUsername", user.getUsername());
         List<Hobby> hobby = hobbyDao.findAll();
         vModel.addAttribute("hobbies", hobby);
+
+
+        vModel.addAttribute("publicUserId", user.getId());
+        vModel.addAttribute("currentUserId", currentUser.getId());
+
         return "users/profile-view";
     }
 
 //
-//    @GetMapping("/profile/{username}")
-//    public String showUsersProfile(Model vModel, @PathVariable String username) {
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userInDb = userDao.getOne(currentUser.getId());
-//        vModel.addAttribute("user", userInDb);
-//        vModel.addAttribute("friendsList", userInDb.getFriends());
-//        vModel.addAttribute("user", userDao.findByUsername(username));
-//        vModel.addAttribute("userName", userInDb.getUsername());
-//        return "users/profile-view";
-//    }
+    @GetMapping("/profile/{username}")
+    public String showUsersProfile(Model vModel, @PathVariable String username) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        vModel.addAttribute("user", userInDb);
+        vModel.addAttribute("friendsList", userInDb.getFriends());
+        vModel.addAttribute("user", userDao.findByUsername(username));
+        vModel.addAttribute("userName", userInDb.getUsername());
+        return "users/profile-view";
+    }
 
     @GetMapping("users/{id}/edit")
     public String showEditProfile(@PathVariable long id, Model vModel) {
