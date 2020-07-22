@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-content">
                         <p th:text="${hobby.description}"></p>
-                        <p><a th:href="${'/users/profile/' + hobby.createdBy.username}" th:text="${hobby.createdBy.username}"></a></p>
+                        <p>Created by:&nbsp;&nbsp;<a th:href="${'/users/profile/' + hobby.createdBy.username}" th:text="${hobby.createdBy.username}"></a></p>
                         <table class="striped">
                             <thead>
                             <tr>
