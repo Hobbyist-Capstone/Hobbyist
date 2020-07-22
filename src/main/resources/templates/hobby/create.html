@@ -17,7 +17,7 @@
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 
 <div id="create-hobby-form">
-    <h1 class="center-align join-header show-on-large hide-on-med-and-down">Create a Hobby</h1>
+    <h1 class="center-align create-header show-on-large hide-on-med-and-down">Create a Hobby</h1>
     <div id="form-container" class="center-align">
         <div class="center-align" id="join-form">
             <form class="form-container" th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">

@@ -29,9 +29,9 @@
     <!--        Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
-        <img th:if="${user.userImage} == ''" id="small-photo" class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-             th:src="@{/img/hobbyist-transparent.png}"/>
-        <img th:unless="${user.userImage} == ''" id="small-photo" class="center-align" th:src="${user.userImage}"
+        <img th:if="${user.userImage} == ''" class="small-photo" src="../../static/img/follower-logo.png" alt="badge"
+             th:src="@{/img/follower-logo.png}"/>
+        <img th:unless="${user.userImage} == ''" class="small-photo center-align" th:src="${user.userImage}"
 
              alt="profile picture">
         <!--        not working -->
@@ -55,7 +55,8 @@
         <div id="add-friend-button-sm" class="center-align" th:if="${publicUserId != currentUserId}">
             <form th:action="@{|/users/profile/friends-request|}" th:method="GET">
                 <button class="button-style btn grey darken-4 waves-effect waves-light">
-                    <input type="hidden" name="userId" th:value="${user.getId()}">
+                    <input type="hidden" name="userId" th:value="${user.getId()}"><i
+                        class="small material-icons white-text right-align"></i>
                     Follow
                 </button>
             </form>
@@ -98,8 +99,8 @@
                 <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
                       th:if="${user.getUsername() == currentUsername}">
                     <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
-                    <button class="button-style btn grey darken-4 waves-effect waves-light"><i
-                            class="tiny material-icons">delete</i></button>
+                    <button class="button-style btn transparent waves-effect waves-light"><i
+                            class="tiny material-icons red-text">remove</i></button>
                 </form>
             </li>
         </ul>
@@ -118,10 +119,10 @@
             <div id="left-div">
                 <h1 id="large-profile-header" class="center-align" th:text="${user.getUsername()}">Account</h1>
                 <div id="large-profile-image" class="center-align">
-                    <img th:if="${user.userImage} == ''" id="large-photo" class="small-badge"
-                         src="../../static/img/hobbyist-transparent.png" alt="badge"
-                         th:src="@{/img/hobbyist-transparent.png}"/>
-                    <img th:unless="${user.userImage} == ''" id="large-photo" class="center-align"
+                    <img th:if="${user.userImage} == ''" class="large-photo"
+                         src="../../static/img/follower-logo.png" alt="badge"
+                         th:src="@{/img/follower-logo.png}"/>
+                    <img th:unless="${user.userImage} == ''" class="large-photo"
 
                          th:src="${user.userImage}"
                          alt="profile picture">
@@ -150,6 +151,7 @@
                                   th:if="${publicUserId != currentUserId}">
                                 <button class="button-style btn grey darken-4 waves-effect waves-light">
                                     <input type="hidden" name="userId" th:value="${user.getId()}">
+                                    <i class="small material-icons white-text right-align"></i>
                                     Follow
                                 </button>
                             </form>
@@ -207,7 +209,7 @@
                                   th:if="${user.getUsername() == currentUsername}">
                                 <input type="hidden" name="deleteFriendId" th:value="${friend.id}">
                                 <button class="delete-button btn transparent waves-effect waves-light right-align"><i
-                                        class="small material-icons red-text right-align">block</i></button>
+                                        class="small material-icons red-text right-align">remove</i></button>
                             </form>
                             <a th:href="@{|/users/profile/${friend.friend.username}|}"
                                class="secondary-content">
