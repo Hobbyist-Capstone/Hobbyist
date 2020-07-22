@@ -30,7 +30,7 @@
                     <span class="card-title" th:text="${hobby.title}"></span>
                     <form th:action="@{|/profile/status|}" th:method="post">
                         <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                        <button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
                             <i class="material-icons">favorite_border</i>
                         </button>
                     </form>
@@ -50,62 +50,100 @@
                             <td>Start Up Cost</td>
                             <td>
                                 <div th:switch="${hobby.cost}">
-                                    <p th:case="1"><i class="material-icons black-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i></p>
-                                    <p th:case="2"><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i></p>
-                                    <p th:case="3"><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i><i class="material-icons grey-text">monetization_on</i></p>
-                                    <p th:case="4"><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i><i class="material-icons black-text">monetization_on</i></p>
+                                    <p th:case="1"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons grey-text">monetization_on</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i><i
+                                            class="material-icons black-text">monetization_on</i></p>
                                 </div>
-<!--                                <span th:text="${hobby.cost}"></span>/4-->
+                                <!--                                <span th:text="${hobby.cost}"></span>/4-->
                             </td>
                         </tr>
                         <tr>
                             <td>Patience</td>
                             <td>
                                 <div th:switch="${hobby.patience}">
-                                    <p th:case="1"><i class="material-icons black-text">access_time</i><i class="material-icons grey-text">access_time</i><i class="material-icons grey-text">access_time</i><i class="material-icons grey-text">access_time</i></p>
-                                    <p th:case="2"><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i><i class="material-icons grey-text">access_time</i><i class="material-icons grey-text">access_time</i></p>
-                                    <p th:case="3"><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i><i class="material-icons grey-text">access_time</i></p>
-                                    <p th:case="4"><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i><i class="material-icons black-text">access_time</i></p>
+                                    <p th:case="1"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons grey-text">access_time</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i><i
+                                            class="material-icons black-text">access_time</i></p>
                                 </div>
-<!--                                <span th:text="${hobby.patience}"></span>/4-->
+                                <!--                                <span th:text="${hobby.patience}"></span>/4-->
                             </td>
                         </tr>
                         <tr>
                             <td>Difficulty</td>
                             <td>
                                 <div th:switch="${hobby.difficulty}">
-                                    <p th:case="1"><i class="material-icons black-text">report</i><i class="material-icons grey-text">report</i><i class="material-icons grey-text">report</i><i class="material-icons grey-text">report</i></p>
-                                    <p th:case="2"><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i><i class="material-icons grey-text">report</i><i class="material-icons grey-text">report</i></p>
-                                    <p th:case="3"><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i><i class="material-icons grey-text">report</i></p>
-                                    <p th:case="4"><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i><i class="material-icons black-text">report</i></p>
+                                    <p th:case="1"><i class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="2"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="3"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons grey-text">report</i></p>
+                                    <p th:case="4"><i class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i><i
+                                            class="material-icons black-text">report</i></p>
                                 </div>
-<!--                                <span th:text="${hobby.difficulty}"></span>/4-->
+                                <!--                                <span th:text="${hobby.difficulty}"></span>/4-->
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div th:if="${#authentication.getPrincipal().isAdmin()}">
-                    <form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
-                        <button>Edit</button>
-                    </form>
-                    <form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
-                        <button>Delete</button>
-                    </form>
+                <div id="button-container" class="center-align">
+                    <div th:if="${#authentication.getPrincipal().isAdmin()}" >
+                        <form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
+                            <button id="edit-button" class="button-style btn waves-effect waves-light">Edit</button>
+                        </form>
+                        <form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
+                            <button id="delete-button" class="button-style btn waves-effect waves-light">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col s1"></div>
     </div>
 
-<!--    <iframe width="560" height="315" th:src="${hobby.youtubeLink}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+    <!--    <iframe width="560" height="315" th:src="${hobby.youtubeLink}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
 
     <div class="video-container">
         <iframe width="560" height="315" th:src="${hobby.youtubeLink}" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
-    <body>
+
 
     <script>
         hcb_user = {

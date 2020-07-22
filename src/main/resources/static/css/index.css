@@ -176,7 +176,23 @@ html {
 .button-style {
     font-family: 'Bungee', cursive;
     color: white;
+    background-color: black!important;
 }
+
+#edit-button, #delete-button {
+    margin-bottom: 10px;
+}
+
+#button-container {
+
+}
+
+#card-content {
+    font-family: 'Bungee', cursive;
+    color: black;
+}
+
+
 
 /*Scroll Window*/
 
