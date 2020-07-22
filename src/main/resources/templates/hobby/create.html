@@ -16,7 +16,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<div id="register-form">
+<div id="create-hobby-form">
     <h1 class="center-align join-header show-on-large hide-on-med-and-down">Create a Hobby</h1>
     <div id="form-container" class="center-align">
         <div class="center-align" id="join-form">
@@ -92,17 +92,18 @@
                 </button>
                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}"
                        type="hidden">
-                <button class="btn grey darken-4 waves-effect waves-light btn-large">Submit</button>
+                <button id="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Submit</button>
             </form>
         </div>
     </div>
 </div>
-<script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script th:src="@{/JS/materialize.js}"></script>
+<script th:src="@{/JS/index.js}"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script>
     $(document).ready(function () {
         $('select').formSelect();

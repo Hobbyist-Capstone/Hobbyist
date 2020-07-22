@@ -12,63 +12,69 @@
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/all-hobbies.css}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
-<form th:action="@{/search}" method="post">
+<div id="main-container">
+    <div th:replace="partials/navbar :: navbar"></div>
+    <ul th:replace="partials/navbar :: navbar-small"></ul>
+    <h1 id="main-hobbies-header" class="center-align">Hobbies</h1>
+    <form th:action="@{/search}" method="post">
+        <div class="container">
+            <div class="row">
+                <label for="search" id="search-header">Search:</label>
+                <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+            </div>
+        </div>
+    </form>
     <div class="container">
-        <div class="row">
-            <label for="search">Search:</label>
-            <input name="search" id="search" type="text" placeholder="Search and hit Enter...">
+        <div class="row" id="buttons-div">
+            <th:block th:each="c : ${category}">
+                <form th:action="${'/category/'+ c.id}">
+                    <button class="button-style btn grey darken-4 waves-effect waves-light" th:text="${c.name}"></button>
+                </form>
+            </th:block>
         </div>
     </div>
-</form>
-<div class="container">
-    <div class="row">
-        <th:block th:each="c : ${category}">
-            <form th:action="${'/category/'+ c.id}">
-                <button class="btn btn-primary" th:text="${c.name}"></button>
+    <div class="container">
+        <div class="row">
+            <form th:action="@{/hobbies}" method="get" class="left-align">
+                <label for="clear">
+                    <button id="clear" name="clear" type="submit" class="button-style btn grey darken-4 waves-effect waves-light">
+                        Clear
+                    </button>
+                </label>
             </form>
-        </th:block>
+        </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <form th:action="@{/hobbies}" method="get">
-            <label for="clear">
-                <button id="clear" name="clear" type="submit" class="btn btn-primary">Clear</button>
-            </label>
-        </form>
-    </div>
-</div>
-<h1>All Hobbies</h1>
-<div class="row text-center ml-1">
-    <div class="col s12 m4" th:each="hobby : ${hobbies}">
-        <!--            PUT CARD CODE HERE-->
-        <a th:href="${'/hobby/'+ hobby.id}">
-            <div class="card">
-                <div class="card-image">
-                    <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
-                    <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
-                    <span class="card-title" th:text="${hobby.title}">Card Title</span>
-                    <form th:action="@{|/profile/status|}" th:method="post">
-                        <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                        <button class="btn btn-floating halfway-fab waves-effect waves-light red">
-                            <i class="material-icons">favorite_border</i>
-                        </button>
-                    </form>
+
+    <div class="row text-center ml-1">
+        <div class="col s12 m4" th:each="hobby : ${hobbies}">
+            <!--            PUT CARD CODE HERE-->
+            <a th:href="${'/hobby/'+ hobby.id}">
+                <div class="card">
+                    <div class="card-image">
+                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
+                        <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
+
+                        <form th:action="@{|/profile/status|}" th:method="post">
+                            <input type="hidden" name="hobbyId" th:value="${hobby.id}">
+                            <button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
+                                <i class="material-icons">favorite_border</i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title center-align" th:text="${hobby.title}">Card Title</span>
+                        <p th:text="${hobby.description}"></p>
+                    </div>
+                    <div class="card-content">
+                        <p th:each="cat : ${hobby.categories}" th:text="${cat.name}"></p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p th:text="${hobby.description}"></p>
-                </div>
-                <div class="card-content">
-                    <p th:each="cat : ${hobby.categories}" th:text="${cat.name}"></p>
-                </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
 </div>
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">

@@ -13,11 +13,6 @@ body {
 }
 
 #login-form {
-    background: url("/../img/desk-min.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     font-family: 'Bungee Shade', cursive;
     overflow-y: scroll;
     width: 100%;
