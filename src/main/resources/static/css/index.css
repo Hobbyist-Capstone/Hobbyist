@@ -180,10 +180,12 @@ html {
 }
 
 #edit-button, #delete-button {
-    margin-bottom: 10px;
+    margin: 0 10px 10px 0;
 }
 
 #button-container {
+    display: flex;
+    flex-direction: row;
 
 }
 

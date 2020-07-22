@@ -19,7 +19,7 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <ul th:replace="partials/navbar :: navbar-small"></ul>
-<div class="container">
+<div class="container" id="single-hobby-container">
     <div class="row">
         <div class="col s1"></div>
         <div class="col s10 center-align">
@@ -47,7 +47,7 @@
 
                         <tbody>
                         <tr>
-                            <td>Start Up Cost</td>
+                            <td>Cost</td>
                             <td>
                                 <div th:switch="${hobby.cost}">
                                     <p th:case="1"><i class="material-icons black-text">monetization_on</i><i
@@ -121,8 +121,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="button-container" class="center-align">
-                    <div th:if="${#authentication.getPrincipal().isAdmin()}" >
+                <div>
+                    <div th:if="${#authentication.getPrincipal().isAdmin()}" id="button-container" class="center-align">
                         <form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
                             <button id="edit-button" class="button-style btn waves-effect waves-light">Edit</button>
                         </form>
