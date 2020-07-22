@@ -23,73 +23,109 @@
 <div id="tracker-container">
     <div th:replace="partials/navbar :: navbar"></div>
     <ul th:replace="partials/navbar :: navbar-small"></ul>
-<div class="row tool blue-grey lighten-5">
-    <div id="interested" class="col s1 grey darken-4">
-        <h5 class="title">INTERESTED</h5>
-        <div class="content">
-            <div th:block th:each="userHobby : ${userHobbyList}">
-                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
-
-<!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>-->
-
-                <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">
-                    <form th:action="@{|/profile/status/edit|}" th:method="post">
-                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've tried it!</button>
-                    </form>
-                    <form th:action="@{|/profile/status/delete|}" th:method="post">
-                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete</button>
-                    </form>
-
+    <div class="row tool blue-grey lighten-5">
+        <div id="interested" class="col s1 grey darken-4">
+            <h5 class="title">INTERESTED</h5>
+            <div class="content">
+                <div class="card col s12 l6 " th:block th:each="userHobby : ${userHobbyList}"
+                     th:if="${#strings.endsWith(userHobby.status, 'TED')}">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"
+                              th:text="${userHobby.hobby.getTitle()}">Card Title<i class="material-icons right">more_vert</i></span>
+                        <p><a th:href="${'/hobby/'+ userHobby.hobby.id}">Go to page</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4" th:text="${userHobby.hobby.getTitle()}">Card Title<i
+                                class="material-icons right">close</i></span>
+                        <p th:text="${userHobby.hobby.getDescription()}">Here is some more information about this
+                            product that is only revealed once clicked on.</p>
+                    </div>
+                    <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">
+                        <form th:action="@{|/profile/status/edit|}" th:method="post">
+                            <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
+                            <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've tried
+                                it!
+                            </button>
+                        </form>
+                        <form th:action="@{|/profile/status/delete|}" th:method="post">
+                            <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                            <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                            </button>
+                        </form>
+                    </div>
                 </div>
+                <!--            <div th:block th:each="userHobby : ${userHobbyList}">-->
+                <!--                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'TED')}" th:text="${userHobby.hobby.getTitle()}"></p></a>-->
 
-            </div>
-        </div>
-    </div>
+                <!--&lt;!&ndash;                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">TRIED IT</p>&ndash;&gt;-->
 
-    <div id="learning" class="col s10 grey lighten-5">
-        <h5 class="title">TRIED</h5>
-        <div class="content">
-            <div th:block th:each="userHobby : ${userHobbyList}">
-                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'IT')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
-<!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>-->
-
-                <div th:if="${#strings.endsWith(userHobby.status, 'IT')}">
-                    <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
-                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've mastered it!</button>
-                    </form>
-                    <form th:action="@{|/profile/status/delete|}" th:method="post">
-                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="hobbyist" class="col s1 grey darken-4">
-        <h5 class="title">HOBBYIST</h5>
-        <div class="content">
-            <div th:block th:each="userHobby : ${userHobbyList}">
-                <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p th:if="${#strings.endsWith(userHobby.status, 'IST')}" th:text="${userHobby.hobby.getTitle()}"></p></a>
-<!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>-->
-
-                <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                    <form th:action="@{|/profile/status/delete|}" th:method="post">
-                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete</button>
-
-                    </form>
-                </div>
+                <!--                <div th:if="${#strings.endsWith(userHobby.status, 'TED')}">-->
+                <!--                    <form th:action="@{|/profile/status/edit|}" th:method="post">-->
+                <!--                        <input type="hidden" name="hobbyId" th:value="${userHobby.id}">-->
+                <!--                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've tried it!</button>-->
+                <!--                    </form>-->
+                <!--                    <form th:action="@{|/profile/status/delete|}" th:method="post">-->
+                <!--                        <input type="hidden" name="deleteId" th:value="${userHobby.id}">-->
+                <!--                        <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete</button>-->
+                <!--                    </form>-->
+                <!--                </div>-->
+                <!--            </div>-->
             </div>
         </div>
 
+        <div id="learning" class="col s10 grey lighten-5">
+            <h5 class="title">TRIED</h5>
+            <div class="content">
+                <div th:block th:each="userHobby : ${userHobbyList}">
+                    <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p
+                            th:if="${#strings.endsWith(userHobby.status, 'IT')}"
+                            th:text="${userHobby.hobby.getTitle()}"></p></a>
+                    <!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">TRIED IT</p>-->
+
+                    <div th:if="${#strings.endsWith(userHobby.status, 'IT')}">
+                        <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
+                            <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
+                            <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've
+                                mastered it!
+                            </button>
+                        </form>
+                        <form th:action="@{|/profile/status/delete|}" th:method="post">
+                            <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                            <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="hobbyist" class="col s1 grey darken-4">
+            <h5 class="title">HOBBYIST</h5>
+            <div class="content">
+                <div th:block th:each="userHobby : ${userHobbyList}">
+                    <a th:href="${'/hobby/'+ userHobby.hobby.id}"><p
+                            th:if="${#strings.endsWith(userHobby.status, 'IST')}"
+                            th:text="${userHobby.hobby.getTitle()}"></p></a>
+                    <!--                <p th:text="${userHobby.status}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">HOBBYIST</p>-->
+
+                    <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                        <form th:action="@{|/profile/status/delete|}" th:method="post">
+                            <input type="hidden" name="deleteId" th:value="${userHobby.id}">
+                            <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 </div>
 
 <script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
