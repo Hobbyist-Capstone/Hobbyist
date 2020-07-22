@@ -23,7 +23,8 @@
 
 
     <!--        Profile Header-->
-    <h1 id="small-profile-header" class="center-align">Account</h1>
+    <h1 id="small-profile-header" class="center-align" th:text="${user.getUsername()}">Account</h1>
+
 
     <!--        Profile Image and Upload/Edit-->
 
@@ -114,7 +115,7 @@
         <!--        Profile Image-->
         <div id="profile-panels">
             <div id="left-div">
-                <h1 id="large-profile-header" class="center-align">Account</h1>
+                <h1 id="large-profile-header" class="center-align" th:text="${user.getUsername()}">Account</h1>
                 <div id="large-profile-image" class="center-align">
                     <img th:if="${user.userImage} == ''" class="large-photo center-align"
                          th:src="@{/img/hobbyist-logo.png}"
@@ -122,7 +123,6 @@
                     <img th:unless="${user.userImage} == ''" class="large-photo center-align"
                          th:src="${user.userImage}"
                          alt="profile picture">
-
 
                     <!--        not working -->
                     <!--                    <div id="large-profile-buttons" class="center-align">-->
