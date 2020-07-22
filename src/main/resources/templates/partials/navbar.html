@@ -28,7 +28,7 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="left show-on-large hide-on-med-and-down">
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="black-text">Hello,&nbsp;&nbsp;&nbsp;
-                    <span style="font-family:Bungee;color:black;" th:text="${#authentication.principal.username}"/>!
+                    <span style="font-family:Bungee;color:black;" th:text="${#authentication.principal.firstName}"/>!
                 </a>
                 </li>
             </ul>

@@ -26,15 +26,16 @@ public class User {
     private String lastName;
 
 
-    @Pattern(regexp = "^[A-Z0-9+_.-]+@[A-Z0-9.-]{3}", message="email must be valid email address" )
+    @Pattern(regexp = "([a-zA-Z0-9_.]+@[a-zA-Z0-9]+.[a-zA-Z]{2,3}[.] {0,1}[a-zA-Z]+)", message="email must be valid email address" )
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="Username length must be at least 3 characters")
+//    @Pattern(regexp="[a-zA-Z0-9]{3}",message="Username length must be at least 3 characters")
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Pattern(regexp="^[a-zA-Z0-9]{5}",message="Password length must be at least 5 characters")
+    //one upper case, one lower case, one digit, one special character, minimum 8 characters in length
+    @Pattern(regexp="^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$",message="Password length must be at least 8 characters with one uppercase letter and one digit")
     @Column(nullable = false)
     private String password;
 
