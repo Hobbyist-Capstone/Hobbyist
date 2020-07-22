@@ -29,9 +29,9 @@
     <!--        Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
-        <img th:if="${user.userImage} == ''" id="small-photo" class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-             th:src="@{/img/hobbyist-transparent.png}"/>
-        <img th:unless="${user.userImage} == ''" id="small-photo" class="center-align" th:src="${user.userImage}"
+        <img th:if="${user.userImage} == ''" class="small-photo" src="../../static/img/follower-logo.png" alt="badge"
+             th:src="@{/img/follower-logo.png}"/>
+        <img th:unless="${user.userImage} == ''" class="small-photo center-align" th:src="${user.userImage}"
 
              alt="profile picture">
         <!--        not working -->
@@ -118,10 +118,10 @@
             <div id="left-div">
                 <h1 id="large-profile-header" class="center-align" th:text="${user.getUsername()}">Account</h1>
                 <div id="large-profile-image" class="center-align">
-                    <img th:if="${user.userImage} == ''" id="large-photo" class="small-badge"
-                         src="../../static/img/hobbyist-transparent.png" alt="badge"
-                         th:src="@{/img/hobbyist-transparent.png}"/>
-                    <img th:unless="${user.userImage} == ''" id="large-photo" class="center-align"
+                    <img th:if="${user.userImage} == ''" class="large-photo"
+                         src="../../static/img/follower-logo.png" alt="badge"
+                         th:src="@{/img/follower-logo.png}"/>
+                    <img th:unless="${user.userImage} == ''" class="large-photo"
 
                          th:src="${user.userImage}"
                          alt="profile picture">
