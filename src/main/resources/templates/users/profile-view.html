@@ -192,6 +192,7 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -204,9 +205,7 @@
                         <li class="collection-item avatar" th:each="friend : ${friendsList}">
                             <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                                  th:src="@{/img/follower-logo.png}"/>
-
                             <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
-
                             <form class="delete-friend right-align" th:action="@{|/profile/friends-request/delete|}"
                                   th:method="post"
                                   th:if="${user.getUsername() == currentUsername}">

@@ -58,7 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{id}/edit",// only authenticated users can edit profile
                         "/hobby/{id}",
                         "/hobby",
-                        "/profile"
+                        "/profile",
+                        "/users"
 
                 )
                 .authenticated()

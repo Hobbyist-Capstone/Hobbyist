@@ -154,6 +154,7 @@ html {
 #left-div, #middle-div, #right-div {
     width: 30vw;
     height: 100vh;
+    margin: 0;
 }
 
 
