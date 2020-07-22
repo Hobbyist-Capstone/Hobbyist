@@ -64,7 +64,7 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
         if (video == null) {
@@ -97,19 +97,14 @@ public class HobbyController {
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
 
-    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
         Hobby hobby = hobbyDao.getOne(hobbyId);
+        String hobbyLink = hobbyDao.getOne(hobbyId).getYoutubeLink();
         User user = userDao.getOne(hobby.getCreatedBy().getId());
-        if (video == null) {
-            editHobby.setYoutubeLink(null);
-        } else if (video.equals("")) {
-            editHobby.setYoutubeLink(null);
-        } else {
-            String youtubeString = video.substring(38, 79);
-            editHobby.setYoutubeLink(youtubeString);
-        }
+
+        editHobby.setYoutubeLink(hobbyLink);
         editHobby.setCreatedBy(user);
         editHobby.setCategories(categories);
         editHobby.setPatience(pat);
