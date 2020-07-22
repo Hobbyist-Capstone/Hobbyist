@@ -47,6 +47,8 @@ html {
     padding: 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
 
 }
 
