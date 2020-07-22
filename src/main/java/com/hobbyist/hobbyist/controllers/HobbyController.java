@@ -1,13 +1,8 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Category;
-import com.hobbyist.hobbyist.models.Hobby;
+import com.hobbyist.hobbyist.models.*;
 
-import com.hobbyist.hobbyist.models.User;
-import com.hobbyist.hobbyist.repos.CategoryRepository;
-import com.hobbyist.hobbyist.repos.HobbyRepository;
-import com.hobbyist.hobbyist.repos.RatingRepository;
-import com.hobbyist.hobbyist.repos.UserRepository;
+import com.hobbyist.hobbyist.repos.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -31,11 +26,13 @@ public class HobbyController {
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
+    private UserHobbyRepository userHobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao,  UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
+        this.userHobbyDao =  userHobbyDao;
     }
 
     //     displays all hobbies
@@ -146,6 +143,21 @@ public class HobbyController {
     @GetMapping("/comment-page-2")
     public String comments2(Model model) {
         return "hobby/comment-page-2";
+    }
+
+
+    // save
+    @PostMapping("profile/status/single")
+    public String addHobby (@RequestParam long hId){
+        //this button will take this.hobbyId and set the status to "interested" for the current user
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hId);
+
+        UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
+        userHobbyDao.save(userHobbyObj);
+
+        return "redirect:/hobby/" + hobby.getId();
     }
 
 

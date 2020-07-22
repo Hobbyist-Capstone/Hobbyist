@@ -167,10 +167,10 @@
                     <div class="row">
                         <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                         <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
-                        <div class="col s4" id="large-badge-list" th:each="userHobby : ${userHobbyList}"
-                             th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <a th:href="${'/hobby/' + userHobby.hobby.id}">
-                                <span th:text="${userHobby.hobby.getTitle()}"></span>
+
+                        <div class="col s4" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
+                                    th:text="${userHobby.hobby.getTitle()}"></p>
                             </a>
                             <img class="small-badge center-align" src="../../static/img/hobbyist-transparent.png"
                                  alt="badge"
@@ -193,7 +193,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
 
