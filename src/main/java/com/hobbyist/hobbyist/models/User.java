@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import javax.validation.constraints.Pattern;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,12 +25,16 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
+
+    @Pattern(regexp = "^[A-Z0-9+_.-]+@[A-Z0-9.-]{3}", message="email must be valid email address" )
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="Username length must be at least 3 characters")
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Pattern(regexp="^[a-zA-Z0-9]{5}",message="Password length must be at least 5 characters")
     @Column(nullable = false)
     private String password;
 

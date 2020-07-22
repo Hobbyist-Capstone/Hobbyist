@@ -59,6 +59,7 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
     justify-content: space-around;
 }
 
@@ -168,7 +169,7 @@ html {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    overflow: scroll;
+    overflow: hidden;
     margin: 0!important;
     font-family: 'Bungee', cursive;
     font-size: 1.5em;
@@ -194,7 +195,7 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    overflow: scroll;
+    overflow: hidden;
     font-size: 1.5em;
     font-family: 'Bungee', cursive;
 
@@ -206,6 +207,7 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    overflow: hidden;
     flex-wrap: wrap;
 }
 
