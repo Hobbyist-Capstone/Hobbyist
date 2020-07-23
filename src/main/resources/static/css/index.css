@@ -93,7 +93,6 @@ html {
 }
 
 .login-button {
-    margin-right:3px;
 }
 
 #large-hobbies-button, #small-hobbies-button {
@@ -123,7 +122,7 @@ html {
     z-index: 900;
     background-color: rgba(255, 255, 255, 100);
     color: black;
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     font-size: 1.5em;
 }
 
@@ -175,7 +174,7 @@ html {
 }
 
 .button-style {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: white;
     background-color: black!important;
 }
@@ -192,12 +191,12 @@ html {
 }
 
 #card-content {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: black;
 }
 
 p, th, td {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: black;
 }
 #single-hobby-container {
@@ -208,18 +207,19 @@ p, th, td {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Oxygen', sans-serif;
     overflow-y: scroll;
 }
 
 .card-title {
     color: black;
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     font-size: 1.5em;
 }
 /*Scroll Window*/
 
-/*.live__scroll {*/
+/*.live__
+scroll {*/
 /*    overflow-x: auto;*/
 /*    overflow-y: hidden;*/
 /*    white-space: nowrap;*/
