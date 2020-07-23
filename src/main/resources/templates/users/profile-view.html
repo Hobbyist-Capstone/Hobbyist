@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -95,7 +95,7 @@
             <li class="collection-item avatar" th:each="friend : ${friendsList}">
                 <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
                      th:src="@{/img/follower-logo.png}"/>
-                <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
+                <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content left-align">
                     <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                 </a>
                 <form th:action="@{|/profile/friends-request/delete|}" th:method="post"
