@@ -32,16 +32,7 @@
         <img th:if="${user.userImage} == ''" class="small-photo" src="../../static/img/follower-logo.png" alt="badge"
              th:src="@{/img/follower-logo.png}"/>
         <img th:unless="${user.userImage} == ''" class="small-photo center-align" th:src="${user.userImage}"
-
              alt="profile picture">
-        <!--        not working -->
-        <!--        <div id="large-profile-buttons" class="center-align">-->
-        <!--            <form th:action="@{|/users/${user.id}/upload|}" th:method="GET" th:object="${user}">-->
-        <!--                <input type="hidden" name="id" th:value="${user.getId()}">-->
-        <!--                <button class="btn grey darken-4 waves-effect waves-light">Upload</button>-->
-        <!--            </form>-->
-        <!--        </div>-->
-
         <div th:if="${user.getUsername() == currentUsername}">
             <div class="large-profile-buttons center-align">
                 <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
