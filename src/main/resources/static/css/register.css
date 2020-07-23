@@ -66,14 +66,14 @@ body {
 }
 
 .button-style {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: white;
     background-color: black;
     margin-bottom: 10px;
 }
 
 .button-link {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: white;
     background-color: black;
 }
@@ -87,7 +87,7 @@ body {
 }
 
 p {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: red;
 
 }
