@@ -195,9 +195,16 @@ html {
     color: black;
 }
 
-p, th, td {
+th, td {
     font-family: 'Oxygen', sans-serif;
     color: black;
+    font-size: 1.25em;
+}
+
+p {
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+    font-size: 1.5em;
 }
 #single-hobby-container {
     height: 100vh;
@@ -216,20 +223,11 @@ p, th, td {
     font-family: 'Oxygen', sans-serif;
     font-size: 1.5em;
 }
-/*Scroll Window*/
 
-/*.live__
-scroll {*/
-/*    overflow-x: auto;*/
-/*    overflow-y: hidden;*/
-/*    white-space: nowrap;*/
-/*}*/
-/*.live__scroll .row{*/
-/*    display:block;*/
-/*}*/
-/*.live__scroll .live__scroll--box {*/
-/*    display: inline-block;*/
-/*    float: none;*/
-/*    padding: 15px;*/
-/*}*/
+#created-by {
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+    font-size: 1.25em;
+}
+
 
