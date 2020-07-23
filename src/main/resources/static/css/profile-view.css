@@ -38,6 +38,11 @@ html {
 
 }
 
+p {
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+}
+
 #small-upload-button {
     margin-bottom: 15px;
 }
@@ -253,6 +258,16 @@ span {
 .collection{
     border-style: none!important;
 }
+
+#admin-container-large > p {
+    height: 100vh !important;
+    width: 100vw;
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+
+}
+
+
 
 /*.collection-item {*/
 /*    display: flex;*/
