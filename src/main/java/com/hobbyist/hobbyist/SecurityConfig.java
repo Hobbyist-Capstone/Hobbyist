@@ -59,7 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/hobby/{id}",
                         "/hobby",
                         "/profile",
-                        "/users"
+                        "/users",
+                        "/admin"
 
                 )
                 .authenticated()
