@@ -60,9 +60,9 @@
 
                         <form th:action="@{|/profile/status|}" th:method="post">
                             <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                            <button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
+                            <a onclick="M.toast({html: 'Added to favorites!'})"><button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
                                 <i class="material-icons">favorite_border</i>
-                            </button>
+                            </button></a>
                         </form>
                     </div>
                     <div class="card-content">

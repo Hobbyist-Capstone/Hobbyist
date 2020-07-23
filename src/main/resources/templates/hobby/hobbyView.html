@@ -31,9 +31,9 @@
                         <span class="card-title" th:text="${hobby.title}"></span>
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
-                            <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                            <a onclick="M.toast({html: 'Added to favorites!'})"> <button class="btn btn-floating halfway-fab waves-effect waves-light red">
                                 <i class="material-icons">favorite_border</i>
-                            </button>
+                            </button></a>
                         </form>
                     </div>
                     <div class="card-content">
