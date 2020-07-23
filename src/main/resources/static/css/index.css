@@ -196,6 +196,10 @@ html {
     color: black;
 }
 
+p, th, td {
+    font-family: 'Bungee', cursive;
+    color: black;
+}
 #single-hobby-container {
     height: 100vh;
     width: 100vw;
@@ -208,6 +212,11 @@ html {
     overflow-y: scroll;
 }
 
+.card-title {
+    color: black;
+    font-family: 'Bungee', cursive;
+    font-size: 1.5em;
+}
 /*Scroll Window*/
 
 /*.live__scroll {*/

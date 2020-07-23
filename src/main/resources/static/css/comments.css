@@ -97,10 +97,14 @@ input {
 #HCB_comment_box .uneditable-textarea, #HCB_comment_box input[type=button], #HCB_comment_box input[type=reset], #HCB_comment_box input[type=submit] {
     height: 36px!important;
     width: 122px!important;
-    padding: 8px 10px 0 10px!important;
+    padding: 0 10px 0 10px!important;
     font-family: 'Bungee', cursive!important;
     /*color: white!important;*/
     /*background-color: black!important;*/
 
+}
+
+#HCB_comment_box .btn {
+    padding-top: 8px!important;
 }
 
