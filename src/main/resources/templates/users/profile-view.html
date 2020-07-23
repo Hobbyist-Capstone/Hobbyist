@@ -78,11 +78,13 @@
         <h3 id="small-created-hobbies-header" class="center-align">Created Hobbies</h3>
         <div id="small-created-hobbies" th:each="hobby: ${hobbies}">
             <ul class="small-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
-                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-            </ul>
+                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                    <li th:text="${hobby.title}">Swashbuckling</li>
+                </a>            </ul>
             <ul class="small-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                <li th:text="${hobby.title}"><a class="created-hobby-link" href="#">Swashbuckling</a></li>
-            </ul>
+                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                    <li th:text="${hobby.title}">Swashbuckling</li>
+                </a>            </ul>
         </div>
     </div>
 
