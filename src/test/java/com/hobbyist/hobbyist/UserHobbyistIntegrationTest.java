@@ -6,7 +6,6 @@ import com.hobbyist.hobbyist.repos.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = HobbyistApplication.class)
 @AutoConfigureMockMvc
-public class HobbyistIntegrationTest {
+public class UserHobbyistIntegrationTest {
 
     private User testUser;
     private HttpSession httpSession;
@@ -82,5 +81,17 @@ public class HobbyistIntegrationTest {
     public void testIfUserSessionIsActive() throws Exception {
         // It makes sure the returned session is not null
         assertNotNull(httpSession);
+    }
+
+    @Test
+    public void testCreateUser() throws Exception {
+        // Makes a Post request to /ads/create and expect a redirection to the Ad
+        this.mvc.perform(
+                post("/ads/create").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        // Add all the required parameters to your request like this
+                        .param("title", "test")
+                        .param("description", "for sale"))
+                .andExpect(status().is3xxRedirection());
     }
 }
