@@ -28,11 +28,11 @@ public class HobbyController {
     private CategoryRepository categoryDao;
     private UserHobbyRepository userHobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao,  UserHobbyRepository userHobbyDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao, UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
-        this.userHobbyDao =  userHobbyDao;
+        this.userHobbyDao = userHobbyDao;
     }
 
     //     displays all hobbies
@@ -114,7 +114,9 @@ public class HobbyController {
     @PostMapping("/hobby/{id}/delete")
     public String destroy(@ModelAttribute Hobby deleteHobby) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserHobby userhobby = userHobbyDao.getOne(deleteHobby.getId());
         deleteHobby.setCreatedBy(currentUser);
+        userHobbyDao.delete(userhobby);
         hobbyDao.delete(deleteHobby);
         return "redirect:/hobbies";
     }
@@ -148,7 +150,7 @@ public class HobbyController {
 
     // save
     @PostMapping("profile/status/single")
-    public String addHobby (@RequestParam long hId){
+    public String addHobby(@RequestParam long hId) {
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
