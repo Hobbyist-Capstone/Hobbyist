@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     background-color: black;
     box-sizing: border-box;
     overflow-y: scroll;
@@ -61,7 +61,7 @@ p {
 }
 
 .button-style {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: white!important;
     background-color: black!important;
     padding: 0 10px!important;
