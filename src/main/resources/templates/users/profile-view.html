@@ -170,7 +170,7 @@
                         <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                         <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
 
-                        <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                        <div class="col s4 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <a th:href="${'/hobby/' + userHobby.hobby.id}"><p th:text="${userHobby.hobby.getTitle()}"></p></a>
                             <img class="small-badge" src="../../static/img/hobbyist-transparent.png"
                                  alt="badge"
