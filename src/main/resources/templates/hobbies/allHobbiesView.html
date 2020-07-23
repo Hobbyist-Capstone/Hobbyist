@@ -67,7 +67,6 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title center-align" th:text="${hobby.title}">Card Title</span>
-                        <p th:text="${hobby.description}"></p>
                     </div>
                     <div class="card-content">
                         <p th:each="cat : ${hobby.categories}" th:text="${cat.name}"></p>
