@@ -72,6 +72,12 @@ body {
     margin-bottom: 10px;
 }
 
+.button-link {
+    font-family: 'Bungee', cursive;
+    color: white;
+    background-color: black;
+}
+
 #optional{
     font-size: small;
 }

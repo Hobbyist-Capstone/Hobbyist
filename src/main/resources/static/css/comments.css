@@ -14,8 +14,8 @@
 #HCB_comment_box {
     width: 100%;
     /*border: 2px solid black;*/
-    /*background-color: #eceff1;*/
-    background-color: white;
+    background-color: #d4dadd;
+    /*background-color: white;*/
 }
 
 #hcb_form_name {
@@ -25,7 +25,7 @@
 
 #hcb_form_content {
     width: 100%;
-    margin: 20px;
+    margin: 0;
     color: black;
 }
 
