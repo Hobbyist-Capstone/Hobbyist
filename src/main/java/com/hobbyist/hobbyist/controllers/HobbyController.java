@@ -113,8 +113,6 @@ public class HobbyController {
 
     @PostMapping("/hobby/{id}/delete")
     public String destroy(@ModelAttribute Hobby deleteHobby) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        deleteHobby.setCreatedBy(currentUser);
         hobbyDao.delete(deleteHobby);
         return "redirect:/hobbies";
     }
