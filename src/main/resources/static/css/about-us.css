@@ -10,7 +10,14 @@ body {
 
 #small-team-header {
     font-family: 'Bungee Shade', cursive;
-    font-size: 11vw;
+    size: 8vw;
+    color: rgba(146, 9, 18, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.large-team-header {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 7em;
     color: rgba(146, 9, 18, 0.9);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -52,8 +59,8 @@ body {
     width: 70vw;
     border: 5px solid #f2a22c;
     border-radius: 5px;
-    margin: 10px 10px 10px 10px;
-    background-color: floralwhite;
+    margin: 0px 10px 10px 10px;
+    background-color: #eceff1;
 
 
 }
@@ -91,10 +98,10 @@ body {
 .names {
     color: black;
     font-family: 'Bungee Shade', cursive;
-    font-size: 2.75vw;
+    font-size: 2.5vw;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
 }
+
 #large-about-us {
     width: 100%;
     height: 100%;
@@ -111,7 +118,7 @@ body {
 }
 
 #person1, #person2, #person3, #person4 {
-    width: 25vw;
+    width: 22vw;
     /*height: 100vh;*/
     border: 5px solid #f2a22c;
     border-radius: 5px;
@@ -121,10 +128,10 @@ body {
 }
 
 .large-photo {
-    width: 20vw;
+    width: 18vw;
     height: auto;
     border-radius: 10px;
-    margin: 10px;
+    padding: 10px;
 
 }
 
@@ -135,8 +142,9 @@ body {
 }
 
 #large-logo {
-    width: 15vw;
+    width: 10vw;
     height: auto;
+    margin: 30px;
 
 
 }
