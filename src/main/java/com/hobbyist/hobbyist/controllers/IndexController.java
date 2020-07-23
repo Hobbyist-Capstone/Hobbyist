@@ -15,22 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryDao;
-    private HobbyRepository hobbyDao;
-    private UserHobbyRepository userHobbyDao;
-    private UserRepository  userDao;
-
-
-
-    public IndexController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserHobbyRepository userHobbyDao, UserRepository  userDao
-    ) {
-        this.hobbyDao = hobbyDao;
-        this.categoryDao = categoryDao;
-        this.userHobbyDao = userHobbyDao;
-        this.userDao = userDao;
-
-    }
-
     @GetMapping("/")
     public String index(Model model) {
         return "index/index";

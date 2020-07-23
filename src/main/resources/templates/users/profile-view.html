@@ -128,15 +128,6 @@
 
                          th:src="${user.userImage}"
                          alt="profile picture">
-
-                    <!--        not working -->
-                    <!--                    <div id="large-profile-buttons" class="center-align">-->
-                    <!--                        <form th:action="@{|/users/${user.id}/upload|}" th:method="GET" th:object="${user}">-->
-                    <!--                            <input type="hidden" name="id" th:value="${user.getId()}">-->
-                    <!--                            <button class="btn grey darken-4 waves-effect waves-light">Upload</button>-->
-                    <!--                        </form>-->
-                    <!--                    </div>-->
-                    <!--                th:if="${user.getUsername() == currentUsername}"            -->
                     <div class="center-align">
                         <div id="large-profile-buttons" class="center-align"
                              th:if="${user.getUsername() == currentUsername}">
@@ -170,7 +161,7 @@
                         <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                         <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
 
-                        <div class="col s4 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                        <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <img class="small-badge" src="../../static/img/hobbyist-transparent.png"
                                  alt="badge"
                                  th:src="@{/img/hobbyist-transparent.png}"/>

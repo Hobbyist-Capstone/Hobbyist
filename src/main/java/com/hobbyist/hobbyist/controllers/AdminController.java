@@ -43,11 +43,11 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    //delete Hobby
-    @PostMapping("/admin/delete/hobby")
-    public String deleteHobby(@RequestParam long hobbyId){
-        Hobby deleteHobby = hobbyDao.getOne(hobbyId);
-        hobbyDao.delete(deleteHobby);
-        return "redirect:/admin";
-    }
+//    //delete Hobby
+//    @PostMapping("/admin/delete/hobby")
+//    public String deleteHobby(@RequestParam long hobbyId){
+//        Hobby deleteHobby = hobbyDao.getOne(hobbyId);
+//        hobbyDao.delete(deleteHobby);
+//        return "redirect:/admin";
+//    }
 }
