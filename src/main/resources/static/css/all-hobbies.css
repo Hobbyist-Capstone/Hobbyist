@@ -14,6 +14,12 @@ html {
     height: 100%;
 }
 
+.card-image img {
+    width:  457px;
+    height: 305px;
+    object-fit: cover;
+}
+
 #main-container {
     width: 100vw;
     height: 100vh;
