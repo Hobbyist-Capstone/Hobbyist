@@ -37,7 +37,7 @@ html {
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black;
+    background-color: #000000;
     margin-bottom: 10px;
     margin-right: 10px;
 }
@@ -60,6 +60,7 @@ p {
     font-family: 'Oxygen', sans-serif;
     font-weight: bolder;
     color: black;
+    font-size: 1.25em;
 }
 
 .card-title {
