@@ -61,8 +61,13 @@ body {
 .forms {
     font-family: 'Bungee', cursive;
     color: black;
-    font-size: 3em;
+    font-size: 1.5em;
+}
 
+.form-help, #optional {
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+    font-weight: bolder;
 }
 
 .button-style {
@@ -76,10 +81,6 @@ body {
     font-family: 'Oxygen', sans-serif;
     color: white;
     background-color: black;
-}
-
-#optional{
-    font-size: small;
 }
 
 .font{
