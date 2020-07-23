@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+html {
+    width: 100vw;
+}
+
+#admin-container-large, #admin-right-div {
+    height: 100vh !important;
+    width: 100vw;
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+}
+
+#admin-above-fold-large {
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    background-image: url("/../img/desk-min.jpg");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Oxygen', sans-serif;
+    color: black;
+    overflow-y: scroll;
+}
