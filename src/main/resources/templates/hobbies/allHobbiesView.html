@@ -50,7 +50,7 @@
     </div>
 
     <div class="row text-center ml-1">
-        <div class="col s12 m4" th:each="hobby : ${hobbies}">
+        <div class="col s12 m4 size" th:each="hobby : ${hobbies}">
             <!--            PUT CARD CODE HERE-->
             <a th:href="${'/hobby/'+ hobby.id}">
                 <div class="card">
