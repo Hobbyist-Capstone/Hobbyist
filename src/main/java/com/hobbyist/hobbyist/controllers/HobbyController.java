@@ -1,13 +1,8 @@
 package com.hobbyist.hobbyist.controllers;
 
-import com.hobbyist.hobbyist.models.Category;
-import com.hobbyist.hobbyist.models.Hobby;
+import com.hobbyist.hobbyist.models.*;
 
-import com.hobbyist.hobbyist.models.User;
-import com.hobbyist.hobbyist.repos.CategoryRepository;
-import com.hobbyist.hobbyist.repos.HobbyRepository;
-import com.hobbyist.hobbyist.repos.RatingRepository;
-import com.hobbyist.hobbyist.repos.UserRepository;
+import com.hobbyist.hobbyist.repos.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +10,6 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,15 +26,14 @@ public class HobbyController {
     private HobbyRepository hobbyDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
-    private RatingRepository ratingDao;
+    private UserHobbyRepository userHobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao, RatingRepository ratingDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao,  UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
-        this.ratingDao = ratingDao;
+        this.userHobbyDao =  userHobbyDao;
     }
-
 
     //     displays all hobbies
     @GetMapping("/hobbies")
@@ -68,15 +61,19 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-//        List<Category> categories = categoryDao.findAllById(categoriesId);
-//        String youTubeVideo = new String(video);
-//        String youtubeString = youTubeVideo.substring(38, 79);
+        if (video == null) {
+            saveHobby.setYoutubeLink(null);
+        } else if (video.equals("")) {
+            saveHobby.setYoutubeLink(null);
+        } else {
+            String youtubeString = video.substring(38, 79);
+            saveHobby.setYoutubeLink(youtubeString);
+        }
         saveHobby.setCreatedBy(currentUser);
         saveHobby.setCategories(categories);
-//        saveHobby.setYoutubeLink(youtubeString);
         saveHobby.setPatience(pat);
         saveHobby.setDifficulty(diff);
         saveHobby.setCost(cost);
@@ -96,16 +93,17 @@ public class HobbyController {
 
     //    edit single hobby
     @PostMapping("hobby/{id}/edit")
-    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video") String video) {
+
+    public String update(@RequestParam long hobbyId, @ModelAttribute Hobby editHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {
         // save changes
         List<Category> categories = categoryDao.findByIdIn(categoriesId);
-//        List<Category> categories = categoryDao.findAllById(categoriesId);
         Hobby hobby = hobbyDao.getOne(hobbyId);
+        String hobbyLink = hobbyDao.getOne(hobbyId).getYoutubeLink();
         User user = userDao.getOne(hobby.getCreatedBy().getId());
 
+        editHobby.setYoutubeLink(hobbyLink);
         editHobby.setCreatedBy(user);
         editHobby.setCategories(categories);
-        editHobby.setYoutubeLink(video);
         editHobby.setPatience(pat);
         editHobby.setDifficulty(diff);
         editHobby.setCost(cost);
@@ -145,6 +143,21 @@ public class HobbyController {
     @GetMapping("/comment-page-2")
     public String comments2(Model model) {
         return "hobby/comment-page-2";
+    }
+
+
+    // save
+    @PostMapping("profile/status/single")
+    public String addHobby (@RequestParam long hId){
+        //this button will take this.hobbyId and set the status to "interested" for the current user
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userInDb = userDao.getOne(currentUser.getId());
+        Hobby hobby = hobbyDao.getOne(hId);
+
+        UserHobby userHobbyObj = new UserHobby(hobby, userInDb, HobbyStatus.INTERESTED);
+        userHobbyDao.save(userHobbyObj);
+
+        return "redirect:/hobby/" + hobby.getId();
     }
 
 
