@@ -166,10 +166,10 @@ html {
 }
 
 #large-badge-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-between;*/
     overflow: hidden;
     margin: 0!important;
     font-family: 'Bungee', cursive;
