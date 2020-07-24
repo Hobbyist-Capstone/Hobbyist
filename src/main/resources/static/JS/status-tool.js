@@ -4,24 +4,34 @@ $(document).ready(function() {
     close($('#interested'));
     open($('#learning'));
     close($('#hobbyist'));
+    $('#learning h5').addClass('blue-grey-text text-darken-4');
 });
 
 $('#interested').click(function () {
     open($('#interested'))
     close($('#learning'))
     close($('#hobbyist'));
+    $('#interested h5').addClass('blue-grey-text text-darken-4');
+    $('#hobbyist h5').removeClass('blue-grey-text text-darken-4');
+    $('#learning h5').removeClass('blue-grey-text text-darken-4');
 });
 
 $('#learning').click(function () {
     close($('#interested'))
     open($('#learning'))
     close($('#hobbyist'))
+    $('#learning h5').addClass('blue-grey-text text-darken-4');
+    $('#hobbyist h5').removeClass('blue-grey-text text-darken-4');
+    $('#interested h5').removeClass('blue-grey-text text-darken-4');
 });
 
 $('#hobbyist').click(function () {
     close($('#interested'))
     close($('#learning'))
     open($('#hobbyist'))
+    $('#hobbyist h5').addClass('blue-grey-text text-darken-4');
+    $('#interested h5').removeClass('blue-grey-text text-darken-4');
+    $('#learning h5').removeClass('blue-grey-text text-darken-4');
 });
 
 function open(status) {
