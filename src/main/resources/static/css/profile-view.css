@@ -183,7 +183,7 @@ ul {
 }
 
 p {
-    color: black !important;
+    color: #263238!important;
 }
 
 #large-created-hobbies-header, #small-created-hobbies-header {
@@ -216,11 +216,11 @@ p {
 }
 
 .large-hobbies-list > a, .small-hobbies-list > a {
-    color: black !important;
+    color: #263238 !important;
 }
 
 .created-hobby-link {
-    color: black !important;
+    color: #263238 !important;
 }
 
 #large-badges-header, #small-badges-header {
@@ -266,7 +266,7 @@ p {
 }
 
 span {
-    color: black !important;
+    color: #263238 !important;
 }
 
 #right-div > li {
