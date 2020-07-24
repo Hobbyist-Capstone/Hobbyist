@@ -15,6 +15,9 @@
     <link th:href="@{/css/comments.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 
+    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon" />
+
+
 
 </head>
 <body>
@@ -32,7 +35,7 @@
                         <span class="card-title" th:text="${hobby.title}"></span>
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
-                            <a onclick="M.toast({html: 'Added to favorites!'})"> <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                            <a onclick="M.toast({html: 'Added to Interested!'})"> <button class="btn btn-floating halfway-fab waves-effect waves-light red">
                                 <i class="material-icons">favorite_border</i>
                             </button></a>
                         </form>
@@ -225,7 +228,7 @@ if (!window.hcb_user) {
     if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s);
 })(); /*-->*/ </script>
 <!-- end www.htmlcommentbox.com -->
-<script th:src="@{http://code.jquery.com/jquery-1.10.2.js}">
+<script th:src="@{https://code.jquery.com/jquery-1.10.2.js}">
 </script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

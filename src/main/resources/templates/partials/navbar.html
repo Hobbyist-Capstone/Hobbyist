@@ -85,6 +85,11 @@
 
 <!--Small Navbar-->
 <ul class="sidenav blue-grey lighten-5" id="mobile-demo" th:fragment="navbar-small">
+    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().isAdmin()}">
+        <li style="font-family:Bungee;"><a th:href="@{/admin}" class="blue-grey-text text-darken-4" style="font-size:1em;"><i
+                class="material-icons left blue-grey-text text-darken-4">gavel</i>Admin
+        </a></li>
+    </th:block>
     <th:block sec:authorize="isAuthenticated()">
         <li style="font-family:Bungee;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4"><i
                 class="material-icons left blue-grey-text text-darken-4">account_circle</i>Profile

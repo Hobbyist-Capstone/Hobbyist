@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon" />
     <!--    Font Awesome Icons-->
     <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
     <!--    Responsive Tag-->
@@ -164,14 +165,14 @@
                     </div>
                     <div class="row">
                         <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
-                        <div class="col center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                        <div class="center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
                             <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
-                                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                <a class="created-hobby-link center-align" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>
                                 </a>
                             </ul>
                             <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                <a class="created-hobby-link center-align" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>
                                 </a>
                             </ul>
