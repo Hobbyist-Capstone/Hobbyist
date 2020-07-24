@@ -56,7 +56,6 @@ public class HobbiesIntegrationTest {
 
         testUser = userDao.findByUsername("testUser");
 
-        // Creates the test user if not exists
         if (testUser == null) {
             User newUser = new User();
             newUser.setFirstName("test");
@@ -67,7 +66,6 @@ public class HobbiesIntegrationTest {
             testUser = userDao.save(newUser);
         }
 
-        // Throws a Post request to /login and expect a redirection to the Ads index page after being logged in
         httpSession = this.mvc.perform(post("/login").with(csrf())
                 .param("username", "testUser")
                 .param("password", "Testing12345"))
@@ -80,23 +78,19 @@ public class HobbiesIntegrationTest {
 
     @Test
     public void contextLoads() {
-        // Sanity Test, just to make sure the MVC bean is working
         assertNotNull(mvc);
     }
 
     @Test
     public void testIfUserSessionIsActive() throws Exception {
-        // It makes sure the returned session is not null
         assertNotNull(httpSession);
     }
 
     @Test
     public void testCreateHobby() throws Exception {
-        // Makes a Post request to /ads/create and expect a redirection to the Ad
         this.mvc.perform(
                 post("/hobby/create").with(csrf())
                         .session((MockHttpSession) httpSession)
-                        // Add all the required parameters to your request like this
                         .param("title", "Tennis")
                         .param("description", "Tennis Hobby")
                         .param("categories", String.valueOf(1))
@@ -105,29 +99,4 @@ public class HobbiesIntegrationTest {
                         .param("cost", String.valueOf(1)))
                 .andExpect(status().is3xxRedirection());
     }
-
-//    @Test
-//    public void testShowHobby() throws Exception {
-//
-//        Hobby existingHobby = hobbiesDao.findAll().get(0);
-//
-//        // Makes a Get request to /ads/{id} and expect a redirection to the Ad show page
-//        this.mvc.perform(get("/hobby/create/" + existingHobby.getId()))
-//                .andExpect(status().isOk())
-////                 Test the dynamic content of the page
-//                .andExpect((ResultMatcher) content().string(containsString(existingHobby.getDescription())));
-//    }
-
-//    @Test
-//    public void testHobbiesIndex() throws Exception {
-//        Ad existingAd = adsDao.findAll().get(0);
-//
-//        // Makes a Get request to /ads and verifies that we get some of the static text of the ads/index.html template and at least the title from the first Ad is present in the template.
-//        this.mvc.perform(get("/ads"))
-//                .andExpect(status().isOk())
-//                // Test the static content of the page
-//                .andExpect(content().string(containsString("Latest ads")))
-//                // Test the dynamic content of the page
-//                .andExpect(content().string(containsString(existingAd.getTitle())));
-//    }
 }
