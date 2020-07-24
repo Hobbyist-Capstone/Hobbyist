@@ -26,7 +26,7 @@
     <div class="row">
 
         <div class="col m4">
-            <h1>STATS</h1>
+            <h1 class="center-align">STATS</h1>
             <div class="stats">
                 <p class="bold-font">Total number of users: <span th:text="${countUsers}"></span></p>
                 <p class="bold-font">Total number of hobbies: <span th:text="${countHobbies}"></span></p>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="users col s12 m4">
-            <h1>USERS</h1>
+            <h1 class="center-align">USERS</h1>
             <div class="user-list" th:each="user : ${users}">
                 <div><p class="bold-font ">User ID: <span th:text="${user.id}">ID</span></p></div>
                 <p class="bold-font ">Username: <a th:href="@{|/users/profile/${user.username}|}"><span
@@ -45,7 +45,7 @@
         </div>
 
         <div class="hobbies col s12 m4">
-            <h1>HOBBIES</h1>
+            <h1 class="center-align">HOBBIES</h1>
             <div class="hobbies-list" th:each="hobby : ${hobbies}">
                 <p class="bold-font">Hobby ID: <span th:text="${hobby.id}"></span></p>
                 <p class="bold-font">Title: <a th:href="${'/hobby/' + hobby.id}"><span
