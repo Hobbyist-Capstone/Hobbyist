@@ -78,6 +78,9 @@ body {
     background-color: #263238;
 }
 
+#logout-button {
+    padding-top: 30px;
+}
 #optional{
     font-family: 'Oxygen', sans-serif;
 }
