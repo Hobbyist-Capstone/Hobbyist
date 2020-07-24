@@ -27,52 +27,52 @@
                                                                  th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="left show-on-large hide-on-med-and-down">
-                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1.25em;">Hello,&nbsp;&nbsp;&nbsp;
-                    <span style="font-family:Bungee;color:black;" th:text="${#authentication.principal.firstName}"/>!
+                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1.15em;">Hello,&nbsp;&nbsp;&nbsp;
+                    <span class="blue-grey-text text-darken-4" style="font-family:Bungee;" th:text="${#authentication.principal.firstName}"/>!
                 </a>
                 </li>
             </ul>
             <ul class="right hide-on-med-and-down">
 
                 <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().isAdmin()}">
-                    <li style="font-family:Bungee;"><a th:href="@{/admin}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                    <li style="font-family:Bungee;"><a th:href="@{/admin}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                             class="material-icons left blue-grey-text text-darken-4">gavel</i>Admin
                     </a></li>
                 </th:block>
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li style="font-family:Bungee;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                    <li style="font-family:Bungee;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                             class="material-icons left blue-grey-text text-darken-4">account_circle</i>Profile
                     </a></li>
                 </th:block>
 
-                <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">art_track</i>All Hobbies</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/hobby/create}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                        th:href="@{/hobby/create}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">rowing</i>Create Hobby</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/profile/status}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                        th:href="@{/profile/status}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">view_column</i>Hobby
                     Tracker</a></li>
 
-                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">group</i>About
                     Us</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/login}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                        th:href="@{/login}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">favorite</i>Login</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/register}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
+                        th:href="@{/register}" class="blue-grey-text text-darken-4" style="font-size:1.15em;"><i
                         class="material-icons left blue-grey-text text-darken-4">add</i>Join</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee" class="blue-grey-text text-darken-4">
                     <form th:action="@{/logout}" th:method="post">
-                        <button style="border:none;font-family:Bungee;padding:0 15px 0 10px;font-size:1.25em;" id="logout-button" class="blue-grey-text text-darken-4">
+                        <button style="border:none;font-family:Bungee;padding:0 15px 0 10px;font-size:1.15em;" id="logout-button" class="blue-grey-text text-darken-4">
                             Logout
                         </button>
                     </form>
