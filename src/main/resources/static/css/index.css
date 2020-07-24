@@ -181,6 +181,7 @@ html {
 }
 
 #edit-button, #delete-button {
+    font-family: 'Oxygen', sans-serif;
     margin: 0 10px 10px 0;
 }
 
@@ -217,24 +218,15 @@ p, th, td {
     font-family: 'Bungee', cursive;
     font-size: 1.5em;
 }
-/*Scroll Window*/
 
-/*.live__scroll {*/
-/*    overflow-x: auto;*/
-/*    overflow-y: hidden;*/
-/*    white-space: nowrap;*/
-/*}*/
-/*.live__scroll .row{*/
-/*    display:block;*/
-/*}*/
-/*.live__scroll .live__scroll--box {*/
-/*    display: inline-block;*/
-/*    float: none;*/
-/*    padding: 15px;*/
-/*}*/
 
 .card-image img {
     width:  817px;
     height: 545px;
     object-fit: cover;
+}
+
+p, th, td {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.5em;
 }
