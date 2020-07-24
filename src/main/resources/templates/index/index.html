@@ -83,6 +83,8 @@
         <ul th:replace="partials/navbar :: navbar-small"></ul>
         <h1 id="main-title-large">Hobbyist</h1>
 
+        <h5 id="about-site">Join today and learn a new hobby! Follow other users, submit and rate new hobbies, and earn badges for your favorite hobbies!</h5>
+
         <div id="large-main-buttons" class="center-align">
             <button sec:authorize="!isAuthenticated()" class="login-button button-style btn blue-grey darken-4 waves-effect waves-light btn-large open-button"
                     onclick="openLargeLoginForm()" type="submit" name="action">Login

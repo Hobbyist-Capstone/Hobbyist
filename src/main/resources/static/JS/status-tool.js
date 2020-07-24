@@ -27,7 +27,7 @@ $('#hobbyist').click(function () {
 function open(status) {
     status.addClass('s10');
     status.removeClass('s1');
-    status.addClass('lighten-5');
+    status.addClass('back');
     status.removeClass('darken-4');
     status.addClass('ease');
     status.children('.content').show();
@@ -39,7 +39,7 @@ function close(status) {
     status.addClass('s1');
     status.removeClass('s10');
     status.addClass('darken-4');
-    status.removeClass('lighten-5');
+    status.removeClass('back');
     status.addClass('ease');
     status.children('.content').hide();
     status.children('.title').addClass('rotate');
