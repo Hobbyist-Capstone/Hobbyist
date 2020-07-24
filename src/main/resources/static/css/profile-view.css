@@ -183,12 +183,13 @@ ul {
 }
 
 p {
-    color: black !important;
+    color: #263238!important;
 }
 
 #large-created-hobbies-header, #small-created-hobbies-header {
-    font-size: 2em;
+    font-size: 3em;
     font-family: 'Bungee Shade', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     color: #af1112;
 
 }
@@ -215,11 +216,11 @@ p {
 }
 
 .large-hobbies-list > a, .small-hobbies-list > a {
-    color: black !important;
+    color: #263238 !important;
 }
 
 .created-hobby-link {
-    color: black !important;
+    color: #263238 !important;
 }
 
 #large-badges-header, #small-badges-header {
@@ -239,6 +240,18 @@ p {
 .collection-item, .avatar {
     padding: 10px !important;
     background-color: #eceff1;
+
+}
+
+.friend-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#friend-name {
+    margin-right: 50px;
+
 }
 
 .small-friend-logo {
@@ -247,12 +260,13 @@ p {
 }
 
 .friend-info {
-    display: inline-block;
+    width: 20vw;
+    padding-right: 175px;
     font-size: 1.5em;
 }
 
 span {
-    color: black !important;
+    color: #263238 !important;
 }
 
 #right-div > li {
@@ -266,6 +280,7 @@ span {
 .delete-button {
     padding: 0 8px;
     border-radius: 50%;
+    margin-left: auto;
 }
 
 .collection {

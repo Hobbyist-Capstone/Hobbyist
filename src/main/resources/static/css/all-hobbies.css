@@ -44,7 +44,7 @@ html {
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black;
+    background-color: #263238;
     margin-bottom: 10px;
     margin-right: 10px;
 }
@@ -65,23 +65,27 @@ html {
 
 p {
     font-family: 'Bungee', cursive;
-    color: black;
+    color: #263238;
 }
 
 .card-title {
     font-family: 'Bungee', cursive;
-    color: #af1112!important;
-    font-size: 1.5em;
+    color: #263238!important;
+    font-size: 1.75em!important;
 
 }
 
 #search-header {
-    color: black;
+    color: #263238;
     font-family: 'Bungee', cursive;
     font-size: 1.5em;
 }
 
 #search {
-    color: black!important;
+    color: #263238!important;
 
+}
+
+.card-content {
+    font-family: 'Oxygen', sans-serif;
 }

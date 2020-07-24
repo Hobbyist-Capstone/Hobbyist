@@ -60,7 +60,7 @@ body {
 
 .forms {
     font-family: 'Bungee', cursive;
-    color: black;
+    color: #263238;
     font-size: 3em;
 
 }
@@ -68,14 +68,14 @@ body {
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black;
+    background-color: #263238;
     margin-bottom: 10px;
 }
 
 .button-link {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black;
+    background-color: #263238;
 }
 
 #optional{
