@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Create a Hobby</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -29,7 +29,7 @@
                 <textarea placeholder="Hobby Description" id="textarea1" class="materialize-textarea"
                           th:field="*{description}"></textarea>
 
-                <p class="forms" id="optional">*(OPTIONAL) Watch Video In Link Below For Instructions</p>
+                <p id="optional">*(OPTIONAL) Watch Video In Link Below For Instructions</p>
                 <a class="button-link btn grey darken-4 waves-effect waves-light btn-large modal-trigger" href="#modal1">Add A
                     Helpful Youtube
                     Video</a>

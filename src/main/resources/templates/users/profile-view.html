@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap"
+          rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -71,11 +72,11 @@
             <ul class="small-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                     <li th:text="${hobby.title}">Swashbuckling</li>
-                </a>            </ul>
+                </a></ul>
             <ul class="small-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                     <li th:text="${hobby.title}">Swashbuckling</li>
-                </a>            </ul>
+                </a></ul>
         </div>
     </div>
 
@@ -152,17 +153,18 @@
                         <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                         <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
 
-                        <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
+                        <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}"
+                             th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <img class="small-badge" src="../../static/img/hobbyist-transparent.png"
                                  alt="badge"
                                  th:src="@{/img/hobbyist-transparent.png}"/>
-                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><p th:text="${userHobby.hobby.getTitle()}"></p></a>
+                            <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
+                                    th:text="${userHobby.hobby.getTitle()}"></p></a>
                         </div>
                     </div>
-
                     <div class="row">
                         <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
-                        <div id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                        <div class="col s6 center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
                             <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>

@@ -58,12 +58,12 @@ blockquote:nth-child(1) {
 }
 
 #no_comments {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
 a, .home-desc{
     color: black;
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     padding-top: 7px;
     /*display: none;*/
 }
@@ -79,18 +79,18 @@ input {
 }
 
 #hcb_msg {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     /*color: black;*/
 }
 
 #HCB_comment_box input, #HCB_comment_box input.btn, #HCB_comment_box select, #HCB_comment_box textarea {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
 #HCB_comment_box .help-inline, #HCB_comment_box .btn {
     /*color: white;*/
     /*background-color: black;*/
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
 
@@ -98,7 +98,7 @@ input {
     height: 36px!important;
     width: 122px!important;
     padding: 0 10px 0 10px!important;
-    font-family: 'Bungee', cursive!important;
+    font-family: 'Oxygen', sans-serif;
     /*color: white!important;*/
     /*background-color: black!important;*/
 
