@@ -172,12 +172,13 @@ html {
     margin: 5px;
     font-size: 2.5em;
     font-family: 'Bungee', cursive;
+    color: #263238;
 }
 
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black!important;
+    /*background-color: black!important;*/
 }
 
 #edit-button, #delete-button {

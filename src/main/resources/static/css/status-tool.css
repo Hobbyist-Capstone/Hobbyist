@@ -27,12 +27,12 @@ html {
     padding: 5px;
     height: 85vh;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #263238;
     background-color: rgba(255, 255, 255, 0.25);
 }
 
 #interested, #learning, #hobbyist{
-    border: 1px solid black;
+    border: 1px solid #263238;
     height: 100%;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.25);
@@ -65,13 +65,13 @@ html {
 p {
     font-size: 1.5em;
     margin: 0!important;
-    color: black!important;
+    color: #263238!important;
 }
 
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white!important;
-    background-color: black!important;
+    background-color: #263238!important;
     padding: 0 10px!important;
     margin-bottom: 10px;
 }

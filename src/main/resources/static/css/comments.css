@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
 }
 
@@ -26,7 +25,7 @@
 #hcb_form_content {
     width: 100%;
     margin: 0;
-    color: black;
+    color: #263238;
 }
 
 .hcb_shadow_m {
@@ -61,8 +60,8 @@ blockquote:nth-child(1) {
     font-family: 'Oxygen', sans-serif;
 }
 
-a, .home-desc{
-    color: black;
+.home-desc{
+    color: #263238;
     font-family: 'Oxygen', sans-serif;
     padding-top: 7px;
     /*display: none;*/
@@ -70,7 +69,7 @@ a, .home-desc{
 #HCB_comment_box .btn:first-child {
     /*background-color: black!important;*/
     /*color: white!important;*/
-    border-color: black;
+    border-color: #263238;
     padding-bottom: 0!important;
 }
 input {
@@ -108,3 +107,6 @@ input {
     padding-top: 8px!important;
 }
 
+a {
+    color: #263238;
+}

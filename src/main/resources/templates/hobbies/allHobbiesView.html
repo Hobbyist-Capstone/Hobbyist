@@ -32,7 +32,7 @@
         <div class="row" id="buttons-div">
             <th:block th:each="c : ${category}">
                 <form th:action="${'/category/'+ c.id}">
-                    <button class="button-style btn grey darken-4 waves-effect waves-light" th:text="${c.name}"></button>
+                    <button class="button-style btn blue-grey darken-4 waves-effect waves-light" th:text="${c.name}"></button>
                 </form>
             </th:block>
         </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <form th:action="@{/hobbies}" method="get" class="left-align">
                 <label for="clear">
-                    <button id="clear" name="clear" type="submit" class="button-style btn grey darken-4 waves-effect waves-light">
+                    <button id="clear" name="clear" type="submit" class="button-style btn blue-grey darken-4 waves-effect waves-light">
                         Clear
                     </button>
                 </label>
