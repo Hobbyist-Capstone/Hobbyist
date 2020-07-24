@@ -164,7 +164,7 @@
                     </div>
                     <div class="row">
                         <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
-                        <div class="col s6 center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                        <div class="col center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
                             <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>
