@@ -91,7 +91,7 @@ p {
     flex-wrap: wrap;
 }
 
-.lighten-4{
+.back{
     background-image: url("../img/desk-min.jpg");
     background-size: cover;
     background-position: left;
