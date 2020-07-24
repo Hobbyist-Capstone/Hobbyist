@@ -80,6 +80,18 @@ html {
     margin: 20px;
 }
 
+#about-site {
+    font-family: 'Bungee', cursive;
+    position: absolute;
+    display: inline-block;
+    color: #af1112;
+    margin:10px;
+    width: 40vw;
+    bottom: 50px;
+    left: 30%;
+
+}
+
 .nav{
     background: rgba(255,255,255,0.5);
 }
