@@ -143,23 +143,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="row">
-                    <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
-                    <div class="col s6 center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                        <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
-                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
-                                <li th:text="${hobby.title}">Swashbuckling</li>
-                            </a>
-                        </ul>
-                        <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
-                            <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
-                                <li th:text="${hobby.title}">Swashbuckling</li>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
 
@@ -177,6 +160,21 @@
                                  th:src="@{/img/hobbyist-transparent.png}"/>
                             <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
                                     th:text="${userHobby.hobby.getTitle()}"></p></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 id="large-created-hobbies-header" class="center-align">Created Hobbies</h3>
+                        <div class="col s6 center-align" id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                            <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                    <li th:text="${hobby.title}">Swashbuckling</li>
+                                </a>
+                            </ul>
+                            <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                                <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
+                                    <li th:text="${hobby.title}">Swashbuckling</li>
+                                </a>
+                            </ul>
                         </div>
                     </div>
                 </div>
