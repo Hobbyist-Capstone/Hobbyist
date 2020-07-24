@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hobbyist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap"
+          rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -15,8 +16,7 @@
     <link th:href="@{/css/comments.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 
-    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon" />
-
+    <link rel="shortcut icon" href="/img/follower-logo.ico" type="image/x-icon"/>
 
 
 </head>
@@ -32,15 +32,17 @@
                     <div class="card-image">
                         <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
                         <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
-                        <span class="card-title" th:text="${hobby.title}"></span>
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
-                            <a onclick="M.toast({html: 'Added to Interested!'})"> <button class="btn btn-floating halfway-fab waves-effect waves-light red">
-                                <i class="material-icons">favorite_border</i>
-                            </button></a>
+                            <a onclick="M.toast({html: 'Added to Interested!'})">
+                                <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">favorite_border</i>
+                                </button>
+                            </a>
                         </form>
                     </div>
                     <div class="card-content">
+                        <h4 class="card-title blue-grey-text text-darken-4" th:text="${hobby.title}"></h4>
                         <p th:text="${hobby.description}"></p>
                         <p>Created by:&nbsp;&nbsp;<a th:href="${'/users/profile/' + hobby.createdBy.username}"
                                                      th:text="${hobby.createdBy.username}"></a></p>
@@ -132,10 +134,13 @@
                         <div th:if="${#authentication.getPrincipal().isAdmin()}" id="button-container"
                              class="center-align">
                             <form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
-                                <button id="edit-button" class="button-style blue-grey darken-4 btn waves-effect waves-light">Edit</button>
+                                <button id="edit-button"
+                                        class="button-style blue-grey darken-4 btn waves-effect waves-light">Edit
+                                </button>
                             </form>
                             <form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
-                                <button id="delete-button" class="button-style blue-grey darken-4 btn waves-effect waves-light">Delete
+                                <button id="delete-button"
+                                        class="button-style blue-grey darken-4 btn waves-effect waves-light">Delete
                                 </button>
                             </form>
                         </div>
@@ -154,74 +159,86 @@
         </div>
     </div>
 </div>
-<script>
-    hcb_user = {
-        /* L10N */
-        comments_header: 'Comments',
-        name_label: 'Enter username',
-        content_label: 'Share your experience with this hobby. This is where you can engage with other Hobbyists! You can post a photo, share tips and tricks, or provide feedback about hobby information.',
-        submit: 'Add Comment',
-        logout_link: '<img title="log out" src="https://www.htmlcommentbox.com/static/images/door_out.png" alt="[logout]" class="hcb-icon hcb-door-out"/>',
-        admin_link: '<img src="https://www.htmlcommentbox.com/static/images/door_in.png" alt="[login]" class="hcb-icon hcb-door-in"/>',
-        no_comments_msg: 'Be the first to share your experience with this hobby!',
-        add: 'Add your comment',
-        again: 'Post another comment',
-        rss: '<img src="https://www.htmlcommentbox.com/static/images/feed.png" class="hcb-icon" alt="rss"/> ',
-        said: 'posted:',
-        prev_page: '<img src="https://www.htmlcommentbox.com/static/images/arrow_left.png" class="hcb-icon" title="previous page" alt="[prev]"/>',
-        next_page: '<img src="https://www.htmlcommentbox.com/static/images/arrow_right.png" class="hcb-icon" title="next page" alt="[next]"/>',
-        showing: 'Showing',
-        to: 'to',
-        website_label: 'website (optional)',
-        email_label: 'email',
-        anonymous: 'User',
-        mod_label: '(moderator)',
-        subscribe: 'email replies',
-        add_image: 'Upload Photo',
-        are_you_sure: 'Flag this comment as inappropriate',
+    <script>
+        hcb_user = {
+            /* L10N */
+            comments_header: 'Comments',
+            name_label: 'Enter username',
+            content_label: 'Share your experience with this hobby. This is where you can engage with other Hobbyists! You can post a photo, share tips and tricks, or provide feedback about hobby information.',
+            submit: 'Add Comment',
+            logout_link: '<img title="log out" src="https://www.htmlcommentbox.com/static/images/door_out.png" alt="[logout]" class="hcb-icon hcb-door-out"/>',
+            admin_link: '<img src="https://www.htmlcommentbox.com/static/images/door_in.png" alt="[login]" class="hcb-icon hcb-door-in"/>',
+            no_comments_msg: 'Be the first to share your experience with this hobby!',
+            add: 'Add your comment',
+            again: 'Post another comment',
+            rss: '<img src="https://www.htmlcommentbox.com/static/images/feed.png" class="hcb-icon" alt="rss"/> ',
+            said: 'posted:',
+            prev_page: '<img src="https://www.htmlcommentbox.com/static/images/arrow_left.png" class="hcb-icon" title="previous page" alt="[prev]"/>',
+            next_page: '<img src="https://www.htmlcommentbox.com/static/images/arrow_right.png" class="hcb-icon" title="next page" alt="[next]"/>',
+            showing: 'Showing',
+            to: 'to',
+            website_label: 'website (optional)',
+            email_label: 'email',
+            anonymous: 'User',
+            mod_label: '(moderator)',
+            subscribe: 'email replies',
+            add_image: 'Upload Photo',
+            are_you_sure: 'Flag this comment as inappropriate',
 
-        reply: '<img src="https://www.htmlcommentbox.com/static/images/reply.png"/> Reply',
-        flag: '<img src="https://www.htmlcommentbox.com/static/images/flag.png"/> Report',
-        like: '<img src="https://www.htmlcommentbox.com/static/images/like.png"/> Like',
+            reply: '<img src="https://www.htmlcommentbox.com/static/images/reply.png"/> Reply',
+            flag: '<img src="https://www.htmlcommentbox.com/static/images/flag.png"/> Report',
+            like: '<img src="https://www.htmlcommentbox.com/static/images/like.png"/> Like',
 
-        /* dates */
-        days_ago: 'days ago',
-        hours_ago: 'hours ago',
-        minutes_ago: 'minutes ago',
-        within_the_last_minute: 'within the last minute',
+            /* dates */
+            days_ago: 'days ago',
+            hours_ago: 'hours ago',
+            minutes_ago: 'minutes ago',
+            within_the_last_minute: 'within the last minute',
 
-        msg_thankyou: 'Thank you for sharing!',
-        msg_approval: '(this comment is not published until approved)',
-        msg_approval_required: 'Thank you for sharing! Your post will appear once approved by a moderator.',
+            msg_thankyou: 'Thank you for sharing!',
+            msg_approval: '(this comment is not published until approved)',
+            msg_approval_required: 'Thank you for sharing! Your post will appear once approved by a moderator.',
 
-        err_bad_html: 'Your comment contained bad html.',
-        err_bad_email: 'Please enter a valid email address.',
-        err_too_frequent: 'You must wait a few seconds between posting comments.',
-        err_comment_empty: 'Your comment was not posted because it was empty!',
-        err_denied: 'Your comment was not accepted.',
-        err_unknown: 'Your comment was blocked for unknown reasons, please report this.',
-        err_spam: 'Your comment was detected as spam.',
-        err_blocked: 'Your comment was blocked by site policy.',
+            err_bad_html: 'Your comment contained bad html.',
+            err_bad_email: 'Please enter a valid email address.',
+            err_too_frequent: 'You must wait a few seconds between posting comments.',
+            err_comment_empty: 'Your comment was not posted because it was empty!',
+            err_denied: 'Your comment was not accepted.',
+            err_unknown: 'Your comment was blocked for unknown reasons, please report this.',
+            err_spam: 'Your comment was detected as spam.',
+            err_blocked: 'Your comment was blocked by site policy.',
 
-        /* SETTINGS */
-        MAX_CHARS: 8192,
-        PAGE: '', /* ID of the webpage to show comments for. defaults to the webpage the user is currently visiting. */
-        ON_COMMENT: function () {
-        }, /* Function to call after commenting. */
-        RELATIVE_DATES: true /* show dates in the form "X hours ago." etc. */
-    };
+            /* SETTINGS */
+            MAX_CHARS: 8192,
+            PAGE: '', /* ID of the webpage to show comments for. defaults to the webpage the user is currently visiting. */
+            ON_COMMENT: function () {
+            }, /* Function to call after commenting. */
+            RELATIVE_DATES: true /* show dates in the form "X hours ago." etc. */
+        };
 
-</script>
-<!-- begin wwww.htmlcommentbox.com -->
-<div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
-<link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
-<script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%241xVjk5VATX1zOtstxRNq3."+"&opts=16534&num=10&ts=1595623869636");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-<!-- end www.htmlcommentbox.com -->
-<script th:src="@{https://code.jquery.com/jquery-1.10.2.js}">
-</script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script th:src="@{/JS/materialize.js}"></script>
-<script th:src="@{/JS/index.js}"></script>
+
+    </script>
+    <!-- begin wwww.htmlcommentbox.com -->
+    <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
+    <link rel="stylesheet" type="text/css"
+          href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0"/>
+    <script type="text/javascript" id="hcb"> /*<!--*/
+    if (!window.hcb_user) {
+        hcb_user = {};
+    }
+    (function () {
+        var s = document.createElement("script"), l = hcb_user.PAGE || ("" + window.location).replace(/'/g, "%27"),
+            h = "https://www.htmlcommentbox.com";
+        s.setAttribute("type", "text/javascript");
+        s.setAttribute("src", h + "/jread?page=" + encodeURIComponent(l).replace("+", "%2B") + "&mod=%241%24wq1rdBcg%241xVjk5VATX1zOtstxRNq3." + "&opts=16534&num=10&ts=1595623869636");
+        if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s);
+    })(); /*-->*/ </script>
+    <!-- end www.htmlcommentbox.com -->
+    <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}">
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script th:src="@{/JS/materialize.js}"></script>
+    <script th:src="@{/JS/index.js}"></script>
 </body>
 </html>

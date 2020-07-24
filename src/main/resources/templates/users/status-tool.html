@@ -66,13 +66,14 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'TED')}">
                             <form th:action="@{|/profile/status/edit|}" th:method="post">
                                 <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">I've tried
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light">I've tried
                                     it!
                                 </button>
                             </form>
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="btn delete waves-effect waves-light blue-grey darken-4"><i
+                                        class="material-icons center-align">clear</i>
                                 </button>
                             </form>
 
@@ -123,13 +124,14 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'IT')}">
                             <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
                                 <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">I've
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light">I've
                                     mastered it!
                                 </button>
                             </form>
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="btn delete waves-effect waves-light blue-grey darken-4"><i
+                                        class="material-icons center-align">clear</i>
                                 </button>
                             </form>
 
@@ -178,7 +180,8 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="btn delete waves-effect waves-light blue-grey darken-4"><i
+                                        class="material-icons center-align">clear</i>
                                 </button>
 
                             </form>

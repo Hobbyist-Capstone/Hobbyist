@@ -7,13 +7,13 @@
 
 
 #HCB_comment_form_box {
-    font-family: 'Bungee', cursive;
+    font-family: 'oxygen', cursive;
 
 }
 #HCB_comment_box {
     width: 100%;
     /*border: 2px solid black;*/
-    background-color: #d4dadd;
+    background-color: rgba(207, 216, 220, 0.7);
     /*background-color: white;*/
 }
 
@@ -51,7 +51,7 @@ blockquote:nth-child(1) {
 .btn, .submit-btn, #hcb_submit {
     /*background-color: black;*/
     /*color: white;*/
-    font-family: 'Bungee', cursive;
+    font-family: 'Bungee Shade', cursive;
 
 
 }
@@ -105,6 +105,12 @@ input {
 
 #HCB_comment_box .btn {
     padding-top: 8px!important;
+}
+
+#HCB_comment_box blockquote{
+    background-color: white;
+    border-radius: 2px;
+    margin: 10px 0 10px 0 !important;
 }
 
 a {

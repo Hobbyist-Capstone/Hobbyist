@@ -65,15 +65,17 @@
                 </div>
                 <div class="input-field font">
                     <select th:field="*{patience}">
+                        <option th:value="1">Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
                         <option th:value="4">4</option>
                     </select>
-                    <label class="font">Select a Patience Level Required:</label>
+                    <label class="font">Select a Patience Level:</label>
                 </div>
                 <div class="input-field font">
                     <select th:field="*{difficulty}">
+                        <option th:value="1">Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
@@ -83,6 +85,7 @@
                 </div>
                 <div class="input-field font">
                     <select th:field="*{cost}">
+                        <option th:value="1">Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
