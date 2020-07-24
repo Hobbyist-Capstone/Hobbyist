@@ -27,7 +27,7 @@
                                                                  th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="left show-on-large hide-on-med-and-down">
-                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1em;">Hello,&nbsp;&nbsp;&nbsp;
+                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="blue-grey-text text-darken-4" style="font-size:1em;">Hi,&nbsp;&nbsp;&nbsp;
                     <span class="blue-grey-text text-darken-4" style="font-family:Bungee;" th:text="${#authentication.principal.firstName}"/>!
                 </a>
                 </li>
