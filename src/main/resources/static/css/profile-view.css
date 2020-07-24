@@ -31,7 +31,7 @@ html {
 
 #small-profile-header, #small-friends-header, #small-hobbies-header {
     font-size: 3em;
-    color: rgba(146, 9, 18, 0.9);
+    color: #af1112;
     font-family: 'Bungee Shade', cursive;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
@@ -50,7 +50,7 @@ html {
 
 /*Hobbies*/
 
-.small-badge{
+.small-badge {
     width: 100px;
     height: auto;
 }
@@ -67,7 +67,7 @@ html {
 /*Small Friends List*/
 
 
-    /*Large and XL Site*/
+/*Large and XL Site*/
 #profile-container-small {
     width: 100vw;
 }
@@ -80,7 +80,7 @@ html {
 }
 
 .button-style {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     color: white;
 }
 
@@ -125,10 +125,10 @@ html {
 
 #large-profile-header, #large-friends-header, #large-hobbies-header {
     font-size: 3em;
-    color: rgba(146, 9, 18, 0.9);
+    color: #af1112;
     font-family: 'Bungee Shade', cursive;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    margin-top: 2vh;
+    margin-top: 3vh;
 
 }
 
@@ -136,6 +136,7 @@ html {
     width: 20vw;
     height: auto;
     border-radius: 50%;
+    font-family: 'Bungee', cursive;
 }
 
 .large-profile-buttons {
@@ -171,26 +172,27 @@ html {
     /*flex-wrap: wrap;*/
     /*justify-content: space-between;*/
     overflow: hidden;
-    margin: 0!important;
+    margin: 0 !important;
     font-family: 'Bungee', cursive;
     font-size: 1.5em;
 
 }
 
 ul {
-    margin: 0!important;
+    margin: 0 !important;
 }
 
 p {
-    color: black!important;
+    color: black !important;
 }
 
 #large-created-hobbies-header, #small-created-hobbies-header {
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: 'Bungee Shade', cursive;
-    color: black;
+    color: #af1112;
 
 }
+
 #large-created-hobbies, #small-created-hobbies {
     display: flex;
     flex-direction: row;
@@ -213,11 +215,11 @@ p {
 }
 
 .large-hobbies-list > a, .small-hobbies-list > a {
-    color: black!important;
+    color: black !important;
 }
 
 .created-hobby-link {
-    color: black!important;
+    color: black !important;
 }
 
 #large-badges-header, #small-badges-header {
@@ -235,7 +237,8 @@ p {
 }
 
 .collection-item, .avatar {
-    padding: 10px!important;
+    padding: 10px !important;
+    background-color: #eceff1;
 }
 
 .small-friend-logo {
@@ -245,10 +248,11 @@ p {
 
 .friend-info {
     display: inline-block;
+    font-size: 1.5em;
 }
 
 span {
-    color: black!important;
+    color: black !important;
 }
 
 #right-div > li {
@@ -256,7 +260,7 @@ span {
 }
 
 .delete-friend {
-  display: inline-block;
+    display: inline-block;
 }
 
 .delete-button {
@@ -264,8 +268,8 @@ span {
     border-radius: 50%;
 }
 
-.collection{
-    border-style: none!important;
+.collection {
+    border-style: none !important;
 }
 
 /*.collection-item {*/
