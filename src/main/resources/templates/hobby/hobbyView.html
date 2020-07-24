@@ -32,7 +32,6 @@
                     <div class="card-image">
                         <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
                         <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
-                        <span class="card-title" th:text="${hobby.title}"></span>
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
                             <a onclick="M.toast({html: 'Added to Interested!'})">
@@ -43,6 +42,7 @@
                         </form>
                     </div>
                     <div class="card-content">
+                        <h4 class="card-title blue-grey-text text-darken-4" th:text="${hobby.title}"></h4>
                         <p th:text="${hobby.description}"></p>
                         <p>Created by:&nbsp;&nbsp;<a th:href="${'/users/profile/' + hobby.createdBy.username}"
                                                      th:text="${hobby.createdBy.username}"></a></p>
