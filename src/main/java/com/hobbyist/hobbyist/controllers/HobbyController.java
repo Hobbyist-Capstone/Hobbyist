@@ -3,11 +3,14 @@ package com.hobbyist.hobbyist.controllers;
 import com.hobbyist.hobbyist.models.*;
 
 import com.hobbyist.hobbyist.repos.*;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +18,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -28,11 +33,11 @@ public class HobbyController {
     private CategoryRepository categoryDao;
     private UserHobbyRepository userHobbyDao;
 
-    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao,  UserHobbyRepository userHobbyDao) {
+    public HobbyController(HobbyRepository hobbyDao, CategoryRepository categoryDao, UserRepository userDao, UserHobbyRepository userHobbyDao) {
         this.hobbyDao = hobbyDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
-        this.userHobbyDao =  userHobbyDao;
+        this.userHobbyDao = userHobbyDao;
     }
 
     //     displays all hobbies
@@ -59,11 +64,18 @@ public class HobbyController {
         return "hobby/create";
     }
 
+
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {
+    public String saveCreatedHobby(@ModelAttribute @Validated Hobby saveHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Category> categories = categoryDao.findByIdIn(categoriesId);
+
+        if(categoriesId == null) {
+            model.addAttribute("categories", categoryDao.findAll());
+            model.addAttribute("error", true);
+            return "hobby/create";
+        }
+
         if (video == null) {
             saveHobby.setYoutubeLink(null);
         } else if (video.equals("")) {
@@ -72,12 +84,17 @@ public class HobbyController {
             String youtubeString = video.substring(38, 79);
             saveHobby.setYoutubeLink(youtubeString);
         }
-        saveHobby.setCreatedBy(currentUser);
-        saveHobby.setCategories(categories);
-        saveHobby.setPatience(pat);
-        saveHobby.setDifficulty(diff);
-        saveHobby.setCost(cost);
-        hobbyDao.save(saveHobby);
+
+        if(categoriesId != null) {
+            System.out.println("Good!");
+            List<Category> categories = categoryDao.findByIdIn(categoriesId);
+            saveHobby.setCreatedBy(currentUser);
+            saveHobby.setCategories(categories);
+            saveHobby.setPatience(pat);
+            saveHobby.setDifficulty(diff);
+            saveHobby.setCost(cost);
+            hobbyDao.save(saveHobby);
+        }
         return "redirect:/hobby/" + saveHobby.getId();
     }
 
@@ -146,7 +163,7 @@ public class HobbyController {
 
     // save
     @PostMapping("profile/status/single")
-    public String addHobby (@RequestParam long hId){
+    public String addHobby(@RequestParam long hId) {
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
