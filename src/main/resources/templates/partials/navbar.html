@@ -70,9 +70,9 @@
                         th:href="@{/register}" class="blue-grey-text text-darken-4" style="font-size:1.25em;"><i
                         class="material-icons left blue-grey-text text-darken-4">add</i>Join</a></li>
 
-                <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
+                <li sec:authorize="isAuthenticated()" style="font-family:Bungee" class="blue-grey-text text-darken-4">
                     <form th:action="@{/logout}" th:method="post">
-                        <button style="border:none;font-family:Bungee;padding:0 15px 0 10px;font-size:1.25em;" id="logout-button" >
+                        <button style="border:none;font-family:Bungee;padding:0 15px 0 10px;font-size:1.25em;" id="logout-button" class="blue-grey-text text-darken-4">
                             Logout
                         </button>
                     </form>
