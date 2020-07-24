@@ -64,8 +64,9 @@
                     <label class="font">Category</label>
                 </div>
                 <div class="input-field font">
+                    <p th:if="${errorPat}">SELECT PATIENCE!</p>
                     <select th:field="*{patience}">
-                        <option th:value="1">Select</option>
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
@@ -74,8 +75,9 @@
                     <label class="font">Select a Patience Level:</label>
                 </div>
                 <div class="input-field font">
+                    <p th:if="${errorDiff}">SELECT DIFFICULTY!</p>
                     <select th:field="*{difficulty}">
-                        <option th:value="1">Select</option>
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
@@ -84,8 +86,9 @@
                     <label class="font">Select a Difficulty Level:</label>
                 </div>
                 <div class="input-field font">
+                    <p th:if="${errorCost}">SELECT COST!</p>
                     <select th:field="*{cost}">
-                        <option th:value="1">Select</option>
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>

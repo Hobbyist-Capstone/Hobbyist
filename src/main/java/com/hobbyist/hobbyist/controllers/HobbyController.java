@@ -67,12 +67,34 @@ public class HobbyController {
 
     //    post a created hobby
     @PostMapping("/hobby/create")
-    public String saveCreatedHobby(@ModelAttribute @Validated Hobby saveHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video, Model model) {
+    public String saveCreatedHobby(@ModelAttribute @Validated Hobby saveHobby, @RequestParam(name = "categories", required = false) List<Long> categoriesId, @RequestParam(name = "patience", required = false) Byte pat, @RequestParam(name = "difficulty", required = false) Byte diff, @RequestParam(name = "cost", required = false) Byte cost, @RequestParam(name = "video", required = false) String video, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if(categoriesId == null) {
             model.addAttribute("categories", categoryDao.findAll());
             model.addAttribute("error", true);
+            return "hobby/create";
+        }
+
+        if(pat != null) {
+            saveHobby.setPatience(pat);
+        } else {
+            model.addAttribute("categories", categoryDao.findAll());
+            model.addAttribute("errorPat", true);
+            return "hobby/create";
+        }
+        if(diff != null) {
+            saveHobby.setDifficulty(diff);
+        } else {
+            model.addAttribute("categories", categoryDao.findAll());
+            model.addAttribute("errorDiff", true);
+            return "hobby/create";
+        }
+        if(cost != null) {
+            saveHobby.setCost(cost);
+        } else {
+            model.addAttribute("categories", categoryDao.findAll());
+            model.addAttribute("errorCost", true);
             return "hobby/create";
         }
 
@@ -90,9 +112,6 @@ public class HobbyController {
             List<Category> categories = categoryDao.findByIdIn(categoriesId);
             saveHobby.setCreatedBy(currentUser);
             saveHobby.setCategories(categories);
-            saveHobby.setPatience(pat);
-            saveHobby.setDifficulty(diff);
-            saveHobby.setCost(cost);
             hobbyDao.save(saveHobby);
         }
         return "redirect:/hobby/" + saveHobby.getId();
