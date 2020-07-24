@@ -59,6 +59,7 @@ public class HobbyController {
         return "hobby/create";
     }
 
+
     //    post a created hobby
     @PostMapping("/hobby/create")
     public String saveCreatedHobby(@ModelAttribute Hobby saveHobby, @RequestParam(name = "categories") List<Long> categoriesId, @RequestParam(name = "patience") byte pat, @RequestParam(name = "difficulty") byte diff, @RequestParam(name = "cost") byte cost, @RequestParam(name = "video", required = false) String video) {

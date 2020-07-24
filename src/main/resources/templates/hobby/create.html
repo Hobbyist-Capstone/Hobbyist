@@ -22,15 +22,15 @@
         <div class="center-align" id="join-form">
             <form class="form-container" th:action="@{/hobby/create}" th:method="POST" th:object="${hobby}">
 
-                <input id="title" type="text" placeholder="Hobby Title" class="validate" th:field="*{title}">
-
+                <input id="title" type="text" placeholder="Hobby Title" class="validate" th:field="*{title}" required>
 
 
                 <textarea placeholder="Hobby Description" id="textarea1" class="materialize-textarea"
-                          th:field="*{description}"></textarea>
+                          th:field="*{description}" required></textarea>
 
                 <p class="forms" id="optional">*(OPTIONAL) Watch Video In Link Below For Instructions</p>
-                <a class="button-link btn grey darken-4 waves-effect waves-light btn-large modal-trigger" href="#modal1">Add A
+                <a class="button-link btn grey darken-4 waves-effect waves-light btn-large modal-trigger"
+                   href="#modal1">Add A
                     Helpful Youtube
                     Video</a>
                 <!-- Modal Structure -->
@@ -51,10 +51,13 @@
                 </div>
                 <div class="input-field font">
                     <select multiple th:field="*{categories}">
-                        <th:block th:each="c : ${categories}">
-                            <label>
-                                <option name="categories" th:value="${c.id}" th:text="${c.name}"></option>
-                            </label>
+                        <th:block>
+                            <p  th:each="c : ${categories}">
+                                <label>
+                                    <input name="categories" th:value="${c.id}" type="checkbox" th:checked="${c.id} == 1"/>
+                                    <span th:text="${c.name}"></span>
+                                </label>
+                            </p>
                         </th:block>
                     </select>
                     <label class="font">Category</label>
@@ -87,12 +90,14 @@
                     <label class="font">Select a Starting Cost Level:</label>
                 </div>
                 <label for="upload"></label>
-                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
+                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large" id="upload"
+                        type="button"
                         name="upload">Upload Image
                 </button>
                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}"
                        type="hidden">
-                <button id="submit" class="button-style btn grey darken-4 waves-effect waves-light btn-large">Submit</button>
+                <button id="submit" class="button-style btn grey darken-4 waves-effect waves-light btn-large">Submit
+                </button>
             </form>
         </div>
     </div>
