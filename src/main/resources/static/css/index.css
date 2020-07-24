@@ -177,7 +177,7 @@ html {
 .button-style {
     font-family: 'Oxygen', sans-serif;
     color: white;
-    background-color: black!important;
+    /*background-color: black!important;*/
 }
 
 #edit-button, #delete-button {
