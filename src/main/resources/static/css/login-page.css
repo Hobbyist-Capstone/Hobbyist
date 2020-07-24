@@ -13,7 +13,7 @@ body {
 }
 
 #login-form {
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Bungee', cursive;
     overflow-y: scroll;
     width: 100%;
     height: 100%;
@@ -38,9 +38,9 @@ body {
     margin: 0!important;
     padding-top: 30px;
     font-size: 4vw;
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Bungee', cursive;
     color: rgba(146, 9, 18, 0.9);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .forms {
