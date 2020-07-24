@@ -132,10 +132,10 @@
                         <div th:if="${#authentication.getPrincipal().isAdmin()}" id="button-container"
                              class="center-align">
                             <form th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="GET" th:object="${hobby}">
-                                <button id="edit-button" class="button-style btn waves-effect waves-light">Edit</button>
+                                <button id="edit-button" class="button-style blue-grey darken-4 btn waves-effect waves-light">Edit</button>
                             </form>
                             <form th:action="${'/hobby/'+ hobby.id +'/delete'}" th:method="POST" th:object="${hobby}">
-                                <button id="delete-button" class="button-style btn waves-effect waves-light">Delete
+                                <button id="delete-button" class="button-style blue-grey darken-4 btn waves-effect waves-light">Delete
                                 </button>
                             </form>
                         </div>
