@@ -85,3 +85,7 @@ p {
     color: black!important;
 
 }
+
+.card-content {
+    font-family: 'Oxygen', sans-serif;
+}

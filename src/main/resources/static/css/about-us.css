@@ -31,8 +31,8 @@ body {
 
 .small-names {
     color: black;
-    font-family: 'Bungee Shade', cursive;
-    font-size: 8vw;
+    font-family: 'Bungee', cursive;
+    font-size: 7vw;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
 }
@@ -59,7 +59,7 @@ body {
     width: 70vw;
     border: 5px solid #f2a22c;
     border-radius: 5px;
-    margin: 0px 10px 10px 10px;
+    margin: 0 10px 10px 10px;
     background-color: #eceff1;
 
 
@@ -98,7 +98,7 @@ body {
 .names {
     color: black;
     font-family: 'Bungee', cursive;
-    font-size: 2.25vw;
+    font-size: 2vw;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
