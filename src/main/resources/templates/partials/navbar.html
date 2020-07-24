@@ -27,7 +27,7 @@
                                                                  th:src="@{/img/hobbyist-transparent.png}"/></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="left show-on-large hide-on-med-and-down">
-                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="black-text">Hello,&nbsp;&nbsp;&nbsp;
+                <li sec:authorize="isAuthenticated()" style="font-family:Bungee;color:black;margin-left:80px;"><a th:href="@{/profile}" class="black-text" style="font-size:1.25em;">Hello,&nbsp;&nbsp;&nbsp;
                     <span style="font-family:Bungee;color:black;" th:text="${#authentication.principal.firstName}"/>!
                 </a>
                 </li>
@@ -35,44 +35,44 @@
             <ul class="right hide-on-med-and-down">
 
                 <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().isAdmin()}">
-                    <li style="font-family:Bungee;"><a th:href="@{/admin}" class="black-text"><i
+                    <li style="font-family:Bungee;"><a th:href="@{/admin}" class="black-text" style="font-size:1.25em;"><i
                             class="material-icons left black-text">gavel</i>Admin
                     </a></li>
                 </th:block>
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li style="font-family:Bungee;"><a th:href="@{/profile}" class="black-text"><i
+                    <li style="font-family:Bungee;"><a th:href="@{/profile}" class="black-text" style="font-size:1.25em;"><i
                             class="material-icons left black-text">account_circle</i>Profile
                     </a></li>
                 </th:block>
 
-                <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="black-text"><i
+                <li style="font-family:Bungee"><a th:href="@{/hobbies}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">art_track</i>All Hobbies</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/hobby/create}" class="black-text"><i
+                        th:href="@{/hobby/create}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">rowing</i>Create Hobby</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/profile/status}" class="black-text"><i
+                        th:href="@{/profile/status}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">view_column</i>Hobby
                     Tracker</a></li>
 
-                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text"><i
+                <li style="font-family:Bungee"><a th:href="@{/about-us}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">group</i>About
                     Us</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/login}" class="black-text"><i
+                        th:href="@{/login}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">favorite</i>Login</a></li>
 
                 <li sec:authorize="!isAuthenticated()" style="font-family:Bungee"><a
-                        th:href="@{/register}" class="black-text"><i
+                        th:href="@{/register}" class="black-text" style="font-size:1.25em;"><i
                         class="material-icons left black-text">add</i>Join</a></li>
 
                 <li sec:authorize="isAuthenticated()" style="font-family:Bungee">
                     <form th:action="@{/logout}" th:method="post">
-                        <button style="border:none;font-family:Bungee;padding:0 10px 0 10px;" id="logout-button">
+                        <button style="border:none;font-family:Bungee;padding:0 10px 0 10px;font-size:1.25em;" id="logout-button" >
                             Logout
                         </button>
                     </form>
