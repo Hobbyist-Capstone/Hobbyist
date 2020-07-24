@@ -14,11 +14,22 @@ html {
     height: 100%;
 }
 
+a > li:hover {
+    color: #607d8b;
+    cursor: pointer;
+}
+
+.friend-info:hover {
+    color: #607d8b;
+    cursor: pointer;
+}
+
 /*Small M and S and XS Site*/
 
 #main-container-small {
     width: 100vw;
 }
+
 /*Index - Above the fold*/
 
 #above-fold-small {
@@ -50,9 +61,10 @@ html {
     overflow-y: hidden;
 
 }
+
 /*Index - Above the fold*/
 
-#above-fold-large  {
+#above-fold-large {
     height: 100vh;
     width: 100vw;
     background-image: url("/../img/desk-min.jpg");
@@ -85,15 +97,15 @@ html {
     position: absolute;
     display: inline-block;
     color: #af1112;
-    margin:10px;
+    margin: 10px;
     width: 40vw;
     bottom: 50px;
     left: 30%;
 
 }
 
-.nav{
-    background: rgba(255,255,255,0.5);
+.nav {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 #large-main-buttons {
@@ -116,6 +128,7 @@ html {
     font-size: 1.5em;
     color: black;
 }
+
 /*#description {*/
 /*    width: 25vw;*/
 /*    font-size: 3em;*/
@@ -140,7 +153,7 @@ html {
 }
 
 .form-popup-large {
-    margin:10px;
+    margin: 10px;
     width: 40vw;
     bottom: 50px;
     left: 30%;
@@ -215,6 +228,7 @@ p, th, td {
     font-family: 'Bungee', cursive;
     color: black;
 }
+
 #single-hobby-container {
     /*height: 100vh;*/
     width: 100vw;
@@ -235,7 +249,7 @@ p, th, td {
 
 
 .card-image img {
-    width:  817px;
+    width: 817px;
     height: 545px;
     object-fit: cover;
 }
