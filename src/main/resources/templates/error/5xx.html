@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title th:text="'Ooops, ' + ${error}"></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Status Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+
+    <!--Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Materialize Framework-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../static/css/status-tool.css" th:href="@{/css/error-page.css}" type="text/css">
+
+    <script src="https://kit.fontawesome.com/c9267f9abb.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
-        <h1>Page not found!!</h1>
+        <h1 class="center-align">Page not found!!</h1>
     </div>
     <div th:case="'Forbidden'">
-        <h1>You don't have permission to view this page.</h1>
+        <h1 class="center-align">You don't have permission to view this page.</h1>
     </div>
 </th:block>
-<p>Watch a video instead</p>
-<iframe
-        width="420"
-        height="315"
-        src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
-        frameborder="0"
-        allowfullscreen="allowfullscreen"
->
-</iframe>
+
+
+<h1 class="my-wrapper  center-align">ERROR: Please go back or Watch a video instead</h1>
+<div class="my-wrapper center-align">
+    <iframe
+            width="520"
+            height="415"
+            src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
+            frameborder="0"
+            allowfullscreen="allowfullscreen"
+    >
+    </iframe>
+</div>
+
 </body>
 </html>
