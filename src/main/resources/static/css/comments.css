@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
 }
 
@@ -26,7 +25,7 @@
 #hcb_form_content {
     width: 100%;
     margin: 0;
-    color: black;
+    color: #263238;
 }
 
 .hcb_shadow_m {
@@ -58,19 +57,19 @@ blockquote:nth-child(1) {
 }
 
 #no_comments {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
-a, .home-desc{
-    color: black;
-    font-family: 'Bungee', cursive;
+.home-desc{
+    color: #263238;
+    font-family: 'Oxygen', sans-serif;
     padding-top: 7px;
     /*display: none;*/
 }
 #HCB_comment_box .btn:first-child {
     /*background-color: black!important;*/
     /*color: white!important;*/
-    border-color: black;
+    border-color: #263238;
     padding-bottom: 0!important;
 }
 input {
@@ -79,18 +78,18 @@ input {
 }
 
 #hcb_msg {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
     /*color: black;*/
 }
 
 #HCB_comment_box input, #HCB_comment_box input.btn, #HCB_comment_box select, #HCB_comment_box textarea {
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
 #HCB_comment_box .help-inline, #HCB_comment_box .btn {
     /*color: white;*/
     /*background-color: black;*/
-    font-family: 'Bungee', cursive;
+    font-family: 'Oxygen', sans-serif;
 }
 
 
@@ -98,7 +97,7 @@ input {
     height: 36px!important;
     width: 122px!important;
     padding: 0 10px 0 10px!important;
-    font-family: 'Bungee', cursive!important;
+    font-family: 'Oxygen', sans-serif;
     /*color: white!important;*/
     /*background-color: black!important;*/
 
@@ -108,3 +107,6 @@ input {
     padding-top: 8px!important;
 }
 
+a {
+    color: #263238;
+}

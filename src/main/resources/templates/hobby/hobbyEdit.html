@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hobbyist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -88,12 +88,12 @@
                     <label class="font">Select a Starting Cost Level:</label>
                 </div>
                 <label for="upload"></label>
-                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
+                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
                         name="upload">Edit Image
                 </button>
                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{image}"
                        type="hidden">
-                <button id="submit" class="button-style btn grey darken-4 waves-effect waves-light btn-large">Submit</button>
+                <button id="submit" class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Submit</button>
             </form>
         </div>
     </div>

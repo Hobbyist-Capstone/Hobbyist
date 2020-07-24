@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Edit Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -41,12 +41,12 @@
         <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
 
         <label for="upload"></label>
-        <button class="btn grey darken-4 waves-effect waves-light btn-large" id="upload" type="button" name="upload">
+        <button class="btn blue-grey darken-4 waves-effect waves-light btn-large" id="upload" type="button" name="upload">
             Edit Image
         </button>
         <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{userImage}" type="hidden">
 
-        <button type="submit" class="btn grey darken-4 waves-effect waves-light btn-large">Update Profile</button>
+        <button type="submit" class="btn blue-grey darken-4 waves-effect waves-light btn-large">Update Profile</button>
     </form>
 </div>
 <script

@@ -2,8 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap"
+          rel="stylesheet">
     <!--    Materialize Framework-->
+
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,74 +15,48 @@
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-    <link th:href="@{/css/profile-view.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/admin-page.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+<ul th:replace="partials/navbar :: navbar-small"></ul>
 
-<!--Main Profile Large-->
 
-<div id="profile-container-large" class="show-on-large hide-on-med-and-down">
-    <div id="profile-above-fold-large">
-        <div th:replace="partials/navbar :: navbar"></div>
-        <ul th:replace="partials/navbar :: navbar-small"></ul>
+<div class="container">
+    <div class="row">
 
-        <div id="profile-panels">
-            <div id="middle-div">
-                <h1 class="center-align" id="large-friends-header">USERS</h1>
-                <div id="large-friends-list">
-                    <ul class="collection">
-                        <li class="collection-item avatar" th:each="user : ${users}">
-<!--                            <form th:action="@{|/admin/delete|}" th:method="post">-->
-<!--                                <input type="hidden" name="userId" th:value="${user.id}">-->
-<!--                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete User</button>-->
-<!--                            </form>-->
-
-<!--                            <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"-->
-<!--                                 th:src="@{/img/follower-logo.png}"/>-->
-                            <div>
-                                <div>
-                                    <a th:href="@{|/users/profile/${user.username}|}" class="secondary-content">
-                                        <p> Username:&nbsp;&nbsp;<span class="friend-info"
-                                                            th:text="${user.username}">USERNAME</span>
-                                        </p>
-                                    </a>
-                                </div>
-                                <p>User ID:&nbsp;&nbsp;<span class="friend-info" th:text="${user.id}">ID</span></p>
-                                <p>Is Admin:&nbsp;&nbsp; <span th:text="${user.isAdmin()}"></span></p>
-                            </div>
-
-                            <h6>User created hobbies: </h6>
-                            <div th:each="hobby: ${hobbies}">
-                                <div th:if="${user.username == hobby.createdBy.username}">
-                                    <a th:href="${'/hobby/' + hobby.id}"><p th:text="${hobby.getTitle()}"></p></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        <div class="col m4">
+            <h1 class="center-align">STATS</h1>
+            <div class="stats">
+                <p class="bold-font">Total number of users: <span th:text="${countUsers}"></span></p>
+                <p class="bold-font">Total number of hobbies: <span th:text="${countHobbies}"></span></p>
             </div>
+        </div>
 
-            <div id="right-div">
-                <h1 class="center-align" id="large-friends-header">HOBBIES</h1>
-                <div id="large-friends-list">
-                    <ul class="collection">
-                        <li class="collection-item avatar" th:each="hobby : ${hobbies}">
-
-                            <p>Title: <a th:href="${'/hobby/' + hobby.id}"><span th:text="${hobby.title}"></span></a></p>
-                            <p>Hobby created by: <span th:text="${hobby.createdBy.username}"></span></p>
-                            <p>Hobby ID: <span th:text="${hobby.id}"></span></p>
-<!--                            <form th:action="@{|/admin/delete/hobby|}" th:method="post">-->
-<!--                                <input type="hidden" name="hobbyId" th:value="${hobby.id}">-->
-<!--                                <button class="btn-small grey darken-4 waves-effect waves-light">Delete Hobby</button>-->
-<!--                            </form>-->
-
-                        </li>
-                    </ul>
-                </div>
+        <div class="users col s12 m4">
+            <h1 class="center-align">USERS</h1>
+            <div class="user-list" th:each="user : ${users}">
+                <div><p class="bold-font ">User ID: <span th:text="${user.id}">ID</span></p></div>
+                <p class="bold-font ">Username: <a th:href="@{|/users/profile/${user.username}|}"><span
+                        th:text="${user.username}">USERNAME</span></a>
+                </p>
+                <p class="bold-font" id="admin-status">Is Admin: <span th:text="${user.isAdmin()}"></span></p>
             </div>
+        </div>
 
+        <div class="hobbies col s12 m4">
+            <h1 class="center-align">HOBBIES</h1>
+            <div class="hobbies-list" th:each="hobby : ${hobbies}">
+                <p class="bold-font">Hobby ID: <span th:text="${hobby.id}"></span></p>
+                <p class="bold-font">Title: <a th:href="${'/hobby/' + hobby.id}"><span
+                        th:text="${hobby.title}"></span></a>
+                </p>
+                <p class="bold-font">Hobby Created by: <span th:text="${hobby.createdBy.username}">Username</span>
+                </p>
             </div>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

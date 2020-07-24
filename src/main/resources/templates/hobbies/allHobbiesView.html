@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>All Hobbies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -32,7 +32,7 @@
         <div class="row" id="buttons-div">
             <th:block th:each="c : ${category}">
                 <form th:action="${'/category/'+ c.id}">
-                    <button class="button-style btn grey darken-4 waves-effect waves-light" th:text="${c.name}"></button>
+                    <button class="button-style btn blue-grey darken-4 waves-effect waves-light" th:text="${c.name}"></button>
                 </form>
             </th:block>
         </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <form th:action="@{/hobbies}" method="get" class="left-align">
                 <label for="clear">
-                    <button id="clear" name="clear" type="submit" class="button-style btn grey darken-4 waves-effect waves-light">
+                    <button id="clear" name="clear" type="submit" class="button-style btn blue-grey darken-4 waves-effect waves-light">
                         Clear
                     </button>
                 </label>
@@ -60,9 +60,9 @@
 
                         <form th:action="@{|/profile/status|}" th:method="post">
                             <input type="hidden" name="hobbyId" th:value="${hobby.id}">
-                            <button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
+                            <a onclick="M.toast({html: 'Added to favorites!'})"><button class="button-style btn btn-floating halfway-fab waves-effect waves-light red">
                                 <i class="material-icons">favorite_border</i>
-                            </button>
+                            </button></a>
                         </form>
                     </div>
                     <div class="card-content">

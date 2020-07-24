@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <meta charset="UTF-8"/>
 <title>Join</title>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
 <!--    Materialize Framework-->
 <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
 <!--    Icons-->
@@ -40,14 +40,14 @@
                 <input type="password" placeholder="8 characters, one uppercase letter, and digit" name="password" th:field="*{password}" required>
 
                 <label for="upload"></label>
-                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
+                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large" id="upload" type="button"
                         name="upload">
                     Upload Photo
                 </button>
                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{userImage}"
                        type="hidden">
 
-                <button type="submit" id="submit" class="button-style btn grey darken-4 waves-effect waves-light btn-large">Join</button>
+                <button type="submit" id="submit" class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Join</button>
             </form>
         </div>
     </div>

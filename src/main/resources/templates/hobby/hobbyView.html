@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hobbyist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Oxygen&display=swap" rel="stylesheet">
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
@@ -12,8 +12,9 @@
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/comments.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+
 
 </head>
 <body>
@@ -31,9 +32,9 @@
                         <span class="card-title" th:text="${hobby.title}"></span>
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
-                            <button class="btn btn-floating halfway-fab waves-effect waves-light red">
+                            <a onclick="M.toast({html: 'Added to favorites!'})"> <button class="btn btn-floating halfway-fab waves-effect waves-light red">
                                 <i class="material-icons">favorite_border</i>
-                            </button>
+                            </button></a>
                         </form>
                     </div>
                     <div class="card-content">

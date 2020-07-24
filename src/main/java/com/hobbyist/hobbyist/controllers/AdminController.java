@@ -29,6 +29,8 @@ public class AdminController {
         if (user.isAdmin()) {
             model.addAttribute("users", usersDao.findAll());
             model.addAttribute("hobbies", hobbyDao.findAll());
+            model.addAttribute("countUsers", usersDao.count());
+            model.addAttribute("countHobbies", hobbyDao.count());
             return "admin/admin";
         } else {
             return "registration/login";
@@ -42,6 +44,8 @@ public class AdminController {
         usersDao.delete(deleteProfile);
         return "redirect:/admin";
     }
+
+
 
 //    //delete Hobby
 //    @PostMapping("/admin/delete/hobby")

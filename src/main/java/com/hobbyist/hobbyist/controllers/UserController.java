@@ -72,6 +72,7 @@ public class UserController {
         return "redirect:/";
     }
 
+
 //    //public profile
 //    @GetMapping("/users/profile/{username}")
 //    public String showPublicUsersProfile(@PathVariable String username, Model vModel) {
