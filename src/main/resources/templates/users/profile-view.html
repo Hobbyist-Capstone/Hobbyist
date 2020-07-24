@@ -154,7 +154,8 @@
                     <div class="row">
                         <h1 class="center-align" id="large-hobbies-header">Hobbies</h1>
                         <!--                <h3 id="large-badges-header" class="center-align">Hobbyist Badges</h3>-->
-
+                    </div>
+                    <div class="row">
                         <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}"
                              th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <img class="small-badge" src="../../static/img/hobbyist-transparent.png"
@@ -166,10 +167,12 @@
                     </div>
                     <div class="row">
                         <h1 id="large-created-hobbies-header" class="center-align">Created Hobbies</h1>
-                        <div class="center-align col s6" id="large-created-hobbies" th:each="hobby: ${hobbies}">
+                    </div>
+                    <div class="row">
+                        <div class="col s6 l6" id="large-created-hobbies" th:each="hobby: ${hobbies}">
                             <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
                                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
-                                    <li class="center-align" th:text="${hobby.title}">Swashbuckling</li>
+                                    <li th:text="${hobby.title}">Swashbuckling</li>
                                 </a>
                             </ul>
                             <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
@@ -197,7 +200,7 @@
                             <div id="friend-name">
                                 <a th:href="@{|/users/profile/${friend.friend.username}|}"
                                    class="secondary-content valign-wrapper">
-                                    <p class="friend-info" th:text="${friend.friend.username}">username</p>
+                                    <p class="friend-info left-align" th:text="${friend.friend.username}">username</p>
                                 </a>
                             </div>
                             <div>

@@ -195,10 +195,10 @@ p {
 }
 
 #large-created-hobbies, #small-created-hobbies {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-between;*/
     overflow: hidden;
     font-size: 1.5em;
     font-family: 'Bungee', cursive;
@@ -261,7 +261,7 @@ p {
 
 .friend-info {
     width: 20vw;
-    padding-right: 175px;
+    /*padding-right: 175px;*/
     font-size: 1.5em;
 }
 
