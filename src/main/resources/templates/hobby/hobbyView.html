@@ -158,7 +158,7 @@
                     allowfullscreen></iframe>
         </div>
     </div>
-</div>
+
     <script>
         hcb_user = {
             /* L10N */
@@ -219,7 +219,10 @@
 
     </script>
     <!-- begin wwww.htmlcommentbox.com -->
-    <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
+    <div class="container">
+        <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...
+        </div>
+    </div>
     <link rel="stylesheet" type="text/css"
           href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0"/>
     <script type="text/javascript" id="hcb"> /*<!--*/
@@ -240,5 +243,6 @@
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script th:src="@{/JS/materialize.js}"></script>
     <script th:src="@{/JS/index.js}"></script>
+</div>
 </body>
 </html>

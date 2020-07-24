@@ -42,7 +42,7 @@
                 <p class="bold-font ">Username: <a th:href="@{|/users/profile/${user.username}|}"><span
                         th:text="${user.username}">USERNAME</span></a>
                 </p>
-                <p class="bold-font" id="admin-status">Is Admin: <span th:text="${user.isAdmin()}"></span></p>
+                <p class="bold-font" id="admin-status">Admin: <span th:text="${user.isAdmin()}"></span></p>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                 <p class="bold-font">Title: <a th:href="${'/hobby/' + hobby.id}"><span
                         th:text="${hobby.title}"></span></a>
                 </p>
-                <p class="bold-font">Hobby Created by: <span th:text="${hobby.createdBy.username}">Username</span>
+                <p class="bold-font">Created By: <span th:text="${hobby.createdBy.username}">Username</span>
                 </p>
             </div>
         </div>
