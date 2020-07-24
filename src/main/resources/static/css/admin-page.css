@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/../img/desk-min.jpg");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-family: 'Bungee Shade', cursive;
+    color:  #AF1112;
+}
+
+p {
+    font-size: 1.2em;
+    color: #263238;
+    font-family: 'oxygen', cursive;
+}
+
+span{
+    font-size:1em;
+    font-family: 'oxygen', cursive;
+    font-weight: lighter;
+}
+
+a{
+    color: #263238;
+}
+
+a:hover{
+    color:  #AF1112;
+}
+
+
+.bold-font{
+    font-weight: bolder;
+}
+
+#admin-status{
+    color:#AF1112;
+}
+
+.stats{
+    padding:5px 15px 5px 15px;
+    border:1px solid #263238;
+    background-color: white;
+
+}
+.user-list{
+    padding:5px 15px 5px 15px;
+    border:1px solid #263238;
+    margin-bottom: 2px;
+    background-color: white;
+}
+
+.hobbies-list{
+    padding:5px 15px 5px 15px;
+    border:1px solid #263238;
+    margin-bottom: 2px;
+    background-color: white;
+
+
+}
