@@ -13,7 +13,7 @@
     <!--    Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    Custom CSS Files-->
-<!--    <link th:href="@{/css/comments.css}" rel="stylesheet" type="text/css">-->
+        <link th:href="@{/css/comments.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/single-hobby.css}" rel="stylesheet" type="text/css">
 
     <link rel="shortcut icon" href="/img/follower-logo.ico" type="image/x-icon"/>
@@ -21,9 +21,10 @@
 
 </head>
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
+
 <div id="single-hobby-container">
+    <div th:replace="partials/navbar :: navbar"></div>
+    <ul th:replace="partials/navbar :: navbar-small"></ul>
     <div class="container">
         <div class="row">
             <div class="col s1"></div>

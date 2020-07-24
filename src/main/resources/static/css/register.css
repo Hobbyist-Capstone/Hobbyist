@@ -11,6 +11,8 @@ html {
 
 body {
     height: 100vh;
+    max-width: 100%;
+    overflow-x:hidden;
 }
 
 #register-form, #edit-hobby-form, #create-hobby-form {
@@ -21,6 +23,7 @@ body {
     background-attachment: fixed;
     font-family: 'Bungee Shade', cursive;
     overflow-y: scroll;
+    overflow-x:hidden;
     width: 100%;
     height: 100vh;
 }
