@@ -25,15 +25,15 @@ html {
     background-position: right;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Bungee', cursive;
     overflow-y: scroll;
 }
 
 #small-profile-header, #small-friends-header, #small-hobbies-header {
     font-size: 3em;
-    color: #af1112;
-    font-family: 'Bungee Shade', cursive;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: rgba(175, 17, 18, 0.9);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    font-family: 'Bungee', cursive;
     margin-top: 20px;
 
 }
@@ -84,26 +84,6 @@ html {
     color: white;
 }
 
-#profile-navbar-placeholder-large {
-    width: 100vw;
-    height: 8vh;
-    position: fixed;
-    display: block;
-    z-index: 1000;
-    background-color: #212121;
-    font-family: 'Bungee Shade', cursive;
-    color: white;
-    font-size: 2em;
-}
-
-
-#profile-navbar-list-large {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
-}
-
 #profile-panels {
     display: flex;
     flex-direction: row;
@@ -119,7 +99,7 @@ html {
     background-position: right;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Bungee', cursive;
     overflow-y: scroll;
 }
 

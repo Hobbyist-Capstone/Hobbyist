@@ -8,7 +8,7 @@
 
     <!--Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon"/>
 
     <!--    Materialize Framework-->
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
@@ -21,28 +21,31 @@
 
 </head>
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<ul th:replace="partials/navbar :: navbar-small"></ul>
-<th:block th:switch="${error}">
-    <div th:case="'Not Found'">
-        <h1 class="center-align">Page not found!!</h1>
-    </div>
-    <div th:case="'Forbidden'">
-        <h1 class="center-align">You don't have permission to view this page.</h1>
-    </div>
-</th:block>
+<div id="errror-container-500">
+    <div th:replace="partials/navbar :: navbar"></div>
+    <ul th:replace="partials/navbar :: navbar-small"></ul>
+
+    <th:block th:switch="${error}">
+        <div th:case="'Not Found'">
+            <h1 class="center-align">Page not found!!</h1>
+        </div>
+        <div th:case="'Forbidden'">
+            <h1 class="center-align">You don't have permission to view this page.</h1>
+        </div>
+    </th:block>
 
 
-<h1 class="my-wrapper  center-align">ERROR: Please go back or Watch a video instead</h1>
-<div class="my-wrapper center-align">
-    <iframe
-            width="520"
-            height="415"
-            src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
-            frameborder="0"
-            allowfullscreen="allowfullscreen"
-    >
-    </iframe>
+    <h1 class="my-wrapper  center-align">ERROR: Please go back or Watch a video instead</h1>
+    <div class="my-wrapper center-align">
+        <iframe
+                width="520"
+                height="415"
+                src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
+                frameborder="0"
+                allowfullscreen="allowfullscreen"
+        >
+        </iframe>
+    </div>
 </div>
 
 </body>

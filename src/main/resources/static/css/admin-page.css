@@ -17,8 +17,10 @@ body {
 
 h1 {
     font-family: 'Bungee', cursive;
-    color: rgba(175, 17, 18, 0.9);
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    color: rgba(175, 17, 18, 0.9);
+    font-size: 4em;
+
 }
 
 p {
@@ -38,7 +40,7 @@ a{
 }
 
 a:hover{
-    color:  #AF1112;
+    color: rgba(175, 17, 18, 0.9);
 }
 
 
@@ -47,7 +49,7 @@ a:hover{
 }
 
 #admin-status{
-    color:#AF1112;
+    color: rgba(175, 17, 18, 0.9);
 }
 
 .stats{
