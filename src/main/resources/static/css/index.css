@@ -203,7 +203,7 @@ p, th, td {
     color: black;
 }
 #single-hobby-container {
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100vw;
     background-image: url("/../img/desk-min.jpg");
     background-size: cover;
