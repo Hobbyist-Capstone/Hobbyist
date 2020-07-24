@@ -53,7 +53,7 @@
 <ul th:replace="partials/navbar :: navbar-small"></ul>
 <div id="tracker-container">
     <div class="row tool blue-grey lighten-5">
-        <div id="interested" class="col s1 grey darken-4">
+        <div id="interested" class="col s1 blue-grey darken-4">
             <h5 class="title">INTERESTED</h5>
             <div class="content row">
                 <div class="col s12 m4"th:block th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'TED')}">
@@ -67,13 +67,13 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'TED')}">
                             <form th:action="@{|/profile/status/edit|}" th:method="post">
                                 <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've tried
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">I've tried
                                     it!
                                 </button>
                             </form>
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
                                 </button>
                             </form>
 
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <div id="learning" class="col s10 grey lighten-5">
+        <div id="learning" class="col s10 blue-grey lighten-5">
             <h5 class="title">TRIED</h5>
             <div class="content row">
                 <div class="col s12 m4"th:block th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IT')}">
@@ -124,13 +124,13 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'IT')}">
                             <form th:action="@{|/profile/status/edithobbyist|}" th:method="post">
                                 <input type="hidden" name="hobbyId" th:value="${userHobby.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">I've
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">I've
                                     mastered it!
                                 </button>
                             </form>
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
                                 </button>
                             </form>
 
@@ -165,7 +165,7 @@
         </div>
 
 
-        <div id="hobbyist" class="col s1 grey darken-4">
+        <div id="hobbyist" class="col s1 blue-grey darken-4">
             <h5 class="title">HOBBYIST</h5>
             <div class="content row">
                 <div class="col s12 m4"th:block th:each="userHobby : ${userHobbyList}" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
@@ -179,7 +179,7 @@
                         <div class="card-action" th:if="${#strings.endsWith(userHobby.status, 'IST')}">
                             <form th:action="@{|/profile/status/delete|}" th:method="post">
                                 <input type="hidden" name="deleteId" th:value="${userHobby.id}">
-                                <button class="button-style btn grey darken-4 waves-effect waves-light btn-large">Delete
+                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light btn-large">Delete
                                 </button>
 
                             </form>
