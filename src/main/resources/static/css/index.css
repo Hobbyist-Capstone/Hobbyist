@@ -158,7 +158,7 @@ html {
     max-width: 100vw;
     width: 100vw;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 100);
+    background-color: rgb(255, 255, 255);
     border: 3px solid #f1f1f1;
     alignment: center;
 
@@ -210,7 +210,8 @@ p, th, td {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    font-family: 'Bungee Shade', cursive;
+    /*font-family: 'oxygen', cursive;*/
+    font-weight: bolder;
     overflow-y: scroll;
 }
 
