@@ -13,6 +13,16 @@ html {
     width: 100vw;
 }
 
+a > li:hover {
+    color: #607d8b;
+    cursor: pointer;
+}
+
+p:hover {
+    color: #607d8b !important;
+    cursor: pointer;
+}
+
 /*Small M and S and XS Site*/
 
 /*Small Index - Above the fold*/

@@ -29,30 +29,12 @@
             <form class="form-container" th:action="${'/hobby/'+ hobby.id +'/edit'}" th:method="POST"
                   th:object="${hobby}">
 
-                <input id="title" type="text" placeholder="Hobby Title" class="validate" th:field="*{title}">
+                <input id="title" type="text" placeholder="Hobby Title" th:field="*{title}">
                 <input type="hidden" name="hobbyId" th:value="${hobby.id}">
 
                 <textarea placeholder="Hobby Description" id="textarea1" class="materialize-textarea"
                           th:field="*{description}"></textarea>
 
-<!--                <p class="forms" id="optional">*(OPTIONAL) Watch Video In Link Below For Instructions</p>-->
-<!--                <a class="button-style btn grey darken-4 waves-effect waves-light btn-large modal-trigger font" style="font-family:'Bungee';"href="#modal1">Edit Video</a>-->
-<!--                &lt;!&ndash; Modal Structure &ndash;&gt;-->
-<!--                <div id="modal1" class="modal font">-->
-<!--                    <div class="modal-content responsive-img">-->
-<!--                        <video class="responsive-video" controls>-->
-<!--                            <source th:src="@{/img/youtube-submit-instruction.mov}" type="video/mp4">-->
-<!--                        </video>-->
-<!--                        <div class="input-field col s12">-->
-<!--                            <input id="video" name="video" type="text" class="validate">-->
-<!--                            <label for="video">Insert Link Here</label>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="modal-footer">-->
-<!--                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Add Video</a>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="input-field font">
                     <select multiple th:field="*{categories}">
                         <th:block th:each="c : ${categories}">
@@ -65,6 +47,7 @@
                 </div>
                 <div class="input-field font">
                     <select th:field="*{patience}">
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
@@ -74,6 +57,7 @@
                 </div>
                 <div class="input-field font">
                     <select th:field="*{difficulty}">
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
@@ -83,6 +67,7 @@
                 </div>
                 <div class="input-field font">
                     <select th:field="*{cost}">
+                        <option th:value="0" disabled>Select</option>
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
                         <option th:value="3">3</option>
