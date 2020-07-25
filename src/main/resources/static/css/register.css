@@ -107,3 +107,7 @@ input:focus, textarea:focus {
 .dropdown-content li > span {
     color: #263238 !important;
 }
+
+.input-field label {
+    color: #263238 !important;
+}
