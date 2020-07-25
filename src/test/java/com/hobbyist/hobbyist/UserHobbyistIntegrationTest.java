@@ -107,6 +107,14 @@ public class UserHobbyistIntegrationTest {
     }
 
     @Test
+    public void testRegister() throws Exception{
+        this.mvc.perform (get("/register"))
+                .andExpect(status().isOk());
+    }
+
+
+
+    @Test
     public void testRedirectProfile() throws Exception {
         // Makes a Get request to /profile and expect a redirection to the login page
         this.mvc.perform(get("/profile" ))
@@ -121,6 +129,10 @@ public class UserHobbyistIntegrationTest {
         this.mvc.perform(get("/profile"))
                 .andExpect(status().isOk());
     }
+
+
+
+
 
 
 
