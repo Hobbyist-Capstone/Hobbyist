@@ -20,6 +20,7 @@ body {
     font-size: 7em;
     color: #af1112;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0;
 }
 
 .icons {
@@ -59,7 +60,7 @@ body {
     width: 70vw;
     border: 5px solid #f2a22c;
     border-radius: 5px;
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 5px 10px;
     background-color: #eceff1;
 
 
@@ -114,6 +115,7 @@ body {
     justify-content: space-around;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 0;
 
 }
 
@@ -144,7 +146,7 @@ body {
 #large-logo {
     width: 10vw;
     height: auto;
-    margin: 30px;
+    margin: 12px 30px 0 30px;
 
 
 }
