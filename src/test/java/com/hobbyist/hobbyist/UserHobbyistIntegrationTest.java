@@ -1,5 +1,6 @@
 package com.hobbyist.hobbyist;
 
+import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
@@ -28,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -92,7 +94,7 @@ public class UserHobbyistIntegrationTest {
 
     @Test
     public void testCreateUser() throws Exception {
-        // Makes a Post request to /ads/create and expect a redirection to the Ad
+        // Makes a Post request to /login and expect a redirection to profile
         this.mvc.perform(
                 post("/login").with(csrf())
                         .session((MockHttpSession) httpSession)
@@ -107,31 +109,37 @@ public class UserHobbyistIntegrationTest {
     }
 
     @Test
-    public void testRegister() throws Exception{
-        this.mvc.perform (get("/register"))
+    public void testRegister() throws Exception {
+        this.mvc.perform(get("/register"))
                 .andExpect(status().isOk());
     }
-
 
 
     @Test
     public void testRedirectProfile() throws Exception {
         // Makes a Get request to /profile and expect a redirection to the login page
-        this.mvc.perform(get("/profile" ))
+        this.mvc.perform(get("/profile"))
                 .andExpect(status().is(302));
     }
 
 
     @Test
-    @WithMockUser(username="testUser", password="Testing12345")
-    public void testShowProfile() throws Exception{
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void testShowProfile() throws Exception {
         //test that user can login and be directed to profile
         this.mvc.perform(get("/profile"))
                 .andExpect(status().isOk());
     }
 
-
-
+    @Test
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void testUserProfile() throws Exception {
+        //test that the user profile reflects logged-in user information
+        this.mvc.perform(get("/profile"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Following")))
+                .andExpect(content().string(containsString("testUser")));
+    }
 
 
 
