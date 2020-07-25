@@ -113,6 +113,31 @@
         <div id="profile-panels">
             <div id="left-div">
                 <h1 id="large-profile-header" class="center-align" th:text="${user.getUsername()}">Account</h1>
+                <div class="center-align">
+<!--                    Edit Account Button-->
+                    <div id="large-profile-buttons" class="center-align"
+                         th:if="${user.getUsername() == currentUsername}">
+                        <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
+                            <input type="hidden" name="id" th:value="${user.getId()}">
+                            <button id="edit-button" class="button-style btn btn-large blue-grey darken-4 waves-effect waves-light">Edit
+                                Account
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+                <!--        Add Friend Button-->
+                <div id="add-friend-button" class="center-align">
+                    <form th:action="@{|/users/profile/friends-request|}" th:method="GET"
+                          th:if="${publicUserId != currentUserId}">
+                        <button id="follow-button" class="button-style btn btn-large blue-grey darken-4 waves-effect waves-light">
+                            <input type="hidden" name="userId" th:value="${user.getId()}">
+                            <i class="small material-icons white-text right-align"></i>
+                            Follow
+                        </button>
+                    </form>
+                </div>
+
                 <div id="large-profile-image" class="center-align">
                     <img th:if="${user.userImage} == ''" class="large-photo"
                          src="../../static/img/follower-logo.png" alt="badge"
@@ -121,29 +146,7 @@
 
                          th:src="${user.userImage}"
                          alt="profile picture">
-                    <div class="center-align">
-                        <div id="large-profile-buttons" class="center-align"
-                             th:if="${user.getUsername() == currentUsername}">
-                            <form th:action="@{|/users/${user.id}/edit|}" th:method="GET" th:object="${user}">
-                                <input type="hidden" name="id" th:value="${user.getId()}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light">Edit
-                                    Account
-                                </button>
-                            </form>
-                        </div>
 
-                        <!--        Add Friend Button-->
-                        <div id="add-friend-button" class="center-align">
-                            <form th:action="@{|/users/profile/friends-request|}" th:method="GET"
-                                  th:if="${publicUserId != currentUserId}">
-                                <button class="button-style btn blue-grey darken-4 waves-effect waves-light">
-                                    <input type="hidden" name="userId" th:value="${user.getId()}">
-                                    <i class="small material-icons white-text right-align"></i>
-                                    Follow
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
 
