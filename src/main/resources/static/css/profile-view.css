@@ -18,7 +18,7 @@ a > li:hover {
     cursor: pointer;
 }
 
-#friend-name a > p:hover {
+p:hover {
     color: #607d8b !important;
     cursor: pointer;
 }
