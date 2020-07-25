@@ -260,7 +260,7 @@ p, th, td {
     font-family: 'Oxygen', sans-serif;
     font-size: 1.5em;
 }
-input:focus, #textarea1 textarea:focus {
+input:focus {
     border-bottom: 1px solid #263238 !important;
     box-shadow: 0 1px 0 0 #263238 !important;
 }
