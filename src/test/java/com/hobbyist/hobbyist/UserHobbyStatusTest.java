@@ -1,8 +1,11 @@
 package com.hobbyist.hobbyist;
 
 
+import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.models.UserHobby;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
+import com.hobbyist.hobbyist.repos.UserHobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,16 +23,20 @@ import javax.servlet.http.HttpSession;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest (classes = HobbyistApplication.class)
+@SpringBootTest(classes = HobbyistApplication.class)
 @AutoConfigureMockMvc
 public class UserHobbyStatusTest {
     private User testUser;
+        private Hobby testHobbyStatus;
+    private UserHobby testUserHobbyStatus;
     private HttpSession httpSession;
+
 
     @Autowired
     private MockMvc mvc;
@@ -39,6 +46,9 @@ public class UserHobbyStatusTest {
 
     @Autowired
     HobbyRepository hobbiesDao;
+
+    @Autowired
+    UserHobbyRepository userHobbiesDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -97,10 +107,22 @@ public class UserHobbyStatusTest {
     }
 
     @Test
-    public void testGiveHobbyStatus() throws Exception{
+    public void showHo() throws Exception {
         setup();
         contextLoads();
         testIfUserSessionIsActive();
+
+        User existingUser = userDao.findAll().get(0);
+        testHobbyStatus = hobbiesDao.findAll().get(0);
+
+        testUserHobbyStatus = userHobbiesDao.findByUserId(existingUser.getId());
+
+
+        this.mvc.perform(
+                post("/profile/status").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("status", "INTERESTED"))
+        .andExpect(status().is3xxRedirection());
 
     }
 }

@@ -15,6 +15,7 @@ public interface UserHobbyRepository extends JpaRepository<UserHobby, Long> {
     UserHobby findByHobbyId(long id);
     UserHobby findByUserIdAndHobbyId(long user_id, long hobby_id);
 
+
 //    List<UserHobby> findAllByUserHobbyStatus (String status);
 //    List<UserHobby> findAllByHobbyStatus(String status);
 
