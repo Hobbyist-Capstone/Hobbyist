@@ -1,5 +1,6 @@
 package com.hobbyist.hobbyist.controllers;
 
+import com.hobbyist.hobbyist.models.Category;
 import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
 import com.hobbyist.hobbyist.repos.CategoryRepository;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -29,6 +32,7 @@ public class AdminController {
     @GetMapping("/admin")
     public String siteAdmin(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         if (user.isAdmin()) {
             model.addAttribute("users", usersDao.findAll());
             model.addAttribute("hobbies", hobbyDao.findAll());
