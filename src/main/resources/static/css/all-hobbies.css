@@ -90,3 +90,8 @@ p {
 .card-content {
     font-family: 'Oxygen', sans-serif;
 }
+
+input:focus, textarea:focus {
+    border-bottom: 1px solid #263238 !important;
+    box-shadow: 0 1px 0 0 #263238 !important;
+}
