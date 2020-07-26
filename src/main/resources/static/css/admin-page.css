@@ -55,14 +55,14 @@ a:hover{
 .stats{
     padding:5px 15px 5px 15px;
     border:1px solid #263238;
-    border-radius: 20px ;
+    border-radius: 10px ;
     background-color: white;
 
 }
 .user-list{
     padding:5px 15px 5px 15px;
     border:1px solid #263238;
-    border-radius: 20px ;
+    border-radius: 10px ;
     margin-bottom: 2px;
     background-color: white;
 }
@@ -70,7 +70,7 @@ a:hover{
 .hobbies-list{
     padding:5px 15px 5px 15px;
     border:1px solid #263238;
-    border-radius: 20px ;
+    border-radius: 2px ;
     margin-bottom: 2px;
     background-color: white;
 
