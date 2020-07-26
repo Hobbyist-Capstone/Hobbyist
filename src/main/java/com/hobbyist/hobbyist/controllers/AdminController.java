@@ -2,6 +2,7 @@ package com.hobbyist.hobbyist.controllers;
 
 import com.hobbyist.hobbyist.models.Hobby;
 import com.hobbyist.hobbyist.models.User;
+import com.hobbyist.hobbyist.repos.CategoryRepository;
 import com.hobbyist.hobbyist.repos.HobbyRepository;
 import com.hobbyist.hobbyist.repos.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,10 +18,12 @@ public class AdminController {
 
     private UserRepository usersDao;
     private HobbyRepository hobbyDao;
+    private CategoryRepository categoryDao;
 
-    public AdminController(UserRepository usersDao, HobbyRepository hobbyDao) {
+    public AdminController(UserRepository usersDao, HobbyRepository hobbyDao,CategoryRepository categoryDao) {
         this.usersDao = usersDao;
         this.hobbyDao = hobbyDao;
+        this.categoryDao = categoryDao;
     }
 
     @GetMapping("/admin")

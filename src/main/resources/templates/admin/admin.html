@@ -10,7 +10,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.css}" media="screen,projection"/>
     <!--    Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/follower-logo.ico" type="image/x-icon"/>
 
     <!--    Font Awesome Icons-->
     <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
@@ -32,6 +32,7 @@
             <div class="stats">
                 <p class="bold-font">Total number of users: <span th:text="${countUsers}"></span></p>
                 <p class="bold-font">Total number of hobbies: <span th:text="${countHobbies}"></span></p>
+                <p></p>
             </div>
         </div>
 
@@ -42,7 +43,10 @@
                 <p class="bold-font ">Username: <a th:href="@{|/users/profile/${user.username}|}"><span
                         th:text="${user.username}">USERNAME</span></a>
                 </p>
-                <p class="bold-font" id="admin-status">Admin: <span th:text="${user.isAdmin()}"></span></p>
+                <p class="bold-font" id="admin-status">User Role:
+                    <th:block th:if="${user.isAdmin()}">Admin</th:block>
+                    <th:block th:if="${!user.isAdmin()}">User</th:block>
+                </p>
             </div>
         </div>
 
