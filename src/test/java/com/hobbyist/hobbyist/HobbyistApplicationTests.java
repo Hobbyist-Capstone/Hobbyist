@@ -84,3 +84,4 @@ public class HobbyistApplicationTests {
         assertNotNull(httpSession);
     }
 }
+

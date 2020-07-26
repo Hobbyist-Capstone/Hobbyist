@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,7 +54,7 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/status")
-    public String addToInterests (@RequestParam long hobbyId){
+    public String addToInterests (@RequestParam long hobbyId, Errors validation){
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
