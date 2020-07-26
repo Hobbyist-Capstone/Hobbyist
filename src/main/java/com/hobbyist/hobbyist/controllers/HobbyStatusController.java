@@ -54,7 +54,7 @@ public class HobbyStatusController {
     }
 
     @PostMapping("profile/status")
-    public String addToInterests (@RequestParam long hobbyId, Errors validation){
+    public String addToInterests (@RequestParam long hobbyId){
         //this button will take this.hobbyId and set the status to "interested" for the current user
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userInDb = userDao.getOne(currentUser.getId());
