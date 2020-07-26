@@ -30,7 +30,7 @@
             <div class="col s10 center-align">
                 <div class="card">
                     <div class="card-image">
-                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools.jpg}" alt="placeholder">
+                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools-min.png}" alt="placeholder">
                         <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
