@@ -24,6 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import javax.servlet.http.HttpSession;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -142,6 +143,24 @@ public class UserHobbyistIntegrationTest {
     }
 
 
-
+//    @Test
+//    @WithMockUser(username = "testUser", password = "Testing12345")
+//    public void updateUserInfo() throws Exception {
+//        User existingUser = userDao.findAll().get(0);
+//        this.mvc.perform(
+//                post("/users/" + existingUser.getId() + "/edit").with(csrf())
+//                        .session((MockHttpSession) httpSession)
+//                        .param("test", "Updated First Name")
+//                        .param("test", "Updated Last Name")
+//                        .param("testuser@email.com", "updateTestUser@email.com")
+//                        .param("testUser", "updateTestUser")
+//                        .param(passwordEncoder.encode("Testing12345"), "updatePass"))
+//                .andExpect(status().is3xxRedirection());
+//
+//        this.mvc.perform(get("/profile"))
+//                .andExpect(status().isOk())
+//                // Test the dynamic content of the page
+//                .andExpect(content().string(containsString("Following")));
+//    }
 
 }
