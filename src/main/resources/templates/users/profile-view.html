@@ -31,8 +31,8 @@
     <!--        Profile Image and Upload/Edit-->
 
     <div id="small-profile-image" class="center-align">
-        <img th:if="${user.userImage} == ''" class="small-photo" src="../../static/img/follower-logo.png" alt="badge"
-             th:src="@{/img/follower-logo.png}"/>
+        <img th:if="${user.userImage} == ''" class="small-photo" src="../../static/img/follower-logo-min.png" alt="badge"
+             th:src="@{/img/follower-logo-min.png}"/>
         <img th:unless="${user.userImage} == ''" class="small-photo center-align" th:src="${user.userImage}"
              alt="profile picture">
         <div th:if="${user.getUsername() == currentUsername}">
@@ -63,8 +63,8 @@
         <!--        <h3 id="small-badges-header" class="center-align">Hobbyist Badges</h3>-->
         <div id="small-badge-list" class="center-align" th:each="userHobby : ${userHobbyList}">
             <div th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                <img class="small-badge" src="../../static/img/hobbyist-transparent.png" alt="badge"
-                     th:src="@{/img/hobbyist-transparent.png}"/>
+                <img class="small-badge" src="../../static/img/hobbyist-transparent-min.png" alt="badge"
+                     th:src="@{/img/hobbyist-transparent-min.png}"/>
                 <p th:text="${userHobby.hobby.getTitle()}"></p>
             </div>
         </div>
@@ -86,8 +86,8 @@
         <h1 class="center-align" id="small-friends-header">Following</h1>
         <ul class="collection">
             <li class="collection-item avatar" th:each="friend : ${friendsList}">
-                <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                     th:src="@{/img/follower-logo.png}"/>
+                <img class="small-friend-logo" src="../../static/img/follower-logo-min.png" alt="badge"
+                     th:src="@{/img/follower-logo-min.png}"/>
                 <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content">
                     <p class="friend-info" th:text="${friend.friend.username}">user first name</p>
                 </a>
@@ -140,8 +140,8 @@
 
                 <div id="large-profile-image" class="center-align">
                     <img th:if="${user.userImage} == ''" class="large-photo"
-                         src="../../static/img/follower-logo.png" alt="badge"
-                         th:src="@{/img/follower-logo.png}"/>
+                         src="../../static/img/follower-logo-min.png" alt="badge"
+                         th:src="@{/img/follower-logo-min.png}"/>
                     <img th:unless="${user.userImage} == ''" class="large-photo"
 
                          th:src="${user.userImage}"
@@ -161,9 +161,9 @@
                     <div class="row">
                         <div class="col s6 center-align" id="large-badge-list" th:each="userHobby : ${userHobbyList}"
                              th:if="${#strings.endsWith(userHobby.status, 'IST')}">
-                            <img class="small-badge" src="../../static/img/hobbyist-transparent.png"
+                            <img class="small-badge" src="../../static/img/hobbyist-transparent-min.png"
                                  alt="badge"
-                                 th:src="@{/img/hobbyist-transparent.png}"/>
+                                 th:src="@{/img/hobbyist-transparent-min.png}"/>
                             <a th:href="${'/hobby/' + userHobby.hobby.id}"><p
                                     th:text="${userHobby.hobby.getTitle()}"></p></a>
                         </div>
@@ -196,8 +196,8 @@
                     <ul class="collection">
                         <li class="collection-item avatar friend-list center-align" th:each="friend : ${friendsList}">
                             <div>
-                                <img class="small-friend-logo" src="../../static/img/follower-logo.png" alt="badge"
-                                     th:src="@{/img/follower-logo.png}"/>
+                                <img class="small-friend-logo" src="../../static/img/follower-logo-min.png" alt="badge"
+                                     th:src="@{/img/follower-logo-min.png}"/>
                                 <!--                                                        <a th:href="@{|/users/profile/${friend.friend.username}|}" class="secondary-content"><p class="friend-info" th:text="${friend.friend.username}">user first name</p></a>-->
                             </div>
                             <div id="friend-name">
