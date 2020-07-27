@@ -19,6 +19,8 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
     @Query("from Hobby a where a.title like %:term%")
     List<Hobby> searchByTitle(@Param("term") String term);
 
+    @Query("from Hobby a where a.title like %:term%")
+    Hobby getOneByTitle(@Param("term") String term);
 
     // this will filter hobbies by category
 //    select *
