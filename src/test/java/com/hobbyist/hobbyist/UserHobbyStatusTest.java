@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -33,10 +34,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class UserHobbyStatusTest {
     private User testUser;
-        private Hobby testHobbyStatus;
+    private Hobby testHobbyStatus;
     private UserHobby testUserHobbyStatus;
     private HttpSession httpSession;
-
 
     @Autowired
     private MockMvc mvc;
@@ -107,22 +107,77 @@ public class UserHobbyStatusTest {
     }
 
     @Test
-    public void showHo() throws Exception {
-        setup();
-        contextLoads();
-        testIfUserSessionIsActive();
-
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void statusAndHobbyIdConnection() throws Exception {
         User existingUser = userDao.findAll().get(0);
         testHobbyStatus = hobbiesDao.findAll().get(0);
-
-        testUserHobbyStatus = userHobbiesDao.findByUserId(existingUser.getId());
-
 
         this.mvc.perform(
                 post("/profile/status").with(csrf())
                         .session((MockHttpSession) httpSession)
-                        .param("status", "INTERESTED"))
-        .andExpect(status().is3xxRedirection());
-
+                        .param("hobbyId", "1"))
+                .andExpect(status().is(HttpStatus.FOUND.value()))
+                .andExpect(redirectedUrl("/hobbies"))
+                .andReturn()
+                .getRequest()
+                .getSession();
     }
+
+    @Test
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void setHobbyStatus() throws Exception{
+        this.mvc.perform(
+                post("/profile/status").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("status", "INTERESTED")
+                        .param("hobbyId", "2")
+                        .param("userId", "2"))
+                .andExpect(status().is(HttpStatus.FOUND.value()))
+                .andExpect(redirectedUrl("/hobbies"))
+                .andReturn()
+                .getRequest()
+                .getSession();
+    }
+
+    @Test
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void updateHobbyStatusTried() throws Exception{
+        this.mvc.perform(
+                post("/profile/status/edit").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("status", "TRIED_IT")
+                        .param("hobbyId", "3")
+                        .param("userId", "2"))
+                .andExpect(status().is(HttpStatus.FOUND.value()))
+                .andExpect(redirectedUrl("/profile/status"))
+                .andReturn()
+                .getRequest()
+                .getSession();    }
+
+    @Test
+    @WithMockUser(username = "testUser", password = "Testing12345")
+    public void updateHobbyStatusHobbyist() throws Exception{
+        this.mvc.perform(
+                post("/profile/status/edithobbyist").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("status", "HOBBYIST")
+                        .param("hobbyId", "3")
+                        .param("userId", "2"))
+                .andExpect(status().is(HttpStatus.FOUND.value()))
+                .andExpect(redirectedUrl("/profile/status"))
+                .andReturn()
+                .getRequest()
+                .getSession();
+    }
+
+    @Test
+    public void testDeleteFromStatus() throws Exception{
+
+        this.mvc.perform(
+                post("/profile/status/delete").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("deleteId","31"))
+                .andExpect(status().is3xxRedirection());
+    }
+
 }
