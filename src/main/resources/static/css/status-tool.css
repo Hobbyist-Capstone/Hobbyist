@@ -27,8 +27,6 @@ html {
     padding: 5px;
     height: 85vh;
     border-radius: 5px;
-    border: 1px solid #263238;
-    background-color: rgba(255, 255, 255, 0.25);
 }
 
 #interested, #learning, #hobbyist{
