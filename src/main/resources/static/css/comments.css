@@ -5,6 +5,9 @@
     font-weight: bolder;
 }
 
+.container {
+    padding: 55px;
+}
 
 #HCB_comment_form_box {
     font-family: 'oxygen', cursive;
@@ -13,6 +16,7 @@
 #HCB_comment_box {
     width: 100%;
     /*border: 2px solid black;*/
+    padding: 55px;
     background-color: rgba(207, 216, 220, 0.7);
     /*background-color: white;*/
 }
@@ -115,6 +119,13 @@ input {
 
 a {
     color: #263238;
+}
+.hcb_icon {
+    padding: 10px!important;
+}
+
+.hcb-comment-tb {
+    display: none;
 }
 
 /*.gravatar {*/
