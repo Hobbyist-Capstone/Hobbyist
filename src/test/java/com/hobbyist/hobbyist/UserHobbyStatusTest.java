@@ -115,7 +115,7 @@ public class UserHobbyStatusTest {
         this.mvc.perform(
                 post("/profile/status").with(csrf())
                         .session((MockHttpSession) httpSession)
-                        .param("hobbyId", "1"))
+                        .param("hobbyId", "2"))
                 .andExpect(status().is(HttpStatus.FOUND.value()))
                 .andExpect(redirectedUrl("/hobbies"))
                 .andReturn()
@@ -176,7 +176,7 @@ public class UserHobbyStatusTest {
         this.mvc.perform(
                 post("/profile/status/delete").with(csrf())
                         .session((MockHttpSession) httpSession)
-                        .param("deleteId","31"))
+                        .param("deleteId","16"))
                 .andExpect(status().is3xxRedirection());
     }
 
