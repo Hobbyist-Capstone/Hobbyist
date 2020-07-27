@@ -61,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/profile",
                         "/users",
                         "/admin",
-                        "/profile/status"
+                        "/profile/status",
+                        "/profile/status/single"
                 )
                 .authenticated()
         ;
