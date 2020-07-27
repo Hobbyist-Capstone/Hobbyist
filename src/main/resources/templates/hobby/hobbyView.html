@@ -30,7 +30,7 @@
             <div class="col s10 center-align">
                 <div class="card">
                     <div class="card-image">
-                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools-min.png}" alt="placeholder">
+                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools-min.jpg}" alt="placeholder">
                         <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
                         <form th:action="@{|/profile/status/single|}" th:method="post">
                             <input type="hidden" name="hId" th:value="${hobby.id}">
@@ -44,7 +44,7 @@
                     <div class="card-content">
                         <h4 class="card-title blue-grey-text text-darken-4" th:text="${hobby.title}"></h4>
                         <p th:text="${hobby.description}"></p>
-                        <p>Created by:&nbsp;&nbsp;<a th:href="${'/users/profile/' + hobby.createdBy.username}"
+                        <p>Created by:&nbsp;&nbsp;<a id="username" th:href="${'/users/profile/' + hobby.createdBy.username}"
                                                      th:text="${hobby.createdBy.username}"></a></p>
                         <table class="striped">
                             <thead>
