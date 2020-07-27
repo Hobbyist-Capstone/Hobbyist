@@ -172,13 +172,13 @@
                         <h1 id="large-created-hobbies-header" class="center-align">Created Hobbies</h1>
                     </div>
                     <div class="row">
-                        <div class="col s6 l6" id="large-created-hobbies" th:each="hobby: ${hobbies}">
-                            <ul class="large-hobbies-list" th:if="${publicUsername == hobby.createdBy.username}">
+                        <div class="col s6 l6" id="large-created-hobbies" >
+                            <ul class="large-hobbies-list" th:each="hobby: ${hobbies}" th:if="${publicUsername == hobby.createdBy.username}">
                                 <a class="created-hobby-link" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>
                                 </a>
                             </ul>
-                            <ul class="large-hobbies-list" th:if="${currentUsername == hobby.createdBy.username}">
+                            <ul class="large-hobbies-list" th:each="hobby: ${hobbies}" th:if="${currentUsername == hobby.createdBy.username}">
                                 <a class="created-hobby-link center-align" th:href="${'/hobby/'+ hobby.id}">
                                     <li th:text="${hobby.title}">Swashbuckling</li>
                                 </a>
