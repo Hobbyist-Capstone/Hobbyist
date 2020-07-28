@@ -61,7 +61,7 @@
             <a th:href="${'/hobby/'+ hobby.id}">
                 <div class="card">
                     <div class="card-image">
-                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools-min.png}"
+                        <img th:if="${hobby.image} == ''" class="photo" th:src="@{/img/tools-min.jpg}"
                              alt="placeholder">
                         <img th:unless="${hobby.image} == ''" class="photo" th:src="${hobby.image}">
 
