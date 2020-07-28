@@ -149,5 +149,25 @@ body {
     height: auto;
     margin: 12px 30px 0 30px;
 
+}
+
+
+.final-words{
+    display:flex;
+    margin-top:30px;
+    padding-bottom: 30px;
+}
+
+.final-word{
+    padding-left: 30px;
+    font-size: 1.75em;
+    font-family: 'Bungee', cursive;
+    color: #263238;
+}
+
+.name{
+    font-size: 2em;
+    font-family: 'Bungee', cursive;
+    color: #af1112;
 
 }

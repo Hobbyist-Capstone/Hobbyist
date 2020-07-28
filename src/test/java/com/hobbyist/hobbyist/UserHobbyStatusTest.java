@@ -176,7 +176,7 @@ public class UserHobbyStatusTest {
         this.mvc.perform(
                 post("/profile/status/delete").with(csrf())
                         .session((MockHttpSession) httpSession)
-                        .param("deleteId","31"))
+                        .param("deleteId","34"))
                 .andExpect(status().is3xxRedirection());
     }
 
